@@ -33,6 +33,7 @@
 /FINAL6/apache@airavata/codebert/adap*
 /FINAL6/apache@airavata/unixcoder/adap*
 /FINAL6/apache@airavata/*.csv
+/FINAL6/apache@airavata/codebert
 
 # apache@curator
 /FINAL6/apache@curator/codebert/adap*
@@ -58,3 +59,4 @@
 /FINAL6/traccar/codebert/adap*
 /FINAL6/traccar/unixcoder/adap*
 /FINAL6/traccar/*.csv
+**/complete_tcp_analysis/reports/complete_results.pkl
