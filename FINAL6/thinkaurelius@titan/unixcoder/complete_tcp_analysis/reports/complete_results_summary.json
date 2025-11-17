@@ -1,0 +1,30 @@
+{
+  "project_name": "thinkaurelius@titan",
+  "analysis_timestamp": "2025-10-12T12:39:49.118819",
+  "data_summary": {
+    "total_tests": 16946,
+    "total_failures": "111",
+    "failure_rate": 0.006550218340611353,
+    "cycles": 378,
+    "cycle_range": [
+      4,
+      384
+    ]
+  },
+  "embeddings_info": {
+    "commit_only": [
+      16946,
+      128
+    ],
+    "files_only": [
+      16946,
+      128
+    ],
+    "combined": [
+      16946,
+      128
+    ]
+  },
+  "execution_summary": {},
+  "models_analyzed_comprehensive": 23
+}

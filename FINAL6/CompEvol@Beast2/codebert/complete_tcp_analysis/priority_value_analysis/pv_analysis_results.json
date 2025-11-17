@@ -1,0 +1,18 @@
+{
+  "pv_verdict_correlation": 0.49994990022744334,
+  "pv_mean": 0.4854351225955109,
+  "pv_std": 0.10105579016147895,
+  "failure_rate": 0.009378489021213248,
+  "feature_correlations": {
+    "Duration": 0.11323734977973773,
+    "DurationFeature": 0.11323734977973775,
+    "E1": 0.6249319510129286,
+    "E2": 0.5447377651330493,
+    "E3": 0.4893748818961613,
+    "LastRunFeature": -0.0014238526832922587,
+    "DIST": 0.4600048959765827,
+    "CHANGE_IN_STATUS": 0.21806987158629587,
+    "PRIORITY_VALUE": 0.49994990022744334
+  },
+  "conclusion": "PV weakly predicts failures"
+}

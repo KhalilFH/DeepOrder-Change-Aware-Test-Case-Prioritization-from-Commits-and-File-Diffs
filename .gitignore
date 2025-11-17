@@ -1,0 +1,60 @@
+/Rails
+/lrts-dataset
+/tvm
+/TCP-CI_DATASET
+/ase
+/FINAL6/BugSwarm@Opentelemetry
+/FINAL6/compr*
+/FINAL6/cross*
+/FINAL6/gen*.py
+/FINAL6/*.md
+/FINAL6/test*.py
+/FINAL6/corre*
+/FINAL6/images
+/FINAL6/public*
+/FINAL6/box*
+/FINAL6/fix*
+/FINAL6/*.log
+/FINAL6/debug*
+/FINAL6/__pycache__
+/*.docx
+/tcp*
+/.conda
+/_*
+/generate_tcp_dataset.py
+/BugSwarm/datasets
+/BugSwarm/*.csv
+/BugSwarm/good*
+/BugSwarm/verdict*
+/BugSwarm/deeporder
+/BugSwarm/gh_ac*
+/BugSwarm/__pycache__
+# apache@airavata
+/FINAL6/apache@airavata/codebert/adap*
+/FINAL6/apache@airavata/unixcoder/adap*
+/FINAL6/apache@airavata/*.csv
+
+# apache@curator
+/FINAL6/apache@curator/codebert/adap*
+/FINAL6/apache@curator/unixcoder/adap*
+/FINAL6/apache@curator/*.csv
+
+# apache@rocketmq
+/FINAL6/apache@rocketmq/codebert/adap*
+/FINAL6/apache@rocketmq/unixcoder/adap*
+/FINAL6/apache@rocketmq/*.csv
+
+# CompEvol@Beast2
+/FINAL6/CompEvol@Beast2/codebert/adap*
+/FINAL6/CompEvol@Beast2/unixcoder/adap*
+/FINAL6/CompEvol@Beast2/*.csv
+
+# thinkaurelius@titan
+/FINAL6/thinkaurelius@titan/codebert/adap*
+/FINAL6/thinkaurelius@titan/unixcoder/adap*
+/FINAL6/thinkaurelius@titan/*.csv
+
+# traccar@traccar
+/FINAL6/traccar/codebert/adap*
+/FINAL6/traccar/unixcoder/adap*
+/FINAL6/traccar/*.csv

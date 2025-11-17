@@ -1,0 +1,30 @@
+{
+  "project_name": "apache@curator",
+  "analysis_timestamp": "2025-10-12T12:14:29.257376",
+  "data_summary": {
+    "total_tests": 59301,
+    "total_failures": "125",
+    "failure_rate": 0.002107890254801774,
+    "cycles": 514,
+    "cycle_range": [
+      4,
+      535
+    ]
+  },
+  "embeddings_info": {
+    "commit_only": [
+      59301,
+      128
+    ],
+    "files_only": [
+      59301,
+      128
+    ],
+    "combined": [
+      59301,
+      128
+    ]
+  },
+  "execution_summary": {},
+  "models_analyzed_comprehensive": 23
+}

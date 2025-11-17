@@ -1,0 +1,30 @@
+{
+  "project_name": "apache@rocketmq",
+  "analysis_timestamp": "2025-10-12T12:28:54.881049",
+  "data_summary": {
+    "total_tests": 97081,
+    "total_failures": "114",
+    "failure_rate": 0.0011742771500087557,
+    "cycles": 533,
+    "cycle_range": [
+      4,
+      545
+    ]
+  },
+  "embeddings_info": {
+    "commit_only": [
+      97081,
+      128
+    ],
+    "files_only": [
+      97081,
+      128
+    ],
+    "combined": [
+      97081,
+      128
+    ]
+  },
+  "execution_summary": {},
+  "models_analyzed_comprehensive": 23
+}

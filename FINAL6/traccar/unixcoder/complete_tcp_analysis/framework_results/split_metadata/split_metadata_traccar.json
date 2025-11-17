@@ -1,0 +1,34 @@
+{
+  "project_name": "traccar",
+  "strategy": "normal",
+  "total_tests": 8623,
+  "total_failures": 1635,
+  "overall_failure_rate": 0.1896091847384901,
+  "total_cycles": 64,
+  "cycle_range": [
+    3,
+    66
+  ],
+  "train_cycles": [
+    3,
+    40
+  ],
+  "train_size": 3155,
+  "train_failures": 525,
+  "train_failure_rate": 0.1664025356576862,
+  "test_cycles": [
+    41,
+    66
+  ],
+  "test_size": 5468,
+  "test_failures": 1110,
+  "test_failure_rate": 0.2029992684711046,
+  "test_proportion": 0.39999999999999997,
+  "statistical_power": "Adequate",
+  "power_assessment": "Can reliably detect large effects (Cohen's d \u2265 0.5)",
+  "recommended_emphasis": "All metrics are interpretable. Statistical significance tests have adequate power. Report p-values, effect sizes, and practical metrics (APFD-C, time savings).",
+  "temporal_validity": true,
+  "quality_warnings": [
+    "Limited test cycles (26) - interpret results with caution"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "project_name": "apache@airavata",
+  "analysis_timestamp": "2025-10-12T00:16:04.496884",
+  "data_summary": {
+    "total_tests": 11319,
+    "total_failures": "1170",
+    "failure_rate": 0.10336602173336867,
+    "cycles": 233,
+    "cycle_range": [
+      104,
+      652
+    ]
+  },
+  "embeddings_info": {
+    "commit_only": [
+      11319,
+      128
+    ],
+    "files_only": [
+      11319,
+      128
+    ],
+    "combined": [
+      11319,
+      128
+    ]
+  },
+  "execution_summary": {},
+  "models_analyzed_comprehensive": 23
+}

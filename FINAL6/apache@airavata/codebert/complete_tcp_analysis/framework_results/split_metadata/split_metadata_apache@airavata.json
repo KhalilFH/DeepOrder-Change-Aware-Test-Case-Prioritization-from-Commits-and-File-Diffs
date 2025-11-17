@@ -1,0 +1,32 @@
+{
+  "project_name": "apache@airavata",
+  "strategy": "normal",
+  "total_tests": 11319,
+  "total_failures": 1170,
+  "overall_failure_rate": 0.10336602173336867,
+  "total_cycles": 233,
+  "cycle_range": [
+    104,
+    652
+  ],
+  "train_cycles": [
+    104,
+    562
+  ],
+  "train_size": 6955,
+  "train_failures": 582,
+  "train_failure_rate": 0.08368080517613227,
+  "test_cycles": [
+    563,
+    652
+  ],
+  "test_size": 4364,
+  "test_failures": 588,
+  "test_failure_rate": 0.13473877176901924,
+  "test_proportion": 0.35,
+  "statistical_power": "Excellent",
+  "power_assessment": "Can reliably detect small effects (Cohen's d \u2265 0.2)",
+  "recommended_emphasis": "All metrics are interpretable. Statistical significance tests have adequate power. Report p-values, effect sizes, and practical metrics (APFD-C, time savings).",
+  "temporal_validity": true,
+  "quality_warnings": []
+}

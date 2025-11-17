@@ -1,0 +1,32 @@
+{
+  "project_name": "apache@rocketmq",
+  "strategy": "low_failure",
+  "total_tests": 97081,
+  "total_failures": 114,
+  "overall_failure_rate": 0.0011742771500087557,
+  "total_cycles": 533,
+  "cycle_range": [
+    4,
+    545
+  ],
+  "train_cycles": [
+    4,
+    325
+  ],
+  "train_size": 57092,
+  "train_failures": 76,
+  "train_failure_rate": 0.001331184754431444,
+  "test_cycles": [
+    326,
+    545
+  ],
+  "test_size": 39989,
+  "test_failures": 38,
+  "test_failure_rate": 0.0009502613218635125,
+  "test_proportion": 0.39999999999999997,
+  "statistical_power": "Adequate",
+  "power_assessment": "Can reliably detect large effects (Cohen's d \u2265 0.5)",
+  "recommended_emphasis": "Report all metrics but emphasize practical significance. Statistical tests may be underpowered - focus on effect sizes, confidence intervals, and cost-aware metrics (APFD-C, time savings). Report p-values but interpret cautiously.",
+  "temporal_validity": true,
+  "quality_warnings": []
+}

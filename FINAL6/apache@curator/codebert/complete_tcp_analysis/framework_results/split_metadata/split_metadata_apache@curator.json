@@ -1,0 +1,32 @@
+{
+  "project_name": "apache@curator",
+  "strategy": "low_failure",
+  "total_tests": 59301,
+  "total_failures": 125,
+  "overall_failure_rate": 0.002107890254801774,
+  "total_cycles": 514,
+  "cycle_range": [
+    4,
+    535
+  ],
+  "train_cycles": [
+    4,
+    326
+  ],
+  "train_size": 34029,
+  "train_failures": 92,
+  "train_failure_rate": 0.002703576361338858,
+  "test_cycles": [
+    327,
+    535
+  ],
+  "test_size": 25272,
+  "test_failures": 33,
+  "test_failure_rate": 0.0013057929724596391,
+  "test_proportion": 0.39999999999999997,
+  "statistical_power": "Adequate",
+  "power_assessment": "Can reliably detect large effects (Cohen's d \u2265 0.5)",
+  "recommended_emphasis": "Report all metrics but emphasize practical significance. Statistical tests may be underpowered - focus on effect sizes, confidence intervals, and cost-aware metrics (APFD-C, time savings). Report p-values but interpret cautiously.",
+  "temporal_validity": true,
+  "quality_warnings": []
+}

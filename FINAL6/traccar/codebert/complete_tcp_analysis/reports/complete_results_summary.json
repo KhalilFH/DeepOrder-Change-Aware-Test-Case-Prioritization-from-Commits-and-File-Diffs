@@ -1,0 +1,30 @@
+{
+  "project_name": "traccar",
+  "analysis_timestamp": "2025-10-12T11:52:05.530325",
+  "data_summary": {
+    "total_tests": 8623,
+    "total_failures": "1635",
+    "failure_rate": 0.1896091847384901,
+    "cycles": 64,
+    "cycle_range": [
+      3,
+      66
+    ]
+  },
+  "embeddings_info": {
+    "commit_only": [
+      8623,
+      128
+    ],
+    "files_only": [
+      8623,
+      128
+    ],
+    "combined": [
+      8623,
+      128
+    ]
+  },
+  "execution_summary": {},
+  "models_analyzed_comprehensive": 23
+}

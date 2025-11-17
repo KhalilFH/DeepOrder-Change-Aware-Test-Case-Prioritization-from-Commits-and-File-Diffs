@@ -1,0 +1,14 @@
+Metric,Value
+MSE,0.000260
+R2 Score,0.997156
+Overall APFD,0.885708
+Overall APFDc,0.938458
+Overall TTFF,283.00
+Overall Recall@10%,74.96%
+Overall Recall@20%,88.03%
+Overall Recall@30%,88.03%
+Avg NAPFD per Cycle,0.921772
+Avg NAPFDc per Cycle,0.954257
+Avg TTFF per Cycle,12464.00
+Avg Recall@10% per Cycle,79.92%
+Avg Recall@20% per Cycle,84.56%

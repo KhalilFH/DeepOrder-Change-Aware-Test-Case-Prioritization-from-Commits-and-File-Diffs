@@ -1,0 +1,32 @@
+{
+  "project_name": "CompEvol@beast2",
+  "strategy": "low_failure",
+  "total_tests": 26870,
+  "total_failures": 252,
+  "overall_failure_rate": 0.009378489021213248,
+  "total_cycles": 412,
+  "cycle_range": [
+    79,
+    504
+  ],
+  "train_cycles": [
+    79,
+    378
+  ],
+  "train_size": 18224,
+  "train_failures": 157,
+  "train_failure_rate": 0.008615013169446883,
+  "test_cycles": [
+    379,
+    504
+  ],
+  "test_size": 8646,
+  "test_failures": 95,
+  "test_failure_rate": 0.010987739995373584,
+  "test_proportion": 0.3,
+  "statistical_power": "Good",
+  "power_assessment": "Can reliably detect medium effects (Cohen's d \u2265 0.3)",
+  "recommended_emphasis": "Report all metrics. Statistical tests have moderate power - emphasize effect sizes and practical metrics (APFD-C, time savings, Precision@k) alongside p-values.",
+  "temporal_validity": true,
+  "quality_warnings": []
+}
