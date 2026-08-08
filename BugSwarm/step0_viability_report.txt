@@ -1,0 +1,111 @@
+Fetching all BugSwarm artifacts for traccar/traccar ...
+TOTAL ARTIFACTS: 80
+
+Failure-type breakdown (classification):
+  code            : 48
+  none            : 18
+  test            : 14
+
+Artifacts whose FAILED job ran >0 tests : 35
+Artifacts whose FAILED job failed >0 tests: 35
+Artifacts classified as TEST failure     : 14
+
+Distinct trigger_sha (commits): 80
+Time spread: 2015-05-04T11:18:23Z  ->  2026-06-02T21:17:42Z
+
+Chronological artifact sequence (buggy-commit date):
+  # committed_at         kind           run  fail sha        message
+----------------------------------------------------------------------------------------------------
+  1 2015-05-04T11:18:23  test            92     1 e74de56630 Add new Noran test cases
+  2 2015-05-31T11:28:54  code            92     1 6883ecf846 Add crc to Castel responses
+  3 2015-06-17T10:49:02  test            93     1 b88c3f7c1c Print extended stack trace
+  4 2015-06-29T21:51:23  code            98    75 727e7bfad9 Active devices in connection manager
+  5 2015-07-29T02:14:40  test           103     1 caabd4150e Return imei back to GPS103
+  6 2015-08-04T04:54:02  test           104     1 263fa7e52a Fix incorrect time issue
+  7 2015-08-11T02:01:17  test           104     1 44c4476c49 Remove semicolon from commands (fix #1345)
+  8 2015-09-21T23:34:40  none           106     1 7387155d9d Show more detailed error messages
+  9 2015-09-23T05:04:04  code             0     0 79cba5842b More code issues clean up
+ 10 2015-09-29T23:17:38  code           110     1 a6b8f7f7ef Decode course for Aquila protocol
+ 11 2015-10-06T02:58:35  code             0     0 e60ecc5f2b Implement Cityeasy protocol commands
+ 12 2015-10-13T00:55:44  code             0     0 32d3fe2239 Fix some more style issues
+ 13 2015-10-13T21:56:03  code           114     1 173d054219 Add set current date method
+ 14 2015-10-22T03:59:48  test           118     1 1f57b64574 Fix time formatting issue
+ 15 2015-11-03T01:08:28  test           127     1 092b07eeef Decode battery for Watch protocol
+ 16 2015-11-30T21:48:14  code             0     0 416ea87605 Rename CORS response filter
+ 17 2015-12-06T20:48:26  code             0     0 617df639c1 Refactor identity manager implementation
+ 18 2016-09-20T18:27:12  code             0     0 de3171940f Implement Aplicom E protocol
+ 19 2016-09-23T22:30:11  code             0     0 b15c19d95e Support UDP for Cellocator protocol
+ 20 2016-09-27T03:14:30  code             0     0 7b17e8d1fe Implement eeLink protocol commands
+ 21 2016-09-27T20:35:26  code             0     0 64a9af3090 Decode Tramigo direction (fix #2377)
+ 22 2016-10-02T19:09:22  code             0     0 118c650bd2 Start Smokey protocol implementation
+ 23 2016-10-03T18:10:12  none           209     1 34b614e167 Update Smokey protocol
+ 24 2016-10-08T05:27:33  code             0     0 ccd10d6ee5 Implement statistics API call
+ 25 2016-10-11T14:35:09  test           211     1 18d39ff241 Minor formatting fix
+ 26 2016-10-17T08:54:15  none             0     0 5108e83e37 Merge pull request #2447 from renaudallard/master
+
+Add a sta
+ 27 2016-10-24T15:05:22  test           211     1 4216e03846 Fix U-pro decoder patter
+ 28 2016-10-27T00:07:36  none             0     0 64e149b697 Add traccar-web as a submodule
+ 29 2016-12-19T11:39:18  code             0     0 611a0e8f82 Fix issue with JSON timestamps
+ 30 2016-12-21T04:28:07  code             0     0 ff3cf10de0 Implement GT06 LBS extended support (fix #2690)
+ 31 2016-12-21T17:52:35  code             0     0 79f3abf6a6 Use concurrent maps in connection manager (fix #2723)
+ 32 2016-12-29T13:29:45  code             0     0 5fbff0086b Init crypto on statup (fix #2422)
+ 33 2016-12-30T22:41:56  code             0     0 679c2852e3 Add exception classes and more renames
+ 34 2017-01-03T09:44:00  code           224     1 e512848dc0 Fix GoSafe protocol decoder
+ 35 2017-01-06T08:59:44  code             0     0 0f2a1c47fd Implement TZ AVL05 protocol (fix #2751)
+ 36 2017-01-11T13:12:11  code             0     0 3533a7c900 Remove unused Java import
+ 37 2017-01-12T13:11:41  code           226     1 1e102e94f0 Simplify H02 status check
+ 38 2017-01-15T15:48:58  none           226     1 0885b4c200 Add Watch protocol test case
+ 39 2017-02-06T19:07:57  code             0     0 fb8680cda7 Add some Teltonika attributes (fix #2856)
+ 40 2017-02-12T19:09:03  code           232     1 582d431cd4 Support Bitrek protocol
+ 41 2017-02-20T16:53:49  test             0     0 42c831ae16 Update Context class
+ 42 2017-02-21T19:23:43  none           233     1 8d6c4e2747 Add additional TMG parameters
+ 43 2017-03-13T19:48:12  none           236     3 dbe4347a4a Temporary commit so that Anton can review;
+ 44 2017-03-20T13:42:22  test           237     1 f3f388bf77 Add GL200 unit test cases
+ 45 2017-03-21T06:30:57  test           237     1 787f10186d Implement Ruptela responses
+ 46 2017-03-26T14:48:30  code             0     0 893078d3ac Fix GT06 unit tests
+ 47 2017-03-27T16:10:09  code             0     0 9340267096 Remove GL200 time workaround
+ 48 2017-04-07T21:05:39  none             0     0 4c64b523b0 Enable ACK for UDP TAIP protocol
+ 49 2017-04-13T23:44:27  none           237   196 15f3258905 Update Java libraries
+ 50 2017-04-17T05:18:07  none             0     0 136a302846 Add spent fuel to summary report
+ 51 2017-04-17T14:20:02  none             0     0 ca074b8dea Add new Watch message type
+ 52 2017-05-12T23:31:03  none             0     0 17a023a623 Implement max speed filtering
+ 53 2017-05-25T18:34:39  code             0     0 f8ad64b0dc Implement GPS056 protocol
+ 54 2017-05-31T09:21:20  none             0     0 ea87303258 Implement custom Watch frame decoder
+ 55 2017-06-22T10:44:30  test           259     1 78b19b4bef Support another VTFMS protocol format
+ 56 2017-07-08T22:21:29  none             0     0 539cce7910 Check if fuel drop threshold is set
+ 57 2017-07-12T18:02:43  code             0     0 408f34e20d Fix build issue
+ 58 2017-07-15T01:29:32  none             0     0 8bb68423f9 Rename GL200 text protocol decoder
+ 59 2017-07-18T13:30:38  code           270   146 df53571ab0 Disable session cache for HTTP protocols
+ 60 2022-11-04T03:29:36  code           489     1 9c03a0505f Reuse checksum code
+ 61 2023-08-26T14:41:30  code           499     1 eb2021058a Decode Starcom Helios attributes
+ 62 2024-06-19T15:41:31  none           511     1 e938fe96f5 Updated Sucre Lee protocol
+ 63 2025-04-27T14:11:11  code           516     1 2e53b6daec Decode extra JT301B attributes
+ 64 2025-05-09T14:34:06  code           517     1 05c65e69d7 Merge Lacak into OsmAnd protocol
+ 65 2025-05-10T20:28:17  code           517     1 6841410469 Add alarm support
+ 66 2025-05-23T05:21:22  code           517     2 3a8c08dae4 fix
+ 67 2026-02-06T04:50:19  code           548     1 6402eca903 Format MQTT forwarders for readability and fix minor spacing
+ 68 2026-03-30T23:27:44  code             0     0 e9429e1a04 Add support for VL100 model in Gt06ProtocolDecoder
+ 69 2026-03-31T02:13:22  none             0     0 a97397a29b Es4x0: fix string decoding and update naming
+ 70 2026-04-16T17:08:18  code             0     0 34c1956a2e Style
+ 71 2026-04-16T18:02:49  code             0     0 fa23d0252e Update src/main/java/org/traccar/protocol/TeltonikaProtocolD
+ 72 2026-04-19T17:53:27  code             0     0 d8e78459d2 Propagate command errors
+ 73 2026-04-25T00:27:45  code             0     0 3f48cfd487 correct battery voltage for x3tech xt40 devices
+ 74 2026-04-25T04:57:39  code             0     0 843f03e7de Fix NPE in OpenID login when user has no groups
+ 75 2026-05-08T14:03:33  code             0     0 152e0322bc Support HYN600 multiple locations
+ 76 2026-05-09T23:35:35  code             0     0 58d5703a53 feat: add maxLifetime for hikariConfig (#5348)
+ 77 2026-05-14T15:00:47  code             0     0 d67b1c06d2 Optimize position queue pruning
+ 78 2026-05-19T04:43:40  code             0     0 ced89bb545 Remove unused parameter
+ 79 2026-05-28T22:50:39  none           591     1 22f398320b Update README.md
+ 80 2026-06-02T21:17:42  test             0     0 e362e6d020 Merge branch 'master' into feature-protocol-jt808-encoder-c5
+
+Raw metadata saved -> BugSwarm/traccar_bugswarm_metadata.json
+
+============================================================
+DECISION INPUTS:
+  total artifacts        = 80
+  TEST-failure artifacts = 14
+  with >0 failed tests   = 35
+  distinct commits       = 80
+Gate: change-aware TCP needs a SEQUENCE of test-failing cycles.
+If TEST-failure artifacts are only a handful & disconnected -> STOP, pivot to airavata.

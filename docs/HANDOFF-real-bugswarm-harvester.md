@@ -2,6 +2,42 @@
 
 **For the next session.** Read `../CONTEXT.md` and `adr/0001`–`0004` first for the why. This is a **data-engineering prerequisite** that must finish before `NEXT-STEPS.md` Step 0.
 
+---
+
+## ⛔ STEP 0 RESULT (2026-08-08): GATE FAILED — do NOT build the harvester; pivot to airavata (TCP-CI)
+
+STEP 0 was run against the live BugSwarm REST API (metadata only, no token, no Docker; ~2 requests). **The viability gate failed decisively.** Real-traccar-via-BugSwarm cannot support change-aware TCP. Steps 1–5 below are **abandoned** — do not build them for traccar.
+
+**Evidence (reproducible):**
+- Script: [`../BugSwarm/step0_viability.py`](../BugSwarm/step0_viability.py) — hits `http://www.api.bugswarm.org/v1/artifacts?where={"repo":"traccar/traccar"}` (HTTP only; the API is unauthenticated ≤20 req/min).
+- Full run log: [`../BugSwarm/step0_viability_report.txt`](../BugSwarm/step0_viability_report.txt)
+- Raw metadata (80 artifacts): [`../BugSwarm/traccar_bugswarm_metadata.json`](../BugSwarm/traccar_bugswarm_metadata.json)
+
+**The numbers:**
+| Metric | Value |
+|---|---|
+| Total BugSwarm artifacts for `traccar/traccar` | **80** (all distinct commits) |
+| Time span | 2015-05-04 → 2026-06-02 (**11 years**) |
+| Artifacts with ANY per-test failure data (`num_tests_failed>0`) | **35 / 80** |
+| The other 45 | compile/build/"code" failures — tests never ran (`num_tests_run=0`) → zero per-test data |
+| Usable artifacts with **exactly 1** failing test | **30 / 35** |
+| Usable artifacts with >1 failing test | 5 (counts: 2, 3, 75, 146, 196) |
+| Largest gap between consecutive usable artifacts | **1934 days (5.3 yrs)**; 6 gaps > 180 days |
+
+**Why this fails the gate (four independent blockers):**
+1. **Isolated pairs, not a timeline.** BugSwarm gives 80 disconnected fail↔pass build pairs. History features (E1/E2/E3, DIST, CHANGE_IN_STATUS) need each test's *ordered outcomes across consecutive cycles*; BugSwarm captures only the single failing snapshot per pair, so per-test history is not reconstructable without the full suite runs *between* pairs (which BugSwarm does not have).
+2. **Degenerate within-cycle ranking.** 30/35 usable cycles have exactly **one** failing test. Per-cycle APFD — the metric T0 must move — is near-trivial when there is one fault and nothing to order against it.
+3. **No coherent temporal split.** An 11-year span with a 5.3-year hole (and 6 gaps > 180 days) has no continuous CI train/test boundary.
+4. **Only 35/80 have per-test data at all**; and reproducing even those 35 = 35 Docker images (1–4 GB each, ~35–140 GB in the cloud) to yield mostly single-fault, disconnected cycles — unacceptable ROI.
+
+**Decision → PIVOT.** Anchor becomes **airavata (TCP-CI)** — a real continuous CI timeline already in the intended schema (`Id, Name, Duration, LastRun, LastResults, Verdict, Cycle, CommitMsg, FilesChanged, ...`). Same T0 plan (`NEXT-STEPS.md`), different (real) data. This is the fallback the handoff and `NEXT-STEPS.md` Step 0 already anticipated. Note: the synthetic `traccar_..._19pct_8735.csv` stays as a **unit-test fixture only**, never for results.
+
+**Next session's first move:** get the TCP-CI airavata slice into the schema (cloud, then download only the slim CSV), then run `NEXT-STEPS.md` Step 1 (name-integrity gate) → Step 2 (history-only per-cycle APFD baseline) → Step 3 (add T0 path-token relevance).
+
+The original harvester plan is kept below **for the record only** — it is not the path forward.
+
+---
+
 ## Goal
 
 Replace the **synthetic** traccar dataset (`BugSwarm/BugSwarm@Traccar/traccar_traccar_high_failure_19pct_8735.csv`) with **real** per-test data. The existing harvester `BugSwarm/BugSwarm_harvester.py` fetches real *artifact-level* metadata but **fabricates every per-test row** (`_process_high_failure_artifact`, lines 221-361: invented test names, random verdicts, invented history, and `File{test_idx}.java` mappings that leak relevance). Do **not** reuse that method. We keep only its BugSwarm-enumeration parts.
