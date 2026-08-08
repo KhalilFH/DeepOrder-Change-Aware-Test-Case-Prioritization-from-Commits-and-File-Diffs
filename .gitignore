@@ -60,3 +60,9 @@
 /FINAL6/traccar/unixcoder/adap*
 /FINAL6/traccar/*.csv
 **/complete_tcp_analysis/reports/complete_results.pkl
+
+# airavata (TCP-CI) slice fetched from Zenodo in the cloud — kept locally, never in git (100s of MB, incl. bundled repo)
+airavata_slice*.zip
+/tcpci_slice/
+**/tcpci_slice/
+tcpci_slice_manifest.json
