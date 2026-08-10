@@ -18,6 +18,12 @@ repository, plus the per-project CI inputs from THREE source trees:
   rtp-torrent/<slug>/     <slug>-full.csv  (real testName), <slug>-builds.csv
   travis-torrent/data/<slug>/ data.csv     (build -> git_all_built_commits)
 
+NOTE (airavata / this Zenodo tar): there is NO rtp-torrent tree in the archive,
+so the "real testName" source above is absent. That is fine -- real test names
+come from id_map.csv instead (path,id -> reverse value->key), which is what
+`pipeline/step1_name_join.py` does. Do NOT run the vanilla TCP-CI_schema.py name
+path expecting real names: with no rtp-torrent it emits useless `test_<id>`.
+
 No GitHub token is needed: `git show` runs on the local clone. (A token would
 only matter if you instead derived FilesChanged via the GitHub REST API.)
 
@@ -38,14 +44,11 @@ Usage (Colab/Kaggle)
     python fetch_airavata_slice.py
     # optional: SUBJECT=apache@commons  INCLUDE_ANALYSIS=1  INCLUDE_LOGS=1
 
-Then:
-    cd tcpci_slice/TCP-CI-dataset
-    # if no bundled repo was found, the script tells you to run:
-    #   git clone --no-single-branch https://github.com/apache/airavata \
-    #       datasets/apache@airavata/airavata
-    python <repo>/FINAL6/TCP-CI_schema.py --base-path . --project apache@airavata \
-        --output-dir ./out
-    # download only ./out/apache@airavata_enhanced_tcp_dataset.csv (a few MB)
+Then download the slim slice home and run Step 1 LOCALLY (CSV-only, no git needed):
+    python pipeline/step1_name_join.py \
+        --data tcpci_slice/TCP-CI-dataset/datasets/apache@airavata
+    # -> test_name_map.csv (real FQNs) + step1_gate_report.json + a PASS/FAIL gate
+See docs/RESUME.md and docs/NEXT-STEPS.md Step 1 for the full sequence.
 """
 import json
 import os
@@ -87,7 +90,6 @@ def main():
     logical_bytes = 0
     extracted = []
     subjects = set()
-    repo_seen = False
     repo_dirname = None  # e.g. "airavata" (from slug apache@airavata)
 
     print(f"Streaming {URL}", flush=True)
@@ -109,10 +111,6 @@ def main():
                         # <owner>@<repo> -> repo dir the schema generator expects
                         repo_dirname = slug.split("@")[-1]
                 if want(m):
-                    if "/.git/" in m.name or m.name.rstrip("/").endswith("/.git"):
-                        repo_seen = True
-                    if repo_dirname and f"/{repo_dirname}/" in m.name:
-                        repo_seen = repo_seen or True
                     dest = os.path.join(OUT, m.name)
                     os.makedirs(os.path.dirname(dest), exist_ok=True)
                     src = tar.extractfile(m)
@@ -137,16 +135,25 @@ def main():
     bundled_git = any("/.git/" in e["name"] or e["name"].rstrip("/").endswith("/.git")
                       for e in extracted)
 
+    # Core CI inputs the pipeline needs; their absence == an unusable slice.
+    REQUIRED_CSVS = {"exe.csv", "builds.csv", "id_map.csv", "entity_change_history.csv"}
+    basenames = {os.path.basename(e["name"]) for e in extracted}
+    required_missing = sorted(REQUIRED_CSVS - basenames)
+
     manifest = {
         "source": URL,
         "subject_filter": SUBJECT,
         "repo_dirname_expected": repo_dirname,
         "bundled_git_found": bundled_git,
+        "required_csvs_present": sorted(REQUIRED_CSVS & basenames),
+        "required_csvs_missing": required_missing,
         "include_analysis": INCLUDE_ANALYSIS,
         "include_logs": INCLUDE_LOGS,
         "members_scanned": n_seen,
         "extracted_count": len(extracted),
-        "extracted": extracted[:2000],
+        # Full inventory (NOT truncated): this file IS the ground truth of what
+        # hit disk. A file's absence here means it was never extracted.
+        "extracted": extracted,
         "all_subjects_seen": sorted(subjects),
         "elapsed_sec": round(time.time() - t0, 1),
     }
@@ -163,6 +170,12 @@ def main():
         print(f"\n!! No files matched SUBJECT={SUBJECT!r}. Pick one of the "
               f"subjects above and re-run with SUBJECT=<owner@repo>.")
         return 1
+
+    if required_missing:
+        print(f"\n!! INCOMPLETE SLICE -- required core CSVs missing from the "
+              f"extraction: {required_missing}. The stream likely dropped "
+              f"mid-run. Re-run; do NOT trust a partial slice.")
+        return 2
 
     base = os.path.join(OUT, "TCP-CI-dataset")
     slug = next((s for s in subjects if SUBJECT in s.lower()), f"?@{SUBJECT}")
