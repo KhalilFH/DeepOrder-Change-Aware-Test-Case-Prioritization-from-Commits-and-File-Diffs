@@ -1,0 +1,107 @@
+{
+  "dataset": "C:\\Users\\kfhassen\\DeepOrder-Change-Aware-Test-Case-Prioritization-from-Commits-and-File-Diffs\\.claude\\worktrees\\mattpocock-skills-grill-revival-5503f1\\FINAL6\\apache@airavata\\apache@airavata_enhanced_tcp_dataset.csv",
+  "model": "GradientBoostingClassifier(history-only), target=Verdict, split=temporal",
+  "features_full": [
+    "Duration",
+    "E1",
+    "E2",
+    "E3",
+    "LastRunFeature",
+    "DIST",
+    "CHANGE_IN_STATUS",
+    "PRIOR_FAIL_RATE",
+    "N_HIST"
+  ],
+  "features_deeporder_exact": [
+    "Duration",
+    "E1",
+    "E2",
+    "E3",
+    "LastRunFeature",
+    "DIST_W3",
+    "CHANGE_W3"
+  ],
+  "lastrunfeature": {
+    "source": "BuildStartedAt - LastRun (days, raw)",
+    "n_unparseable": 0,
+    "n_negative_clipped": 0
+  },
+  "n_rows": 11429,
+  "n_cycles_total": 235,
+  "train_frac": 0.7,
+  "train_cycles": [
+    96,
+    574
+  ],
+  "test_cycles": [
+    575,
+    652
+  ],
+  "n_train_rows": 7610,
+  "n_test_rows": 3819,
+  "test_fail_rate": 0.0935,
+  "per_cycle_apfd": {
+    "full_model": {
+      "n": 17,
+      "mean": 0.7873,
+      "median": 0.7857,
+      "std": 0.0095,
+      "p25": 0.7857,
+      "p75": 0.7941
+    },
+    "deeporder_exact_model": {
+      "n": 17,
+      "mean": 0.7828,
+      "median": 0.7857,
+      "std": 0.0175,
+      "p25": 0.7857,
+      "p75": 0.7941
+    },
+    "heuristic_prior_fail_rate": {
+      "n": 17,
+      "mean": 0.7745,
+      "median": 0.7857,
+      "std": 0.0597,
+      "p25": 0.7857,
+      "p75": 0.7941
+    },
+    "random": {
+      "n": 17,
+      "mean": 0.4981,
+      "median": 0.5003,
+      "std": 0.0093,
+      "p25": 0.4896,
+      "p75": 0.505
+    },
+    "optimal": {
+      "n": 17,
+      "mean": 0.7897,
+      "median": 0.7857,
+      "std": 0.0042,
+      "p25": 0.7857,
+      "p75": 0.7941
+    }
+  },
+  "cycles_scorable": 17,
+  "cycles_unscorable_no_fail_or_singleton": 54,
+  "global_pooled_apfd_full_model": 0.9263,
+  "full_model_apfd_values": [
+    0.7857,
+    0.7857,
+    0.7857,
+    0.7857,
+    0.7941,
+    0.7941,
+    0.7857,
+    0.7857,
+    0.7941,
+    0.7941,
+    0.7941,
+    0.7941,
+    0.7941,
+    0.753,
+    0.7857,
+    0.7857,
+    0.7857
+  ]
+}

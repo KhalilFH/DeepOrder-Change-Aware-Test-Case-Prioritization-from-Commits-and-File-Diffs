@@ -1,7 +1,38 @@
 # RESUME — start here (next session)
 
-Single entry point to continue the change-aware TCP work. As of **2026-08-08**, the
-data-acquisition prerequisite is **done**; the next milestone is **Step 1**.
+Single entry point to continue the change-aware TCP work.
+
+## ⏩ CURRENT STATUS (2026-08-10) — Steps 1 & 2 DONE; PAUSED before Step 3
+- **Step 1 gate: PASS.** `pipeline/step1_name_join.py` on the local slice → exit 0
+  (55/55 ids resolve, 0 unresolved, all real `…Test` classes; **71.2%** of cycles have
+  test↔diff overlap, floor 5%). Outputs `test_name_map.csv` + `step1_gate_report.json`.
+- **Name map wired into schema gen.** Added `--name-map` to `FINAL6/TCP-CI_schema.py`
+  (new `load_external_name_map`, fails loudly on any missing executed id — no silent
+  `test_<id>`). Regenerated `FINAL6/apache@airavata/apache@airavata_enhanced_tcp_dataset.csv`
+  (11,429 rows; Name = all 55 real FQNs, FilesChanged 98.6% populated, CommitMsg 100% real).
+- **Step 2 baseline: DONE.** `pipeline/step2_baseline.py` (sklearn GradientBoosting,
+  history-only; TF has no Python-3.14 wheels so the DeepOrder MLP is deferred). Per-cycle
+  APFD on the 70/30 tail: **model 0.787, optimal 0.790, random 0.500 ✓**. See
+  `FINAL6/apache@airavata/step2_report.json`.
+- **⚠️ PIVOTAL FINDING — the tail is a degenerate regime.** airavata failures are bimodal:
+  of 83 failing cycles, **31 are small-fault (m≤4)** vs **~50 are one chronic ~21-test
+  co-failure block (m=21)**; ~90% of all failures are that block, and it dominates the
+  middle+late timeline. The 70/30 tail evaluates ONLY the chronic regime, where history
+  saturates APFD (model≈optimal) and T0 has no headroom — the wrong test bed. Do **not**
+  read 0.787 as "the number to beat".
+- **DECIDED for Step 3 (Khalil):** eval = **prequential/rolling (train-on-past, test-next),
+  stratified by fault-set size**; primary T0 claim on **small-fault cycles (m≤4)**, chronic
+  cycles reported separately; paired Wilcoxon + A12. **Khalil PAUSED here** — resume Step 3
+  from this agreed regime.
+- **Env:** repo `.venv` (Python 3.14 + pandas/numpy/scikit-learn; NO tensorflow). Slice is
+  in the MAIN repo root `tcpci_slice/`; pipeline scripts live in the worktree → run with
+  absolute cross-paths and `PYTHONUTF8=1` (Windows console chokes on `✓`/`✗` otherwise).
+
+---
+
+_History below is the original acquisition handoff (kept for context)._
+
+As of **2026-08-08**, the data-acquisition prerequisite is **done**.
 
 ## TL;DR of where we are
 - **Anchor = airavata (TCP-CI).** BugSwarm-traccar **failed** the STEP 0 viability gate

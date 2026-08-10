@@ -107,6 +107,34 @@ class EnhancedTCPDatasetGenerator:
                 return {}
         return {}
     
+    def load_external_name_map(self, name_map_path: str, exe_df: pd.DataFrame) -> Dict[int, str]:
+        """Authoritative Name source from pipeline/step1_name_join.py output.
+
+        test_name_map.csv is the verified id_map-reversed join (test_id -> real FQN).
+        This bypasses the positional/`test_<id>` guesses in create_test_name_mapping,
+        which are wrong on the airavata slice (no rtp-torrent tree). Fails loudly if
+        any executed test id is missing -- a silent fallback would reintroduce the
+        exact name-integrity bug Step 1 exists to catch.
+        """
+        nm = pd.read_csv(name_map_path)
+        cols = {c.lower(): c for c in nm.columns}
+        id_col = cols.get("test_id")
+        # prefer the fully-qualified name; fall back to path only if fqn absent
+        name_col = cols.get("fqn") or cols.get("path")
+        if id_col is None or name_col is None:
+            raise ValueError(f"{name_map_path} must have columns test_id and fqn "
+                             f"(got {list(nm.columns)})")
+        mapping = {int(t): str(n) for t, n in zip(nm[id_col], nm[name_col])}
+        exe_ids = {int(t) for t in exe_df['test'].unique()}
+        missing = sorted(exe_ids - set(mapping))
+        if missing:
+            raise ValueError(f"name map {name_map_path} is missing {len(missing)} "
+                             f"executed test ids (e.g. {missing[:5]}) -- refusing to "
+                             f"emit test_<id> placeholders. Re-run Step 1.")
+        print(f"✓ Using external name map: {len(mapping)} test ids -> real FQNs "
+              f"(all {len(exe_ids)} executed ids resolved)")
+        return mapping
+
     def create_test_name_mapping(self, exe_df: pd.DataFrame, rtp_tests_df: Optional[pd.DataFrame],
                                 id_map_df: Optional[pd.DataFrame]) -> Dict[int, str]:
         """Create mapping from test IDs to human-readable test names."""
@@ -402,7 +430,8 @@ class EnhancedTCPDatasetGenerator:
         
         return test_history
     
-    def generate_dataset(self, project_name: str, output_file: Optional[str] = None) -> pd.DataFrame:
+    def generate_dataset(self, project_name: str, output_file: Optional[str] = None,
+                         name_map_path: Optional[str] = None) -> pd.DataFrame:
         """Generate enhanced TCP dataset for a specific project."""
         print(f"\n=== Generating Enhanced TCP Dataset for {project_name} ===")
         
@@ -429,8 +458,12 @@ class EnhancedTCPDatasetGenerator:
         verdict_counts = exe_df['verdict'].value_counts().sort_index()
         print(f"Verdict distribution: {dict(verdict_counts)}")
         
-        # Create test name mapping using available data sources
-        test_name_map = self.create_test_name_mapping(exe_df, rtp_tests_df, id_map_df)
+        # Create test name mapping. Prefer the authoritative Step-1 join if given;
+        # otherwise fall back to the legacy (positional/id_map) heuristic.
+        if name_map_path:
+            test_name_map = self.load_external_name_map(name_map_path, exe_df)
+        else:
+            test_name_map = self.create_test_name_mapping(exe_df, rtp_tests_df, id_map_df)
         print(f"Created test name mappings for {len(test_name_map)} tests")
         
         # Enhanced build information
@@ -549,9 +582,13 @@ def main():
     parser.add_argument('--list', action='store_true', help='List available projects')
     parser.add_argument('--output-dir', type=str, default='tcp_datasets_enhanced', 
                        help='Output directory for generated datasets')
-    parser.add_argument('--base-path', type=str, default='.', 
+    parser.add_argument('--base-path', type=str, default='.',
                        help='Base path to TCP-CI_Dataset directory')
-    
+    parser.add_argument('--name-map', type=str, default=None,
+                       help='Path to test_name_map.csv from pipeline/step1_name_join.py. '
+                            'When set, its test_id->fqn join is the authoritative Name '
+                            'source (overrides the legacy positional/id_map heuristic).')
+
     args = parser.parse_args()
     
     # Initialize generator
@@ -581,7 +618,7 @@ def main():
     for project in projects:
         try:
             output_file = output_dir / f"{project}_enhanced_tcp_dataset.csv"
-            dataset = generator.generate_dataset(project, output_file)
+            dataset = generator.generate_dataset(project, output_file, name_map_path=args.name_map)
             print(f"✓ Completed {project}: {len(dataset)} records")
         except Exception as e:
             print(f"✗ Error processing {project}: {e}")
