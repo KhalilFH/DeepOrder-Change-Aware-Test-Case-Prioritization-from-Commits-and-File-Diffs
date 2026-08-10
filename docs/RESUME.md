@@ -2,7 +2,37 @@
 
 Single entry point to continue the change-aware TCP work.
 
-## ⏩ CURRENT STATUS (2026-08-10) — Steps 1 & 2 DONE; PAUSED before Step 3
+## ⏩ CURRENT STATUS (2026-08-10) — Steps 1–4 DONE; T0 is a clean NULL on airavata
+- **Step 3 (T0 feature) + Step 4 (paired eval) DONE.** `pipeline/relevance_t0.py`
+  (reusable `(test identities, changed files) → per-test scores` module, ADR-0004 shape)
+  + `pipeline/step3_t0.py` (adds exactly ONE feature — max path-token TF-IDF cosine of the
+  test's **full repo path** vs each changed file — to the SAME step2 full model; prequential
+  expanding-window eval; paired Wilcoxon + Vargha-Delaney A12 + bootstrap CI). Report:
+  `FINAL6/apache@airavata/step3_report.json`.
+- **RESULT — T0 does NOT lift per-cycle APFD, in any stratum (this is a real result, not a
+  broken run).** PRIMARY small-fault (m≤4, n=30 cycles): HIST 0.824 vs HIST+T0 0.818,
+  mean paired diff **−0.006**, Wilcoxon **p=0.92**, **A12=0.49**, win/tie/loss 4/24/2,
+  boot95 [−0.043, +0.023]. Chronic and all-scored strata: same null. **Robust to
+  tokenization** — FQN variant also null (−0.015, p=0.46, A12=0.46).
+- **WHY (diagnosed, per NEXT-STEPS Step 4 "re-open the diagnosis" — not papered over):**
+  the T0 signal is alive (58% nonzero, varies within 163/235 cycles; T0-alone ranker
+  0.57 > random 0.50) — but it has **no headroom**. airavata's failures are recurring:
+  in the tiny small-fault cycles **100% of failures already failed last run (E1=1)**, so
+  the history-only model already ranks them at rank 1 (APFD 0.833 = optimal). Where there
+  IS headroom (large small-fault cycles: HIST 0.81 vs optimal 0.97), T0-alone ≈ random
+  (0.52 vs 0.50), so it cannot fill it. This is the same chronic-failure pathology Step 2
+  flagged, now confirmed to reach into the small-fault stratum. The mechanism isn't
+  disproven in principle — airavata just lacks the change-induced (non-recurring) failures
+  T0 needs to catch.
+- **NEXT (decision for Khalil):** to test T0's mechanism you need a subject with
+  change-induced, non-recurring failures (headroom that history can't already claim).
+  Options: (a) find/curate a second TCP-CI subject whose failing cycles are NOT dominated
+  by a chronic co-failing block; (b) re-scope the claim to "T0 is redundant with history
+  on chronic-failure-dominated CI" (a valid negative result); (c) move to the T1 call-graph
+  / T7 coverage signals, which may separate failures history can't. Do NOT chase the number
+  by adding try/except or cherry-picking cycles.
+
+## (earlier) STATUS (2026-08-10) — Steps 1 & 2 DONE; PAUSED before Step 3
 - **Step 1 gate: PASS.** `pipeline/step1_name_join.py` on the local slice → exit 0
   (55/55 ids resolve, 0 unresolved, all real `…Test` classes; **71.2%** of cycles have
   test↔diff overlap, floor 5%). Outputs `test_name_map.csv` + `step1_gate_report.json`.

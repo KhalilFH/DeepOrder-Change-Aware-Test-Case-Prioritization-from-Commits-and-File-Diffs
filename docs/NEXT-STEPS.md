@@ -27,17 +27,24 @@ The single goal of the first work session: **show that one test-specific relevan
 - Train the history-only model. Report **per-cycle APFD** (NOT the old global number). Also report global APFD separately.
 - This is the number T0 must beat.
 
-### Step 3 — Add the T0 relevance scalar
+### Step 3 — Add the T0 relevance scalar ✅ DONE (2026-08-10)
 - Compute **max path-token cosine**: tokenize test identity (`pkg.Class#method`, split on `/`, `.`, camelCase) and each changed path; TF-IDF cosine; take the max over the cycle's changed files. Graded [0,1], varies per test within a cycle.
 - Add it as one feature to the SAME model (change one thing only). Keep the binary-Verdict objective (LTR comes later).
+- **IMPLEMENTED:** [`pipeline/relevance_t0.py`](../pipeline/relevance_t0.py) (reusable `(test identities, changed files) → per-test max-cosine` module, ADR-0004 demo/research shape; test identity = **full repo path** from `test_name_map.csv`; label-free IDF corpus = test paths ∪ all changed-file paths → no prequential leakage) + [`pipeline/step3_t0.py`](../pipeline/step3_t0.py) (imports `step2_baseline`, adds **exactly one** feature `T0` to `FEATURES_FULL`; the two arms differ only by that column).
 
-### Step 4 — Compare, honestly
+### Step 4 — Compare, honestly ✅ DONE (2026-08-10)
 - history-only vs history+T0: **per-cycle APFD, paired Wilcoxon across cycles + Vargha-Delaney A12, bootstrap CI.**
 - Hard rule: **no broad try/except that swallows failed runs** — a degenerate run is a failure, not a data point.
+- **IMPLEMENTED in `step3_t0.py`:** prequential expanding-window eval (train on all cycles `< c`, test cycle `c`), stratified by fault-set size (small-fault `m≤4` primary, chronic `m≥21` separate, plus tiny-`n` vs large-`n` breakdown); paired Wilcoxon + A12 + bootstrap-95 CI; a globally-constant T0 raises (no swallow).
 
-### Exit
-- **T0 lifts per-cycle APFD (significant, positive effect size)** → mechanism proven; proceed to T1 (call-graph) + T7 (coverage oracle), then T6 (mutation). See the roadmap in `CONTEXT.md`.
-- **T0 does not lift it** → do not paper over it. That's a real result too; re-open the diagnosis (is the signal actually varying? is the Name mapping still lying?).
+### RESULT (2026-08-10) — T0 is a clean NULL on airavata (a real negative result)
+- **T0 does NOT lift per-cycle APFD, in any stratum.** PRIMARY small-fault (`m≤4`, 30 cycles): HIST **0.824** vs HIST+T0 **0.818**, mean paired diff **−0.006**, Wilcoxon **p=0.92**, Vargha-Delaney **A12=0.49**, win/tie/loss **4/24/2**, bootstrap-95 **[−0.043, +0.023]**. Chronic + all-scored strata: same null. **Robust to tokenization** — FQN variant also null (−0.015, p=0.46, A12=0.46). Artifact: `FINAL6/apache@airavata/step3_report.json`.
+- **WHY (diagnosis, not papering-over):** the T0 signal is *alive* (58% of rows nonzero; varies within 163/235 cycles; a T0-alone ranker beats random, 0.57 vs 0.50) — but it has **no headroom**. airavata's failures are **recurring**: in the tiny small-fault cycles **100% of failures already failed last run (E1=1)**, so the history-only model already ranks them at rank 1 (APFD 0.833 = optimal). Where headroom exists (large small-fault cycles: HIST 0.81 vs optimal 0.97), T0-alone ≈ random (0.52 vs 0.50), so it cannot fill it. Same chronic-failure pathology Step 2 flagged, now shown to reach into the small-fault stratum. The Name mapping is correct (Step 1, 55/55) and the signal varies — so this is a **dataset-property** result, not a code bug.
+
+### Exit — outcome + what's next
+- ~~T0 lifts per-cycle APFD → mechanism proven~~ — **did not happen on airavata.**
+- **T0 did not lift it → banked as a real negative result** (not papered over; diagnosed above). To test T0's mechanism at all, we need a subject with **change-induced, non-recurring failures** (headroom history can't already claim) — airavata cannot serve as that test bed.
+- **Next (screening plan):** measure the OTHER TCP-CI subjects' fault structure before building the full pipeline on them. Reusable probe: [`pipeline/fault_structure_probe.py`](../pipeline/fault_structure_probe.py) emits {m-distribution, E1-recurrence rate, history-vs-optimal headroom} from any subject's `exe.csv`+`builds.csv` → instant go/no-go. Fetch order to be chosen from a short research pass over the TCP-CI paper + Zenodo (per-subject build counts / failure rates). A subject with mostly non-recurring failures + a large history↔optimal gap is the T0 test bed. If no TCP-CI subject qualifies, the airavata negative result stands as the contribution; otherwise re-run Steps 1→4 on the qualifying subject. Do NOT chase the number (no try/except, no cycle cherry-picking).
 
 ## Build constraint (ADR 0004)
 Build the relevance computation as a `(repo checkout, commit) → per-test scores` module from the start. The demo and the research call the same module. No hardcoded Kaggle/conda paths, no notebook-only shortcuts in the relevance path.
