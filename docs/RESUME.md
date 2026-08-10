@@ -24,13 +24,43 @@ Single entry point to continue the change-aware TCP work.
   flagged, now confirmed to reach into the small-fault stratum. The mechanism isn't
   disproven in principle — airavata just lacks the change-induced (non-recurring) failures
   T0 needs to catch.
-- **NEXT (decision for Khalil):** to test T0's mechanism you need a subject with
-  change-induced, non-recurring failures (headroom that history can't already claim).
-  Options: (a) find/curate a second TCP-CI subject whose failing cycles are NOT dominated
-  by a chronic co-failing block; (b) re-scope the claim to "T0 is redundant with history
-  on chronic-failure-dominated CI" (a valid negative result); (c) move to the T1 call-graph
-  / T7 coverage signals, which may separate failures history can't. Do NOT chase the number
-  by adding try/except or cherry-picking cycles.
+- **Subject-screening plan settled (research DONE).** To test T0 at all we need a subject
+  with change-induced, NON-recurring failures + history↔optimal headroom (the opposite of
+  airavata). Instead of building the full pipeline blind on another subject, screen first:
+  - `pipeline/fault_structure_probe.py` — CSV-only (`exe.csv`+`builds.csv`, no git/name-join/
+    schema-gen). Emits {m-distribution, E1-recurrence rate, optimal-vs-history headroom} +
+    an advisory **GO / MARGINAL / NO-GO** verdict. **Validated:** reproduces airavata's
+    NO-GO profile (recurrence 0.78, small-fault headroom 0.02) from raw data.
+  - `docs/research/tcpci-subjects.md` — all **25** TCP-CI subjects (paper Table 2/3, Zenodo
+    5532640, upstream repo; airavata's paper stats match ours → transcription trusted).
+    **Recommended fetch order: SonarSource@sonarqube (S3) > JMRI@JMRI (S1) > facebook@buck
+    (S6) / Graylog2@graylog2-server (S15).** Caveat: the paper's per-test FF rule misses
+    *co-failing blocks* (airavata isn't in Table 3 yet has one), so the ranking is a
+    fetch-heuristic — the probe is the real go/no-go.
+
+### ▶ NEXT SESSION STARTS HERE
+1. **(handled separately by Khalil)** generalize `cloud/fetch_airavata_slice.py` to an
+   arbitrary `--subject` slug and fetch **SonarSource@sonarqube**'s slim CSVs in the cloud
+   (`exe.csv`, `builds.csv`, `id_map.csv`, `entity_change_history.csv`, `builds`+git only if
+   it passes the probe). Land them under `tcpci_slice/TCP-CI-dataset/datasets/SonarSource@sonarqube/`.
+2. **Run the probe first — this is the go/no-go before any pipeline work:**
+   ```
+   PYTHONUTF8=1 <repo>/.venv/Scripts/python pipeline/fault_structure_probe.py \
+       --data <repo>/tcpci_slice/TCP-CI-dataset/datasets/SonarSource@sonarqube
+   ```
+   Read `VERDICT` + the small-fault stratum's `recurrence_rate` and `headroom_opt_minus_hist`.
+3. **If GO/MARGINAL** (low recurrence + real headroom): re-run Steps 1→4 on it — Step 1
+   (`step1_name_join.py`) → wire name map into `TCP-CI_schema.py --name-map` → Step 2
+   (`step2_baseline.py`) → Step 3/4 (`step3_t0.py`, `--identity path`). Same commands as
+   airavata, new `--data`/`--dataset`/`--name-map` paths. **If NO-GO:** try the next subject
+   in the fetch order; if the whole top-3 are NO-GO, the airavata negative result stands as
+   the contribution (re-scope to "T0 redundant with history on chronic-dominated CI") or
+   pivot to T1 call-graph / T7 coverage. Do NOT chase the number (no try/except, no
+   cherry-picking cycles).
+- **Env reminder:** repo `.venv` (Python 3.14, pandas/numpy/scikit-learn/scipy; NO
+  tensorflow). Slice lives in the MAIN repo root `tcpci_slice/`; pipeline scripts in the
+  worktree → run cross-path with absolute paths and `PYTHONUTF8=1`. The airavata enhanced
+  dataset CSV is gitignored (regenerate or copy from a sibling worktree if absent).
 
 ## (earlier) STATUS (2026-08-10) — Steps 1 & 2 DONE; PAUSED before Step 3
 - **Step 1 gate: PASS.** `pipeline/step1_name_join.py` on the local slice → exit 0
