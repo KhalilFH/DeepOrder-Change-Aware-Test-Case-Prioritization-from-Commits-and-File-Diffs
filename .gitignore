@@ -60,3 +60,27 @@
 /FINAL6/traccar/unixcoder/adap*
 /FINAL6/traccar/*.csv
 **/complete_tcp_analysis/reports/complete_results.pkl
+
+# Local agent/runtime state
+/.claude/
+/.vscode/
+
+# Local research datasets and external corpora
+/datasets/
+/rtp-torrent/
+/travis-torrent/
+
+# Local exploratory work
+/week1_research/
+
+# Local agent/runtime state
+/.claude/
+/.vscode/
+
+# Local research datasets and external corpora
+/datasets/
+/rtp-torrent/
+/travis-torrent/
+
+# Local exploratory work
+/week1_research/
