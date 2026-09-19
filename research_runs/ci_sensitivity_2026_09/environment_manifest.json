@@ -1,0 +1,224 @@
+{
+  "artifact": "ci_sensitivity_environment_readiness_v1",
+  "task": "Section 13 Task 2 — execution readiness",
+  "observed_at_utc": "2026-09-10T00:20:33Z",
+  "execution_scope": {
+    "observed_facts": [
+      "This manifest records the bb/Codex WSL process and its Docker Desktop daemon.",
+      "No packages, Docker components, images, services, Git configuration, repository files, images, volumes, or caches were installed, changed, cleaned, or removed.",
+      "The disposable resource test used the pre-existing alpine:latest image and removed only its disposable container with --rm."
+    ],
+    "recommendations": [
+      "Retain the approved conservative experiment-job assumption of at most 2 allocated CPUs and 4 GiB memory.",
+      "Treat Maven and Gradle as unavailable until a later task explicitly addresses subject-specific toolchains; their absence is not a Task 2 failure."
+    ]
+  },
+  "host": {
+    "kernel": "Linux 6.6.87.2-microsoft-standard-WSL2 #1 SMP PREEMPT_DYNAMIC Thu Jun 5 18:30:46 UTC 2025",
+    "architecture": "x86_64",
+    "distribution": "Ubuntu 24.04.1 LTS (Noble Numbat)",
+    "distribution_id": "ubuntu",
+    "distribution_version": "24.04.1",
+    "wsl_distro_name": "Ubuntu-24.04",
+    "wsl_evidence": [
+      "uname reports a Microsoft WSL2 kernel.",
+      "WSL_DISTRO_NAME=Ubuntu-24.04.",
+      "The attempted wsl --status command did not invoke Microsoft's WSL CLI in this process: the available wsl command was Wsman Shell 0.2.1 and returned exit 1 with Unknown command: --status."
+    ],
+    "wsl_status_command": {
+      "command": "wsl --status",
+      "exit_code": 1,
+      "observed_output": "Unknown command: --status; available command identifies as Wsman Shell commandLine version 0.2.1."
+    },
+    "cpu": {
+      "model": "AMD Ryzen 7 7700 8-Core Processor",
+      "architecture": "x86_64",
+      "logical_cpus": 16,
+      "cores_per_socket": 8,
+      "sockets": 1,
+      "threads_per_core": 2
+    },
+    "memory": {
+      "total_bytes_proc": 15911108,
+      "total_human": "15 GiB",
+      "available_bytes_proc": 13113128,
+      "available_human": "approximately 12 GiB",
+      "swap_total_bytes": 4194304,
+      "swap_total_human": "4 GiB",
+      "swap_free_human": "4 GiB",
+      "swap_device": "/dev/sdc"
+    },
+    "filesystem_free_space": [
+      {
+        "path": "/",
+        "filesystem": "/dev/sdd",
+        "type": "ext4",
+        "size": "1007G",
+        "available": "925G",
+        "use_percent": "4%"
+      },
+      {
+        "path": "/mnt/c/Users/Mega-PC/DeepOrder-Change-Aware-Test-Case-Prioritization-from-Commits-and-File-Diffs",
+        "filesystem": "C:\\",
+        "type": "9p",
+        "size": "1.9T",
+        "available": "891G",
+        "use_percent": "53%"
+      }
+    ]
+  },
+  "toolchain": {
+    "git": {
+      "version": "2.43.0",
+      "repository_git_dir": ".git",
+      "repository_common_dir": ".git",
+      "repository_worktree": "/mnt/c/Users/Mega-PC/DeepOrder-Change-Aware-Test-Case-Prioritization-from-Commits-and-File-Diffs"
+    },
+    "python": {
+      "command": "/home/khalil_fh/miniconda3/bin/python3",
+      "version": "3.13.11"
+    },
+    "node": {
+      "version": "v24.20.0"
+    },
+    "npm": {
+      "version": "11.19.0"
+    },
+    "java": {
+      "version": "openjdk 21.0.12 2026-07-21",
+      "runtime": "OpenJDK Runtime Environment (build 21.0.12+8-1-24.04-Ubuntu)",
+      "vm": "OpenJDK 64-Bit Server VM (build 21.0.12+8-1-24.04-Ubuntu, mixed mode, sharing)"
+    },
+    "maven": {
+      "present": false,
+      "command": "mvn --version",
+      "exit_code": 127,
+      "observed_failure": "timeout: failed to run command ‘mvn’: No such file or directory"
+    },
+    "gradle": {
+      "present": false,
+      "command": "gradle --version",
+      "exit_code": 127,
+      "observed_failure": "timeout: failed to run command ‘gradle’: No such file or directory"
+    },
+    "bubblewrap": {
+      "present": true,
+      "version": "bubblewrap 0.9.0"
+    }
+  },
+  "docker": {
+    "cli_version": "29.7.2",
+    "desktop_version": "Docker Desktop 4.90.0 (238679)",
+    "engine_server_version": "29.7.2",
+    "api_version": "1.55",
+    "architecture": "x86_64 / linux-amd64",
+    "operating_system": "Docker Desktop",
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "storage_driver": "overlayfs",
+    "storage_driver_type": "io.containerd.snapshotter.v1",
+    "cgroup_driver": "cgroupfs",
+    "cgroup_version": "2",
+    "daemon_visible_cpus": 16,
+    "daemon_visible_memory_bytes": 16292974592,
+    "daemon_visible_memory_human": "15.17 GiB",
+    "root_directory": "/var/lib/docker",
+    "context": "default",
+    "server_reachable": true,
+    "preexisting_images_inspected": [
+      "alpine:latest (13 MB, image architecture amd64)",
+      "docker/desktop-cloud-provider-kind:v0.5.0",
+      "envoyproxy/envoy:v1.36.4",
+      "docker/desktop-containerd-registry-mirror:v0.0.3",
+      "kindest/node:v1.31.1"
+    ],
+    "resource_limit_test": {
+      "command": "docker run --rm --cpus=2 --memory=4g alpine:latest sh -c 'cat /sys/fs/cgroup/cpu.max; cat /sys/fs/cgroup/memory.max; cat /sys/fs/cgroup/memory.current; cat /sys/fs/cgroup/cpuset.cpus.effective; cat /sys/fs/cgroup/cpu.stat'",
+      "exit_code": 0,
+      "requested_cpus": 2,
+      "requested_memory": "4 GiB",
+      "observed_cgroup_cpu_max": "200000 100000",
+      "observed_cpu_quota_interpretation": "200000 microseconds quota per 100000 microseconds period = 2 CPUs",
+      "observed_cgroup_memory_max_bytes": 4294967296,
+      "observed_cgroup_memory_limit": "4 GiB",
+      "observed_memory_current_bytes": 3133440,
+      "observed_cpuset_cpus": "0-15",
+      "note": "The CPU quota enforced the requested 2-CPU limit; cpuset visibility remained 0-15, so quota rather than cpuset is the limiting control."
+    }
+  },
+  "git_configuration": {
+    "home": "/home/khalil_fh",
+    "xdg_config_home": {
+      "set": false,
+      "value": null
+    },
+    "effective_core_autocrlf": {
+      "value": "true",
+      "present": true,
+      "origin": "file:.git/config",
+      "scope": "local",
+      "command": "git config --show-origin --get core.autocrlf",
+      "exit_code": 0,
+      "observed_output": "file:.git/config\ttrue"
+    },
+    "effective_core_filemode": {
+      "value": "false",
+      "origin": "file:.git/config",
+      "scope": "local"
+    },
+    "scope_origin_listing": {
+      "core_autocrlf": "absent from the effective --show-scope --show-origin --list output",
+      "core_filemode": "local file:.git/config core.filemode=false",
+      "system_config": "absent: /etc/gitconfig could not be read",
+      "global_config": "absent: /home/khalil_fh/.gitconfig could not be read",
+      "local_config": "file:.git/config"
+    },
+    "initial_bb_wsl_observation": {
+      "core_autocrlf": "unset",
+      "tracked_modifications_reported_by_wsl_git": 457
+    },
+    "discrepancy_assessment": {
+      "observed_facts": [
+        "The initial bb/WSL observation reported core.autocrlf unset and 457 tracked modifications.",
+        "All 457 files were checked against HEAD by blob hash.",
+        "After removing CR at end-of-line, every working-tree file matched its HEAD blob exactly.",
+        "CRLF_ONLY=457.",
+        "REAL_OR_OTHER_DIFF=0.",
+        "MISSING_OR_NONFILE=0.",
+        "No GIT_CONFIG_* environment override was present in the inspected environment, and no system/global Git config file was available."
+      ],
+      "inference": "The 457 reported modifications were line-ending-only working-tree representations of files whose content matched HEAD after removing CR at end-of-line; there were no real or other differences and no missing/non-file paths.",
+      "remaining_uncertainty": "The initial interactive WSL session was separate from this process.",
+      "configuration_changed": true,
+      "resolution": {
+        "repository_local_core_autocrlf": "true",
+        "config_file": ".git/config",
+        "tracked_file_contents_restored": false,
+        "tracked_file_contents_rewritten": false,
+        "tracked_file_contents_normalized": false,
+        "staged": false,
+        "committed": false,
+        "post_resolution_git_ls_files_m": 0,
+        "post_resolution_git_diff_stat": "empty",
+        "observed_warning": "LF will be replaced by CRLF the next time Git touches .gitignore.",
+        "warning_is_current_modification_or_blocker": false
+      }
+    }
+  },
+  "execution_readiness": {
+    "linux_container_capability": "PASS: WSL2 Linux process and Docker Desktop Linux engine are available; the disposable cgroup test passed.",
+    "approved_job_assumption": "Use at most 2 allocated CPUs and 4 GiB memory per experiment job, as required by the approved plan.",
+    "q0_blocker": "No Task 2 runtime blocker observed. Maven and Gradle are absent but are not treated as blockers at this stage; subject-specific toolchains remain unresolved for later qualification.",
+    "task_2_verdict": "PASS",
+    "issues": [
+      "The wsl --status probe is unavailable through this process because wsl resolves to Wsman Shell rather than Microsoft's WSL CLI; WSL2 is nevertheless established by the kernel, distro, and environment evidence.",
+      "Maven and Gradle are absent but are not blockers for Task 2; subject-specific toolchains remain unresolved for later qualification.",
+      "The Docker daemon exposes 16 CPUs and 15.17 GiB, so per-job limits must be applied explicitly; the requested 2-CPU/4-GiB disposable test was enforced."
+    ]
+  },
+  "repository_provenance": {
+    "task_1_protocol_modified": false,
+    "new_task_2_artifact": "research_runs/ci_sensitivity_2026_09/environment_manifest.json",
+    "staged": false,
+    "committed": false
+  }
+}
