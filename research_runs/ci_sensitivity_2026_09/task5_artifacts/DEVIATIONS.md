@@ -108,23 +108,13 @@ test file is byte-identical in both images (`6a583182…`).
 
 ## Verified rebuild
 
-`rebuild.sh <candidate>` rebuilds a pair from `recipe/as_built/`. For
-grpc-go-1859 it then checks the in-image source blobs against the hashes the
-qualification pass recorded, and fails loudly on a mismatch. Confirmed passing
-on 2026-09-22 from a clean invocation:
+`rebuild.sh <candidate>` rebuilds a pair from `recipe/as_built/` and then runs
+`verify.sh` on the result, failing loudly on a mismatch. Confirmed passing on
+2026-09-22 from a clean rebuild of grpc-go-1859.
 
-```
-=== grpc1859: verifying the recorded source blobs
-    OK       grpc1859-bug transport/http2_client.go
-    OK       grpc1859-bug transport/http2_server.go
-    OK       grpc1859-fix transport/http2_client.go
-    OK       grpc1859-fix transport/http2_server.go
-    OK       grpc1859-bug test/end2end_test.go
-    OK       grpc1859-fix test/end2end_test.go
-```
-
-The two etcd candidates have no recorded per-file blob hashes to check against,
-so `rebuild.sh` says so rather than implying a verification it cannot perform.
+All three candidates are now covered: `verify.sh all` checks 16 blob and
+tree-delta assertions across the six images, against hashes recomputed from
+upstream. See `VERIFICATION.md`.
 
 ## Limits
 

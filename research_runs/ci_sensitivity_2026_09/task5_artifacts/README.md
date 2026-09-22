@@ -21,14 +21,17 @@ attempt logs for all three Q0 restoration/qualification passes.
   attempts/ , *.csv    per-attempt ledgers
   *.log                build output and raw per-attempt logs
 DEVIATIONS.md          every original-vs-as-built difference, explained
-rebuild.sh             rebuilds a pair and verifies the recorded source blobs
+VERIFICATION.md        counterpart verification results for all three pairs
+rebuild.sh             rebuilds a pair, then runs verify.sh on it
+verify.sh              checks existing images against upstream; builds nothing
 MANIFEST.csv           every file with size, SHA-256 prefix and source directory
 ```
 
-Rebuild a subject pair with:
+Rebuild a subject pair, or just verify the images you already have:
 
 ```bash
 research_runs/ci_sensitivity_2026_09/task5_artifacts/rebuild.sh grpc1859
+research_runs/ci_sensitivity_2026_09/task5_artifacts/verify.sh all
 ```
 
 `recipe/as_built/*.Dockerfile` is reconstructed from each image's layer history
