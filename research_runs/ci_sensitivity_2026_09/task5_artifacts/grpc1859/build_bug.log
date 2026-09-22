@@ -1,0 +1,68 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from bug.Dockerfile
+#1 transferring dockerfile: 687B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.13
+#2 DONE 0.7s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [ 1/11] FROM docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8
+#4 resolve docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 588B done
+#5 DONE 0.0s
+
+#6 [ 2/11] RUN git clone https://github.com/grpc/grpc-go.git /go/src/google.golang.org/grpc
+#6 CACHED
+
+#7 [ 3/11] COPY ./deps.txt /tmp/deps.txt
+#7 DONE 0.0s
+
+#8 [ 4/11] COPY ./deps.sh /tmp/deps.sh
+#8 DONE 0.0s
+
+#9 [ 5/11] RUN sh /tmp/deps.sh
+#9 74.61 github.com/golang/glog 23def4e6c14b4da8ac2ed8007337bc5eb5007998
+#9 74.61 github.com/golang/protobuf e6af52bec88380a7a18ecc0977fa4312370a970b
+#9 74.61 golang.org/x/net f5dfe339be1d06f81b22525fe34671ee7d2c8904
+#9 74.61 google.golang.org/genproto 2b5a72b8730b0b16380010cfe5286c42108d88e7
+#9 74.61 golang.org/x/text 4e4a3210bb54bb31f6ab2cdca2edcc0b50c420c1
+#9 DONE 74.7s
+
+#10 [ 6/11] WORKDIR /go/src/google.golang.org/grpc
+#10 DONE 0.0s
+
+#11 [ 7/11] RUN git reset --hard 484b3ebb4ab56d3decc8240d599718bdbefcf7eb
+#11 0.597 HEAD is now at 484b3ebb transport: fix race causing flow control discrepancy when sending messages over server limit (#1859)
+#11 DONE 0.6s
+
+#12 [ 8/11] COPY ./bug_patch.diff google.golang.org/grpc/bug_patch.diff
+#12 DONE 0.1s
+
+#13 [ 9/11] RUN git apply google.golang.org/grpc/bug_patch.diff
+#13 DONE 0.2s
+
+#14 [10/11] RUN go test ./test -c -o /go/gobench.test
+#14 DONE 3.5s
+
+#15 [11/11] WORKDIR /go/src/google.golang.org/grpc/./test
+#15 DONE 0.0s
+
+#16 exporting to image
+#16 exporting layers
+#16 exporting layers 4.2s done
+#16 exporting manifest sha256:cbc137e27eeb9765da70eb4933245a997d5109078699b3c5c3a92fad577eaa09 0.0s done
+#16 exporting config sha256:19788ceca5f7855c31bc23602bfa7b0b493b8fc1929b28fd3ed0662ad2e83dc8 0.0s done
+#16 exporting attestation manifest sha256:b21c71066c84fdf47987f2ca6d7a7e45726f529f18fd9fe1465d2cfc8c7d6e30 0.0s done
+#16 exporting manifest list sha256:568a2cac12fe415981edd0330ee70e25fc6fc92e6cb680f501a18ff7c0f4f4ea 0.0s done
+#16 naming to docker.io/library/grpc1859-bug:latest done
+#16 unpacking to docker.io/library/grpc1859-bug:latest
+#16 unpacking to docker.io/library/grpc1859-bug:latest 2.2s done
+#16 DONE 6.5s

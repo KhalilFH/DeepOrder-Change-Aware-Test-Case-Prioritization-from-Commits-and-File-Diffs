@@ -1,0 +1,160 @@
+=== RUN   TestHammerSimpleAuthenticate
+2026-09-19 11:06:53.578610 W | auth: simple token is not cryptographically signed
+2026-09-19 11:06:53.582709 N | auth: added a new user: root
+2026-09-19 11:06:53.582743 N | auth: Role root is created
+2026-09-19 11:06:53.582756 N | auth: granted role root to user root
+2026-09-19 11:06:53.582777 N | auth: Authentication enabled
+2026-09-19 11:06:53.583713 N | auth: Role role-test is created
+2026-09-19 11:06:53.584529 N | auth: added a new user: foo
+2026-09-19 11:06:53.585371 N | auth: added a new user: user-0
+2026-09-19 11:06:53.586190 N | auth: added a new user: user-1
+2026-09-19 11:06:53.586924 N | auth: added a new user: user-2
+2026-09-19 11:06:53.587628 N | auth: added a new user: user-3
+2026-09-19 11:06:53.588347 N | auth: added a new user: user-4
+2026-09-19 11:06:53.589053 N | auth: added a new user: user-5
+2026-09-19 11:06:53.589819 N | auth: added a new user: user-6
+2026-09-19 11:06:53.590542 N | auth: added a new user: user-7
+2026-09-19 11:06:53.591251 N | auth: added a new user: user-8
+2026-09-19 11:06:53.591947 N | auth: added a new user: user-9
+2026-09-19 11:06:53.592658 N | auth: added a new user: user-10
+2026-09-19 11:06:53.593375 N | auth: added a new user: user-11
+2026-09-19 11:06:53.594063 N | auth: added a new user: user-12
+2026-09-19 11:06:53.594767 N | auth: added a new user: user-13
+2026-09-19 11:06:53.595469 N | auth: added a new user: user-14
+2026-09-19 11:06:53.596171 N | auth: added a new user: user-15
+2026-09-19 11:06:53.596859 N | auth: added a new user: user-16
+2026-09-19 11:06:53.597570 N | auth: added a new user: user-17
+2026-09-19 11:06:53.598270 N | auth: added a new user: user-18
+2026-09-19 11:06:53.598949 N | auth: added a new user: user-19
+2026-09-19 11:06:53.599628 N | auth: added a new user: user-20
+2026-09-19 11:06:53.600323 N | auth: added a new user: user-21
+2026-09-19 11:06:53.601016 N | auth: added a new user: user-22
+2026-09-19 11:06:53.601727 N | auth: added a new user: user-23
+2026-09-19 11:06:53.602424 N | auth: added a new user: user-24
+2026-09-19 11:06:53.603231 N | auth: added a new user: user-25
+2026-09-19 11:06:53.603927 N | auth: added a new user: user-26
+2026-09-19 11:06:53.604636 N | auth: added a new user: user-27
+2026-09-19 11:06:53.605374 N | auth: added a new user: user-28
+2026-09-19 11:06:53.606115 N | auth: added a new user: user-29
+2026-09-19 11:06:53.606867 N | auth: added a new user: user-30
+2026-09-19 11:06:53.607576 N | auth: added a new user: user-31
+2026-09-19 11:06:53.608302 N | auth: added a new user: user-32
+2026-09-19 11:06:53.609047 N | auth: added a new user: user-33
+2026-09-19 11:06:53.609798 N | auth: added a new user: user-34
+2026-09-19 11:06:53.610532 N | auth: added a new user: user-35
+2026-09-19 11:06:53.611283 N | auth: added a new user: user-36
+2026-09-19 11:06:53.612040 N | auth: added a new user: user-37
+2026-09-19 11:06:53.612860 N | auth: added a new user: user-38
+2026-09-19 11:06:53.613647 N | auth: added a new user: user-39
+2026-09-19 11:06:53.614402 N | auth: added a new user: user-40
+2026-09-19 11:06:53.615164 N | auth: added a new user: user-41
+2026-09-19 11:06:53.615901 N | auth: added a new user: user-42
+2026-09-19 11:06:53.616663 N | auth: added a new user: user-43
+2026-09-19 11:06:53.617433 N | auth: added a new user: user-44
+2026-09-19 11:06:53.618215 N | auth: added a new user: user-45
+2026-09-19 11:06:53.619020 N | auth: added a new user: user-46
+2026-09-19 11:06:53.619755 N | auth: added a new user: user-47
+2026-09-19 11:06:53.620504 N | auth: added a new user: user-48
+2026-09-19 11:06:53.621256 N | auth: added a new user: user-49
+2026-09-19 11:06:53.633150 I | auth: deleting token user-16(0).1 for user user-16
+2026-09-19 11:06:53.633176 I | auth: deleting token user-36(1).1 for user user-36
+2026-09-19 11:06:53.633180 I | auth: deleting token user-25(0).1 for user user-25
+2026-09-19 11:06:53.633182 I | auth: deleting token user-34(0).1 for user user-34
+2026-09-19 11:06:53.633184 I | auth: deleting token user-23(0).1 for user user-23
+2026-09-19 11:06:53.633186 I | auth: deleting token user-14(0).1 for user user-14
+2026-09-19 11:06:53.633187 I | auth: deleting token user-6(1).1 for user user-6
+2026-09-19 11:06:53.633189 I | auth: deleting token user-20(0).1 for user user-20
+2026-09-19 11:06:53.633191 I | auth: deleting token user-47(1).1 for user user-47
+2026-09-19 11:06:53.633193 I | auth: deleting token user-23(1).1 for user user-23
+2026-09-19 11:06:53.633194 I | auth: deleting token user-21(0).1 for user user-21
+2026-09-19 11:06:53.633196 I | auth: deleting token user-2(0).1 for user user-2
+2026-09-19 11:06:53.633198 I | auth: deleting token user-39(1).1 for user user-39
+2026-09-19 11:06:53.633199 I | auth: deleting token user-30(0).1 for user user-30
+2026-09-19 11:06:53.633201 I | auth: deleting token user-10(1).1 for user user-10
+2026-09-19 11:06:53.633203 I | auth: deleting token user-39(0).1 for user user-39
+2026-09-19 11:06:53.633204 I | auth: deleting token user-1(1).1 for user user-1
+2026-09-19 11:06:53.633206 I | auth: deleting token user-4(0).1 for user user-4
+2026-09-19 11:06:53.633208 I | auth: deleting token user-0(1).1 for user user-0
+2026-09-19 11:06:53.633209 I | auth: deleting token user-12(1).1 for user user-12
+2026-09-19 11:06:53.633211 I | auth: deleting token user-49(0).1 for user user-49
+2026-09-19 11:06:53.633213 I | auth: deleting token user-27(1).1 for user user-27
+2026-09-19 11:06:53.633215 I | auth: deleting token user-26(0).1 for user user-26
+2026-09-19 11:06:53.633218 I | auth: deleting token user-40(0).1 for user user-40
+2026-09-19 11:06:53.633221 I | auth: deleting token user-42(0).1 for user user-42
+2026-09-19 11:06:53.633226 I | auth: deleting token user-48(1).1 for user user-48
+2026-09-19 11:06:53.633230 I | auth: deleting token user-24(0).1 for user user-24
+2026-09-19 11:06:53.633233 I | auth: deleting token user-11(1).1 for user user-11
+2026-09-19 11:06:53.633235 I | auth: deleting token user-6(0).1 for user user-6
+2026-09-19 11:06:53.633238 I | auth: deleting token user-47(0).1 for user user-47
+2026-09-19 11:06:53.633240 I | auth: deleting token user-7(0).1 for user user-7
+2026-09-19 11:06:53.633247 I | auth: deleting token user-9(1).1 for user user-9
+2026-09-19 11:06:53.633250 I | auth: deleting token user-2(1).1 for user user-2
+2026-09-19 11:06:53.633253 I | auth: deleting token user-26(1).1 for user user-26
+2026-09-19 11:06:53.633256 I | auth: deleting token user-45(0).1 for user user-45
+2026-09-19 11:06:53.633258 I | auth: deleting token user-28(0).1 for user user-28
+2026-09-19 11:06:53.633261 I | auth: deleting token user-0(0).1 for user user-0
+2026-09-19 11:06:53.633263 I | auth: deleting token user-37(1).1 for user user-37
+2026-09-19 11:06:53.633266 I | auth: deleting token user-24(1).1 for user user-24
+2026-09-19 11:06:53.633269 I | auth: deleting token user-19(1).1 for user user-19
+2026-09-19 11:06:53.633271 I | auth: deleting token user-49(1).1 for user user-49
+2026-09-19 11:06:53.633273 I | auth: deleting token user-35(0).1 for user user-35
+2026-09-19 11:06:53.633276 I | auth: deleting token user-31(0).1 for user user-31
+2026-09-19 11:06:53.633285 I | auth: deleting token user-13(0).1 for user user-13
+2026-09-19 11:06:53.633287 I | auth: deleting token user-19(0).1 for user user-19
+2026-09-19 11:06:53.633289 I | auth: deleting token user-33(1).1 for user user-33
+2026-09-19 11:06:53.633300 I | auth: deleting token user-25(1).1 for user user-25
+2026-09-19 11:06:53.633317 I | auth: deleting token user-30(1).1 for user user-30
+2026-09-19 11:06:53.633321 I | auth: deleting token user-8(0).1 for user user-8
+2026-09-19 11:06:53.633324 I | auth: deleting token user-28(1).1 for user user-28
+2026-09-19 11:06:53.633326 I | auth: deleting token user-29(1).1 for user user-29
+2026-09-19 11:06:53.633329 I | auth: deleting token user-35(1).1 for user user-35
+2026-09-19 11:06:53.633331 I | auth: deleting token user-41(1).1 for user user-41
+2026-09-19 11:06:53.633334 I | auth: deleting token user-43(1).1 for user user-43
+2026-09-19 11:06:53.633336 I | auth: deleting token user-29(0).1 for user user-29
+2026-09-19 11:06:53.633339 I | auth: deleting token user-11(0).1 for user user-11
+2026-09-19 11:06:53.633341 I | auth: deleting token user-40(1).1 for user user-40
+2026-09-19 11:06:53.633343 I | auth: deleting token user-16(1).1 for user user-16
+2026-09-19 11:06:53.633346 I | auth: deleting token user-8(1).1 for user user-8
+2026-09-19 11:06:53.633348 I | auth: deleting token user-41(0).1 for user user-41
+2026-09-19 11:06:53.633351 I | auth: deleting token user-1(0).1 for user user-1
+2026-09-19 11:06:53.633353 I | auth: deleting token user-14(1).1 for user user-14
+2026-09-19 11:06:53.633356 I | auth: deleting token user-7(1).1 for user user-7
+2026-09-19 11:06:53.633358 I | auth: deleting token user-34(1).1 for user user-34
+2026-09-19 11:06:53.633361 I | auth: deleting token user-5(1).1 for user user-5
+2026-09-19 11:06:53.633363 I | auth: deleting token user-20(1).1 for user user-20
+2026-09-19 11:06:53.633366 I | auth: deleting token user-17(0).1 for user user-17
+2026-09-19 11:06:53.633368 I | auth: deleting token user-42(1).1 for user user-42
+2026-09-19 11:06:53.633371 I | auth: deleting token user-3(0).1 for user user-3
+2026-09-19 11:06:53.633373 I | auth: deleting token user-31(1).1 for user user-31
+2026-09-19 11:06:53.633376 I | auth: deleting token user-37(0).1 for user user-37
+2026-09-19 11:06:53.633378 I | auth: deleting token user-32(0).1 for user user-32
+2026-09-19 11:06:53.633380 I | auth: deleting token user-18(0).1 for user user-18
+2026-09-19 11:06:53.633382 I | auth: deleting token user-33(0).1 for user user-33
+2026-09-19 11:06:53.633385 I | auth: deleting token user-32(1).1 for user user-32
+2026-09-19 11:06:53.633387 I | auth: deleting token user-10(0).1 for user user-10
+2026-09-19 11:06:53.633390 I | auth: deleting token user-45(1).1 for user user-45
+2026-09-19 11:06:53.633392 I | auth: deleting token user-13(1).1 for user user-13
+2026-09-19 11:06:53.633394 I | auth: deleting token user-9(0).1 for user user-9
+2026-09-19 11:06:53.633396 I | auth: deleting token user-21(1).1 for user user-21
+2026-09-19 11:06:53.633399 I | auth: deleting token user-22(1).1 for user user-22
+2026-09-19 11:06:53.633401 I | auth: deleting token user-36(0).1 for user user-36
+2026-09-19 11:06:53.633404 I | auth: deleting token user-18(1).1 for user user-18
+2026-09-19 11:06:53.633406 I | auth: deleting token user-15(0).1 for user user-15
+2026-09-19 11:06:53.633409 I | auth: deleting token user-12(0).1 for user user-12
+2026-09-19 11:06:53.633416 I | auth: deleting token user-3(1).1 for user user-3
+2026-09-19 11:06:53.633435 I | auth: deleting token user-15(1).1 for user user-15
+2026-09-19 11:06:53.633440 I | auth: deleting token user-38(0).1 for user user-38
+2026-09-19 11:06:53.633443 I | auth: deleting token user-46(0).1 for user user-46
+2026-09-19 11:06:53.633446 I | auth: deleting token user-17(1).1 for user user-17
+2026-09-19 11:06:53.633448 I | auth: deleting token user-43(0).1 for user user-43
+2026-09-19 11:06:53.633456 I | auth: deleting token user-44(1).1 for user user-44
+2026-09-19 11:06:53.633462 I | auth: deleting token user-22(0).1 for user user-22
+2026-09-19 11:06:53.633465 I | auth: deleting token user-4(1).1 for user user-4
+2026-09-19 11:06:53.633467 I | auth: deleting token user-5(0).1 for user user-5
+2026-09-19 11:06:53.633471 I | auth: deleting token user-46(1).1 for user user-46
+2026-09-19 11:06:53.633476 I | auth: deleting token user-38(1).1 for user user-38
+2026-09-19 11:06:53.633484 I | auth: deleting token user-48(0).1 for user user-48
+2026-09-19 11:06:53.633503 I | auth: deleting token user-44(0).1 for user user-44
+2026-09-19 11:06:53.633507 I | auth: deleting token user-27(0).1 for user user-27
+--- PASS: TestHammerSimpleAuthenticate (0.06s)
+PASS

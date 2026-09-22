@@ -1,0 +1,53 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from fix.Dockerfile
+#1 transferring dockerfile: 492B 0.0s done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.13
+#2 DONE 0.6s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/8] FROM docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8
+#4 resolve docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8 0.0s done
+#4 DONE 0.0s
+
+#5 [internal] load build context
+#5 transferring context: 57B done
+#5 DONE 0.0s
+
+#6 [2/8] RUN git clone https://github.com/grpc/grpc-go.git /go/src/google.golang.org/grpc
+#6 CACHED
+
+#7 [5/8] RUN sh /tmp/deps.sh
+#7 CACHED
+
+#8 [3/8] COPY ./deps.txt /tmp/deps.txt
+#8 CACHED
+
+#9 [6/8] WORKDIR /go/src/google.golang.org/grpc
+#9 CACHED
+
+#10 [4/8] COPY ./deps.sh /tmp/deps.sh
+#10 CACHED
+
+#11 [7/8] RUN git reset --hard 484b3ebb4ab56d3decc8240d599718bdbefcf7eb
+#11 CACHED
+
+#12 [8/8] RUN go test ./test -c -o /go/gobench.test
+#12 DONE 3.2s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 0.8s done
+#13 exporting manifest sha256:1e4d8a28da7481f6fe7fafd3d894e8dd59e0448f5e76ab0ac3853d012ffe1d8b 0.0s done
+#13 exporting config sha256:c19c259b4beb69fdef3ef298789a967281ee96e469835006c485ae559b825285 0.0s done
+#13 exporting attestation manifest sha256:f1e037ef46e67c2a94ee0a32ef05e4b38f261b8d43db486fd3cf8d946b58f7cf 0.0s done
+#13 exporting manifest list sha256:957e099e693c758abe1be69d3ec578e1ab45c598ac71a433e9b2b4950f876668 0.0s done
+#13 naming to docker.io/library/grpc1859-fix:latest done
+#13 unpacking to docker.io/library/grpc1859-fix:latest
+#13 unpacking to docker.io/library/grpc1859-fix:latest 0.3s done
+#13 DONE 1.2s

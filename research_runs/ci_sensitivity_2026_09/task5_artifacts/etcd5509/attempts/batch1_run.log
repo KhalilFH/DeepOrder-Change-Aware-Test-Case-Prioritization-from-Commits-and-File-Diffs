@@ -1,0 +1,23 @@
+[vbad attempt 1] rc=0 elapsed=0.724s class=PASS
+[vbad attempt 2] rc=2 elapsed=45.417s class=UNRESOLVED_TIMEOUT_NO_SIGNATURE
+[vbad attempt 3] rc=0 elapsed=0.719s class=PASS
+[vbad attempt 4] rc=2 elapsed=45.589s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 5] rc=2 elapsed=45.375s class=UNRESOLVED_TIMEOUT_NO_SIGNATURE
+[vbad attempt 6] rc=2 elapsed=45.707s class=UNRESOLVED_TIMEOUT_NO_SIGNATURE
+[vbad attempt 7] rc=2 elapsed=45.345s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 8] rc=0 elapsed=0.670s class=PASS
+[vbad attempt 9] rc=0 elapsed=0.709s class=PASS
+[vbad attempt 10] rc=2 elapsed=45.613s class=FOCAL_DEFECT_WITNESS_A
+[vok attempt 1] rc=0 elapsed=0.744s class=PASS
+[vok attempt 2] rc=0 elapsed=0.625s class=PASS
+[vok attempt 3] rc=0 elapsed=0.679s class=PASS
+[vok attempt 4] rc=0 elapsed=0.681s class=PASS
+[vok attempt 5] rc=0 elapsed=0.612s class=PASS
+[vok attempt 6] rc=0 elapsed=0.678s class=PASS
+[vok attempt 7] rc=0 elapsed=0.692s class=PASS
+[vok attempt 8] rc=0 elapsed=0.597s class=PASS
+[vok attempt 9] rc=0 elapsed=0.680s class=PASS
+[vok attempt 10] rc=0 elapsed=0.723s class=PASS
+=== FIRST BATCH DONE ===
+STRUCTURAL_CHECK_MARKER
+SCRIPT_EXIT:0

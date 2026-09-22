@@ -1,0 +1,31 @@
+=== RUN   TestKVGetErrConnClosed
+2026-09-19 10:30:01.108542 I | integration: launching node4355029704154744430 (unix://localhost:node4355029704154744430.sock)
+2026-09-19 10:30:01.110897 I | etcdserver: name = node4355029704154744430
+2026-09-19 10:30:01.110917 I | etcdserver: data dir = /tmp/etcd509425369
+2026-09-19 10:30:01.110921 I | etcdserver: member dir = /tmp/etcd509425369/member
+2026-09-19 10:30:01.110923 I | etcdserver: heartbeat = 10ms
+2026-09-19 10:30:01.110925 I | etcdserver: election = 100ms
+2026-09-19 10:30:01.110927 I | etcdserver: snapshot count = 0
+2026-09-19 10:30:01.110931 I | etcdserver: advertise client URLs = http://127.0.0.1:21002
+2026-09-19 10:30:01.110934 I | etcdserver: initial advertise peer URLs = http://127.0.0.1:21001
+2026-09-19 10:30:01.110938 I | etcdserver: initial cluster = node4355029704154744430=http://127.0.0.1:21001
+2026-09-19 10:30:01.112638 I | etcdserver: starting member 577295b580b977df in cluster 7c13d0269e447344
+2026-09-19 10:30:01.112683 I | raft: 577295b580b977df became follower at term 0
+2026-09-19 10:30:01.112691 I | raft: newRaft 577295b580b977df [peers: [], term: 0, commit: 0, applied: 0, lastindex: 0, lastterm: 0]
+2026-09-19 10:30:01.112696 I | raft: 577295b580b977df became follower at term 1
+2026-09-19 10:30:01.118334 I | etcdserver: set snapshot count to default 10000
+2026-09-19 10:30:01.118356 I | etcdserver: starting server... [version: 3.0.0-beta.0+git, cluster version: to_be_decided]
+2026-09-19 10:30:01.118515 I | integration: launched node4355029704154744430 (unix://localhost:node4355029704154744430.sock)
+2026-09-19 10:30:01.119895 I | membership: added member 577295b580b977df [http://127.0.0.1:21001] to cluster 7c13d0269e447344
+2026-09-19 10:30:01.143024 I | raft: 577295b580b977df is starting a new election at term 1
+2026-09-19 10:30:01.143062 I | raft: 577295b580b977df became candidate at term 2
+2026-09-19 10:30:01.143068 I | raft: 577295b580b977df received vote from 577295b580b977df at term 2
+2026-09-19 10:30:01.143075 I | raft: 577295b580b977df became leader at term 2
+2026-09-19 10:30:01.143093 I | raft: raft.node: 577295b580b977df elected leader 577295b580b977df at term 2
+2026-09-19 10:30:01.143188 I | etcdserver: setting up the initial cluster version to 3.0
+2026-09-19 10:30:01.144002 N | membership: set the initial cluster version to 3.0
+2026-09-19 10:30:01.144037 I | etcdserver: published {Name:node4355029704154744430 ClientURLs:[http://127.0.0.1:21002]} to cluster 7c13d0269e447344
+2026-09-19 10:30:01.153317 I | integration: terminating node4355029704154744430 (unix://localhost:node4355029704154744430.sock)
+2026-09-19 10:30:01.155456 I | integration: terminated node4355029704154744430 (unix://localhost:node4355029704154744430.sock)
+--- PASS: TestKVGetErrConnClosed (0.05s)
+PASS

@@ -1,0 +1,683 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from bug.Dockerfile
+#1 transferring dockerfile: 691B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.13
+#2 DONE 2.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 4.84kB done
+#4 DONE 0.0s
+
+#5 [1/9] FROM docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8
+#5 resolve docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8 0.0s done
+#5 DONE 0.1s
+
+#5 [1/9] FROM docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8
+#5 sha256:16b5038bccc853e96f534bc85f4f737109ef37ad92d877b54f080a3c86b3cb3a 0B / 126B 0.2s
+#5 sha256:16b5038bccc853e96f534bc85f4f737109ef37ad92d877b54f080a3c86b3cb3a 126B / 126B 0.2s done
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 0B / 120.17MB 0.3s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 0B / 68.67MB 0.2s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 0B / 51.83MB 0.2s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 0B / 10.00MB 0.2s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 1.05MB / 10.00MB 2.3s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 6.29MB / 120.17MB 2.7s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 2.10MB / 10.00MB 3.3s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 3.15MB / 10.00MB 4.1s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 4.19MB / 10.00MB 4.8s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 1.05MB / 68.67MB 5.3s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 1.05MB / 51.83MB 5.3s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 12.58MB / 120.17MB 5.9s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 5.24MB / 10.00MB 5.6s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 6.29MB / 10.00MB 6.3s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 7.34MB / 10.00MB 7.1s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 8.39MB / 10.00MB 8.0s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 9.44MB / 10.00MB 8.6s
+#5 sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 10.00MB / 10.00MB 8.8s done
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 18.87MB / 120.17MB 9.0s
+#5 sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797 0B / 7.81MB 0.2s
+#5 sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797 1.05MB / 7.81MB 0.9s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 2.10MB / 68.67MB 10.4s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 1.05MB / 51.83MB 10.4s
+#5 sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797 2.10MB / 7.81MB 1.5s
+#5 sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797 3.15MB / 7.81MB 2.1s
+#5 sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797 4.19MB / 7.81MB 2.7s
+#5 sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797 5.24MB / 7.81MB 3.2s
+#5 sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797 6.29MB / 7.81MB 3.8s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 25.17MB / 120.17MB 12.8s
+#5 sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797 7.34MB / 7.81MB 4.4s
+#5 sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797 7.81MB / 7.81MB 4.9s done
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 0B / 50.40MB 0.2s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 3.15MB / 68.67MB 15.5s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 2.10MB / 51.83MB 15.5s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 3.15MB / 50.40MB 2.3s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 31.46MB / 120.17MB 16.5s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 6.29MB / 50.40MB 3.9s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 9.44MB / 50.40MB 5.6s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 37.75MB / 120.17MB 20.1s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 3.15MB / 68.67MB 20.6s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 3.15MB / 51.83MB 20.6s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 12.58MB / 50.40MB 7.2s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 15.73MB / 50.40MB 8.9s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 18.87MB / 50.40MB 10.2s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 44.04MB / 120.17MB 24.8s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 22.02MB / 50.40MB 11.7s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 4.19MB / 68.67MB 25.7s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 3.15MB / 51.83MB 25.7s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 25.17MB / 50.40MB 13.4s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 28.31MB / 50.40MB 14.9s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 50.33MB / 120.17MB 29.3s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 31.46MB / 50.40MB 16.5s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 4.19MB / 68.67MB 30.8s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 4.19MB / 51.83MB 30.8s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 34.60MB / 50.40MB 18.2s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 56.62MB / 120.17MB 33.3s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 37.75MB / 50.40MB 19.8s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 40.89MB / 50.40MB 21.3s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 4.19MB / 68.67MB 35.9s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 4.19MB / 51.83MB 35.9s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 44.04MB / 50.40MB 22.8s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 62.91MB / 120.17MB 37.8s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 47.19MB / 50.40MB 24.5s
+#5 sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 50.40MB / 50.40MB 26.1s done
+#5 extracting sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 5.24MB / 68.67MB 41.0s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 5.24MB / 51.83MB 41.0s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 69.21MB / 120.17MB 41.3s
+#5 extracting sha256:d6ff36c9ec4822c9ff8953560f7ba41653b348a9c1136755e653575f58fbded7 1.5s done
+#5 extracting sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797
+#5 extracting sha256:c958d65b3090aefea91284d018b2a86530a3c8174b72616c4e76993c696a5797 0.3s done
+#5 extracting sha256:edaf0a6b092f5673ec05b40edb606ce58881b2f40494251117d31805225ef064 0.2s done
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 75.50MB / 120.17MB 43.1s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 81.79MB / 120.17MB 45.0s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 6.29MB / 68.67MB 46.1s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 5.24MB / 51.83MB 46.1s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 88.08MB / 120.17MB 46.8s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 94.37MB / 120.17MB 48.6s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 100.66MB / 120.17MB 50.4s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 7.34MB / 68.67MB 51.2s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 6.29MB / 51.83MB 51.2s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 106.95MB / 120.17MB 52.2s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 113.25MB / 120.17MB 54.0s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 119.54MB / 120.17MB 55.8s
+#5 sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 120.17MB / 120.17MB 55.9s done
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 7.34MB / 68.67MB 56.3s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 6.29MB / 51.83MB 56.3s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 9.44MB / 51.83MB 57.9s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 11.53MB / 68.67MB 58.7s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 12.58MB / 51.83MB 58.5s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 15.73MB / 51.83MB 59.9s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 18.87MB / 51.83MB 61.4s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 15.73MB / 68.67MB 61.7s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 22.02MB / 51.83MB 63.2s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 19.92MB / 68.67MB 63.9s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 25.17MB / 51.83MB 65.4s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 24.12MB / 68.67MB 65.7s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 28.31MB / 51.83MB 67.5s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 28.31MB / 68.67MB 68.0s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 31.46MB / 51.83MB 69.5s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 32.51MB / 68.67MB 69.9s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 34.60MB / 51.83MB 71.4s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 36.70MB / 68.67MB 72.3s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 37.75MB / 51.83MB 72.9s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 40.89MB / 68.67MB 74.4s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 40.89MB / 51.83MB 75.0s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 45.09MB / 68.67MB 76.7s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 44.04MB / 51.83MB 76.8s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 47.19MB / 51.83MB 78.5s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 49.28MB / 68.67MB 78.8s
+#5 sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 50.33MB / 51.83MB 80.1s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 53.48MB / 68.67MB 81.0s
+#5 extracting sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 57.67MB / 68.67MB 82.5s
+#5 extracting sha256:80931cf6881673fd161a3fd73e8971fe4a569fd7fbb44e956d261ca58d97dfab 1.5s done
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 61.87MB / 68.67MB 83.9s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 66.06MB / 68.67MB 85.1s
+#5 sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 68.67MB / 68.67MB 85.7s done
+#5 extracting sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551
+#5 extracting sha256:813643441356759e9202aeebde31d45192b5e5e6218cd8d2ad216304bf415551 1.1s done
+#5 DONE 86.9s
+
+#5 [1/9] FROM docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8
+#5 extracting sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e
+#5 extracting sha256:799f41bb59c9731aba2de07a7b3d49d5bc5e3a57ac053779fc0e405d3aed0b9e 2.7s done
+#5 DONE 89.6s
+
+#5 [1/9] FROM docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8
+#5 extracting sha256:16b5038bccc853e96f534bc85f4f737109ef37ad92d877b54f080a3c86b3cb3a 0.0s done
+#5 DONE 89.7s
+
+#6 [2/9] RUN git clone https://github.com/etcd-io/etcd.git /go/src/github.com/coreos/etcd
+#6 0.354 Cloning into '/go/src/github.com/coreos/etcd'...
+#6 DONE 39.8s
+
+#7 [3/9] WORKDIR /go/src/github.com/coreos/etcd
+#7 DONE 0.1s
+
+#8 [4/9] RUN git reset --hard 148c923c72c4aa9207173c03b775e2c0b8754067
+#8 0.644 HEAD is now at 148c923c7 Merge pull request #7492 from heyitsanthony/simpletokenttl-deadlock
+#8 DONE 0.7s
+
+#9 [5/9] COPY ./bug_patch.diff github.com/coreos/etcd/bug_patch.diff
+#9 DONE 0.0s
+
+#10 [6/9] RUN git apply github.com/coreos/etcd/bug_patch.diff
+#10 DONE 0.3s
+
+#11 [7/9] RUN sed -i '72 igo test ./auth -c -o /go/gobench.test' test &&     sed -i '73 iexit 0' test
+#11 DONE 0.3s
+
+#12 [8/9] RUN PKG=./auth PASSES='build unit' ./test
+#12 3.091 crypto/internal/subtle
+#12 3.091 runtime/internal/sys
+#12 3.092 internal/race
+#12 3.093 container/list
+#12 3.093 unicode/utf8
+#12 3.093 vendor/golang.org/x/crypto/cryptobyte/asn1
+#12 3.093 math/bits
+#12 3.094 internal/cpu
+#12 3.094 internal/nettrace
+#12 3.094 sync/atomic
+#12 3.095 unicode
+#12 3.095 vendor/golang.org/x/crypto/curve25519
+#12 3.096 vendor/golang.org/x/crypto/internal/subtle
+#12 3.096 encoding
+#12 3.096 crypto/subtle
+#12 3.097 runtime/internal/atomic
+#12 3.105 unicode/utf16
+#12 3.108 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/internal
+#12 3.110 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/naming
+#12 3.111 github.com/coreos/etcd/cmd/vendor/github.com/inconshreveable/mousetrap
+#12 3.114 runtime/internal/math
+#12 3.116 github.com/coreos/etcd/cmd/vendor/github.com/golang/groupcache/lru
+#12 3.124 internal/testlog
+#12 3.133 internal/bytealg
+#12 3.135 math
+#12 3.166 runtime
+#12 3.181 github.com/coreos/etcd/cmd/vendor/github.com/shurcooL/sanitized_anchor_name
+#12 3.204 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/adt
+#12 3.632 internal/reflectlite
+#12 3.632 sync
+#12 3.658 internal/singleflight
+#12 3.658 math/rand
+#12 3.687 errors
+#12 3.687 sort
+#12 3.699 internal/oserror
+#12 3.699 io
+#12 3.699 vendor/golang.org/x/net/dns/dnsmessage
+#12 3.700 strconv
+#12 3.709 syscall
+#12 3.710 github.com/coreos/etcd/cmd/vendor/github.com/beorn7/perks/quantile
+#12 3.710 container/heap
+#12 3.710 github.com/coreos/etcd/cmd/vendor/github.com/grpc-ecosystem/grpc-gateway/utilities
+#12 3.732 hash
+#12 3.733 bytes
+#12 3.733 crypto/internal/randutil
+#12 3.733 text/tabwriter
+#12 3.733 strings
+#12 3.744 crypto/hmac
+#12 3.745 hash/fnv
+#12 3.745 hash/crc32
+#12 3.761 vendor/golang.org/x/crypto/hkdf
+#12 3.780 crypto/rc4
+#12 3.780 reflect
+#12 3.780 crypto
+#12 3.782 github.com/coreos/etcd/cmd/vendor/golang.org/x/crypto/blowfish
+#12 3.796 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/crc
+#12 3.800 bufio
+#12 3.800 vendor/golang.org/x/text/transform
+#12 3.819 path
+#12 3.820 html
+#12 3.821 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg
+#12 3.821 regexp/syntax
+#12 3.844 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/pathutil
+#12 3.882 internal/syscall/execenv
+#12 3.882 internal/syscall/unix
+#12 3.883 time
+#12 3.918 regexp
+#12 3.977 context
+#12 3.977 github.com/coreos/etcd/cmd/vendor/github.com/jonboulle/clockwork
+#12 3.978 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/monotime
+#12 3.978 internal/poll
+#12 3.979 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/contention
+#12 3.979 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/idutil
+#12 4.003 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/context
+#12 4.013 internal/fmtsort
+#12 4.013 encoding/binary
+#12 4.014 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/schedule
+#12 4.025 os
+#12 4.051 crypto/md5
+#12 4.051 encoding/base64
+#12 4.051 crypto/sha512
+#12 4.051 vendor/golang.org/x/sys/cpu
+#12 4.051 vendor/golang.org/x/crypto/poly1305
+#12 4.051 crypto/ed25519/internal/edwards25519
+#12 4.051 crypto/cipher
+#12 4.051 crypto/sha1
+#12 4.051 crypto/sha256
+#12 4.051 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/cpuutil
+#12 4.087 encoding/pem
+#12 4.112 fmt
+#12 4.112 path/filepath
+#12 4.113 runtime/debug
+#12 4.114 os/signal
+#12 4.117 net
+#12 4.119 crypto/des
+#12 4.119 vendor/golang.org/x/crypto/internal/chacha20
+#12 4.119 crypto/aes
+#12 4.155 vendor/golang.org/x/crypto/chacha20poly1305
+#12 4.156 io/ioutil
+#12 4.156 os/exec
+#12 4.177 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/runtime
+#12 4.212 encoding/hex
+#12 4.212 net/url
+#12 4.212 flag
+#12 4.212 log
+#12 4.212 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/idna
+#12 4.212 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/http2/hpack
+#12 4.212 compress/flate
+#12 4.213 encoding/json
+#12 4.213 vendor/golang.org/x/net/http2/hpack
+#12 4.213 mime
+#12 4.213 math/big
+#12 4.214 mime/quotedprintable
+#12 4.214 net/http/internal
+#12 4.214 vendor/golang.org/x/text/unicode/norm
+#12 4.221 github.com/coreos/etcd/cmd/vendor/github.com/coreos/go-semver/semver
+#12 4.242 go/token
+#12 4.248 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/version
+#12 4.258 encoding/gob
+#12 4.263 text/template/parse
+#12 4.289 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/codes
+#12 4.295 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/internal/timeseries
+#12 4.295 vendor/golang.org/x/text/unicode/bidi
+#12 4.329 go/scanner
+#12 4.338 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/grpclog
+#12 4.340 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/metadata
+#12 4.341 github.com/coreos/etcd/cmd/vendor/github.com/boltdb/bolt
+#12 4.346 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/procfs/xfs
+#12 4.353 github.com/coreos/etcd/cmd/vendor/github.com/google/btree
+#12 4.387 github.com/coreos/etcd/cmd/vendor/gopkg.in/yaml.v2
+#12 4.393 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/wait
+#12 4.394 runtime/trace
+#12 4.401 encoding/csv
+#12 4.437 github.com/coreos/etcd/cmd/vendor/golang.org/x/time/rate
+#12 4.440 github.com/coreos/etcd/cmd/vendor/github.com/coreos/go-systemd/util
+#12 4.456 github.com/coreos/etcd/cmd/vendor/github.com/russross/blackfriday
+#12 4.495 vendor/golang.org/x/text/secure/bidirule
+#12 4.513 compress/gzip
+#12 4.516 text/template
+#12 4.550 vendor/golang.org/x/net/idna
+#12 4.553 go/ast
+#12 4.575 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/common/model
+#12 4.576 github.com/coreos/etcd/cmd/vendor/github.com/gogo/protobuf/proto
+#12 4.581 github.com/coreos/etcd/cmd/vendor/github.com/golang/protobuf/proto
+#12 4.584 runtime/pprof
+#12 4.622 encoding/asn1
+#12 4.624 crypto/rand
+#12 4.625 crypto/dsa
+#12 4.627 crypto/elliptic
+#12 4.710 crypto/ed25519
+#12 4.710 github.com/coreos/etcd/cmd/vendor/github.com/cpuguy83/go-md2man/md2man
+#12 4.715 crypto/rsa
+#12 4.717 github.com/coreos/etcd/cmd/vendor/golang.org/x/crypto/bcrypt
+#12 4.737 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/lex/httplex
+#12 4.739 net/textproto
+#12 4.763 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/types
+#12 4.764 github.com/coreos/etcd/cmd/vendor/github.com/coreos/go-systemd/journal
+#12 4.766 log/syslog
+#12 4.775 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/procfs
+#12 4.783 github.com/coreos/etcd/cmd/vendor/github.com/spf13/pflag
+#12 4.785 github.com/coreos/etcd/cmd/vendor/github.com/coreos/go-systemd/daemon
+#12 4.792 vendor/golang.org/x/net/http/httpproxy
+#12 4.810 html/template
+#12 4.824 github.com/coreos/etcd/cmd/vendor/github.com/coreos/pkg/capnslog
+#12 4.832 vendor/golang.org/x/crypto/cryptobyte
+#12 4.834 crypto/x509/pkix
+#12 4.844 crypto/ecdsa
+#12 4.852 vendor/golang.org/x/net/http/httpguts
+#12 4.860 mime/multipart
+#12 4.930 go/parser
+#12 4.931 go/printer
+#12 4.948 github.com/coreos/etcd/cmd/vendor/github.com/ghodss/yaml
+#12 4.963 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/netutil
+#12 4.968 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/fileutil
+#12 4.968 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/pbutil
+#12 4.968 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/logutil
+#12 4.968 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/osutil
+#12 4.968 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/proxy/tcpproxy
+#12 4.973 crypto/x509
+#12 5.032 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/mvcc/mvccpb
+#12 5.034 github.com/coreos/etcd/cmd/vendor/github.com/golang/protobuf/jsonpb
+#12 5.035 github.com/coreos/etcd/cmd/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime/internal
+#12 5.036 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/auth/authpb
+#12 5.036 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/client_model/go
+#12 5.038 github.com/coreos/etcd/cmd/vendor/github.com/matttproud/golang_protobuf_extensions/pbutil
+#12 5.038 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/raft/raftpb
+#12 5.045 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/snap/snappb
+#12 5.048 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/wal/walpb
+#12 5.051 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/ioutil
+#12 5.088 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/flags
+#12 5.089 github.com/coreos/etcd/cmd/vendor/github.com/spf13/cobra
+#12 5.113 go/format
+#12 5.150 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/raft
+#12 5.183 github.com/coreos/etcd/cmd/vendor/github.com/dgrijalva/jwt-go
+#12 5.183 crypto/tls
+#12 5.251 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/stats
+#12 5.404 net/http/httptrace
+#12 5.404 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/credentials
+#12 5.404 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/tlsutil
+#12 5.423 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/peer
+#12 5.426 net/http
+#12 5.834 net/rpc
+#12 5.834 expvar
+#12 5.834 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/trace
+#12 5.835 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/transport
+#12 5.835 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/http2
+#12 5.835 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/common/expfmt
+#12 5.836 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/error
+#12 5.836 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/api/v2http/httptypes
+#12 5.836 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/httputil
+#12 5.836 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/cors
+#12 5.837 net/http/pprof
+#12 5.837 github.com/coreos/etcd/cmd/vendor/github.com/xiang90/probing
+#12 5.909 github.com/coreos/etcd/cmd/vendor/github.com/ugorji/go/codec
+#12 5.786 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/client_golang/prometheus
+#12 5.918 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/snap
+#12 5.918 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/mvcc/backend
+#12 5.918 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/wal
+#12 5.919 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/store
+#12 5.949 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/rafthttp
+#12 5.965 github.com/coreos/etcd/cmd/vendor/github.com/cockroachdb/cmux
+#12 5.965 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/proxy/httpproxy
+#12 5.965 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/transport
+#12 6.004 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/membership
+#12 6.058 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/api
+#12 6.089 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc
+#12 6.179 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/api/v3rpc/rpctypes
+#12 6.179 github.com/coreos/etcd/cmd/vendor/github.com/grpc-ecosystem/go-grpc-prometheus
+#12 6.179 github.com/coreos/etcd/cmd/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime
+#12 6.250 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/etcdserverpb
+#12 6.703 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/alarm
+#12 6.703 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/lease/leasepb
+#12 6.703 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/auth
+#12 6.703 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/clientv3
+#12 6.703 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/proxy/grpcproxy/cache
+#12 6.728 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/lease
+#12 6.753 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/lease/leasehttp
+#12 6.754 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/mvcc
+#12 6.858 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/compactor
+#12 6.869 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/clientv3/naming
+#12 6.869 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/clientv3/concurrency
+#12 7.018 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/client
+#12 7.104 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/discovery
+#12 7.135 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver
+#12 7.294 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/auth
+#12 7.295 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/api/v3rpc
+#12 7.333 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/api/v2http
+#12 7.369 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/proxy/grpcproxy
+#12 7.421 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/embed
+#12 7.476 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdmain
+#12 7.543 github.com/coreos/etcd/cmd/etcd
+#12 8.624 container/list
+#12 8.624 crypto/internal/subtle
+#12 8.624 math/bits
+#12 8.625 internal/race
+#12 8.625 runtime/internal/sys
+#12 8.626 encoding
+#12 8.627 internal/nettrace
+#12 8.628 unicode
+#12 8.628 crypto/subtle
+#12 8.629 unicode/utf8
+#12 8.630 vendor/golang.org/x/crypto/cryptobyte/asn1
+#12 8.630 unicode/utf16
+#12 8.630 vendor/golang.org/x/crypto/internal/subtle
+#12 8.630 runtime/internal/atomic
+#12 8.630 internal/cpu
+#12 8.630 sync/atomic
+#12 8.641 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/internal
+#12 8.641 vendor/golang.org/x/crypto/curve25519
+#12 8.643 runtime/internal/math
+#12 8.643 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/naming
+#12 8.644 github.com/coreos/etcd/cmd/vendor/github.com/inconshreveable/mousetrap
+#12 8.663 internal/testlog
+#12 8.669 internal/bytealg
+#12 8.671 math
+#12 8.701 runtime
+#12 8.706 github.com/coreos/etcd/cmd/vendor/github.com/shurcooL/sanitized_anchor_name
+#12 8.740 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/adt
+#12 9.131 internal/reflectlite
+#12 9.131 sync
+#12 9.157 internal/singleflight
+#12 9.157 math/rand
+#12 9.185 errors
+#12 9.185 sort
+#12 9.197 internal/oserror
+#12 9.198 io
+#12 9.198 vendor/golang.org/x/net/dns/dnsmessage
+#12 9.198 strconv
+#12 9.207 syscall
+#12 9.209 container/heap
+#12 9.209 github.com/coreos/etcd/cmd/vendor/github.com/beorn7/perks/quantile
+#12 9.209 github.com/coreos/etcd/cmd/vendor/github.com/grpc-ecosystem/grpc-gateway/utilities
+#12 9.228 hash
+#12 9.228 crypto/internal/randutil
+#12 9.228 text/tabwriter
+#12 9.228 bytes
+#12 9.228 strings
+#12 9.245 hash/crc32
+#12 9.247 hash/fnv
+#12 9.247 crypto/hmac
+#12 9.265 vendor/golang.org/x/crypto/hkdf
+#12 9.276 reflect
+#12 9.281 crypto
+#12 9.282 crypto/rc4
+#12 9.283 github.com/coreos/etcd/cmd/vendor/golang.org/x/crypto/blowfish
+#12 9.294 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/crc
+#12 9.296 bufio
+#12 9.298 vendor/golang.org/x/text/transform
+#12 9.315 html
+#12 9.315 regexp/syntax
+#12 9.316 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/common/internal/bitbucket.org/ww/goautoneg
+#12 9.317 path
+#12 9.349 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/pathutil
+#12 9.374 internal/syscall/execenv
+#12 9.374 time
+#12 9.375 internal/syscall/unix
+#12 9.409 regexp
+#12 9.467 context
+#12 9.467 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/idutil
+#12 9.467 github.com/coreos/etcd/cmd/vendor/github.com/jonboulle/clockwork
+#12 9.467 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/monotime
+#12 9.468 internal/poll
+#12 9.468 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/contention
+#12 9.491 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/context
+#12 9.502 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/schedule
+#12 9.503 internal/fmtsort
+#12 9.503 encoding/binary
+#12 9.514 os
+#12 9.539 encoding/base64
+#12 9.539 crypto/cipher
+#12 9.539 crypto/sha512
+#12 9.539 crypto/ed25519/internal/edwards25519
+#12 9.540 crypto/md5
+#12 9.541 crypto/sha1
+#12 9.541 crypto/sha256
+#12 9.541 vendor/golang.org/x/crypto/poly1305
+#12 9.541 vendor/golang.org/x/sys/cpu
+#12 9.541 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/cpuutil
+#12 9.571 encoding/pem
+#12 9.593 os/signal
+#12 9.593 path/filepath
+#12 9.593 runtime/debug
+#12 9.593 fmt
+#12 9.593 github.com/coreos/etcd/cmd/vendor/github.com/mattn/go-runewidth
+#12 9.595 net
+#12 9.601 crypto/des
+#12 9.601 crypto/aes
+#12 9.601 vendor/golang.org/x/crypto/internal/chacha20
+#12 9.646 vendor/golang.org/x/crypto/chacha20poly1305
+#12 9.647 io/ioutil
+#12 9.647 os/exec
+#12 9.671 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/runtime
+#12 9.700 github.com/coreos/etcd/cmd/vendor/github.com/bgentry/speakeasy
+#12 9.700 net/url
+#12 9.700 github.com/coreos/etcd/cmd/vendor/github.com/coreos/go-semver/semver
+#12 9.700 go/token
+#12 9.700 encoding/json
+#12 9.701 encoding/gob
+#12 9.701 log
+#12 9.701 text/template/parse
+#12 9.702 compress/flate
+#12 9.702 math/big
+#12 9.703 encoding/hex
+#12 9.706 vendor/golang.org/x/text/unicode/norm
+#12 9.706 vendor/golang.org/x/net/http2/hpack
+#12 9.708 mime
+#12 9.714 mime/quotedprintable
+#12 9.734 net/http/internal
+#12 9.743 vendor/golang.org/x/text/unicode/bidi
+#12 9.744 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/version
+#12 9.752 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/http2/hpack
+#12 9.769 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/idna
+#12 9.773 go/scanner
+#12 9.787 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/internal/timeseries
+#12 9.788 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/codes
+#12 9.804 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/grpclog
+#12 9.817 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/metadata
+#12 9.825 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/procfs/xfs
+#12 9.833 flag
+#12 9.865 github.com/coreos/etcd/cmd/vendor/github.com/boltdb/bolt
+#12 9.881 github.com/coreos/etcd/cmd/vendor/github.com/google/btree
+#12 9.889 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/wait
+#12 9.889 encoding/csv
+#12 9.900 go/ast
+#12 9.916 github.com/coreos/etcd/cmd/vendor/github.com/russross/blackfriday
+#12 9.935 vendor/golang.org/x/text/secure/bidirule
+#12 9.944 compress/gzip
+#12 9.979 github.com/coreos/etcd/cmd/vendor/github.com/olekukonko/tablewriter
+#12 9.990 text/template
+#12 10.00 vendor/golang.org/x/net/idna
+#12 10.05 github.com/coreos/etcd/cmd/vendor/github.com/golang/protobuf/proto
+#12 10.05 github.com/coreos/etcd/cmd/vendor/github.com/gogo/protobuf/proto
+#12 10.05 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/common/model
+#12 10.11 encoding/asn1
+#12 10.11 crypto/elliptic
+#12 10.11 crypto/dsa
+#12 10.11 crypto/rand
+#12 10.11 github.com/coreos/etcd/cmd/vendor/github.com/dustin/go-humanize
+#12 10.12 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/lex/httplex
+#12 10.12 net/textproto
+#12 10.12 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/types
+#12 10.13 github.com/coreos/etcd/cmd/vendor/github.com/coreos/go-systemd/journal
+#12 10.14 vendor/golang.org/x/net/http/httpproxy
+#12 10.16 log/syslog
+#12 10.16 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/procfs
+#12 10.18 go/parser
+#12 10.18 go/printer
+#12 10.19 crypto/ed25519
+#12 10.19 github.com/coreos/etcd/cmd/vendor/github.com/spf13/pflag
+#12 10.21 crypto/rsa
+#12 10.21 github.com/coreos/etcd/cmd/vendor/golang.org/x/crypto/bcrypt
+#12 10.22 github.com/coreos/etcd/cmd/vendor/github.com/cpuguy83/go-md2man/md2man
+#12 10.22 github.com/coreos/etcd/cmd/vendor/github.com/coreos/pkg/capnslog
+#12 10.23 html/template
+#12 10.23 github.com/coreos/etcd/cmd/vendor/github.com/urfave/cli
+#12 10.23 vendor/golang.org/x/net/http/httpguts
+#12 10.23 mime/multipart
+#12 10.37 vendor/golang.org/x/crypto/cryptobyte
+#12 10.37 crypto/x509/pkix
+#12 10.38 crypto/ecdsa
+#12 10.38 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/pbutil
+#12 10.38 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/fileutil
+#12 10.38 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/netutil
+#12 10.38 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/logutil
+#12 10.46 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/ioutil
+#12 10.47 github.com/coreos/etcd/cmd/vendor/github.com/spf13/cobra
+#12 10.47 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/flags
+#12 10.48 go/format
+#12 10.48 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/mvcc/mvccpb
+#12 10.48 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/auth/authpb
+#12 10.48 github.com/coreos/etcd/cmd/vendor/github.com/golang/protobuf/jsonpb
+#12 10.48 github.com/coreos/etcd/cmd/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime/internal
+#12 10.48 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/raft/raftpb
+#12 10.48 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/snap/snappb
+#12 10.48 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/client_model/go
+#12 10.49 github.com/coreos/etcd/cmd/vendor/github.com/matttproud/golang_protobuf_extensions/pbutil
+#12 10.49 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/wal/walpb
+#12 10.50 crypto/x509
+#12 10.56 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/raft
+#12 10.62 github.com/coreos/etcd/cmd/vendor/github.com/dgrijalva/jwt-go
+#12 10.63 crypto/tls
+#12 10.66 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/stats
+#12 10.84 net/http/httptrace
+#12 10.84 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/credentials
+#12 10.84 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/tlsutil
+#12 10.86 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/peer
+#12 10.86 net/http
+#12 11.24 net/rpc
+#12 11.24 expvar
+#12 11.24 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/trace
+#12 11.24 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/transport
+#12 11.24 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/common/expfmt
+#12 11.24 github.com/coreos/etcd/cmd/vendor/golang.org/x/net/http2
+#12 11.24 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/error
+#12 11.24 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/api/v2http/httptypes
+#12 11.24 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/pkg/httputil
+#12 11.24 github.com/coreos/etcd/cmd/vendor/github.com/xiang90/probing
+#12 11.31 github.com/coreos/etcd/cmd/vendor/github.com/ugorji/go/codec
+#12 11.32 github.com/coreos/etcd/cmd/vendor/github.com/prometheus/client_golang/prometheus
+#12 11.45 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/snap
+#12 11.45 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/mvcc/backend
+#12 11.45 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/wal
+#12 11.45 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/store
+#12 11.48 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/rafthttp
+#12 11.49 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc/transport
+#12 11.53 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/membership
+#12 11.58 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/api
+#12 11.61 github.com/coreos/etcd/cmd/vendor/google.golang.org/grpc
+#12 11.70 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/api/v3rpc/rpctypes
+#12 11.70 github.com/coreos/etcd/cmd/vendor/github.com/grpc-ecosystem/grpc-gateway/runtime
+#12 11.76 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver/etcdserverpb
+#12 12.17 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/alarm
+#12 12.17 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/lease/leasepb
+#12 12.17 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/auth
+#12 12.17 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/clientv3
+#12 12.20 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/lease
+#12 12.22 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/lease/leasehttp
+#12 12.22 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/mvcc
+#12 12.31 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/compactor
+#12 12.32 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/clientv3/mirror
+#12 12.32 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/clientv3/concurrency
+#12 12.50 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/client
+#12 12.59 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/discovery
+#12 12.59 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdctl/ctlv2/command
+#12 12.62 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdserver
+#12 12.66 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdctl/ctlv2
+#12 12.79 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdctl/ctlv3/command
+#12 12.92 github.com/coreos/etcd/cmd/vendor/github.com/coreos/etcd/etcdctl/ctlv3
+#12 12.94 github.com/coreos/etcd/cmd/etcdctl
+#12 13.86 Running unit tests...
+#12 DONE 16.6s
+
+#13 [9/9] WORKDIR /go/src/github.com/coreos/etcd/./auth
+#13 DONE 0.0s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 3.7s done
+#14 exporting manifest sha256:b61c4134e51bba9aef5393ccf507c6975a3e9f8e7842fc7bdbe75ef293d570ff 0.0s done
+#14 exporting config sha256:fd0553580c0c15aeaf92e7142c9836bf957209c1abe633450ae256b3b5eecbf4 done
+#14 exporting attestation manifest sha256:007b6b897084a5b3bc2bb86be3e5e024c22e5fae3de08bea029a7aa67402b46b 0.0s done
+#14 exporting manifest list sha256:b51cb62a901bbf0d386b3ae2197d3a67b5e587b587a3ba035cc2a6212bb0164f done
+#14 naming to docker.io/library/etcd7492-bug:latest done
+#14 unpacking to docker.io/library/etcd7492-bug:latest
+#14 unpacking to docker.io/library/etcd7492-bug:latest 2.0s done
+#14 DONE 5.7s
+EXIT:0

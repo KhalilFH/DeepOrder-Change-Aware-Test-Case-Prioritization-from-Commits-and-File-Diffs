@@ -192,3 +192,129 @@ Task 5 row: `task5_start_utc = 2026-09-19T09:59:44.271208900Z`; `task5_end_utc =
 
 - Human time for the etcd-7492 Task 5 pass is not recorded; only agent/tool wall-clock (`≈0.1918 h`) is EXACT.
 - All A7 items remain unresolved as stated there; this addendum adds no resolution to them.
+
+---
+
+# Addendum v4 — 2026-09-19 (append-only; entries above, including Addenda v2 and v3, are historical and unchanged)
+
+- Addendum identifier: `ci_policy_sensitivity_resource_ledger_2026-09-19_v4`
+- Scope: Task C resumption (C2) for a non-etcd primary candidate — metadata acquisition only; its accounting; the roster follow-up for the new card C-03; day-10 gate status. Full record: `task_c2_candidate_acquisition.md` (SHA-256 `c962b47f6e079a3345299c625993b294dc1620c74eb2e8dccd86b09faffcef7c`).
+- Accounting rule unchanged: agent/tool elapsed time is not human hours; human effort is `UNKNOWN` wherever unmeasured.
+- Nothing in A1–A10 is rewritten. A4-addendum-1 remains the authoritative etcd-7492 row; this addendum adds a row for grpc-go-1859 and per-ID screening dispositions for entries Task C left `NOT RECORDED`.
+
+## A11. Task C2 pass — accounting
+
+| Item | Value | Evidence basis |
+|---|---|---|
+| `taskc2_start_utc` | `2026-09-19T18:24:10.611376400Z` | recorded at the first acquisition action (pinned GoBench clone into scratch); not backdated |
+| `taskc2_end_utc` (screening stop) | `2026-09-19T18:34:12.708308200Z` | recorded when screening stopped at the first defensible non-etcd candidate; record-writing followed and is provenance work |
+| Screening wall clock | **EXACT**, `602.097 s` agent/tool elapsed | timestamps above |
+| Human metadata effort | **UNKNOWN** | not measured |
+| Restoration / qualification (human, vCPU-h) | **EXACT, zero** | nothing built or executed |
+| Operational day | 2 (window `2026-09-18T23:02:26Z`–`2026-09-19T23:02:26Z`) | A1 clock start |
+| Cumulative Q0 restoration/qualification vCPU-h | unchanged, **≈0.708 h** of 20 / 40 | A8 |
+| Stop triggered | none by cap; screening stopped by the researcher's stated per-pass stop rule (first defensible non-etcd `PRIMARY_METADATA_READY`), which is not a pre-registered gate | `task_c2_candidate_acquisition.md`, "Scope and stop" |
+
+## A4-addendum-2 — roster follow-up (2026-09-19; A4 and A4-addendum-1 are not edited in place)
+
+| Entry | Label as of this addendum | Tier | Note |
+|---|---|---|---:|
+| grpc-go-1859 | **`PRIMARY_METADATA_READY`** (historical pair with identical test backport, pending Task 5 blob check: `V_bad` = `6c48c7f5…` + test addition; `V_ok` = `484b3ebb…`) | 4 | new card C-03; first defensible non-etcd primary candidate in the tier → project → numeric-ID order; carries a pre-declared counterpart-validity caveat (post-merge Travis hang of the fixed test, issue #1850 comment of 2018-02-14) with a binding `V_ok` adjudication rule |
+
+Per-ID screening dispositions recorded (not carded, no roster slot consumed): cockroach_1055, grpc_649, grpc_795, grpc_1275, grpc_1424 → `SCREENED_DETERMINISTIC_LEAD` (stable-control leads by source reasoning); cockroach_1462, 30452, 30479, 36367 → `SCREENED_TEST_ONLY_FIX`; cockroach_17766, 24808, 25456, 35073, 35931 → `SCREENED_RESTORATION_COST` (C-deps build judged outside the ≤4 vCPU-h per-candidate cap — a judgment, not a measurement); etcd_6708, 7443, 10492 → `SCREENED_INELIGIBLE_PROJECT_CAP`; grpc_2391 onward → `NOT_SCREENED`.
+
+Roster after this addendum: **9 of 12 primary entries used (3 remain); 0 of 2 nuisance/control slots used.** Per-project: etcd 2/2, grpc-go 1/2, commons-pool 2/2, commons-dbcp 2/2, log4j 2/2.
+
+## A12. Gate status after this addendum
+
+- **Day-7 gate:** already MET (A9); unchanged.
+- **Day-10 gate** (four qualified episodes across ≥2 projects by `2026-09-27T23:02:26Z`): **NOT MET.** Two `Q0_QUALIFIED` (both etcd) + one `PRIMARY_METADATA_READY` (grpc-go). Reaching it now requires a Task 5 restoration/qualification of C-03 that passes **and** one more qualified episode (grpc-go's remaining primary slot or another project), inside the remaining source, candidate, human-hour, compute and operational-day limits.
+- No Task 5 is authorized by this addendum. A Task 5 for C-03 is a separate budgeted decision (≤2 human restoration hours, ≤4 allocated vCPU-h, within the 20 / 40 vCPU-h ceilings) and must honour the card's pre-declared blob checks, timing run, signatures and `V_ok` rule.
+
+## A13. Unresolved accounting uncertainty (carried forward, additive to A7 and A10)
+
+- Human time for the C2 pass is not recorded.
+- The resolved commits of GoReal's unpinned `go get -d` dependencies for grpc-go-1859 are not yet known; they must be recorded at Task 5 image build or the environment is not reproducible from the durable record.
+
+---
+
+# Addendum v5 — 2026-09-22 (append-only; entries above, including Addenda v2–v4, are historical and unchanged)
+
+- Addendum identifier: `ci_policy_sensitivity_resource_ledger_2026-09-22_v5`
+- Scope: Task 5 restoration and Q0 qualification attempt for card C-03 (grpc-go-1859), its accounting, the roster follow-up, and day-10 gate status. Full record: `task5_grpc1859_restoration.md` (SHA-256 `56c3ade0675621605a1f0c9e08f2f2efcbd620cd41d97f770d473d9c92970fa3`).
+- Accounting rule unchanged. Nothing in A1–A13 is rewritten.
+
+## A14. Task 5 pass — grpc-go-1859
+
+| Item | Value | Evidence basis |
+|---|---|---|
+| `task5_start_utc` | `2026-09-22T17:44:33.746614400Z` | recorded at start, not backdated |
+| `task5_end_utc` | `2026-09-22T18:00:14.143628200Z` | recorded at end |
+| Operational day | 5 | A1 clock start `2026-09-17T23:02:26Z` |
+| Counterpart type | **historical pair with identical test backport** — the pre-declared fallback to a controlled reversal was **not** needed | Step 1 blob check |
+| Blob-equivalence check | **PASS** — reconstructed `V_bad` equals the historical parent `6c48c7f5…` byte-for-byte on both transport files (`717e4192…`, `5233d6f3…`); test file identical in both images (`6a583182…`); verified again inside both built images | `task5_grpc1859_restoration.md` Step 1 |
+| Build deviations disclosed | two: (1) dropped an unused `apt-get install vim python3` step from `fix.Dockerfile`; (2) **forced** replacement of GoReal's unpinned `go get -d` with identical pinned 2018-dated clones in both images (master heads fail on Go 1.13 with `package embed`), plus `golang.org/x/text` added as a required transitive dep | Step 2 |
+| Dependency reproducibility | **RESOLVED** — resolved commits recorded inside both images at `/go/dep_versions.txt` and verified identical; closes the A13 gap for this candidate | Step 2 |
+| Evaluator-signature correction | **none needed** — all exploratory failures matched pre-declared signature (a) verbatim (contrast: etcd-5509 needed two corrections) | Step 3 |
+| Notable environment finding | the subject's committed test certificates are **expired** (`ca.pem` to 2024-11-08, `server1.pem` to 2025-11-01); all four TLS environments block in `Dial`. Identical on both versions; `HARNESS_INVALID`, never a focal witness. The pre-declared stack-level signature correctly refused to score these as defect witnesses | Step 3 |
+| Frozen protocol deviation | `-only_env tcp-clear-v1-balancer` (upstream flag, test source unmodified, identical on both versions), chosen as the **first** clear-text entry of the upstream `allEnv` order — **not** the higher-rate `tcp-clear` — to avoid selecting on observed failure rate | Step 4 |
+| `V_bad` result | 20 attempts: **19 `PASS`, 1 `FOCAL_DEFECT_WITNESS_A`**, 0 unresolved/other | Step 5 |
+| `V_ok` result | 20 attempts: **20 `PASS`**, 0 focal witnesses; the card's counterpart-validity caveat did not reproduce | Step 5 |
+| Q0 intermittency criterion | **NOT MET** — 1 focal failure against the required ≥2 (passes were abundant) | Step 5 |
+| **Q0 verdict** | **`Q0_NOT_QUALIFIED`** (primary track). A threshold failure, not a demonstration of determinism: the `V_bad` stream is genuinely mixed at an estimated 5–10 % rate | Step 5 |
+| Rescue attempts | **none** — no attempts beyond the pre-declared 20, no post-hoc environment switch, no relabelling; enumerated in "What was deliberately not done" | Step 5 |
+| Task 5 wall clock | **EXACT**, `940.4 s` ≈ `0.2612` allocated vCPU-h (counted attempts: `60.8 s` ≈ `0.0169` h) | timestamps |
+| Human restoration hours | **UNKNOWN**, to be supplied by the researcher | A6/A8 convention |
+| Per-candidate cap status | ≤4 allocated vCPU-h **not reached** (6.5 % used); ≤2 human-hour cap **provisional** | above |
+| Cumulative Q0 restoration/qualification vCPU-h | **≈0.969 h** of the 20 h Q0 and 40 h first-ten-day ceilings; neither approached | 0.708 (A8) + 0.261 |
+| Stop triggered by a cap | none | — |
+
+## A4-addendum-3 — roster follow-up for grpc-go-1859 (2026-09-22; earlier roster tables not edited in place)
+
+| Entry | Label as of this addendum | Tier | Note |
+|---|---|---:|---|
+| grpc-go-1859 | **`Q0_NOT_QUALIFIED`** (historical pair with identical test backport, blob check passed; 1/20 `FOCAL_DEFECT_WITNESS_A` and 19/20 `PASS` on `V_bad`; 20/20 `PASS` on `V_ok`) | 4 | supersedes the `PRIMARY_METADATA_READY` label recorded in A4-addendum-2 and in card C-03; those records are not rewritten. Retains value as a named non-primary demonstration case (option 3 in the Task 5 record): the mechanism reproduced and the counterpart is the roster's cleanest historical pair |
+
+Roster: **9 of 12 primary entries used (3 remain); 0 of 2 nuisance/control slots used.** Qualified episodes remain **two, both etcd**. Zero `PRIMARY_METADATA_READY` entries remain.
+
+## A15. Gate status after this addendum
+
+- **Day-7 gate:** MET since operational day 2 (A9); unchanged. **E1 remains executable** on etcd-5509 + etcd-7492.
+- **Day-10 gate** (four qualified episodes across ≥2 projects by `2026-09-27T23:02:26Z`): **NOT MET, and now materially at risk.** It would require **two** further qualified non-etcd episodes within five days, from a roster with no metadata-ready candidate remaining and a screening prior that most surviving GoReal entries are deterministic.
+- **G1b applies if the gate is missed:** "No E2. Finish small feasibility report and trigger F1 where possible." This addendum authorises no cap increase, no broadened defect definition, and no re-run of C-03 under a different environment.
+- No Task C resumption and no Task 5 is authorised by this addendum.
+
+## A16. Unresolved accounting uncertainty (carried forward, additive to A7, A10, A13)
+
+- Human time for this pass is not recorded.
+- A13's dependency-reproducibility gap is **closed for grpc-go-1859 only**; it remains open for any future GoReal candidate.
+- The `V_bad` failure-rate estimate (1/20 counted, 3/20 exploratory across two environments) is imprecise and host-specific; no population rate is claimed.
+
+---
+
+# Addendum v6 — 2026-09-22 (append-only; entries above, including Addenda v2–v5, are historical and unchanged)
+
+- Addendum identifier: `ci_policy_sensitivity_resource_ledger_2026-09-22_v6`
+- Scope: durable preservation of the execution artifacts for all three Task 5 passes, and the reproducibility defect that made this necessary. No experiment, restoration, qualification or gate decision is changed by this addendum.
+
+## A17. Task 5 execution artifacts are now in the repository
+
+`research_runs/ci_sensitivity_2026_09/task5_artifacts/` now holds the build recipes, frozen protocol, runner scripts, per-attempt ledgers and raw attempt logs for **etcd-5509, etcd-7492 and grpc-go-1859** (206 files, ≈1.4 MB, listed with sizes and SHA-256 prefixes in `MANIFEST.csv`). See that directory's `README.md`.
+
+**The defect being corrected.** All three Task 5 records state that their results lived in an ephemeral scratch workspace and were "not committed". The durable record therefore carried the summary tables for three qualification verdicts — including the two episodes that satisfy the day-7 gate and are E1's intended subjects — with no preserved evidence an independent reader could check them against. Session-scoped temporary directories are wiped without warning.
+
+This is the same class of defect already recorded in A7 (Task C's BugSwarm snapshot identity and IDoFT commit "not recorded; those screenings are not reproducible from the durable record") and A13 (unpinned dependency versions). Those entries named the problem for *metadata* passes. The identical problem was present for every *execution* pass and was not named until now.
+
+**Recovery was luck, not design.** The two earlier sessions' temporary directories happened to survive. Had they been cleaned, the etcd evidence would have been unrecoverable and both qualified episodes would have rested on their summary tables alone.
+
+**Scope note on `AGENTS.md`.** "Large datasets, generated artifacts, credentials, and local agent/runtime state stay out of Git" correctly excludes the Docker images (1.73 GB each) and the GoBench clones, which are not preserved. It does not cover build recipes, frozen protocols, runner scripts or per-attempt ledgers; treating those as scratch was a misreading.
+
+## A18. Standing rule adopted
+
+Every future execution pass writes its recipes, frozen protocol, runner and per-attempt ledger **into the repository as it runs**, not afterwards from scratch. Raw logs follow when their total stays in the low megabytes. This applies to E1, E2, E3 and F1 as well as to any further Q0 restoration.
+
+## A19. What remains not durably recorded
+
+- The Docker images. Rebuildable from the preserved recipes, but not bit-reproducible: the `golang:1.13` base tag and each subject's `git clone` resolve at build time. For grpc-go-1859 the dependency commits are pinned and were captured inside the images at `/go/dep_versions.txt`; for the two etcd passes the dependency state was whatever their recipes resolved at build time and was never recorded. **A13's dependency gap therefore remains open for etcd-5509 and etcd-7492**, and cannot now be closed retrospectively.
+- Human hours for every pass, which remain `UNKNOWN` per this ledger's accounting rule.
+- The artifact salvage itself consumed no measured compute and is provenance work; human effort `UNKNOWN`.

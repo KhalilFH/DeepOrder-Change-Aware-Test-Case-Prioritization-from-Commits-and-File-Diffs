@@ -1,0 +1,4 @@
+=== RUN   TestClientDoesntDeadlockWhileWritingErrornousLargeMessages
+--- PASS: TestClientDoesntDeadlockWhileWritingErrornousLargeMessages (0.16s)
+    end2end_test.go:520: Running test in tcp-clear-v1-balancer environment...
+PASS

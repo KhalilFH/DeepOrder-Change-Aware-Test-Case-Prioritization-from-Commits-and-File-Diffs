@@ -1,0 +1,5 @@
+github.com/golang/glog|https://github.com/golang/glog|23def4e6c14b4da8ac2ed8007337bc5eb5007998
+github.com/golang/protobuf|https://github.com/golang/protobuf|e6af52bec88380a7a18ecc0977fa4312370a970b
+golang.org/x/net|https://github.com/golang/net|f5dfe339be1d06f81b22525fe34671ee7d2c8904
+google.golang.org/genproto|https://github.com/googleapis/go-genproto|2b5a72b8730b0b16380010cfe5286c42108d88e7
+golang.org/x/text|https://github.com/golang/text|4e4a3210bb54bb31f6ab2cdca2edcc0b50c420c1

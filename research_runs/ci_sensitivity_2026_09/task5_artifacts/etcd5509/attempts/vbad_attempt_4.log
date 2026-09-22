@@ -1,0 +1,253 @@
+=== RUN   TestKVGetErrConnClosed
+2026-09-19 10:13:06.692721 I | integration: launching node2436733744556555898 (unix://localhost:node2436733744556555898.sock)
+2026-09-19 10:13:06.695840 I | etcdserver: name = node2436733744556555898
+2026-09-19 10:13:06.695863 I | etcdserver: data dir = /tmp/etcd826534967
+2026-09-19 10:13:06.695867 I | etcdserver: member dir = /tmp/etcd826534967/member
+2026-09-19 10:13:06.695870 I | etcdserver: heartbeat = 10ms
+2026-09-19 10:13:06.695872 I | etcdserver: election = 100ms
+2026-09-19 10:13:06.695873 I | etcdserver: snapshot count = 0
+2026-09-19 10:13:06.695878 I | etcdserver: advertise client URLs = http://127.0.0.1:21002
+2026-09-19 10:13:06.695881 I | etcdserver: initial advertise peer URLs = http://127.0.0.1:21001
+2026-09-19 10:13:06.695890 I | etcdserver: initial cluster = node2436733744556555898=http://127.0.0.1:21001
+2026-09-19 10:13:06.697746 I | etcdserver: starting member 577295b580b977df in cluster 7c13d0269e447344
+2026-09-19 10:13:06.697795 I | raft: 577295b580b977df became follower at term 0
+2026-09-19 10:13:06.697803 I | raft: newRaft 577295b580b977df [peers: [], term: 0, commit: 0, applied: 0, lastindex: 0, lastterm: 0]
+2026-09-19 10:13:06.697805 I | raft: 577295b580b977df became follower at term 1
+2026-09-19 10:13:06.705154 I | etcdserver: set snapshot count to default 10000
+2026-09-19 10:13:06.705179 I | etcdserver: starting server... [version: 3.0.0-beta.0+git, cluster version: to_be_decided]
+2026-09-19 10:13:06.707179 I | integration: launched node2436733744556555898 (unix://localhost:node2436733744556555898.sock)
+2026-09-19 10:13:06.707329 I | membership: added member 577295b580b977df [http://127.0.0.1:21001] to cluster 7c13d0269e447344
+2026-09-19 10:13:06.728264 I | raft: 577295b580b977df is starting a new election at term 1
+2026-09-19 10:13:06.728285 I | raft: 577295b580b977df became candidate at term 2
+2026-09-19 10:13:06.728288 I | raft: 577295b580b977df received vote from 577295b580b977df at term 2
+2026-09-19 10:13:06.728295 I | raft: 577295b580b977df became leader at term 2
+2026-09-19 10:13:06.728317 I | raft: raft.node: 577295b580b977df elected leader 577295b580b977df at term 2
+2026-09-19 10:13:06.728540 I | etcdserver: published {Name:node2436733744556555898 ClientURLs:[http://127.0.0.1:21002]} to cluster 7c13d0269e447344
+2026-09-19 10:13:06.728603 I | etcdserver: setting up the initial cluster version to 3.0
+2026-09-19 10:13:06.729137 N | membership: set the initial cluster version to 3.0
+2026-09-19 10:13:07.207391 I | api: enabled capabilities for version 3.0.0
+panic: test timed out after 45s
+
+goroutine 190 [running]:
+testing.(*M).startAlarm.func1()
+	/usr/local/go/src/testing/testing.go:1240 +0xfc
+created by time.goFunc
+	/usr/local/go/src/time/sleep.go:172 +0x44
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0xc4202d20f0, 0xce7d7b, 0x16, 0xd0e238, 0x488601)
+	/usr/local/go/src/testing/testing.go:825 +0x301
+testing.runTests.func1(0xc4202d2000)
+	/usr/local/go/src/testing/testing.go:1063 +0x64
+testing.tRunner(0xc4202d2000, 0xc4202b5dd0)
+	/usr/local/go/src/testing/testing.go:777 +0xd0
+testing.runTests(0xc42016d640, 0x111daa0, 0x2d, 0x2d, 0xbf47e0)
+	/usr/local/go/src/testing/testing.go:1061 +0x2c4
+testing.(*M).Run(0xc4200ce800, 0x0)
+	/usr/local/go/src/testing/testing.go:978 +0x171
+github.com/coreos/etcd/clientv3/integration.TestMain(0xc4200ce800)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/clientv3/integration/main_test.go:15 +0x2b
+main.main()
+	_testmain.go:128 +0x151
+
+goroutine 14 [chan receive]:
+github.com/coreos/etcd/pkg/logutil.(*MergeLogger).outputLoop(0xc4202847e0)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/pkg/logutil/merge_logger.go:174 +0x40d
+created by github.com/coreos/etcd/pkg/logutil.NewMergeLogger
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/pkg/logutil/merge_logger.go:92 +0x85
+
+goroutine 87 [select]:
+github.com/coreos/etcd/etcdserver/api.runCapabilityLoop(0xc42045c000)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/api/capability.go:78 +0x12c
+github.com/coreos/etcd/etcdserver/api.RunCapabilityLoop.func1()
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/api/capability.go:60 +0x2a
+sync.(*Once).Do(0x1147818, 0xc4204f00a0)
+	/usr/local/go/src/sync/once.go:44 +0xbe
+created by github.com/coreos/etcd/etcdserver/api.RunCapabilityLoop
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/api/capability.go:60 +0x80
+
+goroutine 52 [chan receive]:
+github.com/coreos/etcd/pkg/logutil.(*MergeLogger).outputLoop(0xc420284920)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/pkg/logutil/merge_logger.go:174 +0x40d
+created by github.com/coreos/etcd/pkg/logutil.NewMergeLogger
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/pkg/logutil/merge_logger.go:92 +0x85
+
+goroutine 66 [chan receive]:
+github.com/coreos/etcd/clientv3.(*Client).Close(0xc420120dc0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/clientv3/client.go:117 +0x128
+github.com/coreos/etcd/clientv3/integration.TestKVGetErrConnClosed(0xc4202d20f0)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/clientv3/integration/kv_test.go:300 +0x16d
+testing.tRunner(0xc4202d20f0, 0xd0e238)
+	/usr/local/go/src/testing/testing.go:777 +0xd0
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:824 +0x2e0
+
+goroutine 70 [semacquire]:
+sync.runtime_Semacquire(0xc420120e98)
+	/usr/local/go/src/runtime/sema.go:56 +0x39
+sync.(*RWMutex).Lock(0xc420120e90)
+	/usr/local/go/src/sync/rwmutex.go:98 +0x6e
+github.com/coreos/etcd/clientv3.(*Client).connMonitor.func1(0xc420120dc0, 0xc4202f5f28)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/clientv3/client.go:344 +0x8a
+github.com/coreos/etcd/clientv3.(*Client).connMonitor(0xc420120dc0)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/clientv3/client.go:355 +0x396
+created by github.com/coreos/etcd/clientv3.newClient
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/clientv3/client.go:259 +0x34e
+
+goroutine 74 [select]:
+github.com/coreos/etcd/mvcc/backend.(*backend).run(0xc4200d9140)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/mvcc/backend/backend.go:184 +0x12f
+created by github.com/coreos/etcd/mvcc/backend.newBackend
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/mvcc/backend/backend.go:119 +0x241
+
+goroutine 75 [select]:
+github.com/coreos/etcd/wal.(*filePipeline).run(0xc4200cddc0)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/wal/file_pipeline.go:89 +0x139
+created by github.com/coreos/etcd/wal.newFilePipeline
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/wal/file_pipeline.go:47 +0x11a
+
+goroutine 76 [select]:
+github.com/coreos/etcd/raft.(*node).run(0xc4200bfb80, 0xc420300ea0)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/raft/node.go:300 +0x5bc
+created by github.com/coreos/etcd/raft.StartNode
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/raft/node.go:203 +0x5f2
+
+goroutine 77 [select]:
+github.com/coreos/etcd/lease.(*lessor).runLoop(0xc4200bfcc0)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/lease/lessor.go:360 +0x164
+created by github.com/coreos/etcd/lease.newLessor
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/lease/lessor.go:163 +0x13f
+
+goroutine 78 [select]:
+github.com/coreos/etcd/pkg/schedule.(*fifo).run(0xc4200d97a0)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/pkg/schedule/schedule.go:146 +0x242
+created by github.com/coreos/etcd/pkg/schedule.NewFIFOScheduler
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/pkg/schedule/schedule.go:71 +0x156
+
+goroutine 79 [select]:
+github.com/coreos/etcd/mvcc.(*watchableStore).syncWatchersLoop(0xc4202d4510)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/mvcc/watchable_store.go:280 +0x1d6
+created by github.com/coreos/etcd/mvcc.newWatchableStore
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/mvcc/watchable_store.go:84 +0x20e
+
+goroutine 80 [select]:
+github.com/coreos/etcd/mvcc.(*watchableStore).syncVictimsLoop(0xc4202d4510)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/mvcc/watchable_store.go:306 +0x18c
+created by github.com/coreos/etcd/mvcc.newWatchableStore
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/mvcc/watchable_store.go:85 +0x230
+
+goroutine 81 [select]:
+github.com/coreos/etcd/etcdserver.(*EtcdServer).run(0xc42045c000)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/server.go:575 +0x452
+created by github.com/coreos/etcd/etcdserver.(*EtcdServer).start
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/server.go:471 +0x271
+
+goroutine 131 [select]:
+github.com/coreos/etcd/etcdserver.(*EtcdServer).purgeFile(0xc42045c000)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/server.go:482 +0x166
+created by github.com/coreos/etcd/etcdserver.(*EtcdServer).Start
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/server.go:448 +0x8f
+
+goroutine 132 [select]:
+github.com/coreos/etcd/etcdserver.monitorFileDescriptor(0xc4200b3500)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/metrics.go:95 +0x17e
+created by github.com/coreos/etcd/etcdserver.(*EtcdServer).Start
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/server.go:449 +0xb8
+
+goroutine 133 [select]:
+github.com/coreos/etcd/etcdserver.(*EtcdServer).monitorVersions(0xc42045c000)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/server.go:1198 +0x159
+created by github.com/coreos/etcd/etcdserver.(*EtcdServer).Start
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/server.go:450 +0xda
+
+goroutine 134 [IO wait]:
+internal/poll.runtime_pollWait(0x724728bb4f00, 0x72, 0x0)
+	/usr/local/go/src/runtime/netpoll.go:173 +0x57
+internal/poll.(*pollDesc).wait(0xc4200ce898, 0x72, 0xc42033c100, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:85 +0x9b
+internal/poll.(*pollDesc).waitRead(0xc4200ce898, 0xffffffffffffff00, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:90 +0x3d
+internal/poll.(*FD).Accept(0xc4200ce880, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:372 +0x1a8
+net.(*netFD).accept(0xc4200ce880, 0x412358, 0x30, 0xc40180)
+	/usr/local/go/src/net/fd_unix.go:238 +0x42
+net.(*TCPListener).accept(0xc4200ca250, 0x51c4ba, 0xc40180, 0xc4201a6360)
+	/usr/local/go/src/net/tcpsock_posix.go:136 +0x2e
+net.(*TCPListener).Accept(0xc4200ca250, 0xc4200c8060, 0xba20e0, 0x11131e0, 0xcbd3e0)
+	/usr/local/go/src/net/tcpsock.go:259 +0x49
+net/http.(*Server).Serve(0xc4203012b0, 0xd6e120, 0xc4200ca250, 0x0, 0x0)
+	/usr/local/go/src/net/http/server.go:2773 +0x1a5
+net/http/httptest.(*Server).goServe.func1(0xc420263810)
+	/usr/local/go/src/net/http/httptest/server.go:280 +0x6d
+created by net/http/httptest.(*Server).goServe
+	/usr/local/go/src/net/http/httptest/server.go:278 +0x5c
+
+goroutine 102 [select]:
+github.com/coreos/etcd/etcdserver.(*raftNode).start.func1(0xc42045c018)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/raft.go:151 +0x220
+created by github.com/coreos/etcd/etcdserver.(*raftNode).start
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/raft.go:144 +0x195
+
+goroutine 103 [select]:
+github.com/coreos/etcd/pkg/schedule.(*fifo).run(0xc420332600)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/pkg/schedule/schedule.go:146 +0x242
+created by github.com/coreos/etcd/pkg/schedule.NewFIFOScheduler
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/pkg/schedule/schedule.go:71 +0x156
+
+goroutine 88 [IO wait]:
+internal/poll.runtime_pollWait(0x724728bb4e30, 0x72, 0x0)
+	/usr/local/go/src/runtime/netpoll.go:173 +0x57
+internal/poll.(*pollDesc).wait(0xc4200cea18, 0x72, 0xc4201b8100, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:85 +0x9b
+internal/poll.(*pollDesc).waitRead(0xc4200cea18, 0xffffffffffffff00, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:90 +0x3d
+internal/poll.(*FD).Accept(0xc4200cea00, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:372 +0x1a8
+net.(*netFD).accept(0xc4200cea00, 0x461737, 0xc420540120, 0xb99200)
+	/usr/local/go/src/net/fd_unix.go:238 +0x42
+net.(*TCPListener).accept(0xc4200ca258, 0x457ca0, 0xc4202f7ef0, 0xc4202f7ef8)
+	/usr/local/go/src/net/tcpsock_posix.go:136 +0x2e
+net.(*TCPListener).Accept(0xc4200ca258, 0xd10800, 0xc4205400a0, 0xd6f5a0, 0xc420478240)
+	/usr/local/go/src/net/tcpsock.go:259 +0x49
+net/http.(*Server).Serve(0xc4204ea0d0, 0xd6e120, 0xc4200ca258, 0x0, 0x0)
+	/usr/local/go/src/net/http/server.go:2773 +0x1a5
+net/http/httptest.(*Server).goServe.func1(0xc4204e8070)
+	/usr/local/go/src/net/http/httptest/server.go:280 +0x6d
+created by net/http/httptest.(*Server).goServe
+	/usr/local/go/src/net/http/httptest/server.go:278 +0x5c
+
+goroutine 89 [select]:
+github.com/coreos/etcd/etcdserver/api/v3rpc.monitorLeader.func1(0xc42045c000, 0xc4204f00e0)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/api/v3rpc/interceptor.go:147 +0x120
+created by github.com/coreos/etcd/etcdserver/api/v3rpc.monitorLeader
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/api/v3rpc/interceptor.go:142 +0x87
+
+goroutine 90 [semacquire]:
+sync.runtime_SemacquireMutex(0x114781c, 0x0)
+	/usr/local/go/src/runtime/sema.go:71 +0x3d
+sync.(*Mutex).Lock(0x1147818)
+	/usr/local/go/src/sync/mutex.go:134 +0x108
+sync.(*Once).Do(0x1147818, 0xc4204f0240)
+	/usr/local/go/src/sync/once.go:40 +0x44
+created by github.com/coreos/etcd/etcdserver/api.RunCapabilityLoop
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/etcdserver/api/capability.go:60 +0x80
+
+goroutine 91 [IO wait]:
+internal/poll.runtime_pollWait(0x724728bb4d60, 0x72, 0x0)
+	/usr/local/go/src/runtime/netpoll.go:173 +0x57
+internal/poll.(*pollDesc).wait(0xc4200cec98, 0x72, 0xc4201b8000, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:85 +0x9b
+internal/poll.(*pollDesc).waitRead(0xc4200cec98, 0xffffffffffffff00, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:90 +0x3d
+internal/poll.(*FD).Accept(0xc4200cec80, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:372 +0x1a8
+net.(*netFD).accept(0xc4200cec80, 0xc420342018, 0x0, 0x0)
+	/usr/local/go/src/net/fd_unix.go:238 +0x42
+net.(*UnixListener).accept(0xc4202429c0, 0x457ca0, 0xc420452f50, 0xc420452f58)
+	/usr/local/go/src/net/unixsock_posix.go:162 +0x32
+net.(*UnixListener).Accept(0xc4202429c0, 0xd103b8, 0xc4204c4090, 0xd736a0, 0xc420342018)
+	/usr/local/go/src/net/unixsock.go:253 +0x49
+google.golang.org/grpc.(*Server).Serve(0xc4204c4090, 0xd6e160, 0xc4202429c0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/gopath/src/google.golang.org/grpc/server.go:277 +0x161
+created by github.com/coreos/etcd/integration.(*member).Launch
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/integration/cluster.go:623 +0x8b9

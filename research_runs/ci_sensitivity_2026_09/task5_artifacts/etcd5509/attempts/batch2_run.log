@@ -1,0 +1,22 @@
+[vbad attempt 11] rc=2 elapsed=45.419s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 12] rc=2 elapsed=45.585s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 13] rc=2 elapsed=45.394s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 14] rc=2 elapsed=45.583s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 15] rc=2 elapsed=45.418s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 16] rc=2 elapsed=45.601s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 17] rc=2 elapsed=45.377s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 18] rc=2 elapsed=45.583s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 19] rc=2 elapsed=45.349s class=FOCAL_DEFECT_WITNESS_A
+[vbad attempt 20] rc=2 elapsed=45.565s class=FOCAL_DEFECT_WITNESS_A
+[vok attempt 11] rc=0 elapsed=0.722s class=PASS
+[vok attempt 12] rc=0 elapsed=0.711s class=PASS
+[vok attempt 13] rc=0 elapsed=0.671s class=PASS
+[vok attempt 14] rc=0 elapsed=0.595s class=PASS
+[vok attempt 15] rc=0 elapsed=0.692s class=PASS
+[vok attempt 16] rc=0 elapsed=0.677s class=PASS
+[vok attempt 17] rc=0 elapsed=0.588s class=PASS
+[vok attempt 18] rc=0 elapsed=0.713s class=PASS
+[vok attempt 19] rc=0 elapsed=0.665s class=PASS
+[vok attempt 20] rc=0 elapsed=0.618s class=PASS
+=== SECOND BATCH DONE ===
+SCRIPT_EXIT:0

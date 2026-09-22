@@ -1,0 +1,201 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from fix.Dockerfile
+#1 transferring dockerfile: 796B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.10
+#2 DONE 0.3s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/golang:1.10@sha256:6d5e79878a3e4f1b30b7aa4d24fb6ee6184e905a9b172fc72593935633be4c46
+#4 resolve docker.io/library/golang:1.10@sha256:6d5e79878a3e4f1b30b7aa4d24fb6ee6184e905a9b172fc72593935633be4c46 0.0s done
+#4 sha256:d3d9c96611f1f779cd0bf0d343ff910d5bc1aafb180b4e3aac7190db8269a829 126B / 126B 0.2s done
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 1.05MB / 102.19MB 3.5s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 3.15MB / 57.62MB 3.3s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 1.05MB / 50.06MB 3.3s
+#4 sha256:0a108aa2667933b852b8d003f97b344d014fcd7e06a0c0e6e04f2d6906738388 3.15MB / 4.34MB 3.2s
+#4 sha256:0a108aa2667933b852b8d003f97b344d014fcd7e06a0c0e6e04f2d6906738388 4.34MB / 4.34MB 3.3s done
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 0B / 10.78MB 0.2s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 1.05MB / 10.78MB 2.1s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 4.19MB / 50.06MB 5.9s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 6.29MB / 57.62MB 6.3s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 2.10MB / 10.78MB 3.2s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 3.15MB / 10.78MB 4.4s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 5.24MB / 102.19MB 8.6s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 4.19MB / 10.78MB 5.4s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 7.34MB / 50.06MB 9.3s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 9.44MB / 57.62MB 9.9s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 5.24MB / 10.78MB 6.9s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 6.29MB / 10.78MB 8.5s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 7.34MB / 10.78MB 9.4s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 9.44MB / 102.19MB 13.6s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 10.49MB / 50.06MB 13.6s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 12.58MB / 57.62MB 13.8s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 8.39MB / 10.78MB 10.6s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 9.44MB / 10.78MB 11.5s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 10.49MB / 10.78MB 12.4s
+#4 sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 10.78MB / 10.78MB 12.9s done
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 0B / 45.34MB 0.2s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 13.63MB / 50.06MB 16.9s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 15.73MB / 57.62MB 17.5s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 14.68MB / 102.19MB 18.7s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 16.78MB / 50.06MB 19.8s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 3.15MB / 45.34MB 4.8s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 18.87MB / 57.62MB 21.7s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 19.92MB / 50.06MB 23.2s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 18.87MB / 102.19MB 23.8s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 6.29MB / 45.34MB 8.6s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 22.02MB / 57.62MB 25.5s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 23.07MB / 50.06MB 27.6s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 23.07MB / 102.19MB 28.9s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 25.17MB / 57.62MB 28.9s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 9.44MB / 45.34MB 12.6s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 26.21MB / 50.06MB 31.2s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 12.58MB / 45.34MB 15.9s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 28.31MB / 57.62MB 32.5s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 28.31MB / 102.19MB 33.9s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 29.36MB / 50.06MB 34.9s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 15.73MB / 45.34MB 19.2s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 31.46MB / 57.62MB 36.0s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 32.51MB / 50.06MB 37.9s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 31.46MB / 102.19MB 39.0s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 18.87MB / 45.34MB 22.7s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 34.60MB / 57.62MB 39.1s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 35.65MB / 50.06MB 40.9s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 22.02MB / 45.34MB 26.5s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 36.70MB / 102.19MB 43.3s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 37.75MB / 57.62MB 43.1s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 38.80MB / 50.06MB 44.3s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 25.17MB / 45.34MB 30.0s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 40.89MB / 57.62MB 46.7s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 40.89MB / 102.19MB 48.4s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 41.94MB / 50.06MB 48.2s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 44.04MB / 57.62MB 49.1s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 28.31MB / 45.34MB 33.6s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 45.09MB / 50.06MB 51.8s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 31.46MB / 45.34MB 36.7s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 46.14MB / 102.19MB 53.3s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 47.19MB / 57.62MB 53.2s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 48.23MB / 50.06MB 55.4s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 50.33MB / 57.62MB 56.6s
+#4 sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 50.06MB / 50.06MB 57.1s done
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 34.60MB / 45.34MB 40.6s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 51.38MB / 102.19MB 58.1s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 53.48MB / 57.62MB 59.6s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 37.75MB / 45.34MB 43.5s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 40.89MB / 45.34MB 45.6s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 56.62MB / 102.19MB 62.5s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 56.62MB / 57.62MB 62.5s
+#4 sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 57.62MB / 57.62MB 63.3s done
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 44.04MB / 45.34MB 48.6s
+#4 sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 45.34MB / 45.34MB 49.1s done
+#4 extracting sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 61.87MB / 102.19MB 65.8s
+#4 extracting sha256:741437d97401b83849ccbfe4ed8964049b752081647d7f1ea8aea29d989f8968 1.3s done
+#4 extracting sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2
+#4 extracting sha256:34d8874714d74b636739b8a52204650a664fca8ff9741dd66810f30196f103e2 0.3s done
+#4 extracting sha256:0a108aa2667933b852b8d003f97b344d014fcd7e06a0c0e6e04f2d6906738388 0.1s done
+#4 extracting sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 67.11MB / 102.19MB 67.4s
+#4 extracting sha256:7f0334c36886bd4619e8d05ccf68003e53b0b6098b2166a216bd009dba678ed8 1.4s done
+#4 extracting sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 72.35MB / 102.19MB 68.8s
+#4 extracting sha256:d35724ed4672cc1ac62dca685634f02297e306fd1920dd76996799c00b728cbb 0.9s done
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 77.59MB / 102.19MB 70.1s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 82.84MB / 102.19MB 71.3s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 88.08MB / 102.19MB 72.5s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 93.32MB / 102.19MB 74.0s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 98.57MB / 102.19MB 75.3s
+#4 sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 102.19MB / 102.19MB 76.4s done
+#4 extracting sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874
+#4 extracting sha256:c0eaf021aeaf304faaa8b6cb5a967532e83d0c9af364ab091bb947943e31c874 2.5s done
+#4 DONE 79.0s
+
+#4 [1/9] FROM docker.io/library/golang:1.10@sha256:6d5e79878a3e4f1b30b7aa4d24fb6ee6184e905a9b172fc72593935633be4c46
+#4 extracting sha256:d3d9c96611f1f779cd0bf0d343ff910d5bc1aafb180b4e3aac7190db8269a829 0.0s done
+#4 DONE 79.0s
+
+#5 [2/9] RUN git clone https://github.com/etcd-io/etcd.git /go/src/github.com/coreos/etcd
+#5 0.211 Cloning into '/go/src/github.com/coreos/etcd'...
+#5 DONE 34.8s
+
+#6 [3/6] RUN apt-get update && 	apt-get install -y vim python3
+#6 0.463 Ign:1 http://deb.debian.org/debian stretch InRelease
+#6 0.481 Ign:2 http://security.debian.org/debian-security stretch/updates InRelease
+#6 0.518 Ign:3 http://security.debian.org/debian-security stretch/updates Release
+#6 0.537 Ign:4 http://deb.debian.org/debian stretch-updates InRelease
+#6 0.578 Ign:5 http://security.debian.org/debian-security stretch/updates/main amd64 Packages
+#6 0.584 Ign:6 http://deb.debian.org/debian stretch Release
+#6 0.637 Ign:7 http://security.debian.org/debian-security stretch/updates/main all Packages
+#6 0.658 Ign:8 http://deb.debian.org/debian stretch-updates Release
+#6 0.700 Ign:5 http://security.debian.org/debian-security stretch/updates/main amd64 Packages
+#6 0.730 Ign:9 http://deb.debian.org/debian stretch/main all Packages
+#6 0.763 Ign:7 http://security.debian.org/debian-security stretch/updates/main all Packages
+#6 0.788 Ign:10 http://deb.debian.org/debian stretch/main amd64 Packages
+#6 0.835 Ign:5 http://security.debian.org/debian-security stretch/updates/main amd64 Packages
+#6 0.846 Ign:11 http://deb.debian.org/debian stretch-updates/main all Packages
+#6 0.895 Ign:7 http://security.debian.org/debian-security stretch/updates/main all Packages
+#6 0.931 Ign:12 http://deb.debian.org/debian stretch-updates/main amd64 Packages
+#6 0.986 Ign:5 http://security.debian.org/debian-security stretch/updates/main amd64 Packages
+#6 0.996 Ign:9 http://deb.debian.org/debian stretch/main all Packages
+#6 1.060 Ign:7 http://security.debian.org/debian-security stretch/updates/main all Packages
+#6 1.066 Ign:10 http://deb.debian.org/debian stretch/main amd64 Packages
+#6 1.121 Ign:5 http://security.debian.org/debian-security stretch/updates/main amd64 Packages
+#6 1.140 Ign:11 http://deb.debian.org/debian stretch-updates/main all Packages
+#6 1.178 Ign:7 http://security.debian.org/debian-security stretch/updates/main all Packages
+#6 1.201 Ign:12 http://deb.debian.org/debian stretch-updates/main amd64 Packages
+#6 1.237 Err:5 http://security.debian.org/debian-security stretch/updates/main amd64 Packages
+#6 1.237   404  Not Found [IP: 151.101.130.132 80]
+#6 1.258 Ign:9 http://deb.debian.org/debian stretch/main all Packages
+#6 1.293 Ign:7 http://security.debian.org/debian-security stretch/updates/main all Packages
+#6 1.327 Ign:10 http://deb.debian.org/debian stretch/main amd64 Packages
+#6 1.388 Ign:11 http://deb.debian.org/debian stretch-updates/main all Packages
+#6 1.467 Ign:12 http://deb.debian.org/debian stretch-updates/main amd64 Packages
+#6 1.523 Ign:9 http://deb.debian.org/debian stretch/main all Packages
+#6 1.581 Ign:10 http://deb.debian.org/debian stretch/main amd64 Packages
+#6 1.696 Ign:11 http://deb.debian.org/debian stretch-updates/main all Packages
+#6 1.765 Ign:12 http://deb.debian.org/debian stretch-updates/main amd64 Packages
+#6 1.821 Ign:9 http://deb.debian.org/debian stretch/main all Packages
+#6 1.885 Ign:10 http://deb.debian.org/debian stretch/main amd64 Packages
+#6 1.941 Ign:11 http://deb.debian.org/debian stretch-updates/main all Packages
+#6 2.001 Ign:12 http://deb.debian.org/debian stretch-updates/main amd64 Packages
+#6 2.058 Ign:9 http://deb.debian.org/debian stretch/main all Packages
+#6 2.116 Err:10 http://deb.debian.org/debian stretch/main amd64 Packages
+#6 2.116   404  Not Found [IP: 151.101.130.132 80]
+#6 2.181 Ign:11 http://deb.debian.org/debian stretch-updates/main all Packages
+#6 2.237 Err:12 http://deb.debian.org/debian stretch-updates/main amd64 Packages
+#6 2.237   404  Not Found [IP: 151.101.130.132 80]
+#6 2.240 Reading package lists...
+#6 2.248 W: The repository 'http://security.debian.org/debian-security stretch/updates Release' does not have a Release file.
+#6 2.248 W: The repository 'http://deb.debian.org/debian stretch Release' does not have a Release file.
+#6 2.248 W: The repository 'http://deb.debian.org/debian stretch-updates Release' does not have a Release file.
+#6 2.248 E: Failed to fetch http://security.debian.org/debian-security/dists/stretch/updates/main/binary-amd64/Packages  404  Not Found [IP: 151.101.130.132 80]
+#6 2.248 E: Failed to fetch http://deb.debian.org/debian/dists/stretch/main/binary-amd64/Packages  404  Not Found [IP: 151.101.130.132 80]
+#6 2.248 E: Failed to fetch http://deb.debian.org/debian/dists/stretch-updates/main/binary-amd64/Packages  404  Not Found [IP: 151.101.130.132 80]
+#6 2.248 E: Some index files failed to download. They have been ignored, or old ones used instead.
+#6 ERROR: process "/bin/sh -c apt-get update && \tapt-get install -y vim python3" did not complete successfully: exit code: 100
+------
+ > [3/6] RUN apt-get update && 	apt-get install -y vim python3:
+2.237 Err:12 http://deb.debian.org/debian stretch-updates/main amd64 Packages
+2.237   404  Not Found [IP: 151.101.130.132 80]
+2.240 Reading package lists...
+2.248 W: The repository 'http://security.debian.org/debian-security stretch/updates Release' does not have a Release file.
+2.248 W: The repository 'http://deb.debian.org/debian stretch Release' does not have a Release file.
+2.248 W: The repository 'http://deb.debian.org/debian stretch-updates Release' does not have a Release file.
+2.248 E: Failed to fetch http://security.debian.org/debian-security/dists/stretch/updates/main/binary-amd64/Packages  404  Not Found [IP: 151.101.130.132 80]
+2.248 E: Failed to fetch http://deb.debian.org/debian/dists/stretch/main/binary-amd64/Packages  404  Not Found [IP: 151.101.130.132 80]
+2.248 E: Failed to fetch http://deb.debian.org/debian/dists/stretch-updates/main/binary-amd64/Packages  404  Not Found [IP: 151.101.130.132 80]
+2.248 E: Some index files failed to download. They have been ignored, or old ones used instead.
+------
+fix.Dockerfile:6
+--------------------
+   5 |     # Install package dependencies
+   6 | >>> RUN apt-get update && \
+   7 | >>> 	apt-get install -y vim python3
+   8 |     
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c apt-get update && \tapt-get install -y vim python3" did not complete successfully: exit code: 100

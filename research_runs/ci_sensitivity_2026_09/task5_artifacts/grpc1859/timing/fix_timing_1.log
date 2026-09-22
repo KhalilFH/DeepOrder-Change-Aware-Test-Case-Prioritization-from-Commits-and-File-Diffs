@@ -1,0 +1,78 @@
+=== RUN   TestClientDoesntDeadlockWhileWritingErrornousLargeMessages
+panic: test timed out after 1m50s
+
+goroutine 1024 [running]:
+testing.(*M).startAlarm.func1()
+	/usr/local/go/src/testing/testing.go:1377 +0xdf
+created by time.goFunc
+	/usr/local/go/src/time/sleep.go:168 +0x44
+
+goroutine 1 [chan receive, 1 minutes]:
+testing.(*T).Run(0xc000164100, 0xa08469, 0x3a, 0xa155a0, 0x485401)
+	/usr/local/go/src/testing/testing.go:961 +0x377
+testing.runTests.func1(0xc000164000)
+	/usr/local/go/src/testing/testing.go:1202 +0x78
+testing.tRunner(0xc000164000, 0xc00015ddc0)
+	/usr/local/go/src/testing/testing.go:909 +0xc9
+testing.runTests(0xc00012c400, 0xe400c0, 0x5e, 0x5e, 0x0)
+	/usr/local/go/src/testing/testing.go:1200 +0x2a7
+testing.(*M).Run(0xc0000c0080, 0x0)
+	/usr/local/go/src/testing/testing.go:1117 +0x176
+main.main()
+	_testmain.go:230 +0x135
+
+goroutine 19 [chan receive]:
+github.com/golang/glog.(*loggingT).flushDaemon(0xe45a60)
+	/go/src/github.com/golang/glog/glog.go:882 +0x8b
+created by github.com/golang/glog.init.0
+	/go/src/github.com/golang/glog/glog.go:410 +0x26f
+
+goroutine 21 [select]:
+google.golang.org/grpc.(*ClientConn).WaitForStateChange(0xc0000ea780, 0xab48e0, 0xc0000ba020, 0x3, 0x1)
+	/go/src/google.golang.org/grpc/clientconn.go:627 +0x101
+google.golang.org/grpc.DialContext(0xab48e0, 0xc0000ba020, 0xc000412900, 0x1e, 0xc0003e2300, 0x5, 0x8, 0x0, 0x0, 0x0)
+	/go/src/google.golang.org/grpc/clientconn.go:539 +0x676
+google.golang.org/grpc.Dial(...)
+	/go/src/google.golang.org/grpc/clientconn.go:393
+google.golang.org/grpc/test.(*test).clientConn(0xc0000c2000, 0xab7b80)
+	/go/src/google.golang.org/grpc/test/end2end_test.go:719 +0x443
+google.golang.org/grpc/test.testClientDoesntDeadlockWhileWritingErrornousLargeMessages(0xc000164100, 0x9f40ff, 0x13, 0x9e9f1e, 0x3, 0x9e9f21, 0x3, 0x0, 0x9e9ca3, 0x2, ...)
+	/go/src/google.golang.org/grpc/test/end2end_test.go:6017 +0x177
+google.golang.org/grpc/test.TestClientDoesntDeadlockWhileWritingErrornousLargeMessages(0xc000164100)
+	/go/src/google.golang.org/grpc/test/end2end_test.go:6006 +0x145
+testing.tRunner(0xc000164100, 0xa155a0)
+	/usr/local/go/src/testing/testing.go:909 +0xc9
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:960 +0x350
+
+goroutine 1084 [IO wait]:
+internal/poll.runtime_pollWait(0x7397696fe088, 0x72, 0x0)
+	/usr/local/go/src/runtime/netpoll.go:184 +0x55
+internal/poll.(*pollDesc).wait(0xc001a34198, 0x72, 0x0, 0x0, 0x9ec5e2)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:87 +0x45
+internal/poll.(*pollDesc).waitRead(...)
+	/usr/local/go/src/internal/poll/fd_poll_runtime.go:92
+internal/poll.(*FD).Accept(0xc001a34180, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0)
+	/usr/local/go/src/internal/poll/fd_unix.go:384 +0x1f8
+net.(*netFD).accept(0xc001a34180, 0x37e11d600, 0x0, 0x0)
+	/usr/local/go/src/net/fd_unix.go:238 +0x42
+net.(*TCPListener).accept(0xc00039a320, 0xc000068e48, 0xc000068e50, 0x18)
+	/usr/local/go/src/net/tcpsock_posix.go:139 +0x32
+net.(*TCPListener).Accept(0xc00039a320, 0xa153d0, 0xc0003f22c0, 0xaba0a0, 0xc0003fc090)
+	/usr/local/go/src/net/tcpsock.go:261 +0x47
+google.golang.org/grpc.(*Server).Serve(0xc0003f22c0, 0xab37e0, 0xc00039a320, 0x0, 0x0)
+	/go/src/google.golang.org/grpc/server.go:503 +0x1eb
+created by google.golang.org/grpc/test.(*test).startServer
+	/go/src/google.golang.org/grpc/test/end2end_test.go:600 +0x417
+
+goroutine 1085 [select]:
+google.golang.org/grpc.(*ccResolverWrapper).watcher(0xc000a394d0)
+	/go/src/google.golang.org/grpc/resolver_conn_wrapper.go:108 +0x13f
+created by google.golang.org/grpc.(*ccResolverWrapper).start
+	/go/src/google.golang.org/grpc/resolver_conn_wrapper.go:94 +0x3f
+
+goroutine 1086 [select]:
+google.golang.org/grpc.(*ccBalancerWrapper).watcher(0xc0003e2440)
+	/go/src/google.golang.org/grpc/balancer_conn_wrappers.go:122 +0x10f
+created by google.golang.org/grpc.newCCBalancerWrapper
+	/go/src/google.golang.org/grpc/balancer_conn_wrappers.go:113 +0x13a

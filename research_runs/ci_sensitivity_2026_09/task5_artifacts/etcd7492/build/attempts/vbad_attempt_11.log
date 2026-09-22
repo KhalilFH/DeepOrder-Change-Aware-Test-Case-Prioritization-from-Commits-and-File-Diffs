@@ -1,0 +1,359 @@
+=== RUN   TestHammerSimpleAuthenticate
+2026-09-19 11:05:46.093643 W | auth: simple token is not cryptographically signed
+2026-09-19 11:05:46.097891 N | auth: added a new user: root
+2026-09-19 11:05:46.097929 N | auth: Role root is created
+2026-09-19 11:05:46.097944 N | auth: granted role root to user root
+2026-09-19 11:05:46.097971 N | auth: Authentication enabled
+2026-09-19 11:05:46.098992 N | auth: Role role-test is created
+2026-09-19 11:05:46.099695 N | auth: added a new user: foo
+2026-09-19 11:05:46.100391 N | auth: added a new user: user-0
+2026-09-19 11:05:46.101094 N | auth: added a new user: user-1
+2026-09-19 11:05:46.101798 N | auth: added a new user: user-2
+2026-09-19 11:05:46.102493 N | auth: added a new user: user-3
+2026-09-19 11:05:46.103252 N | auth: added a new user: user-4
+2026-09-19 11:05:46.103952 N | auth: added a new user: user-5
+2026-09-19 11:05:46.104656 N | auth: added a new user: user-6
+2026-09-19 11:05:46.105352 N | auth: added a new user: user-7
+2026-09-19 11:05:46.106045 N | auth: added a new user: user-8
+2026-09-19 11:05:46.106787 N | auth: added a new user: user-9
+2026-09-19 11:05:46.107480 N | auth: added a new user: user-10
+2026-09-19 11:05:46.108162 N | auth: added a new user: user-11
+2026-09-19 11:05:46.108856 N | auth: added a new user: user-12
+2026-09-19 11:05:46.109547 N | auth: added a new user: user-13
+2026-09-19 11:05:46.110236 N | auth: added a new user: user-14
+2026-09-19 11:05:46.111048 N | auth: added a new user: user-15
+2026-09-19 11:05:46.112029 N | auth: added a new user: user-16
+2026-09-19 11:05:46.112894 N | auth: added a new user: user-17
+2026-09-19 11:05:46.113602 N | auth: added a new user: user-18
+2026-09-19 11:05:46.114297 N | auth: added a new user: user-19
+2026-09-19 11:05:46.115280 N | auth: added a new user: user-20
+2026-09-19 11:05:46.116196 N | auth: added a new user: user-21
+2026-09-19 11:05:46.117092 N | auth: added a new user: user-22
+2026-09-19 11:05:46.117899 N | auth: added a new user: user-23
+2026-09-19 11:05:46.118621 N | auth: added a new user: user-24
+2026-09-19 11:05:46.119306 N | auth: added a new user: user-25
+2026-09-19 11:05:46.120031 N | auth: added a new user: user-26
+2026-09-19 11:05:46.120741 N | auth: added a new user: user-27
+2026-09-19 11:05:46.121434 N | auth: added a new user: user-28
+2026-09-19 11:05:46.122115 N | auth: added a new user: user-29
+2026-09-19 11:05:46.122831 N | auth: added a new user: user-30
+2026-09-19 11:05:46.123522 N | auth: added a new user: user-31
+2026-09-19 11:05:46.124272 N | auth: added a new user: user-32
+2026-09-19 11:05:46.124970 N | auth: added a new user: user-33
+2026-09-19 11:05:46.125674 N | auth: added a new user: user-34
+2026-09-19 11:05:46.126432 N | auth: added a new user: user-35
+2026-09-19 11:05:46.127244 N | auth: added a new user: user-36
+2026-09-19 11:05:46.127992 N | auth: added a new user: user-37
+2026-09-19 11:05:46.128778 N | auth: added a new user: user-38
+2026-09-19 11:05:46.129537 N | auth: added a new user: user-39
+2026-09-19 11:05:46.130300 N | auth: added a new user: user-40
+2026-09-19 11:05:46.131087 N | auth: added a new user: user-41
+2026-09-19 11:05:46.131884 N | auth: added a new user: user-42
+2026-09-19 11:05:46.132623 N | auth: added a new user: user-43
+2026-09-19 11:05:46.133380 N | auth: added a new user: user-44
+2026-09-19 11:05:46.134194 N | auth: added a new user: user-45
+2026-09-19 11:05:46.134988 N | auth: added a new user: user-46
+2026-09-19 11:05:46.135767 N | auth: added a new user: user-47
+2026-09-19 11:05:46.136540 N | auth: added a new user: user-48
+2026-09-19 11:05:46.137340 N | auth: added a new user: user-49
+panic: test timed out after 50s
+
+goroutine 457 [running]:
+testing.(*M).startAlarm.func1()
+	/usr/local/go/src/testing/testing.go:1377 +0xdf
+created by time.goFunc
+	/usr/local/go/src/time/sleep.go:168 +0x44
+
+goroutine 1 [chan receive]:
+testing.(*T).Run(0xc000198100, 0xa128d3, 0x1c, 0xa2fd90, 0x485101)
+	/usr/local/go/src/testing/testing.go:961 +0x377
+testing.runTests.func1(0xc000198000)
+	/usr/local/go/src/testing/testing.go:1202 +0x78
+testing.tRunner(0xc000198000, 0xc00018bdc0)
+	/usr/local/go/src/testing/testing.go:909 +0xc9
+testing.runTests(0xc000176900, 0xe55fe0, 0x13, 0x13, 0x0)
+	/usr/local/go/src/testing/testing.go:1200 +0x2a7
+testing.(*M).Run(0xc0000c0380, 0x0)
+	/usr/local/go/src/testing/testing.go:1117 +0x176
+main.main()
+	_testmain.go:80 +0x135
+
+goroutine 21 [semacquire]:
+sync.runtime_Semacquire(0xc000028e28)
+	/usr/local/go/src/runtime/sema.go:56 +0x42
+sync.(*WaitGroup).Wait(0xc000028e20)
+	/usr/local/go/src/sync/waitgroup.go:130 +0x64
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate(0xc000198100)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:631 +0x3af
+testing.tRunner(0xc000198100, 0xa2fd90)
+	/usr/local/go/src/testing/testing.go:909 +0xc9
+created by testing.(*T).Run
+	/usr/local/go/src/testing/testing.go:960 +0x350
+
+goroutine 22 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0xc000054e00, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/usr/local/go/src/sync/mutex.go:81
+github.com/coreos/etcd/mvcc/backend.(*batchTxBuffered).Commit(0xc00018c4e0)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/mvcc/backend/batch_tx.go:232 +0x9f
+github.com/coreos/etcd/mvcc/backend.(*backend).run(0xc0000bea80)
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/mvcc/backend/backend.go:211 +0xdb
+created by github.com/coreos/etcd/mvcc/backend.newBackend
+	/go/src/github.com/coreos/etcd/gopath/src/github.com/coreos/etcd/mvcc/backend/backend.go:129 +0x19d
+
+goroutine 23 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c614, 0xc00006bd01, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c610)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(...)
+	/usr/local/go/src/sync/mutex.go:81
+sync.(*RWMutex).Lock(0xc00018c610)
+	/usr/local/go/src/sync/rwmutex.go:98 +0x97
+_/go/src/github.com/coreos/etcd/auth.newDeleterFunc.func1(0xc000290120, 0xc)
+	/go/src/github.com/coreos/etcd/auth/simple_token.go:161 +0x52
+_/go/src/github.com/coreos/etcd/auth.(*simpleTokenTTLKeeper).run(0xc00018c9c0)
+	/go/src/github.com/coreos/etcd/auth/simple_token.go:100 +0x138
+created by _/go/src/github.com/coreos/etcd/auth.NewSimpleTokenTTLKeeper
+	/go/src/github.com/coreos/etcd/auth/simple_token.go:61 +0x130
+
+goroutine 566 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc0003aaff0, 0xc000238408, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc000238408, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 565 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc0003ab0b0, 0xc000238138, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc000238138, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 556 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc00013f140, 0xc0000bb490, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bb490, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 568 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc000125e60, 0xc0002382a0, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0002382a0, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 567 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc000125e00, 0xc0002386d8, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0002386d8, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 563 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc000125da0, 0xc0000bb238, 0x6, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bb238, 0x6)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 562 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc000125d40, 0xc0000bb1c0, 0x6, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bb1c0, 0x6)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 559 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc0003ab110, 0xc0000bba30, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bba30, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 558 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc00013f200, 0xc0000bb9b8, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bb9b8, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 557 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc00013f1a0, 0xc0000bb5f8, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bb5f8, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 552 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc0003ab1d0, 0xc0000bbd00, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bbd00, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 543 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc0003aaf90, 0xc0000bb760, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bb760, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 541 [chan send]:
+_/go/src/github.com/coreos/etcd/auth.(*simpleTokenTTLKeeper).addSimpleToken(...)
+	/go/src/github.com/coreos/etcd/auth/simple_token.go:73
+_/go/src/github.com/coreos/etcd/auth.(*tokenSimple).assignSimpleTokenToUser(0xc00018c600, 0xc0000bb058, 0x6, 0xc0000290b0, 0xb)
+	/go/src/github.com/coreos/etcd/auth/simple_token.go:143 +0x10e
+_/go/src/github.com/coreos/etcd/auth.(*tokenSimple).assign(0xc00018c600, 0x710e2c42b040, 0xc0003aaed0, 0xc0000bb058, 0x6, 0x38, 0x92c2a0, 0x46e93c, 0xc00008f180, 0x710e30881460)
+	/go/src/github.com/coreos/etcd/auth/simple_token.go:205 +0x1a5
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc0003aaed0, 0xc0000bb058, 0x6, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:272 +0x170
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bb058, 0x6)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 542 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc0003aaf30, 0xc0000bbb98, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bbb98, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 560 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc00013f0e0, 0xc0000bbaa8, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bbaa8, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 554 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc00013f260, 0xc0000bafe0, 0x6, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc0000bafe0, 0x6)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373
+
+goroutine 553 [semacquire]:
+sync.runtime_SemacquireMutex(0xc00018c4e4, 0x203000, 0x1)
+	/usr/local/go/src/runtime/sema.go:71 +0x47
+sync.(*Mutex).lockSlow(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:138 +0xfc
+sync.(*Mutex).Lock(0xc00018c4e0)
+	/usr/local/go/src/sync/mutex.go:81 +0x47
+_/go/src/github.com/coreos/etcd/auth.(*authStore).Authenticate(0xc0000b0550, 0x710e2c42b040, 0xc0003ab170, 0xc000238390, 0x7, 0xa034bc, 0x3, 0x0, 0x0, 0x0)
+	/go/src/github.com/coreos/etcd/auth/store.go:261 +0x9c
+_/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate.func2(0xc000028e20, 0xc000238748, 0xc0000b0550, 0xc000198100, 0xc000238390, 0x7)
+	/go/src/github.com/coreos/etcd/auth/store_test.go:622 +0x32d
+created by _/go/src/github.com/coreos/etcd/auth.TestHammerSimpleAuthenticate
+	/go/src/github.com/coreos/etcd/auth/store_test.go:618 +0x373

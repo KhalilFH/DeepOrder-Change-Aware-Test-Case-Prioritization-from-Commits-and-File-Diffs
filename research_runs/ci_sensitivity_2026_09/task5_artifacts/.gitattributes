@@ -1,0 +1,7 @@
+# These files are byte-level evidence for the Q0 qualification verdicts.
+# One of the recorded findings is a CRLF-contamination artifact (a Windows
+# checkout of a patch that `git apply` then rejected), and the directory
+# deliberately preserves both a CRLF and an LF form of the same patch.
+# Line-ending normalisation would destroy that distinction, so nothing here
+# is treated as text.
+* -text
