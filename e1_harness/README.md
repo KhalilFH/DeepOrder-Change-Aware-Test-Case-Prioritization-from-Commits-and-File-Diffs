@@ -7,21 +7,25 @@ third-party dependency**.
 
 The plan authorises exactly four thin pieces here. Status:
 
-| Piece | File | Status |
-|---|---|---|
-| Explicit policy reducer | `policy.py` | **done** |
-| Append-only attempt logger | `ledger.py` | **done** |
-| Thin isolated command runner | `runner.py` | **done** |
-| Analysis script (`S`, `N`, `L`, `R`, cost) | — | not built |
+| Piece | File | Tests | Status |
+|---|---|---|---|
+| Explicit policy reducer | `policy.py` | `tests/test_policy.py` | **done** |
+| Append-only attempt logger | `ledger.py` | `tests/test_ledger.py` | **done** |
+| Thin isolated command runner | `runner.py` | `tests/test_runner.py` | **done** |
+| Analysis script (`S`, `N`, `L`, `R`, cost) | — | — | not built |
 
 76 unit tests green, stdlib only.
 
 ## Running the tests
 
 ```bash
-python -m unittest discover -s e1_harness -t e1_harness -v   # no Docker needed
-python e1_harness/selftest.py                                # needs a built image
+python -m unittest discover -s e1_harness/tests -t e1_harness -v   # no Docker needed
+python e1_harness/selftest.py                                      # needs a built image
 ```
+
+Tests live in `e1_harness/tests/`. `-t e1_harness` sets the top-level directory,
+which is what puts `policy`, `ledger` and `runner` on the import path; running
+discovery without it will fail to import them.
 
 The unit suite injects a fake executor, so it proves the orchestration but
 nothing about real containers. `selftest.py` covers the two properties that

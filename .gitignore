@@ -84,3 +84,7 @@
 
 # Local exploratory work
 /week1_research/
+
+# Python bytecode (any directory)
+__pycache__/
+*.py[cod]
