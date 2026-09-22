@@ -1,0 +1,10 @@
+# These files are hashed (SHA-256) in the frozen starting record
+# research_runs/ci_sensitivity_2026_09/protocol.md. Line-ending conversion on
+# checkout would change their bytes and break that record, so Git stores and
+# checks them out byte-for-byte.
+ADAPTIVE_CI_RESEARCH_PROGRAM.md -text
+INDEPENDENT_RESEARCH_VISION.md -text
+INDUSTRY_VALUE_AND_PERSONAL_ASSESSMENT.md -text
+NEXT_RESEARCH_ACTION_PLAN.md -text
+ORIGINALITY_AUDIT_AND_NEW_IDEAS.md -text
+RESEARCH_DIRECTION_DECISION.md -text

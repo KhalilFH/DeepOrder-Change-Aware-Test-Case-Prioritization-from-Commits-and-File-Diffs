@@ -1,0 +1,7 @@
+# These files are hashed (SHA-256) in protocol_amendment_2026-09-17.md.
+# Line-ending conversion would change their bytes and break that record, so
+# Git stores and checks them out byte-for-byte. baseline_applicability.md was
+# hashed with CRLF endings, so its CRLF form is what is stored.
+protocol.md -text
+baseline_applicability.md -text
+candidate_cards.md -text
