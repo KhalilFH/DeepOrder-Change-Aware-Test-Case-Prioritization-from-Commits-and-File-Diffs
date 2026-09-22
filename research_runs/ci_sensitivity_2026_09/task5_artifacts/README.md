@@ -5,12 +5,36 @@ attempt logs for all three Q0 restoration/qualification passes.
 
 | Candidate | Q0 verdict | Files | Size |
 |---|---|---:|---:|
-| `etcd5509/` | `Q0_QUALIFIED` (16 focal / 4 pass on `V_bad`) | 57 | ~449 KB |
-| `etcd7492/` | `Q0_QUALIFIED` (2 focal / 18 pass on `V_bad`) | 61 | ~584 KB |
-| `grpc1859/` | `Q0_NOT_QUALIFIED` (1 focal / 19 pass on `V_bad`) | 88 | ~38 KB |
+| `etcd5509/` | `Q0_QUALIFIED` (16 focal / 4 pass on `V_bad`) | 62 | ~450 KB |
+| `etcd7492/` | `Q0_QUALIFIED` (2 focal / 18 pass on `V_bad`) | 62 | ~585 KB |
+| `grpc1859/` | `Q0_NOT_QUALIFIED` (1 focal / 19 pass on `V_bad`) | 93 | ~40 KB |
 
-`MANIFEST.csv` lists every file with its size, a SHA-256 prefix, and the scratch
-directory it came from.
+`MANIFEST.csv` lists all 221 files with size and a SHA-256 prefix.
+
+## Layout
+
+```
+<candidate>/
+  recipe/
+    goreal_original/   pristine GoBench blobs at pinned commit 2e91eb1
+    as_built/          the recipe actually executed, plus its build context
+  attempts/ , *.csv    per-attempt ledgers
+  *.log                build output and raw per-attempt logs
+DEVIATIONS.md          every original-vs-as-built difference, explained
+rebuild.sh             rebuilds a pair and verifies the recorded source blobs
+MANIFEST.csv           every file with size, SHA-256 prefix and source directory
+```
+
+Rebuild a subject pair with:
+
+```bash
+research_runs/ci_sensitivity_2026_09/task5_artifacts/rebuild.sh grpc1859
+```
+
+`recipe/as_built/*.Dockerfile` is reconstructed from each image's layer history
+(`docker history --no-trunc`), so it records the executed steps faithfully but
+is not a byte copy of the file fed to `docker build`. Where that literal file
+also survives it is kept as `*.Dockerfile.literal`.
 
 ## Why this directory did not exist until now
 
@@ -50,8 +74,9 @@ scratch. Raw logs follow when their total stays in the low megabytes, as here.
 
 ## Contents per candidate
 
-- `*.Dockerfile`, `*_patch.diff`, `deps.txt`, `deps.sh` — the exact build recipe
-  used, including every disclosed deviation from the GoReal original.
+- `recipe/goreal_original/` and `recipe/as_built/` — the pristine upstream
+  recipe and the one actually executed. `DEVIATIONS.md` explains every
+  difference; `rebuild.sh` rebuilds from the as-built set.
 - `frozen_protocol.txt` (grpc1859) — the execution protocol frozen before any
   counted attempt.
 - `run_attempts.sh`, `run_batch.sh`, `attempt.sh` — the runners.
@@ -62,16 +87,21 @@ scratch. Raw logs follow when their total stays in the low megabytes, as here.
 
 Two files preserve superseded states deliberately:
 
-- `etcd5509/recipe/bug_patch.diff.orig_crlf` — the CRLF-contaminated Windows
+- `etcd5509/recipe/goreal_original/bug_patch.diff.orig_crlf` — the CRLF-contaminated Windows
   checkout of the patch, kept beside the LF version that was actually applied.
 - `etcd5509/attempts/results_batch1_original.csv` — the batch-1 ledger before
   the two disclosed evaluator-signature corrections described in
   `task5_etcd5509_restoration.md`, kept beside the corrected ledger.
 
-For grpc-go-1859 both patch forms are kept at the top level
+For grpc-go-1859 both patch fetch paths are kept at the top level
 (`bug_patch_raw.diff` from GitHub, `bug_patch_blob.diff` from the pinned repo
 blob; byte-identical, 0 CR), together with the CRLF finding recorded in that
 pass's Step 1.
+
+The etcd-5509 pass edited its Dockerfiles in place inside the GoBench clone, so
+the files first salvaged as its "originals" were the edited ones. They have been
+replaced with the authoritative pinned blobs and preserved as
+`as_built/*.Dockerfile.literal`; see `DEVIATIONS.md`.
 
 ## What is still not durably recorded
 
