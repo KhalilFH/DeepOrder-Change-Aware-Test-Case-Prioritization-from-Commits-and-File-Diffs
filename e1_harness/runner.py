@@ -10,7 +10,9 @@ Three contracts it holds:
 **Reset is a fresh container per attempt.** Every attempt is its own
 `docker run --rm`; nothing carries over. This is the plan's "job retries using
 fresh test processes and the same predeclared reset recipe", and it is why the
-attempts within a block may be treated as independently reset.
+attempts within a block may be treated as independently reset. A container must
+also not outlive its attempt: killing the `docker` CLI on timeout does not stop
+the container, so each one is named and `DockerExecutor` removes it by name.
 
 **A measured block always collects the full suffix.** `run_block` runs three
 attempts per version whatever the outcomes, so P1 and P3 can both be replayed
@@ -31,6 +33,8 @@ from __future__ import annotations
 import hashlib
 import json
 import random
+import re
+import secrets
 import subprocess
 import time
 from dataclasses import dataclass, field
@@ -45,6 +49,9 @@ RUNNER_VERSION = "e1-runner/1"
 ATTEMPT_CEILING_S = 120
 """The plan's per-attempt ceiling. A manifest may not exceed it."""
 
+CLEANUP_TIMEOUT_S = 30
+"""How long `docker rm -f` may take to remove a timed-out attempt's container."""
+
 
 class RunnerError(RuntimeError):
     """The runner's contract was violated."""
@@ -58,6 +65,8 @@ class Attempt:
     stdout: str
     stderr: str
     timed_out: bool = False
+    extra: dict = field(default_factory=dict)
+    """Executor bookkeeping, merged into the ledger record's `extra`."""
 
 
 class Executor(Protocol):
@@ -101,33 +110,87 @@ class Manifest:
         )
         return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
-    def docker_argv(self, version: str) -> list[str]:
+    def docker_argv(self, version: str, name: str | None = None) -> list[str]:
+        """The attempt's `docker run`. `name` is not part of the manifest hash."""
         return [
             "docker", "run", "--rm",
+            *(["--name", name] if name is not None else []),
             "-w", self.workdir,
             self.images[version],
             *self.argv,
         ]
 
 
+_UNSAFE_NAME_CHARS = re.compile(r"[^a-zA-Z0-9_.-]")
+
+
+def container_name(episode: str, block: int, version: str, attempt: int) -> str:
+    """A name unique to one attempt, valid as a Docker container name."""
+    stem = f"e1-{episode}-b{block}-{version}-a{attempt}"
+    return f"{_UNSAFE_NAME_CHARS.sub('-', stem)}-{secrets.token_hex(4)}"
+
+
+def _container_name_in(argv: Sequence[str]) -> str | None:
+    argv = list(argv)
+    if "--name" in argv:
+        i = argv.index("--name")
+        if i + 1 < len(argv):
+            return argv[i + 1]
+    return None
+
+
+def _text(value: str | bytes | None) -> str:
+    return value.decode(errors="replace") if isinstance(value, bytes) else (value or "")
+
+
 class DockerExecutor:
-    """Runs the attempt as a real container."""
+    """Runs the attempt as a real container.
+
+    On timeout `subprocess.run` kills only the local `docker` CLI; the container
+    keeps running. So a timed-out attempt's container is removed by the name in
+    its argv, and the removal's outcome is returned in `Attempt.extra["cleanup"]`.
+    An attempt without `--name` cannot be cleaned up and says so.
+
+    `run` is the process launcher (`subprocess.run` by default), injectable so
+    the cleanup path is testable without Docker.
+    """
+
+    def __init__(self, run=subprocess.run):
+        self._run = run
 
     def run(self, argv: Sequence[str], timeout_s: int) -> Attempt:
         try:
-            done = subprocess.run(
+            done = self._run(
                 list(argv), capture_output=True, text=True, timeout=timeout_s
             )
         except subprocess.TimeoutExpired as exc:
             return Attempt(
                 exit_status=None,
-                stdout=exc.stdout.decode() if isinstance(exc.stdout, bytes) else (exc.stdout or ""),
-                stderr=exc.stderr.decode() if isinstance(exc.stderr, bytes) else (exc.stderr or ""),
+                stdout=_text(exc.stdout),
+                stderr=_text(exc.stderr),
                 timed_out=True,
+                extra={"cleanup": self._remove(_container_name_in(argv))},
             )
         except OSError as exc:  # docker missing, daemon down, ...
             return Attempt(exit_status=None, stdout="", stderr=f"{type(exc).__name__}: {exc}")
         return Attempt(done.returncode, done.stdout, done.stderr)
+
+    def _remove(self, name: str | None) -> dict:
+        if name is None:
+            return {"argv": None, "error": "attempt has no --name; container not removed"}
+        argv = ["docker", "rm", "-f", name]
+        try:
+            done = self._run(
+                argv, capture_output=True, text=True, timeout=CLEANUP_TIMEOUT_S
+            )
+        except (subprocess.TimeoutExpired, OSError) as exc:
+            return {"argv": argv, "error": f"{type(exc).__name__}: {exc}"}
+        return {
+            "argv": argv,
+            "exit_status": done.returncode,
+            "stdout": done.stdout,
+            "stderr": done.stderr,
+        }
 
 
 class FakeExecutor:
@@ -181,7 +244,8 @@ class Runner:
         """Execute one attempt in a fresh container and append it to the ledger."""
         if version not in VERSIONS:
             raise RunnerError(f"unknown version {version!r}")
-        argv = self.manifest.docker_argv(version)
+        name = container_name(self.manifest.episode, block, version, attempt)
+        argv = self.manifest.docker_argv(version, name=name)
         started = _utc()
         clock = time.monotonic()
         result = self.executor.run(argv, self.manifest.timeout_s)
@@ -202,7 +266,7 @@ class Runner:
             runner_version=RUNNER_VERSION,
             stdout=result.stdout,
             stderr=result.stderr,
-            extra={"argv": argv},
+            extra={"argv": argv, "container": name, **result.extra},
         )
         ledger.append(record)
         return record

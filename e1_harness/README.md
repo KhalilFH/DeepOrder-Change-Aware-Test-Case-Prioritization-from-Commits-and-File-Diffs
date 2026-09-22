@@ -28,9 +28,11 @@ which is what puts `policy`, `ledger` and `runner` on the import path; running
 discovery without it will fail to import them.
 
 The unit suite injects a fake executor, so it proves the orchestration but
-nothing about real containers. `selftest.py` covers the two properties that
-cannot be faked — reset isolation and direct-execution-versus-replay agreement.
-Last run 2026-09-22 against `grpc1859-bug`: all passed.
+nothing about real containers. `selftest.py` covers the three properties that
+cannot be faked — reset isolation, direct-execution-versus-replay agreement, and
+no container outliving a timed-out attempt. Last run 2026-09-22 against
+`grpc1859-bug`: all passed (the timed-out container was still running when the
+CLI was killed, so the cleanup is needed, not precautionary).
 
 Both are **implementation-validation** only. Per the plan's Experiment 1
 procedure, synthetic truth-table inputs validate the implementation and never
@@ -67,7 +69,12 @@ assigning categories is a separate evaluator step. A runner that classified at
 capture time would be adjudicating on the same pass that observes.
 
 **Reset is a fresh container per attempt** (`runner.py`). Verified empirically
-by `selftest.py`, not assumed from `--rm`.
+by `selftest.py`, not assumed from `--rm`. Each container is named
+`e1-<episode>-b<block>-<version>-a<attempt>-<nonce>` (recorded as
+`extra.container`). A timeout kills only the local `docker` CLI, so
+`DockerExecutor` then runs `docker rm -f <name>` and records the outcome in
+`extra.cleanup`. Without that, a hung container would keep consuming CPU during
+later attempts.
 
 **A measured block always collects the full suffix** (`runner.py`).
 `run_block` runs three attempts per version whatever the outcomes, so P1 and P3

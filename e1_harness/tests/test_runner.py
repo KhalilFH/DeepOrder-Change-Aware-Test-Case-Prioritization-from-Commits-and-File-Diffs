@@ -5,18 +5,22 @@ orchestration contract without Docker. Synthetic inputs validate the
 implementation only and never enter empirical results.
 """
 
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
+from types import SimpleNamespace
 
 from ledger import Ledger, LedgerError, V_BAD, V_OK, exit_statuses_for, read_records
 from policy import ACCEPT, BLOCK, P1, P3, reduce_block
 from runner import (
     Attempt,
+    DockerExecutor,
     FakeExecutor,
     Manifest,
     Runner,
     RunnerError,
+    container_name,
 )
 
 
@@ -88,6 +92,36 @@ class TestSingleAttempt(RunnerTestCase):
         argv = self.executor.calls[0]
         self.assertIn("run", argv)
         self.assertIn("--rm", argv)
+
+    def test_each_attempt_names_its_container_uniquely(self):
+        # The same attempt identity, run twice (e.g. a scratch re-run into a
+        # second ledger), must still get two distinct containers.
+        r = self.runner([Attempt(0, "", "")] * 2)
+        for path in (self.path, self.path.with_name("rerun.jsonl")):
+            with Ledger(path) as led:
+                r.run_attempt(led, block=3, version=V_BAD, attempt=2)
+        names = [c[c.index("--name") + 1] for c in self.executor.calls]
+        self.assertTrue(names[0].startswith("e1-etcd5509-b3-V_bad-a2-"))
+        self.assertNotEqual(names[0], names[1], "a re-run must not reuse a name")
+        self.assertEqual(read_records(self.path)[0]["extra"]["container"], names[0])
+
+    def test_the_container_name_does_not_change_the_manifest_hash(self):
+        m = manifest()
+        self.assertNotEqual(m.docker_argv(V_BAD, name="x"), m.docker_argv(V_BAD))
+        self.assertEqual(m.sha256, manifest().sha256)
+
+    def test_container_names_are_valid_for_docker(self):
+        name = container_name("etcd 5509/α", 1, V_OK, 1)
+        self.assertRegex(name, r"^[a-zA-Z0-9][a-zA-Z0-9_.-]+$")
+
+    def test_executor_bookkeeping_reaches_the_ledger(self):
+        cleanup = {"argv": ["docker", "rm", "-f", "n"], "exit_status": 0}
+        r = self.runner([Attempt(None, "", "", timed_out=True, extra={"cleanup": cleanup})])
+        with Ledger(self.path) as led:
+            r.run_attempt(led, block=1, version=V_BAD, attempt=1)
+        extra = read_records(self.path)[0]["extra"]
+        self.assertEqual(extra["cleanup"], cleanup)
+        self.assertIn("argv", extra)
 
     def test_a_timeout_is_recorded_as_such_and_not_as_a_clean_failure(self):
         r = self.runner([Attempt(None, "", "timed out", timed_out=True)])
@@ -242,6 +276,82 @@ class TestExecutorFailures(RunnerTestCase):
         row = read_records(self.path)[0]
         self.assertIsNone(row["exit_status"])
         self.assertIn("daemon", row["stderr"])
+
+
+class FakeProcesses:
+    """Stands in for `subprocess.run`: `docker run` behaves as scripted."""
+
+    def __init__(self, run_behaviour, rm_returncode=0):
+        self.run_behaviour = run_behaviour
+        self.rm_returncode = rm_returncode
+        self.calls: list[list[str]] = []
+
+    def __call__(self, argv, capture_output, text, timeout):
+        self.calls.append(list(argv))
+        if argv[:2] == ["docker", "rm"]:
+            return SimpleNamespace(returncode=self.rm_returncode, stdout=argv[-1], stderr="")
+        if self.run_behaviour == "timeout":
+            raise subprocess.TimeoutExpired(argv, timeout, output=b"partial", stderr=None)
+        if self.run_behaviour == "oserror":
+            raise FileNotFoundError("docker")
+        return SimpleNamespace(returncode=self.run_behaviour, stdout="out", stderr="err")
+
+    def removals(self):
+        return [c for c in self.calls if c[:2] == ["docker", "rm"]]
+
+
+class TestDockerExecutorCleanup(unittest.TestCase):
+    """A timed-out attempt's container must not outlive the attempt."""
+
+    ARGV = manifest().docker_argv(V_BAD, name="e1-etcd5509-b1-V_bad-a1-abcd")
+
+    def test_a_timeout_force_removes_the_named_container(self):
+        procs = FakeProcesses("timeout")
+        result = DockerExecutor(run=procs).run(self.ARGV, 45)
+        self.assertTrue(result.timed_out)
+        self.assertIsNone(result.exit_status)
+        self.assertEqual(result.stdout, "partial")
+        self.assertEqual(procs.removals(), [["docker", "rm", "-f", "e1-etcd5509-b1-V_bad-a1-abcd"]])
+        self.assertEqual(result.extra["cleanup"]["exit_status"], 0)
+
+    def test_no_removal_after_a_normal_exit(self):
+        for status in (0, 1, 2):
+            with self.subTest(status=status):
+                procs = FakeProcesses(status)
+                result = DockerExecutor(run=procs).run(self.ARGV, 45)
+                self.assertEqual(result.exit_status, status)
+                self.assertEqual(procs.removals(), [])
+                self.assertNotIn("cleanup", result.extra)
+
+    def test_no_removal_when_docker_could_not_be_started(self):
+        procs = FakeProcesses("oserror")
+        result = DockerExecutor(run=procs).run(self.ARGV, 45)
+        self.assertIsNone(result.exit_status)
+        self.assertEqual(procs.removals(), [])
+
+    def test_a_failed_removal_is_recorded_not_raised(self):
+        procs = FakeProcesses("timeout", rm_returncode=1)
+        result = DockerExecutor(run=procs).run(self.ARGV, 45)
+        self.assertEqual(result.extra["cleanup"]["exit_status"], 1)
+
+    def test_an_unnamed_attempt_records_that_it_could_not_be_removed(self):
+        procs = FakeProcesses("timeout")
+        result = DockerExecutor(run=procs).run(manifest().docker_argv(V_BAD), 45)
+        self.assertEqual(procs.removals(), [])
+        self.assertIn("error", result.extra["cleanup"])
+
+    def test_the_runner_records_the_cleanup_on_the_timed_out_attempt(self):
+        procs = FakeProcesses("timeout")
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "a.jsonl"
+            with Ledger(p) as led:
+                Runner(manifest(), DockerExecutor(run=procs)).run_attempt(
+                    led, block=1, version=V_BAD, attempt=1
+                )
+            row = read_records(p)[0]
+        self.assertTrue(row["timed_out"])
+        self.assertEqual(row["extra"]["cleanup"]["argv"][-1], row["extra"]["container"])
+        self.assertEqual(procs.removals(), [["docker", "rm", "-f", row["extra"]["container"]]])
 
 
 if __name__ == "__main__":
