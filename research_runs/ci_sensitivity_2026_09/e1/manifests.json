@@ -1,0 +1,24 @@
+{
+  "etcd5509": {
+    "episode": "etcd5509",
+    "images": {
+      "V_bad": "sha256:399e13203fc432de8a91473df1e91a64ea2ab1afecdb906166033d86f51589c6",
+      "V_ok": "sha256:ffc618679d85e331c3b957c1af0ad561118bf488460dd5f80baeb10187800b26"
+    },
+    "workdir": "/go/src/github.com/coreos/etcd/clientv3/integration",
+    "argv": ["/go/gobench.test", "-test.v", "-test.count", "1", "-test.run", "TestKVGetErrConnClosed", "-test.timeout", "45s"],
+    "timeout_s": 60,
+    "condition": "q0-default-unpinned"
+  },
+  "etcd7492": {
+    "episode": "etcd7492",
+    "images": {
+      "V_bad": "sha256:b51cb62a901bbf0d386b3ae2197d3a67b5e587b587a3ba035cc2a6212bb0164f",
+      "V_ok": "sha256:2b66d59152c86f601c5f85bdffe6b919f98197cf9dc5c0a66409c54756cd047c"
+    },
+    "workdir": "/go/src/github.com/coreos/etcd/auth",
+    "argv": ["/go/gobench.test", "-test.v", "-test.count", "1", "-test.run", "TestHammerSimpleAuthenticate", "-test.timeout", "50s"],
+    "timeout_s": 65,
+    "condition": "q0-default-unpinned"
+  }
+}
