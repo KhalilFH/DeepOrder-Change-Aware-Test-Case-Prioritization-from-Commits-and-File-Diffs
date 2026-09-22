@@ -64,18 +64,10 @@
 # Local agent/runtime state
 /.claude/
 /.vscode/
-
-# Local research datasets and external corpora
-/datasets/
-/rtp-torrent/
-/travis-torrent/
-
-# Local exploratory work
-/week1_research/
-
-# Local agent/runtime state
-/.claude/
-/.vscode/
+/.agents/
+/.tmp/
+/.trace-mcp/
+/skills-lock.json
 
 # Local research datasets and external corpora
 /datasets/
