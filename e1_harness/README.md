@@ -12,9 +12,18 @@ The plan authorises exactly four thin pieces here. Status:
 | Explicit policy reducer | `policy.py` | `tests/test_policy.py` | **done** |
 | Append-only attempt logger | `ledger.py` | `tests/test_ledger.py` | **done** |
 | Thin isolated command runner | `runner.py` | `tests/test_runner.py` | **done** |
-| Analysis script (`S`, `N`, `L`, `R`, cost) | — | — | not built |
+| Analysis script (`S`, `N`, `L`, `R`, cost) | `analysis.py` | `tests/test_analysis.py` | **done** |
 
-76 unit tests green, stdlib only.
+Plus the evaluator step the runner deliberately leaves out:
+
+| Piece | File | Tests | Status |
+|---|---|---|---|
+| Oracle classifier (raw output → attempt categories) | `oracle.py` | `tests/test_oracle.py` | **done** |
+
+Unit tests are stdlib only. The oracle tests include a replay of all
+120 preserved Q0 qualification logs (`research_runs/.../task5_artifacts/`):
+the frozen cards reproduce every recorded label, and removing a witness's key
+goroutine from a real dump turns it `UNRESOLVED`.
 
 ## Running the tests
 
@@ -81,6 +90,26 @@ later attempts.
 replay from one shared prefix-generating procedure (plan §4.4). Conditioning
 collection on the first outcome would distort unconditional blocking rates.
 
+**Only a frozen signature makes a focal witness** (`oracle.py`). Each episode's
+pre-declared signature is transcribed as an `OracleCard` citing its source
+record; the file's hash is written on every annotation. A failure matching no
+signature is `UNRESOLVED`. The classifier never emits `OTHER_DEFECT` or
+`VERIFIED_NUISANCE`: both are claims about the world that output-matching
+cannot establish, so they enter only as researcher overrides carrying an
+adjudicator, reason and evidence, with the mechanical label kept beside them.
+
+**Unestablished target execution is `HARNESS_INVALID`** (`oracle.py`). No exit
+status, a Docker-level failure, a skipped test, or no `=== RUN <test>` line.
+The analysis feeds such attempts to the reducer as `None`.
+
+**Nothing is imputed silently** (`analysis.py`). A block whose decision is
+`INDETERMINATE`, or whose failing prefix holds an `UNRESOLVED` attempt, has an
+undetermined `S`/`N` indicator. Contrasts are reported complete-case with
+exact paired intervals (Clopper-Pearson on each discordance direction,
+Bonferroni over every contrast in the run) and with conservative best/worst
+fills. Measured blocks are declared with `--blocks`; a declared block without
+records is reported missing.
+
 **Direct execution and replay must agree** (`runner.py`).
 `run_policy_direct` stops early for real, for the plan's 12 direct-policy
 checks, and its decision comes from the same reducer that scores replayed
@@ -98,8 +127,12 @@ manifest = Manifest(
     episode="etcd5509",
     images={V_BAD: "etcd5509-bug", V_OK: "etcd5509-fix"},
     workdir="/go/src/github.com/coreos/etcd/clientv3/integration",
-    argv=["/go/gobench.test", "-test.count", "1", "-test.run", "^TestKVGetErrConnClosed$"],
-    timeout_s=45,
+    # The frozen Q0 command. -test.v gives the oracle the target's execution
+    # identity; -test.timeout must fire *below* timeout_s, or a hang is killed
+    # by the runner before Go prints the goroutine dump the witness needs.
+    argv=["/go/gobench.test", "-test.v", "-test.count", "1",
+          "-test.run", "TestKVGetErrConnClosed", "-test.timeout", "45s"],
+    timeout_s=60,
     condition="default",
 )
 with Ledger("runs/etcd5509/attempts.jsonl") as led:
@@ -110,12 +143,31 @@ statuses = exit_statuses_for(rows, "etcd5509", 1, V_BAD)
 reduce_block(P1, statuses), reduce_block(P3, statuses)
 ```
 
+Then classify and analyse, in that order, without editing either output by hand:
+
+```bash
+python e1_harness/oracle.py --ledger runs/attempts.jsonl --out runs/annotations.jsonl \
+    [--overrides runs/adjudications.jsonl]
+python e1_harness/analysis.py --ledger runs/attempts.jsonl --annotations runs/annotations.jsonl \
+    --blocks 1-20 --direct-blocks 101-112 --batch 1-10 --batch 11-20 \
+    --allocated-vcpus 2 --out runs/analysis
+```
+
+`analysis.py` writes `policy_decisions.csv` (every decision with the attempt
+IDs it consumed and its rule), `summary.json` and `report.md`.
+`--allocated-vcpus` is required because the runner does not pin CPUs: state
+the allocation used for accounting rather than let a default imply one.
+
 `Manifest.sha256` is recorded on every attempt, so a ledger states which frozen
 subject definition produced it. The manifest refuses a timeout above the plan's
 120-second attempt ceiling.
 
 ## Not in scope here
 
-The oracle classifier (raw output → attempt categories) and the analysis script
-are not built. Selection, quarantine and any learned model are outside
+Oracle cards exist for etcd-5509 and etcd-7492 (E1's subjects) and for
+grpc-go-1859 (`Q0_NOT_QUALIFIED`; kept to validate a non-hang witness). The
+identity/no-change and deterministic-failure controls have no card yet; the
+oracle refuses an episode without one. Signature (b) of etcd-5509 and both
+grpc-go-1859 stack forms never fired in Q0 and are validated only on
+constructed dumps. Selection, quarantine and any learned model are outside
 Experiment 1 entirely.
