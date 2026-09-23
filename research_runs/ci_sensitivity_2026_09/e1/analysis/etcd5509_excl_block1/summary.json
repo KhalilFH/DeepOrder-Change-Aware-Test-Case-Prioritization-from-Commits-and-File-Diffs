@@ -1,0 +1,462 @@
+{
+  "episodes": [
+    {
+      "L": {
+        "best_worst": [
+          0.15789473684210525,
+          0.15789473684210525
+        ],
+        "blocks": 19,
+        "complete_blocks": 19,
+        "estimate": 0.15789473684210525,
+        "interval": [
+          -0.24610694811650297,
+          0.48684940521871745
+        ],
+        "interval_confidence_each_side": 0.99375,
+        "margin_position": "interval contains margin",
+        "negative": 0,
+        "positive": 3,
+        "undetermined_blocks": 0
+      },
+      "N": {
+        "P1": {
+          "ci95": [
+            0.0,
+            0.17646691180696544
+          ],
+          "count": 0,
+          "denominator": 19,
+          "rate": 0.0,
+          "undetermined": 0
+        },
+        "P3": {
+          "ci95": [
+            0.0,
+            0.17646691180696544
+          ],
+          "count": 0,
+          "denominator": 19,
+          "rate": 0.0,
+          "undetermined": 0
+        },
+        "P3-retain": {
+          "ci95": [
+            0.0,
+            0.17646691180696544
+          ],
+          "count": 0,
+          "denominator": 19,
+          "rate": 0.0,
+          "undetermined": 0
+        }
+      },
+      "R": {
+        "best_worst": [
+          0.0,
+          0.0
+        ],
+        "blocks": 19,
+        "complete_blocks": 19,
+        "estimate": 0.0,
+        "interval": [
+          -0.2618408608210555,
+          0.2618408608210555
+        ],
+        "interval_confidence_each_side": 0.99375,
+        "margin_position": "interval contains margin",
+        "negative": 0,
+        "positive": 0,
+        "undetermined_blocks": 0
+      },
+      "S": {
+        "P1": {
+          "ci95": [
+            0.3835779233144051,
+            0.8371141278449004
+          ],
+          "count": 12,
+          "denominator": 19,
+          "rate": 0.631578947368421,
+          "undetermined": 0
+        },
+        "P3": {
+          "ci95": [
+            0.24447468946619594,
+            0.7113567520830013
+          ],
+          "count": 9,
+          "denominator": 19,
+          "rate": 0.47368421052631576,
+          "undetermined": 0
+        },
+        "P3-retain": {
+          "ci95": [
+            0.24447468946619594,
+            0.7113567520830013
+          ],
+          "count": 9,
+          "denominator": 19,
+          "rate": 0.47368421052631576,
+          "undetermined": 0
+        }
+      },
+      "accept_with_prior_failure": 3,
+      "batches": [
+        {
+          "N": {
+            "P1": {
+              "ci95": [
+                0.0,
+                0.3362671168799428
+              ],
+              "count": 0,
+              "denominator": 9,
+              "rate": 0.0,
+              "undetermined": 0
+            },
+            "P3": {
+              "ci95": [
+                0.0,
+                0.3362671168799428
+              ],
+              "count": 0,
+              "denominator": 9,
+              "rate": 0.0,
+              "undetermined": 0
+            }
+          },
+          "S": {
+            "P1": {
+              "ci95": [
+                0.39990642628368767,
+                0.9718550265221018
+              ],
+              "count": 7,
+              "denominator": 9,
+              "rate": 0.7777777777777778,
+              "undetermined": 0
+            },
+            "P3": {
+              "ci95": [
+                0.2120085067788678,
+                0.8630043377348335
+              ],
+              "count": 5,
+              "denominator": 9,
+              "rate": 0.5555555555555556,
+              "undetermined": 0
+            }
+          },
+          "blocks": "2-10"
+        },
+        {
+          "N": {
+            "P1": {
+              "ci95": [
+                0.0,
+                0.3084971078187607
+              ],
+              "count": 0,
+              "denominator": 10,
+              "rate": 0.0,
+              "undetermined": 0
+            },
+            "P3": {
+              "ci95": [
+                0.0,
+                0.3084971078187607
+              ],
+              "count": 0,
+              "denominator": 10,
+              "rate": 0.0,
+              "undetermined": 0
+            }
+          },
+          "S": {
+            "P1": {
+              "ci95": [
+                0.18708602844739858,
+                0.8129139715526015
+              ],
+              "count": 5,
+              "denominator": 10,
+              "rate": 0.5,
+              "undetermined": 0
+            },
+            "P3": {
+              "ci95": [
+                0.12155225811982712,
+                0.737621923393055
+              ],
+              "count": 4,
+              "denominator": 10,
+              "rate": 0.4,
+              "undetermined": 0
+            }
+          },
+          "blocks": "11-20"
+        }
+      ],
+      "block_order_first_version": {
+        "V_bad": 10,
+        "V_ok": 9
+      },
+      "counterpart_focal_witnesses": [],
+      "direct_checks": [
+        {
+          "block": 101,
+          "consistent_with": [
+            "P1",
+            "P3"
+          ],
+          "decisions": {
+            "P1": "ACCEPT",
+            "P3": "ACCEPT"
+          },
+          "episode": "etcd5509",
+          "executed": [
+            0
+          ],
+          "structural_mismatch": false,
+          "version": "V_ok"
+        },
+        {
+          "block": 102,
+          "consistent_with": [
+            "P3"
+          ],
+          "decisions": {
+            "P3": "BLOCK"
+          },
+          "episode": "etcd5509",
+          "executed": [
+            2,
+            2,
+            2
+          ],
+          "structural_mismatch": false,
+          "version": "V_bad"
+        },
+        {
+          "block": 103,
+          "consistent_with": [
+            "P1"
+          ],
+          "decisions": {
+            "P1": "BLOCK"
+          },
+          "episode": "etcd5509",
+          "executed": [
+            2
+          ],
+          "structural_mismatch": false,
+          "version": "V_bad"
+        },
+        {
+          "block": 104,
+          "consistent_with": [
+            "P1",
+            "P3"
+          ],
+          "decisions": {
+            "P1": "ACCEPT",
+            "P3": "ACCEPT"
+          },
+          "episode": "etcd5509",
+          "executed": [
+            0
+          ],
+          "structural_mismatch": false,
+          "version": "V_ok"
+        },
+        {
+          "block": 105,
+          "consistent_with": [
+            "P1",
+            "P3"
+          ],
+          "decisions": {
+            "P1": "ACCEPT",
+            "P3": "ACCEPT"
+          },
+          "episode": "etcd5509",
+          "executed": [
+            0
+          ],
+          "structural_mismatch": false,
+          "version": "V_ok"
+        },
+        {
+          "block": 106,
+          "consistent_with": [
+            "P1"
+          ],
+          "decisions": {
+            "P1": "BLOCK"
+          },
+          "episode": "etcd5509",
+          "executed": [
+            2
+          ],
+          "structural_mismatch": false,
+          "version": "V_bad"
+        }
+      ],
+      "episode": "etcd5509",
+      "focal_witnesses_V_bad": {
+        "P1": {
+          "generated": 46,
+          "ignored_by_gate": 0,
+          "in_prefix": 12,
+          "research_only": 34
+        },
+        "P3": {
+          "generated": 46,
+          "ignored_by_gate": 5,
+          "in_prefix": 32,
+          "research_only": 14
+        },
+        "P3-retain": {
+          "generated": 46,
+          "ignored_by_gate": 5,
+          "in_prefix": 32,
+          "research_only": 14
+        }
+      },
+      "invalid_blocks": [],
+      "invalid_fraction": 0.0,
+      "measured_blocks": 19,
+      "missing_blocks": [],
+      "prefix_cost": {
+        "P1/V_bad": {
+          "allocated_vcpu_h": 2.339846,
+          "attempts": 19,
+          "wall_s": 526.465
+        },
+        "P1/V_ok": {
+          "allocated_vcpu_h": 0.057266,
+          "attempts": 19,
+          "wall_s": 12.885
+        },
+        "P3-retain/V_bad": {
+          "allocated_vcpu_h": 6.213073,
+          "attempts": 42,
+          "wall_s": 1397.942
+        },
+        "P3-retain/V_ok": {
+          "allocated_vcpu_h": 0.057266,
+          "attempts": 19,
+          "wall_s": 12.885
+        },
+        "P3/V_bad": {
+          "allocated_vcpu_h": 6.213073,
+          "attempts": 42,
+          "wall_s": 1397.942
+        },
+        "P3/V_ok": {
+          "allocated_vcpu_h": 0.057266,
+          "attempts": 19,
+          "wall_s": 12.885
+        }
+      },
+      "raw_blocking": {
+        "P1/V_bad": {
+          "accepts": 7,
+          "blocks": 12,
+          "indeterminate": 0
+        },
+        "P1/V_ok": {
+          "accepts": 19,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P3-retain/V_bad": {
+          "accepts": 10,
+          "blocks": 9,
+          "indeterminate": 0
+        },
+        "P3-retain/V_ok": {
+          "accepts": 19,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P3/V_bad": {
+          "accepts": 10,
+          "blocks": 9,
+          "indeterminate": 0
+        },
+        "P3/V_ok": {
+          "accepts": 19,
+          "blocks": 0,
+          "indeterminate": 0
+        }
+      },
+      "research_spend": {
+        "ledger_attempts_all_blocks": 128,
+        "ledger_wall_s_all_blocks": 2322.093,
+        "measured_block_allocated_vcpu_h": 9.090421,
+        "measured_block_attempts": 114,
+        "measured_block_wall_s": 2045.345,
+        "measured_cpu": "not measured by runner e1-runner/1"
+      }
+    }
+  ],
+  "meta": {
+    "allocated_vcpus": 16.0,
+    "alpha_each": 0.00625,
+    "analysis_version": "e1-analysis/1",
+    "annotation_sources": {
+      "mechanical": 128
+    },
+    "annotations": "research_runs/ci_sensitivity_2026_09/e1/etcd5509/annotations.jsonl",
+    "annotations_sha256": "304b110f208b22c59965c9e200acf5ba729a52de174c8fbd427282b802d9a5b9",
+    "contrast_family": 2,
+    "direct_blocks": [
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112
+    ],
+    "family_alpha": 0.025,
+    "invalid_threshold": 0.1,
+    "ledger": "research_runs/ci_sensitivity_2026_09/e1/etcd5509/attempts.jsonl",
+    "ledger_sha256": "7b6d771d2c94bb9fe4ce414bdb2d63c251dd0530b3bf45ba9c54accef4d01b30",
+    "margins": {
+      "L": 0.1,
+      "R": 0.05
+    },
+    "measured_blocks": [
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "oracle_versions": [
+      "e1-oracle/1@20a494f00b87"
+    ]
+  }
+}

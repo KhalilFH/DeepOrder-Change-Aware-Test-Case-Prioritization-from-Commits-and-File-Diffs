@@ -1,0 +1,467 @@
+{
+  "episodes": [
+    {
+      "L": {
+        "best_worst": [
+          0.1,
+          0.1
+        ],
+        "blocks": 20,
+        "complete_blocks": 20,
+        "estimate": 0.1,
+        "interval": [
+          -0.24639246398339382,
+          0.40560481203396515
+        ],
+        "interval_confidence_each_side": 0.99375,
+        "margin_position": "interval contains margin",
+        "negative": 0,
+        "positive": 2,
+        "undetermined_blocks": 0
+      },
+      "N": {
+        "P1": {
+          "ci95": [
+            0.0,
+            0.1684334709830853
+          ],
+          "count": 0,
+          "denominator": 20,
+          "rate": 0.0,
+          "undetermined": 0
+        },
+        "P3": {
+          "ci95": [
+            0.0,
+            0.1684334709830853
+          ],
+          "count": 0,
+          "denominator": 20,
+          "rate": 0.0,
+          "undetermined": 0
+        },
+        "P3-retain": {
+          "ci95": [
+            0.0,
+            0.1684334709830853
+          ],
+          "count": 0,
+          "denominator": 20,
+          "rate": 0.0,
+          "undetermined": 0
+        }
+      },
+      "R": {
+        "best_worst": [
+          0.0,
+          0.0
+        ],
+        "blocks": 20,
+        "complete_blocks": 20,
+        "estimate": 0.0,
+        "interval": [
+          -0.2505502810318233,
+          0.2505502810318233
+        ],
+        "interval_confidence_each_side": 0.99375,
+        "margin_position": "interval contains margin",
+        "negative": 0,
+        "positive": 0,
+        "undetermined_blocks": 0
+      },
+      "S": {
+        "P1": {
+          "ci95": [
+            0.012348527170294832,
+            0.3169827140190823
+          ],
+          "count": 2,
+          "denominator": 20,
+          "rate": 0.1,
+          "undetermined": 0
+        },
+        "P3": {
+          "ci95": [
+            0.0,
+            0.1684334709830853
+          ],
+          "count": 0,
+          "denominator": 20,
+          "rate": 0.0,
+          "undetermined": 0
+        },
+        "P3-retain": {
+          "ci95": [
+            0.0,
+            0.1684334709830853
+          ],
+          "count": 0,
+          "denominator": 20,
+          "rate": 0.0,
+          "undetermined": 0
+        }
+      },
+      "accept_with_prior_failure": 2,
+      "batches": [
+        {
+          "N": {
+            "P1": {
+              "ci95": [
+                0.0,
+                0.3084971078187607
+              ],
+              "count": 0,
+              "denominator": 10,
+              "rate": 0.0,
+              "undetermined": 0
+            },
+            "P3": {
+              "ci95": [
+                0.0,
+                0.3084971078187607
+              ],
+              "count": 0,
+              "denominator": 10,
+              "rate": 0.0,
+              "undetermined": 0
+            }
+          },
+          "S": {
+            "P1": {
+              "ci95": [
+                0.0025285785444618125,
+                0.4450161170281953
+              ],
+              "count": 1,
+              "denominator": 10,
+              "rate": 0.1,
+              "undetermined": 0
+            },
+            "P3": {
+              "ci95": [
+                0.0,
+                0.3084971078187607
+              ],
+              "count": 0,
+              "denominator": 10,
+              "rate": 0.0,
+              "undetermined": 0
+            }
+          },
+          "blocks": "1-10"
+        },
+        {
+          "N": {
+            "P1": {
+              "ci95": [
+                0.0,
+                0.3084971078187607
+              ],
+              "count": 0,
+              "denominator": 10,
+              "rate": 0.0,
+              "undetermined": 0
+            },
+            "P3": {
+              "ci95": [
+                0.0,
+                0.3084971078187607
+              ],
+              "count": 0,
+              "denominator": 10,
+              "rate": 0.0,
+              "undetermined": 0
+            }
+          },
+          "S": {
+            "P1": {
+              "ci95": [
+                0.0025285785444618125,
+                0.4450161170281953
+              ],
+              "count": 1,
+              "denominator": 10,
+              "rate": 0.1,
+              "undetermined": 0
+            },
+            "P3": {
+              "ci95": [
+                0.0,
+                0.3084971078187607
+              ],
+              "count": 0,
+              "denominator": 10,
+              "rate": 0.0,
+              "undetermined": 0
+            }
+          },
+          "blocks": "11-20"
+        }
+      ],
+      "block_order_first_version": {
+        "V_bad": 11,
+        "V_ok": 9
+      },
+      "counterpart_focal_witnesses": [],
+      "direct_checks": [
+        {
+          "block": 107,
+          "consistent_with": [
+            "P1",
+            "P3"
+          ],
+          "decisions": {
+            "P1": "ACCEPT",
+            "P3": "ACCEPT"
+          },
+          "episode": "etcd7492",
+          "executed": [
+            0
+          ],
+          "structural_mismatch": false,
+          "version": "V_ok"
+        },
+        {
+          "block": 108,
+          "consistent_with": [
+            "P1",
+            "P3"
+          ],
+          "decisions": {
+            "P1": "ACCEPT",
+            "P3": "ACCEPT"
+          },
+          "episode": "etcd7492",
+          "executed": [
+            0
+          ],
+          "structural_mismatch": false,
+          "version": "V_bad"
+        },
+        {
+          "block": 109,
+          "consistent_with": [
+            "P1",
+            "P3"
+          ],
+          "decisions": {
+            "P1": "ACCEPT",
+            "P3": "ACCEPT"
+          },
+          "episode": "etcd7492",
+          "executed": [
+            0
+          ],
+          "structural_mismatch": false,
+          "version": "V_ok"
+        },
+        {
+          "block": 110,
+          "consistent_with": [
+            "P1",
+            "P3"
+          ],
+          "decisions": {
+            "P1": "ACCEPT",
+            "P3": "ACCEPT"
+          },
+          "episode": "etcd7492",
+          "executed": [
+            0
+          ],
+          "structural_mismatch": false,
+          "version": "V_ok"
+        },
+        {
+          "block": 111,
+          "consistent_with": [
+            "P1",
+            "P3"
+          ],
+          "decisions": {
+            "P1": "ACCEPT",
+            "P3": "ACCEPT"
+          },
+          "episode": "etcd7492",
+          "executed": [
+            0
+          ],
+          "structural_mismatch": false,
+          "version": "V_bad"
+        },
+        {
+          "block": 112,
+          "consistent_with": [
+            "P1",
+            "P3"
+          ],
+          "decisions": {
+            "P1": "ACCEPT",
+            "P3": "ACCEPT"
+          },
+          "episode": "etcd7492",
+          "executed": [
+            0
+          ],
+          "structural_mismatch": false,
+          "version": "V_bad"
+        }
+      ],
+      "episode": "etcd7492",
+      "focal_witnesses_V_bad": {
+        "P1": {
+          "generated": 4,
+          "ignored_by_gate": 0,
+          "in_prefix": 2,
+          "research_only": 2
+        },
+        "P3": {
+          "generated": 4,
+          "ignored_by_gate": 2,
+          "in_prefix": 2,
+          "research_only": 2
+        },
+        "P3-retain": {
+          "generated": 4,
+          "ignored_by_gate": 2,
+          "in_prefix": 2,
+          "research_only": 2
+        }
+      },
+      "invalid_blocks": [],
+      "invalid_fraction": 0.0,
+      "measured_blocks": 20,
+      "missing_blocks": [],
+      "prefix_cost": {
+        "P1/V_bad": {
+          "allocated_vcpu_h": 0.481822,
+          "attempts": 20,
+          "wall_s": 108.41
+        },
+        "P1/V_ok": {
+          "allocated_vcpu_h": 0.057061,
+          "attempts": 20,
+          "wall_s": 12.839
+        },
+        "P3-retain/V_bad": {
+          "allocated_vcpu_h": 0.487512,
+          "attempts": 22,
+          "wall_s": 109.69
+        },
+        "P3-retain/V_ok": {
+          "allocated_vcpu_h": 0.057061,
+          "attempts": 20,
+          "wall_s": 12.839
+        },
+        "P3/V_bad": {
+          "allocated_vcpu_h": 0.487512,
+          "attempts": 22,
+          "wall_s": 109.69
+        },
+        "P3/V_ok": {
+          "allocated_vcpu_h": 0.057061,
+          "attempts": 20,
+          "wall_s": 12.839
+        }
+      },
+      "raw_blocking": {
+        "P1/V_bad": {
+          "accepts": 18,
+          "blocks": 2,
+          "indeterminate": 0
+        },
+        "P1/V_ok": {
+          "accepts": 20,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P3-retain/V_bad": {
+          "accepts": 20,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P3-retain/V_ok": {
+          "accepts": 20,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P3/V_bad": {
+          "accepts": 20,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P3/V_ok": {
+          "accepts": 20,
+          "blocks": 0,
+          "indeterminate": 0
+        }
+      },
+      "research_spend": {
+        "ledger_attempts_all_blocks": 126,
+        "ledger_wall_s_all_blocks": 271.301,
+        "measured_block_allocated_vcpu_h": 1.189629,
+        "measured_block_attempts": 120,
+        "measured_block_wall_s": 267.667,
+        "measured_cpu": "not measured by runner e1-runner/1"
+      }
+    }
+  ],
+  "meta": {
+    "allocated_vcpus": 16.0,
+    "alpha_each": 0.00625,
+    "analysis_version": "e1-analysis/1",
+    "annotation_sources": {
+      "mechanical": 126
+    },
+    "annotations": "research_runs/ci_sensitivity_2026_09/e1/etcd7492/annotations.jsonl",
+    "annotations_sha256": "e9a625d48a7076be621b56f52bbaa0c4001efc33865e33bf48b039d86ed40aac",
+    "contrast_family": 2,
+    "direct_blocks": [
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110,
+      111,
+      112
+    ],
+    "family_alpha": 0.025,
+    "invalid_threshold": 0.1,
+    "ledger": "research_runs/ci_sensitivity_2026_09/e1/etcd7492/attempts.jsonl",
+    "ledger_sha256": "de92e3b71857e6fdb04dc4a7199c656f7be5c8419a1aa65dcd0fa39fd459e8da",
+    "margins": {
+      "L": 0.1,
+      "R": 0.05
+    },
+    "measured_blocks": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20
+    ],
+    "oracle_versions": [
+      "e1-oracle/1@20a494f00b87"
+    ]
+  }
+}
