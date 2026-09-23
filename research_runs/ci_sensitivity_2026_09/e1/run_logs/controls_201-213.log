@@ -1,0 +1,15 @@
+controls plan=c67830841a540cf68f509115d0a4627f3890b7ae31f2de8a2b217c7f8f9f6cd7 runner=e1-runner/1 line=20.0 identity_etcd5509=973488c9d0d7a89b4259a5ff8f3e0f4371f7814652d28be84687a7fab4d681c1 identity_etcd7492=362fa13a502e3eb1eb93ed18d3cacc57eeb550909562ca32df5f4d189e598358 detfail_grpc1859=87d94b32c105903e2f59c7badba44d0716452f44a1c4fc36d4cd06ea3169d2f6
+block 201 identity_etcd5509 seed=2533165608 first=V_ok statuses={"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]} cost_so_far=11.844
+block 202 identity_etcd5509 seed=2322679444 first=V_ok statuses={"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]} cost_so_far=11.915
+block 203 identity_etcd5509 seed=2998798939 first=V_ok statuses={"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]} cost_so_far=11.985
+block 204 identity_etcd5509 seed=477806263 first=V_bad statuses={"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]} cost_so_far=12.055
+block 205 identity_etcd5509 seed=2633075146 first=V_ok statuses={"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]} cost_so_far=12.125
+block 201 identity_etcd7492 seed=1176602153 first=V_bad statuses={"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]} cost_so_far=12.194
+block 202 identity_etcd7492 seed=4169374394 first=V_bad statuses={"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]} cost_so_far=12.263
+block 203 identity_etcd7492 seed=1357861969 first=V_bad statuses={"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]} cost_so_far=12.333
+block 204 identity_etcd7492 seed=3208838211 first=V_ok statuses={"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]} cost_so_far=12.403
+block 205 identity_etcd7492 seed=525426167 first=V_ok statuses={"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]} cost_so_far=12.472
+block 211 detfail_grpc1859 seed=3182867988 first=V_bad statuses={"V_bad": [2, 2, 2], "V_ok": [2, 2, 2]} cost_so_far=12.805
+block 212 detfail_grpc1859 seed=276859447 first=V_ok statuses={"V_bad": [2, 2, 2], "V_ok": [2, 2, 2]} cost_so_far=13.139
+block 213 detfail_grpc1859 seed=1206863385 first=V_bad statuses={"V_bad": [2, 2, 2], "V_ok": [2, 2, 2]} cost_so_far=13.472
+DONE
