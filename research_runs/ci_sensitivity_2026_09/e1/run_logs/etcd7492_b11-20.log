@@ -1,0 +1,12 @@
+etcd7492 blocks 11-20 manifest=860cb23ef6abd35f6273e21f40557ecba481a167ee5ea4ad629577c9480d4620 runner=e1-runner/1
+block 11 seed=3841828038 first=V_bad {"V_bad": [2, 0, 0], "V_ok": [0, 0, 0]}
+block 12 seed=3873183957 first=V_ok {"V_ok": [0, 0, 0], "V_bad": [0, 0, 0]}
+block 13 seed=1075082448 first=V_bad {"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]}
+block 14 seed=350423049 first=V_ok {"V_ok": [0, 0, 0], "V_bad": [0, 0, 0]}
+block 15 seed=4254026833 first=V_bad {"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]}
+block 16 seed=1037908609 first=V_ok {"V_ok": [0, 0, 0], "V_bad": [0, 0, 0]}
+block 17 seed=319279390 first=V_bad {"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]}
+block 18 seed=707175031 first=V_bad {"V_bad": [0, 0, 0], "V_ok": [0, 0, 0]}
+block 19 seed=2973365684 first=V_ok {"V_ok": [0, 0, 0], "V_bad": [0, 0, 0]}
+block 20 seed=4279195990 first=V_bad {"V_bad": [0, 2, 0], "V_ok": [0, 0, 0]}
+DONE
