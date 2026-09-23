@@ -1,0 +1,102 @@
+{
+  "identifier": "e1_direct_checks_plan_v1",
+  "authority": "AMENDMENTS.md section 2",
+  "rules": {
+    "allocation": "a = first 32 bits of SHA-256('e1:direct:allocation'); even -> etcd5509 V_bad gets 2 P3, odd -> etcd7492 V_bad gets 2 P3; the other episode is crossed",
+    "order": "per episode, checks listed V_bad/P1, V_bad/P3, V_ok/P1, V_ok/P3 (repeats adjacent), shuffled by random.Random(s) with s = first 32 bits of SHA-256('e1:direct:order:<episode>'); shuffled checks take the episode's blocks in ascending order",
+    "seed": "first 32 bits of SHA-256('e1:<episode>:block:<n>')",
+    "execution_order": "etcd5509 blocks 101-106, then etcd7492 blocks 107-112"
+  },
+  "allocation_value": 1185576341,
+  "order_seeds": {
+    "etcd5509": 3728254925,
+    "etcd7492": 1987856515
+  },
+  "reserved_from": 101,
+  "checks": [
+    {
+      "block": 101,
+      "episode": "etcd5509",
+      "version": "V_ok",
+      "policy": "P3",
+      "seed": 3731262331
+    },
+    {
+      "block": 102,
+      "episode": "etcd5509",
+      "version": "V_bad",
+      "policy": "P3",
+      "seed": 1021860734
+    },
+    {
+      "block": 103,
+      "episode": "etcd5509",
+      "version": "V_bad",
+      "policy": "P1",
+      "seed": 953258952
+    },
+    {
+      "block": 104,
+      "episode": "etcd5509",
+      "version": "V_ok",
+      "policy": "P1",
+      "seed": 3833310602
+    },
+    {
+      "block": 105,
+      "episode": "etcd5509",
+      "version": "V_ok",
+      "policy": "P3",
+      "seed": 903614685
+    },
+    {
+      "block": 106,
+      "episode": "etcd5509",
+      "version": "V_bad",
+      "policy": "P1",
+      "seed": 124962926
+    },
+    {
+      "block": 107,
+      "episode": "etcd7492",
+      "version": "V_ok",
+      "policy": "P3",
+      "seed": 2234491992
+    },
+    {
+      "block": 108,
+      "episode": "etcd7492",
+      "version": "V_bad",
+      "policy": "P3",
+      "seed": 3789747153
+    },
+    {
+      "block": 109,
+      "episode": "etcd7492",
+      "version": "V_ok",
+      "policy": "P1",
+      "seed": 2636512552
+    },
+    {
+      "block": 110,
+      "episode": "etcd7492",
+      "version": "V_ok",
+      "policy": "P1",
+      "seed": 87457551
+    },
+    {
+      "block": 111,
+      "episode": "etcd7492",
+      "version": "V_bad",
+      "policy": "P1",
+      "seed": 1997272447
+    },
+    {
+      "block": 112,
+      "episode": "etcd7492",
+      "version": "V_bad",
+      "policy": "P3",
+      "seed": 2252439627
+    }
+  ]
+}
