@@ -1,0 +1,240 @@
+{
+  "episodes": [
+    {
+      "L": {
+        "best_worst": [
+          0.0,
+          0.0
+        ],
+        "blocks": 5,
+        "complete_blocks": 5,
+        "estimate": 0.0,
+        "interval": [
+          -0.6376101681611521,
+          0.6376101681611521
+        ],
+        "interval_confidence_each_side": 0.9875,
+        "margin_position": "interval contains margin",
+        "negative": 0,
+        "positive": 0,
+        "undetermined_blocks": 0
+      },
+      "N": {
+        "P1": {
+          "ci95": [
+            0.0,
+            0.5218237501049816
+          ],
+          "count": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "undetermined": 0
+        },
+        "P3": {
+          "ci95": [
+            0.0,
+            0.5218237501049816
+          ],
+          "count": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "undetermined": 0
+        },
+        "P3-retain": {
+          "ci95": [
+            0.0,
+            0.5218237501049816
+          ],
+          "count": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "undetermined": 0
+        }
+      },
+      "R": {
+        "best_worst": [
+          0.0,
+          0.0
+        ],
+        "blocks": 5,
+        "complete_blocks": 5,
+        "estimate": 0.0,
+        "interval": [
+          -0.6376101681611521,
+          0.6376101681611521
+        ],
+        "interval_confidence_each_side": 0.9875,
+        "margin_position": "interval contains margin",
+        "negative": 0,
+        "positive": 0,
+        "undetermined_blocks": 0
+      },
+      "S": {
+        "P1": {
+          "ci95": [
+            0.0,
+            0.5218237501049816
+          ],
+          "count": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "undetermined": 0
+        },
+        "P3": {
+          "ci95": [
+            0.0,
+            0.5218237501049816
+          ],
+          "count": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "undetermined": 0
+        },
+        "P3-retain": {
+          "ci95": [
+            0.0,
+            0.5218237501049816
+          ],
+          "count": 0,
+          "denominator": 5,
+          "rate": 0.0,
+          "undetermined": 0
+        }
+      },
+      "accept_with_prior_failure": 0,
+      "block_order_first_version": {
+        "V_bad": 1,
+        "V_ok": 4
+      },
+      "counterpart_focal_witnesses": [],
+      "direct_checks": [],
+      "episode": "etcd5509",
+      "focal_witnesses_V_bad": {
+        "P1": {
+          "generated": 0,
+          "ignored_by_gate": 0,
+          "in_prefix": 0,
+          "research_only": 0
+        },
+        "P3": {
+          "generated": 0,
+          "ignored_by_gate": 0,
+          "in_prefix": 0,
+          "research_only": 0
+        },
+        "P3-retain": {
+          "generated": 0,
+          "ignored_by_gate": 0,
+          "in_prefix": 0,
+          "research_only": 0
+        }
+      },
+      "invalid_blocks": [],
+      "invalid_fraction": 0.0,
+      "measured_blocks": 5,
+      "missing_blocks": [],
+      "prefix_cost": {
+        "P1/V_bad": {
+          "allocated_vcpu_h": 0.013326,
+          "attempts": 5,
+          "wall_s": 2.998
+        },
+        "P1/V_ok": {
+          "allocated_vcpu_h": 0.013713,
+          "attempts": 5,
+          "wall_s": 3.085
+        },
+        "P3-retain/V_bad": {
+          "allocated_vcpu_h": 0.013326,
+          "attempts": 5,
+          "wall_s": 2.998
+        },
+        "P3-retain/V_ok": {
+          "allocated_vcpu_h": 0.013713,
+          "attempts": 5,
+          "wall_s": 3.085
+        },
+        "P3/V_bad": {
+          "allocated_vcpu_h": 0.013326,
+          "attempts": 5,
+          "wall_s": 2.998
+        },
+        "P3/V_ok": {
+          "allocated_vcpu_h": 0.013713,
+          "attempts": 5,
+          "wall_s": 3.085
+        }
+      },
+      "raw_blocking": {
+        "P1/V_bad": {
+          "accepts": 5,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P1/V_ok": {
+          "accepts": 5,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P3-retain/V_bad": {
+          "accepts": 5,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P3-retain/V_ok": {
+          "accepts": 5,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P3/V_bad": {
+          "accepts": 5,
+          "blocks": 0,
+          "indeterminate": 0
+        },
+        "P3/V_ok": {
+          "accepts": 5,
+          "blocks": 0,
+          "indeterminate": 0
+        }
+      },
+      "research_spend": {
+        "ledger_attempts_all_blocks": 30,
+        "ledger_wall_s_all_blocks": 17.88,
+        "measured_block_allocated_vcpu_h": 0.079468,
+        "measured_block_attempts": 30,
+        "measured_block_wall_s": 17.88,
+        "measured_cpu": "not measured by runner e1-runner/1"
+      }
+    }
+  ],
+  "meta": {
+    "allocated_vcpus": 16.0,
+    "alpha_each": 0.0125,
+    "analysis_version": "e1-analysis/1",
+    "annotation_sources": {
+      "mechanical": 30
+    },
+    "annotations": "research_runs/ci_sensitivity_2026_09/e1/controls/identity_etcd5509/annotations.jsonl",
+    "annotations_sha256": "a2caa557e2d84f8a8f2d7beaf9a0386ac64a49523e608aa1457fb9f54dd7812d",
+    "contrast_family": 2,
+    "direct_blocks": [],
+    "family_alpha": 0.05,
+    "invalid_threshold": 0.1,
+    "ledger": "research_runs/ci_sensitivity_2026_09/e1/controls/identity_etcd5509/attempts.jsonl",
+    "ledger_sha256": "202fdcaec9a3a4e6c61f69e600a4047dc1d4b1bf475d7f60e1ad4769adc8188d",
+    "margins": {
+      "L": 0.1,
+      "R": 0.05
+    },
+    "measured_blocks": [
+      201,
+      202,
+      203,
+      204,
+      205
+    ],
+    "oracle_versions": [
+      "e1-oracle/1@20a494f00b87"
+    ]
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "episodes": [
+    {
+      "L": {
+        "best_worst": [
+          -1.0,
+          1.0
+        ],
+        "blocks": 3,
+        "complete_blocks": 0,
+        "estimate": null,
+        "interval": null,
+        "interval_confidence_each_side": 0.9875,
+        "margin_position": "no complete blocks",
+        "negative": 0,
+        "positive": 0,
+        "undetermined_blocks": 3
+      },
+      "N": {
+        "P1": {
+          "ci95": null,
+          "count": 0,
+          "denominator": 0,
+          "rate": null,
+          "undetermined": 3
+        },
+        "P3": {
+          "ci95": null,
+          "count": 0,
+          "denominator": 0,
+          "rate": null,
+          "undetermined": 3
+        },
+        "P3-retain": {
+          "ci95": null,
+          "count": 0,
+          "denominator": 0,
+          "rate": null,
+          "undetermined": 3
+        }
+      },
+      "R": {
+        "best_worst": [
+          -1.0,
+          1.0
+        ],
+        "blocks": 3,
+        "complete_blocks": 0,
+        "estimate": null,
+        "interval": null,
+        "interval_confidence_each_side": 0.9875,
+        "margin_position": "no complete blocks",
+        "negative": 0,
+        "positive": 0,
+        "undetermined_blocks": 3
+      },
+      "S": {
+        "P1": {
+          "ci95": null,
+          "count": 0,
+          "denominator": 0,
+          "rate": null,
+          "undetermined": 3
+        },
+        "P3": {
+          "ci95": null,
+          "count": 0,
+          "denominator": 0,
+          "rate": null,
+          "undetermined": 3
+        },
+        "P3-retain": {
+          "ci95": null,
+          "count": 0,
+          "denominator": 0,
+          "rate": null,
+          "undetermined": 3
+        }
+      },
+      "accept_with_prior_failure": 0,
+      "block_order_first_version": {
+        "V_bad": 2,
+        "V_ok": 1
+      },
+      "counterpart_focal_witnesses": [],
+      "direct_checks": [],
+      "episode": "grpc1859",
+      "focal_witnesses_V_bad": {
+        "P1": {
+          "generated": 0,
+          "ignored_by_gate": 0,
+          "in_prefix": 0,
+          "research_only": 0
+        },
+        "P3": {
+          "generated": 0,
+          "ignored_by_gate": 0,
+          "in_prefix": 0,
+          "research_only": 0
+        },
+        "P3-retain": {
+          "generated": 0,
+          "ignored_by_gate": 0,
+          "in_prefix": 0,
+          "research_only": 0
+        }
+      },
+      "invalid_blocks": [
+        211,
+        212,
+        213
+      ],
+      "invalid_fraction": 1.0,
+      "measured_blocks": 3,
+      "missing_blocks": [],
+      "prefix_cost": {
+        "P1/V_bad": {
+          "allocated_vcpu_h": 0.140229,
+          "attempts": 3,
+          "wall_s": 31.551
+        },
+        "P1/V_ok": {
+          "allocated_vcpu_h": 0.139779,
+          "attempts": 3,
+          "wall_s": 31.45
+        },
+        "P3-retain/V_bad": {
+          "allocated_vcpu_h": 0.140229,
+          "attempts": 3,
+          "wall_s": 31.551
+        },
+        "P3-retain/V_ok": {
+          "allocated_vcpu_h": 0.139779,
+          "attempts": 3,
+          "wall_s": 31.45
+        },
+        "P3/V_bad": {
+          "allocated_vcpu_h": 0.140229,
+          "attempts": 3,
+          "wall_s": 31.551
+        },
+        "P3/V_ok": {
+          "allocated_vcpu_h": 0.139779,
+          "attempts": 3,
+          "wall_s": 31.45
+        }
+      },
+      "raw_blocking": {
+        "P1/V_bad": {
+          "accepts": 0,
+          "blocks": 0,
+          "indeterminate": 3
+        },
+        "P1/V_ok": {
+          "accepts": 0,
+          "blocks": 0,
+          "indeterminate": 3
+        },
+        "P3-retain/V_bad": {
+          "accepts": 0,
+          "blocks": 0,
+          "indeterminate": 3
+        },
+        "P3-retain/V_ok": {
+          "accepts": 0,
+          "blocks": 0,
+          "indeterminate": 3
+        },
+        "P3/V_bad": {
+          "accepts": 0,
+          "blocks": 0,
+          "indeterminate": 3
+        },
+        "P3/V_ok": {
+          "accepts": 0,
+          "blocks": 0,
+          "indeterminate": 3
+        }
+      },
+      "research_spend": {
+        "ledger_attempts_all_blocks": 18,
+        "ledger_wall_s_all_blocks": 188.308,
+        "measured_block_allocated_vcpu_h": 0.836923,
+        "measured_block_attempts": 18,
+        "measured_block_wall_s": 188.308,
+        "measured_cpu": "not measured by runner e1-runner/1"
+      }
+    }
+  ],
+  "meta": {
+    "allocated_vcpus": 16.0,
+    "alpha_each": 0.0125,
+    "analysis_version": "e1-analysis/1",
+    "annotation_sources": {
+      "override": 18
+    },
+    "annotations": "research_runs/ci_sensitivity_2026_09/e1/controls/detfail_grpc1859/annotations.jsonl",
+    "annotations_sha256": "758a6bc4991ac1fd79fb417314a557db1c805318e24ac9d71f98b8ee27f27dc1",
+    "contrast_family": 2,
+    "direct_blocks": [],
+    "family_alpha": 0.05,
+    "invalid_threshold": 0.1,
+    "ledger": "research_runs/ci_sensitivity_2026_09/e1/controls/detfail_grpc1859/attempts.jsonl",
+    "ledger_sha256": "0e77915a05cf3660801c6d81f27291189f29d0b3a9a0ae572e71481e9d1cd5db",
+    "margins": {
+      "L": 0.1,
+      "R": 0.05
+    },
+    "measured_blocks": [
+      211,
+      212,
+      213
+    ],
+    "oracle_versions": [
+      "e1-oracle/1@20a494f00b87"
+    ]
+  }
+}

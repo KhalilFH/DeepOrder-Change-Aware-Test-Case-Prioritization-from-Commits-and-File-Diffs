@@ -332,3 +332,214 @@ This is labelled interpretation, not result.
   - `python e1_harness/oracle.py --ledger research_runs/ci_sensitivity_2026_09/e1/<episode>/attempts.jsonl --out <path>`
   - `python e1_harness/analysis.py --ledger …/<episode>/attempts.jsonl --annotations …/<episode>/annotations.jsonl --blocks 1-20 --batch 1-10 --batch 11-20 --direct-blocks 101-112 --allocated-vcpus 16 --family-alpha 0.025 --out <dir>`
 - **From here:** step 4, the controls, is the remaining E1 work. Each control needs a design, an oracle card and a cost check against the 3.0 vCPU-hour reserve (section 2.3). After that comes the E1 "Continue" decision, including the projected E2 cost.
+
+## 7. 2026-09-23 — step-4 controls: design, driver and freeze
+
+- **Status:** the researcher approved the design on 2026-09-23 as drafted. B2 (see 7.4) is deferred.
+  - No control attempt has run.
+  - The controls may run only once the section 7.6 pre-start conditions are met and recorded.
+  - A qualification session may be using Docker on this host at the same time. Its runs and the control run must not overlap (section 1).
+- **Unchanged:**
+  - `e1_protocol.md`, every hash-frozen harness file and every E1 ledger;
+  - `run_blocks.py`, `run_direct.py`, and the section 6 results;
+  - `oracle.py`. No oracle card was added; each control reuses an existing card, so its hash is unchanged.
+- **Ordering, already disclosed in section 6:** the controls run after the E1 analysis. If a control shows an attribution or final-status problem, it is recorded here and section 6 is re-read under that entry, not edited.
+
+### 7.1 What the frozen records fix
+
+- **The controls themselves:** plan §6 step 4 and `protocol.md` call for "a small identity/no-change and deterministic-failure control set to verify attribution and final status". Costs are charged, the controls add no episodes, and stable or synthetic controls are labelled separately.
+- **Budget:** section 2.3's 3.0 vCPU-hour reserve (17.0–20.0) covers the controls and metered implementation verification. Unused reserve is not spent on extra sampling.
+
+### 7.2 How the controls are kept apart from E1
+
+- **Cards:** oracle cards live in the frozen `oracle.py`, and it refuses an episode without one. Each control therefore runs the target test of an existing frozen card, under that card's episode key (`etcd5509`, `etcd7492`, `grpc1859`).
+- **Separation:**
+  - own ledgers at `e1/controls/<control>/attempts.jsonl`;
+  - blocks 201–213, outside 1–20 and 101–112;
+  - a distinct `manifest_sha256` on every record.
+
+  Control records never enter the E1 ledgers or the section 6 analysis.
+- **Driver:** `e1/run_controls.py` is new. It calls the frozen `Runner.run_block` (three attempts on each version role, role order from the seed) and imports, without changing, `run_direct.py`'s Docker preflight and cost functions.
+
+### 7.3 The two controls
+
+**A — identity/no-change** (`identity_etcd5509`, `identity_etcd7492`; blocks 201–205 each; 60 attempts)
+
+- **Manifest:** each episode's frozen manifest with **both** version roles on its frozen `V_ok` image. The argv, workdir, runner timeout and condition are unchanged. The driver re-derives this from `manifests.json` and refuses anything else.
+- **Pre-declared expectation:** every attempt `PASS`; P1, P3 and P3-retain ACCEPT on both roles; `S = N = 0`; no focal witness on either role.
+- **What it checks:** with no revision change, nothing in the pipeline (role labels, randomised order, manifest handling, oracle) creates a difference or an attribution. Any failure is recorded and adjudicated as a finding.
+- **Label:** stable control, not synthetic.
+
+**B — deterministic failure** (`detfail_grpc1859`; blocks 211–213; 18 attempts)
+
+- **Source:** `task5_grpc1859_restoration.md` Step 3. The subject's committed test certificates expired in 2024–2025. In every TLS environment, the test therefore blocks in `grpc.Dial` until the test timeout, identically on both versions. The failure is real, not forced, but it is caused by the environment, not a revision.
+- **Manifest:** the Q0 grpc1859 command (`task5_artifacts/grpc1859/run/attempt.sh`) with two declared changes:
+  - `-only_env tcp-tls-v1-balancer`, the first TLS entry in upstream `allEnv` order. This was read from `end2end_test.go` inside the image (line 404: `tcpClearEnv, tcpTLSEnv, …`) and was not chosen by any observed outcome;
+  - `-test.timeout 10s` with a 25 s runner timeout, to bound cost.
+- **Images, pinned by ID:** the Q0 record gave tags only.
+  - `grpc1859-bug` = `sha256:6b890fa74bedace16bf8049b8a1968f7928a596312210bc17a9ba86b96e03a03` (created 2026-09-22T17:50:11Z)
+  - `grpc1859-fix` = `sha256:3b72ed206066bb8ea69f5dfbf0271c753f25e832797069d6abc560ec6c4e9034` (created 17:50:33Z)
+  - **Observed:** both were created inside the Task 5 window (17:44:33–18:00:14Z). The `end2end_test.go` copied from each has Git blob `6a583182170323ec5b23d760d926c92d3816be18`, the test blob recorded by Task 5.
+  - **Inference:** these are the Q0 images.
+- **Pre-declared expectations:**
+  - **Final status:** every attempt exits nonzero. P1 BLOCKs, and P3 BLOCKs after three attempts, on both versions.
+  - **Mechanical oracle:** the frozen `grpc1859` card labels every attempt `UNRESOLVED` (a test timeout matching no signature), never `FOCAL_DEFECT_WITNESS`.
+  - **Analysis:** no block counts toward `S`. Blocks are undetermined or invalid, not focal-supported.
+- **Pre-declared adjudication,** fixed here before any control attempt:
+  - An attempt is overridden to `HARNESS_INVALID` if and only if its goroutine dump shows the test goroutine blocked under `grpc.Dial` → `WaitForStateChange` with no `quotaPool.get` frame.
+  - Evidence: the expired-certificate finding above.
+  - Any other outcome stays as the oracle labelled it and is reported.
+- **What it checks:** a deterministic failure is blocked and cannot be hidden by retry, and a failure identical on both versions is not attributed to the revision.
+- **Label:** environment-caused deterministic failure. It is not a revision-attributable defect.
+
+### 7.4 Deferred and rejected
+
+- **B2 is deferred:** a revision-attributable deterministic defect from a GoReal `SCREENED_DETERMINISTIC_LEAD` (grpc_649/795/1275/1424, cockroach_1055).
+  - It would give the stronger check: `S(P1) = S(P3) = 1`, so `L = 0`.
+  - It needs a restoration, a control roster slot, Docker time and human hours before the day-10 gate.
+  - It is pursued only if the qualification work turns one up. If so, it gets its own entry.
+- **Rejected:** a synthetic harness failure, such as a bad flag. It produces no `=== RUN` line, so it is only `HARNESS_INVALID`, and it would check exit propagation only.
+
+### 7.5 Cost and guard
+
+- **Accounting:** as in section 2.2, 16 vCPUs and `elapsed_s + 2.04 s` per attempt. The cost before the controls is 11.77 vCPU-hours on that basis, computed at run time from the E1 ledgers.
+- **Projection:**
+  - A: about 0.72 vCPU-hours at measured `V_ok` durations (0.75 at their maximum).
+  - B: about 1.00.
+  - Total: about 1.72, bringing E1 to about 13.49.
+- **Guard, applied before each block** (never inside one):
+  - a block does not start if the cost so far plus its hard bound exceeds **20.0**;
+  - the hard bound is 6 × (runner timeout + 30 + 2.04) s × 16 / 3600: 2.45 vCPU-hours for identity_etcd5509 blocks, 2.59 for identity_etcd7492 and 1.52 for detfail_grpc1859;
+  - a guard stop is final and is recorded here.
+- **Implementation verification so far:**
+  - The unit tests use a fake Docker and cost nothing.
+  - Pinning the images and reading `allEnv` used `docker image inspect` plus `docker create`, `docker cp` and `docker rm`. No container was started, so no metered job ran.
+
+### 7.6 Execution and stop rules
+
+These carry over from sections 1 and 2.4.
+
+- **Before starting**, recorded in `run_logs/controls_prestart_check.md`:
+  - no other agent Docker task is running, including the qualification session;
+  - `docker ps -a` is empty;
+  - `sha256sum -c FREEZE.sha256` passes, and the hashes below match.
+
+  The driver checks the rest itself: the plan, control and E1 manifest hashes, the identity derivation, all image IDs present, and `docker info`.
+- **Order:** identity_etcd5509 201–205, then identity_etcd7492 201–205, then detfail_grpc1859 211–213. Seeds follow the measured-block rule, SHA-256(`e1:<episode>:block:<n>`).
+- **Stops, with no retry:**
+  - on `docker info` failure (exit 2);
+  - on a guard stop (exit 3);
+  - at the first structural mismatch (exit 4): a version role without exactly three recorded attempts, a record with another manifest or episode, a ledger that disagrees with the executed statuses or fails `verify_chain`, or a container still present.
+- **Resume:** a stopped run resumes only from the next unrecorded block. An incomplete recorded block needs a decision recorded here.
+- **Output:** while running, exit statuses only, in `run_logs/controls_201-213.log`, plus the start and end UTC files.
+- **After the run:**
+  - oracle on each control ledger, then the 7.3 pre-declared override, then per-control analysis;
+  - all in a later entry here.
+
+### 7.7 Verification and hashes
+
+- **Tests:**
+  - The unit suite runs 193 tests, all OK: the 172 from section 3 plus 21 for the control driver.
+  - Four deliberate breakages were each caught: disabling the guard, the leftover-container check, the block-completeness check and the identity-derivation check. `run_controls.py` was restored byte for byte afterwards.
+- **Byte-for-byte storage:** `e1_harness/.gitattributes` now also marks `tests/test_run_controls.py` `-text`. Everything else below is under `e1/` (`* -text`).
+
+| File | SHA-256 |
+|---|---|
+| `e1/run_controls.py` | `4feed4f0a83c8cc03839cd7e363b20d11b2464d360a5de092dfbe7901e4092f3` |
+| `e1/controls/plan.json` | `c67830841a540cf68f509115d0a4627f3890b7ae31f2de8a2b217c7f8f9f6cd7` |
+| `e1/controls/manifests.json` | `575244b1b663ce149cea5176fbed0ba960261db17e58550c29f04bf195ab556d` |
+| `e1_harness/tests/test_run_controls.py` | `537b452a39dac425c3eda311c3137a86c51ebee224285a6da3e8cf7757503d98` |
+
+| Control manifest | `Manifest.sha256` |
+|---|---|
+| `identity_etcd5509` | `973488c9d0d7a89b4259a5ff8f3e0f4371f7814652d28be84687a7fab4d681c1` |
+| `identity_etcd7492` | `362fa13a502e3eb1eb93ed18d3cacc57eeb550909562ca32df5f4d189e598358` |
+| `detfail_grpc1859` | `87d94b32c105903e2f59c7badba44d0716452f44a1c4fc36d4cd06ea3169d2f6` |
+
+- **From here:** the controls may run under this entry once the 7.6 pre-start conditions are met and recorded, and the Docker slot has been agreed with the qualification session.
+
+## 8. 2026-09-23 — step-4 controls run: results
+
+- **Status:** records the run that section 7 authorised. All 13 control blocks ran to completion, and both controls met every expectation that section 7.3 pre-declared. E1 step 4 is complete.
+- **Unchanged:** `e1_protocol.md`, sections 1–7, every hash-frozen file, the E1 ledgers (still 254 records) and the section 6 results.
+
+### 8.1 Run
+
+- **Pre-start:** `run_logs/controls_prestart_check.md` records the conditions at 09:33:44Z.
+  - `docker ps -a` was empty and the host was idle.
+  - Both other sessions were idle, and the researcher confirmed the Docker slot was free.
+  - All frozen and section 7.7 hashes matched, and the driver's preflight was clean.
+- **Code executed:** `run_controls.py` at `4feed4f0…` from HEAD `13a6ef7`, with the harness at its recorded hashes.
+- **Window:** 09:34:09Z (`controls_start_utc.txt`) to 09:38:01Z (`controls_end_utc.txt`, `exit=0`).
+- **Outcome:** driver status `DONE`. There was no `docker info` stop, no guard stop and no structural mismatch. After the run, `docker ps -a` listed no containers.
+- **Independent re-check,** from the control ledgers and not the driver log:
+  - `verify_chain` passes on all three ledgers (30, 30 and 18 records).
+  - Every block is complete: three attempts per role, the planned seed, and the control's manifest hash and episode.
+  - `timed_out` is false everywhere, and the 78 attempts do not overlap.
+  - The identity attempts ran only each episode's frozen `V_ok` image. The grpc attempts ran both pinned images.
+  - The E1 ledgers are byte-unchanged.
+
+### 8.2 Results against the pre-declared expectations
+
+| Control | Exit statuses | Oracle | Executed decisions (frozen reducer on raw statuses) | Analysis | Expectation met |
+|---|---|---|---|---|---|
+| `identity_etcd5509` (201–205) | 30 × 0 (0.54–0.68 s) | 30 `PASS`, 0 focal | P1, P3, P3-retain: ACCEPT on both roles, every block | `S = N = 0`, 0 invalid, 0 focal witnesses | yes |
+| `identity_etcd7492` (201–205) | 30 × 0 (0.51–0.61 s) | 30 `PASS`, 0 focal | P1, P3, P3-retain: ACCEPT on both roles, every block | `S = N = 0`, 0 invalid, 0 focal witnesses | yes |
+| `detfail_grpc1859` (211–213) | 18 × 2 (10.33–10.59 s) | mechanical: 18 `UNRESOLVED`, 0 focal; after the 7.3 rule: 18 `HARNESS_INVALID` | P1: BLOCK. P3 and P3-retain: BLOCK after three failures. Both versions, every block | no block counts toward `S`; every decision `INDETERMINATE`; invalid fraction 1.00, which the report flags against the 0.10 gate | yes |
+
+- **The pre-declared override (7.3):**
+  - It was applied mechanically to all 18 grpc attempts and held for every one. Each dump has 7 goroutines. The test goroutine is blocked in `(*ClientConn).WaitForStateChange` ← `DialContext` ← `Dial` ← `(*test).clientConn`, and no `quotaPool` frame appears.
+  - Each attempt's `=== RUN` line is present, followed by `panic: test timed out after 10s`.
+  - This matches the Task 5 expired-certificate finding. No other override exists.
+- **Two views of B, both as intended:**
+  - **Executed view:** what a CI job would see from exit statuses alone. Every policy BLOCKs, so retry cannot hide the deterministic failure.
+  - **Analysis view:** after adjudication, the failure is identified as an environment artifact present on both versions. `analysis.py` turns `HARNESS_INVALID` into a missing result by design, so it rates each decision `INDETERMINATE`, attributes nothing to the revision and flags the invalid fraction.
+  - The difference between the two views is the attribution check itself, not a discrepancy.
+- **Analysis settings:** `analysis.py` ran once per control ledger with `--blocks 201-205` or `--blocks 211-213` and `--allocated-vcpus 16`, and the tool's default `--family-alpha` and `--invalid-threshold`. The controls are not in the section 6 contrast family, and their intervals are not interpreted. A second run of each reproduced all nine output files byte for byte.
+
+### 8.3 Interpretation
+
+This is labelled interpretation.
+
+- **Attribution:** with no revision change, the whole pipeline produced no difference, no failure and no attribution on either episode. A failure identical on both versions and caused by the environment was never scored as a defect witness. It was isolated as invalid, not counted in `S`.
+- **Final status:** a deterministic failure BLOCKs under P1, P3 and P3-retain. P3 spends its full three attempts and cannot accept.
+- **Scope, section 7.4 still applies:** B's failure comes from the environment. The stronger check, a revision-attributable deterministic defect giving `L = 0`, remains deferred as B2.
+- **Plan §6 "Continue":** within E1's two episodes, the controls add evidence that attribution and final status work. The projected E2 cost and the day-10 gate are not assessed here.
+
+### 8.4 Cost
+
+- **This run:** span 231.0 s, which is **1.027 vCPU-hours** conservative. The attempt-sum is 0.991, and the guard basis is 1.698.
+- **E1 total:**
+  - 11.68 + 1.027 = **12.71 vCPU-hours** on the span basis.
+  - 13.47 on the guard basis, the figure the driver's guard used.
+  - About 6.5 vCPU-hours below the 20.0 cap on either basis.
+- **Reserve used:** the section 2.3 reserve paid for this run. The unused remainder is not spent on extra sampling.
+
+### 8.5 Hashes
+
+| File | SHA-256 |
+|---|---|
+| `e1/controls/identity_etcd5509/attempts.jsonl` (chain head seq 30 `8226f44728830761b094342f5b6e1d2d4ddcdf2e3571cc9b5979ae166b85c093`) | `202fdcaec9a3a4e6c61f69e600a4047dc1d4b1bf475d7f60e1ad4769adc8188d` |
+| `e1/controls/identity_etcd7492/attempts.jsonl` (chain head seq 30 `3876e00393be1883dbee10354d4fec98c8018b98c5baa73e33178acef9654f52`) | `e6e7aefc7a1b783a2ad91864857249ea35a62adaa2ee9721bd46316eabfd6848` |
+| `e1/controls/detfail_grpc1859/attempts.jsonl` (chain head seq 18 `267938dc26114fbb20acf8774c18513ada87e3b35dcd067e3aee0ea8965ce990`) | `0e77915a05cf3660801c6d81f27291189f29d0b3a9a0ae572e71481e9d1cd5db` |
+| `e1/controls/identity_etcd5509/annotations.jsonl` | `a2caa557e2d84f8a8f2d7beaf9a0386ac64a49523e608aa1457fb9f54dd7812d` |
+| `e1/controls/identity_etcd7492/annotations.jsonl` | `e5efeb1d09c14c666bb1c5d920ae2679153a8e33044cf455277f81ae38947897` |
+| `e1/controls/detfail_grpc1859/overrides.jsonl` | `c101993c346f7fc007d18d67abd496519652126c6d6c5b8a851fb07a3cb803e6` |
+| `e1/controls/detfail_grpc1859/annotations.jsonl` (with overrides) | `758a6bc4991ac1fd79fb417314a557db1c805318e24ac9d71f98b8ee27f27dc1` |
+| `e1/controls/identity_etcd5509/analysis/report.md` | `0a8fed6d37fa85ecfd8084fff679c83b542c9e2925cd28ae5e2534f95059135e` |
+| `e1/controls/identity_etcd5509/analysis/summary.json` | `a2e7ade412d85cea0b8d3817e03ac64ea60c1adde59af5201ab3abadd22bdc0e` |
+| `e1/controls/identity_etcd5509/analysis/policy_decisions.csv` | `e85a19b684105efb08a635b86f86596aacf6992b236f5903d571f18acb9fb9e3` |
+| `e1/controls/identity_etcd7492/analysis/report.md` | `d7cf3882ce7970342e5e7d0ee693b3c2a3c5f9d6d709366fbe92e962d7b0bd27` |
+| `e1/controls/identity_etcd7492/analysis/summary.json` | `3973b436fdc91389d9c8ff38d28c590b70d681741c2e5e872e0475cd1f806453` |
+| `e1/controls/identity_etcd7492/analysis/policy_decisions.csv` | `1a97202f2cdb7496f7fc609de353fd042f8bf9c0291ce52b1e0a32a8895bbccb` |
+| `e1/controls/detfail_grpc1859/analysis/report.md` | `19307c3568d411dec3dfce584cb8f627e22734ed711da58bb6a6ea940c0858ac` |
+| `e1/controls/detfail_grpc1859/analysis/summary.json` | `534e9d2421f89672106f7fa10db985420016ca45193e6c604d74c4d5e02bfa5d` |
+| `e1/controls/detfail_grpc1859/analysis/policy_decisions.csv` | `516f16a5ea69eb341d67ccc5db62737b41450c33deea31def61638bdc64bacc6` |
+| `e1/run_logs/controls_prestart_check.md` | `a2881c3f8ec3370aa6c4751d5bc6328432ae3ec5488d9962343b9c4f691412b3` |
+| `e1/run_logs/controls_start_utc.txt` | `c2f3a4c13502e897f01202b4557c9cde684206976adf8bc32e6848e3f3d6c1e1` |
+| `e1/run_logs/controls_201-213.log` | `c59cc58b00f7282fdc2f73fb6f4668644c08eac69439b44933c42ce9cc56c41f` |
+| `e1/run_logs/controls_end_utc.txt` | `5a48bbc520cd3d1dd98578184dbdd95c8ffab96deb20297689ac4a9d7b1fd3f9` |
+
+- All files are under `e1/` (`* -text`), so each hash verifies from any checkout with `sha256sum`.
+- **To reproduce** from the repository root: `oracle.py --ledger …/controls/<control>/attempts.jsonl` (plus `--overrides …/detfail_grpc1859/overrides.jsonl` for B), then `analysis.py` with the settings in 8.2.
+- **From here:** E1 steps 1–5 are complete. Remaining before E2 are the E1 "Continue" decision (plan §6), including the projected E2 cost, and the day-10 gate (four qualified episodes across two projects by 2026-09-27T23:02:26Z). Both are the researcher's decisions.
