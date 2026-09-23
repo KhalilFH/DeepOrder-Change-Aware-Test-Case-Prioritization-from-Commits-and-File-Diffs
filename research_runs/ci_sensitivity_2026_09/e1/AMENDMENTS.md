@@ -151,3 +151,76 @@ Run these from the repository root at this entry's commit or any later one. They
   - `git show HEAD:e1_harness/runner.py | sha256sum`.
 - **Check that the fix is in effect:** `git ls-files --eol e1_harness/runner.py` shows `i/lf w/lf attr/-text`.
 - **Result on 2026-09-23:** after re-checkout at `4517834` with the new `.gitattributes`, all six files were `i/lf w/lf attr/-text`. All five LF hashes and the `runner.py` CRLF conversion matched their recorded values.
+
+## 5. 2026-09-23 — direct-policy checks run (blocks 101–112)
+
+- **Status:** records the run that sections 2 and 3 authorised. All 12 direct checks ran to completion. No control has run, no attempt has been classified into an oracle category, and no measured-block contrast was computed.
+- **Unchanged:** `e1_protocol.md`, the allocation in 2.1 and `direct_checks_plan.json`, and measured blocks 1–20 (120 records per episode, not rewritten).
+
+### 5.1 Run
+
+- **Pre-start:** `run_logs/direct_prestart_check.md` records the conditions at 08:12:07Z. `docker ps -a` was empty, the host was otherwise idle, this operator had no background task running and `FREEZE.sha256` passed at HEAD `4517834`. That file is the operator confirmation that section 3 says the driver cannot make.
+- **Code actually executed:** `run_direct.py` at `59e4f9b4…` (section 3) and `runner.py` at `2b831f91…`. That is the CRLF working copy in the checkout where the run happened (section 4). `ledger.py`, `policy.py`, `oracle.py` and `analysis.py` were at their LF hashes from `e1_protocol.md`. None of these files had been modified since before the run started. Records carry runner `e1-runner/1` and the frozen manifest hashes.
+- **Window:** 08:12:34Z (`direct_start_utc.txt`, `docker_info=ok containers=0`) to 08:16:35Z (`direct_end_utc.txt`, `exit=0`).
+- **Outcome:** driver status `DONE`, exit 0. There was no `docker info` stop, no guard stop and no structural mismatch. After the run, `docker ps -a` listed no containers.
+
+| Block | Episode | Version | Policy | Executed exit statuses | Reducer decision |
+|---:|---|---|---|---|---|
+| 101 | etcd5509 | `V_ok` | P3 | `[0]` | ACCEPT |
+| 102 | etcd5509 | `V_bad` | P3 | `[2, 2, 2]` | BLOCK |
+| 103 | etcd5509 | `V_bad` | P1 | `[2]` | BLOCK |
+| 104 | etcd5509 | `V_ok` | P1 | `[0]` | ACCEPT |
+| 105 | etcd5509 | `V_ok` | P3 | `[0]` | ACCEPT |
+| 106 | etcd5509 | `V_bad` | P1 | `[2]` | BLOCK |
+| 107 | etcd7492 | `V_ok` | P3 | `[0]` | ACCEPT |
+| 108 | etcd7492 | `V_bad` | P3 | `[0]` | ACCEPT |
+| 109 | etcd7492 | `V_ok` | P1 | `[0]` | ACCEPT |
+| 110 | etcd7492 | `V_ok` | P1 | `[0]` | ACCEPT |
+| 111 | etcd7492 | `V_bad` | P1 | `[0]` | ACCEPT |
+| 112 | etcd7492 | `V_bad` | P3 | `[0]` | ACCEPT |
+
+Exit statuses and reducer decisions are structural outputs, not oracle categories.
+
+### 5.2 Independent re-check
+
+This check was made on 2026-09-23 from the committed ledgers and `direct_checks_plan.json`, using `ledger.verify_chain` and `ledger.read_records`. It did not use the driver log.
+
+- **Ledgers:** both are strict appends to their committed versions at `4517834`. The committed bytes are a byte-identical prefix. etcd5509 gained 8 records (seq 121–128) and etcd7492 gained 6 (seq 121–126). `verify_chain` passes on both. There are no records outside blocks 1–20 and 101–112.
+- **Every record matches the plan:** planned episode, version and seed. Attempt numbers start at 1 with no gaps. `timed_out` is false everywhere, and there is one manifest hash per episode.
+- **Timing:** there are 14 attempts. None overlap, and each runs to completion before the next starts. The first starts at 08:12:34.79Z and the last ends at 08:16:35.20Z.
+- **Cost:** a 240.4 s span is 1.068 vCPU-hours on the conservative 16-vCPU basis. The attempt-sum is 233.2 s, or 1.037 vCPU-hours, and 1.164 on the section 2.2 guard basis. All match `run_logs/direct_check.md`.
+- **Stop rules:** none of the section 2.4 rules triggered.
+  - The section 3 known disagreement did not arise: every attempt has an exit status and none timed out. `analysis.direct_checks` should therefore report no `structural_mismatch` that the driver did not also report.
+  - If it does report one, that is a new discrepancy and must be recorded here.
+
+### 5.3 Incidents and limits
+
+- **Host load:** no incident is recorded.
+  - The section 4 session, which the pre-start file mentions, created its worktree at 08:18:03Z, after the run ended, so it could not have overlapped the run.
+  - Other activity on the host is evidenced only by the pre-start sample. Nothing was monitored during the run.
+- **Not exercised in real execution:** P3 accepting a pass after an earlier failure, for example `[2, 0]` or `[2, 2, 0]`. That is the retry path that acceptance depends on.
+  - Block 102, the one P3 check on etcd5509 `V_bad`, failed all three attempts. Section 2.1 had named it as the check most likely to exercise this path.
+  - The path is covered only by unit tests. Section 2.1 froze the allocation, so no check is added to cover it.
+
+### 5.4 Cost position
+
+- **E1 conservative total:** 10.61 + 1.068 = **11.68 vCPU-hours** on the span basis, or 11.77 on the guard basis.
+- **Headroom:** 5.23 vCPU-hours remain below the 17.0 line on the guard basis.
+- **Control reserve:** the 3.0 vCPU-hours (17.0–20.0) from section 2.3 is untouched.
+
+### 5.5 Hashes of the run records
+
+| File | SHA-256 |
+|---|---|
+| `e1/etcd5509/attempts.jsonl` (chain head seq 128 `f74bfa8a0c9778bcc2eeb39819934ff0f0c19c7492e88b3cfe26c7d25d0de7f6`) | `7b6d771d2c94bb9fe4ce414bdb2d63c251dd0530b3bf45ba9c54accef4d01b30` |
+| `e1/etcd7492/attempts.jsonl` (chain head seq 126 `9ab65ad0e083376965c7a8bd0881964914407af6c7d38d0f08360675d78314d6`) | `de92e3b71857e6fdb04dc4a7199c656f7be5c8419a1aa65dcd0fa39fd459e8da` |
+| `e1/run_logs/direct_prestart_check.md` | `a96dbf2829fab241bebd42451c8c4fbc710d9f70b8437bd362b87ba054013008` |
+| `e1/run_logs/direct_start_utc.txt` | `09a5db3992a737f09b12ad00e6262c611ef1b17f9d35c25aa05c7697f95fdef0` |
+| `e1/run_logs/direct_101-112.log` | `1ed77058137e4ccedbb98cbaf3dc27950e95bf259ad7ea022cfaa79047a70e4d` |
+| `e1/run_logs/direct_end_utc.txt` | `61fa312fa741059bb03b37df445aa89befd7255bb3c798dd070bac79ce9a69de` |
+| `e1/run_logs/direct_check.md` | `5e499d61e4ceb0810e7f371c6dc79176eb5fa7dbe8540da634289ab8f196a53b` |
+
+- All seven files live under `e1/`, whose `.gitattributes` is `* -text`, so each hash verifies from any checkout with `sha256sum`.
+- The ledger file hashes are a snapshot at this entry. Later appends change them, but the chain heads above stay in the chain.
+
+- **From here:** the direct checks are complete and are not re-run or extended. Per section 2.3, the identity/no-change control and the deterministic-failure control each need a design, an oracle card and their own cost check against the reserve before they run.

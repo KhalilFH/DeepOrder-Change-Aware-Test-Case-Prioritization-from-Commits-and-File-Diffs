@@ -1,0 +1,14 @@
+direct checks plan=5e74dc813f665fb8fa4c6a27e7570d3c55c993a6eb25adbda0fe610db4768883 runner=e1-runner/1 line=17.0 etcd5509=a88cc638f51ebab31580aaf25948e9ce5968ab0fe23c29b50246ec60d66f5791 etcd7492=860cb23ef6abd35f6273e21f40557ecba481a167ee5ea4ad629577c9480d4620
+block 101 etcd5509 V_ok P3 seed=3731262331 executed=[0] decision=ACCEPT cost_so_far=10.623
+block 102 etcd5509 V_bad P3 seed=1021860734 executed=[2, 2, 2] decision=BLOCK cost_so_far=11.257
+block 103 etcd5509 V_bad P1 seed=953258952 executed=[2] decision=BLOCK cost_so_far=11.468
+block 104 etcd5509 V_ok P1 seed=3833310602 executed=[0] decision=ACCEPT cost_so_far=11.480
+block 105 etcd5509 V_ok P3 seed=903614685 executed=[0] decision=ACCEPT cost_so_far=11.492
+block 106 etcd5509 V_bad P1 seed=124962926 executed=[2] decision=BLOCK cost_so_far=11.703
+block 107 etcd7492 V_ok P3 seed=2234491992 executed=[0] decision=ACCEPT cost_so_far=11.715
+block 108 etcd7492 V_bad P3 seed=3789747153 executed=[0] decision=ACCEPT cost_so_far=11.727
+block 109 etcd7492 V_ok P1 seed=2636512552 executed=[0] decision=ACCEPT cost_so_far=11.738
+block 110 etcd7492 V_ok P1 seed=87457551 executed=[0] decision=ACCEPT cost_so_far=11.750
+block 111 etcd7492 V_bad P1 seed=1997272447 executed=[0] decision=ACCEPT cost_so_far=11.762
+block 112 etcd7492 V_bad P3 seed=2252439627 executed=[0] decision=ACCEPT cost_so_far=11.774
+DONE
