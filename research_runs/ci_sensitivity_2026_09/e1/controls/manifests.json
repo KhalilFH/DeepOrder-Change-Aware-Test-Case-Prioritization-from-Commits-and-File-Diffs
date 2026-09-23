@@ -1,0 +1,64 @@
+{
+ "identity_etcd5509": {
+  "episode": "etcd5509",
+  "images": {
+   "V_bad": "sha256:ffc618679d85e331c3b957c1af0ad561118bf488460dd5f80baeb10187800b26",
+   "V_ok": "sha256:ffc618679d85e331c3b957c1af0ad561118bf488460dd5f80baeb10187800b26"
+  },
+  "workdir": "/go/src/github.com/coreos/etcd/clientv3/integration",
+  "argv": [
+   "/go/gobench.test",
+   "-test.v",
+   "-test.count",
+   "1",
+   "-test.run",
+   "TestKVGetErrConnClosed",
+   "-test.timeout",
+   "45s"
+  ],
+  "timeout_s": 60,
+  "condition": "q0-default-unpinned"
+ },
+ "identity_etcd7492": {
+  "episode": "etcd7492",
+  "images": {
+   "V_bad": "sha256:2b66d59152c86f601c5f85bdffe6b919f98197cf9dc5c0a66409c54756cd047c",
+   "V_ok": "sha256:2b66d59152c86f601c5f85bdffe6b919f98197cf9dc5c0a66409c54756cd047c"
+  },
+  "workdir": "/go/src/github.com/coreos/etcd/auth",
+  "argv": [
+   "/go/gobench.test",
+   "-test.v",
+   "-test.count",
+   "1",
+   "-test.run",
+   "TestHammerSimpleAuthenticate",
+   "-test.timeout",
+   "50s"
+  ],
+  "timeout_s": 65,
+  "condition": "q0-default-unpinned"
+ },
+ "detfail_grpc1859": {
+  "episode": "grpc1859",
+  "images": {
+   "V_bad": "sha256:6b890fa74bedace16bf8049b8a1968f7928a596312210bc17a9ba86b96e03a03",
+   "V_ok": "sha256:3b72ed206066bb8ea69f5dfbf0271c753f25e832797069d6abc560ec6c4e9034"
+  },
+  "workdir": "/go/src/google.golang.org/grpc/test",
+  "argv": [
+   "/go/gobench.test",
+   "-test.v",
+   "-test.count",
+   "1",
+   "-test.run",
+   "^TestClientDoesntDeadlockWhileWritingErrornousLargeMessages$",
+   "-test.timeout",
+   "10s",
+   "-only_env",
+   "tcp-tls-v1-balancer"
+  ],
+  "timeout_s": 25,
+  "condition": "q0-default-unpinned"
+ }
+}

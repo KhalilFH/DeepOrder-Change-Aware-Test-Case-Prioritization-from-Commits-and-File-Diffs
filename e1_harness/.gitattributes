@@ -1,5 +1,5 @@
 # These files are hashed (SHA-256) in research_runs/ci_sensitivity_2026_09/e1/
-# e1_protocol.md ("Hashes at freeze") and AMENDMENTS.md section 3. Line-ending
+# e1_protocol.md ("Hashes at freeze") and AMENDMENTS.md sections 3 and 7. Line-ending
 # conversion on checkout would change their bytes and break those records, so
 # Git stores and checks them out byte-for-byte (LF, as committed). runner.py's
 # frozen hash is of its CRLF form; see AMENDMENTS.md section 4.
@@ -9,3 +9,4 @@ policy.py -text
 oracle.py -text
 analysis.py -text
 tests/test_run_direct.py -text
+tests/test_run_controls.py -text

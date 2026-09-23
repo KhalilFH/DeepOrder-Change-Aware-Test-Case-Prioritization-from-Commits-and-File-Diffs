@@ -1,0 +1,77 @@
+{
+ "identifier": "e1_controls_plan_v1",
+ "authority": "AMENDMENTS.md section 7",
+ "rules": {
+  "blocks": "Runner.run_block: three attempts on each version role, role order random.Random(seed).shuffle",
+  "seed": "first 32 bits of SHA-256('e1:<episode>:block:<n>'), the measured-block rule",
+  "execution_order": "identity_etcd5509 blocks 201-205, identity_etcd7492 blocks 201-205, detfail_grpc1859 blocks 211-213",
+  "ledgers": "e1/controls/<control>/attempts.jsonl; never the E1 episode ledgers"
+ },
+ "blocks": [
+  {
+   "control": "identity_etcd5509",
+   "block": 201,
+   "seed": 2533165608
+  },
+  {
+   "control": "identity_etcd5509",
+   "block": 202,
+   "seed": 2322679444
+  },
+  {
+   "control": "identity_etcd5509",
+   "block": 203,
+   "seed": 2998798939
+  },
+  {
+   "control": "identity_etcd5509",
+   "block": 204,
+   "seed": 477806263
+  },
+  {
+   "control": "identity_etcd5509",
+   "block": 205,
+   "seed": 2633075146
+  },
+  {
+   "control": "identity_etcd7492",
+   "block": 201,
+   "seed": 1176602153
+  },
+  {
+   "control": "identity_etcd7492",
+   "block": 202,
+   "seed": 4169374394
+  },
+  {
+   "control": "identity_etcd7492",
+   "block": 203,
+   "seed": 1357861969
+  },
+  {
+   "control": "identity_etcd7492",
+   "block": 204,
+   "seed": 3208838211
+  },
+  {
+   "control": "identity_etcd7492",
+   "block": 205,
+   "seed": 525426167
+  },
+  {
+   "control": "detfail_grpc1859",
+   "block": 211,
+   "seed": 3182867988
+  },
+  {
+   "control": "detfail_grpc1859",
+   "block": 212,
+   "seed": 276859447
+  },
+  {
+   "control": "detfail_grpc1859",
+   "block": 213,
+   "seed": 1206863385
+  }
+ ]
+}

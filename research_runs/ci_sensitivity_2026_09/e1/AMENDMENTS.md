@@ -332,3 +332,128 @@ This is labelled interpretation, not result.
   - `python e1_harness/oracle.py --ledger research_runs/ci_sensitivity_2026_09/e1/<episode>/attempts.jsonl --out <path>`
   - `python e1_harness/analysis.py --ledger …/<episode>/attempts.jsonl --annotations …/<episode>/annotations.jsonl --blocks 1-20 --batch 1-10 --batch 11-20 --direct-blocks 101-112 --allocated-vcpus 16 --family-alpha 0.025 --out <dir>`
 - **From here:** step 4, the controls, is the remaining E1 work. Each control needs a design, an oracle card and a cost check against the 3.0 vCPU-hour reserve (section 2.3). After that comes the E1 "Continue" decision, including the projected E2 cost.
+
+## 7. 2026-09-23 — step-4 controls: design, driver and freeze
+
+- **Status:** the researcher approved the design on 2026-09-23 as drafted. B2 (see 7.4) is deferred.
+  - No control attempt has run.
+  - The controls may run only once the section 7.6 pre-start conditions are met and recorded.
+  - A qualification session may be using Docker on this host at the same time. Its runs and the control run must not overlap (section 1).
+- **Unchanged:**
+  - `e1_protocol.md`, every hash-frozen harness file and every E1 ledger;
+  - `run_blocks.py`, `run_direct.py`, and the section 6 results;
+  - `oracle.py`. No oracle card was added; each control reuses an existing card, so its hash is unchanged.
+- **Ordering, already disclosed in section 6:** the controls run after the E1 analysis. If a control shows an attribution or final-status problem, it is recorded here and section 6 is re-read under that entry, not edited.
+
+### 7.1 What the frozen records fix
+
+- **The controls themselves:** plan §6 step 4 and `protocol.md` call for "a small identity/no-change and deterministic-failure control set to verify attribution and final status". Costs are charged, the controls add no episodes, and stable or synthetic controls are labelled separately.
+- **Budget:** section 2.3's 3.0 vCPU-hour reserve (17.0–20.0) covers the controls and metered implementation verification. Unused reserve is not spent on extra sampling.
+
+### 7.2 How the controls are kept apart from E1
+
+- **Cards:** oracle cards live in the frozen `oracle.py`, and it refuses an episode without one. Each control therefore runs the target test of an existing frozen card, under that card's episode key (`etcd5509`, `etcd7492`, `grpc1859`).
+- **Separation:**
+  - own ledgers at `e1/controls/<control>/attempts.jsonl`;
+  - blocks 201–213, outside 1–20 and 101–112;
+  - a distinct `manifest_sha256` on every record.
+
+  Control records never enter the E1 ledgers or the section 6 analysis.
+- **Driver:** `e1/run_controls.py` is new. It calls the frozen `Runner.run_block` (three attempts on each version role, role order from the seed) and imports, without changing, `run_direct.py`'s Docker preflight and cost functions.
+
+### 7.3 The two controls
+
+**A — identity/no-change** (`identity_etcd5509`, `identity_etcd7492`; blocks 201–205 each; 60 attempts)
+
+- **Manifest:** each episode's frozen manifest with **both** version roles on its frozen `V_ok` image. The argv, workdir, runner timeout and condition are unchanged. The driver re-derives this from `manifests.json` and refuses anything else.
+- **Pre-declared expectation:** every attempt `PASS`; P1, P3 and P3-retain ACCEPT on both roles; `S = N = 0`; no focal witness on either role.
+- **What it checks:** with no revision change, nothing in the pipeline (role labels, randomised order, manifest handling, oracle) creates a difference or an attribution. Any failure is recorded and adjudicated as a finding.
+- **Label:** stable control, not synthetic.
+
+**B — deterministic failure** (`detfail_grpc1859`; blocks 211–213; 18 attempts)
+
+- **Source:** `task5_grpc1859_restoration.md` Step 3. The subject's committed test certificates expired in 2024–2025. In every TLS environment, the test therefore blocks in `grpc.Dial` until the test timeout, identically on both versions. The failure is real, not forced, but it is caused by the environment, not a revision.
+- **Manifest:** the Q0 grpc1859 command (`task5_artifacts/grpc1859/run/attempt.sh`) with two declared changes:
+  - `-only_env tcp-tls-v1-balancer`, the first TLS entry in upstream `allEnv` order. This was read from `end2end_test.go` inside the image (line 404: `tcpClearEnv, tcpTLSEnv, …`) and was not chosen by any observed outcome;
+  - `-test.timeout 10s` with a 25 s runner timeout, to bound cost.
+- **Images, pinned by ID:** the Q0 record gave tags only.
+  - `grpc1859-bug` = `sha256:6b890fa74bedace16bf8049b8a1968f7928a596312210bc17a9ba86b96e03a03` (created 2026-09-22T17:50:11Z)
+  - `grpc1859-fix` = `sha256:3b72ed206066bb8ea69f5dfbf0271c753f25e832797069d6abc560ec6c4e9034` (created 17:50:33Z)
+  - **Observed:** both were created inside the Task 5 window (17:44:33–18:00:14Z). The `end2end_test.go` copied from each has Git blob `6a583182170323ec5b23d760d926c92d3816be18`, the test blob recorded by Task 5.
+  - **Inference:** these are the Q0 images.
+- **Pre-declared expectations:**
+  - **Final status:** every attempt exits nonzero. P1 BLOCKs, and P3 BLOCKs after three attempts, on both versions.
+  - **Mechanical oracle:** the frozen `grpc1859` card labels every attempt `UNRESOLVED` (a test timeout matching no signature), never `FOCAL_DEFECT_WITNESS`.
+  - **Analysis:** no block counts toward `S`. Blocks are undetermined or invalid, not focal-supported.
+- **Pre-declared adjudication,** fixed here before any control attempt:
+  - An attempt is overridden to `HARNESS_INVALID` if and only if its goroutine dump shows the test goroutine blocked under `grpc.Dial` → `WaitForStateChange` with no `quotaPool.get` frame.
+  - Evidence: the expired-certificate finding above.
+  - Any other outcome stays as the oracle labelled it and is reported.
+- **What it checks:** a deterministic failure is blocked and cannot be hidden by retry, and a failure identical on both versions is not attributed to the revision.
+- **Label:** environment-caused deterministic failure. It is not a revision-attributable defect.
+
+### 7.4 Deferred and rejected
+
+- **B2 is deferred:** a revision-attributable deterministic defect from a GoReal `SCREENED_DETERMINISTIC_LEAD` (grpc_649/795/1275/1424, cockroach_1055).
+  - It would give the stronger check: `S(P1) = S(P3) = 1`, so `L = 0`.
+  - It needs a restoration, a control roster slot, Docker time and human hours before the day-10 gate.
+  - It is pursued only if the qualification work turns one up. If so, it gets its own entry.
+- **Rejected:** a synthetic harness failure, such as a bad flag. It produces no `=== RUN` line, so it is only `HARNESS_INVALID`, and it would check exit propagation only.
+
+### 7.5 Cost and guard
+
+- **Accounting:** as in section 2.2, 16 vCPUs and `elapsed_s + 2.04 s` per attempt. The cost before the controls is 11.77 vCPU-hours on that basis, computed at run time from the E1 ledgers.
+- **Projection:**
+  - A: about 0.72 vCPU-hours at measured `V_ok` durations (0.75 at their maximum).
+  - B: about 1.00.
+  - Total: about 1.72, bringing E1 to about 13.49.
+- **Guard, applied before each block** (never inside one):
+  - a block does not start if the cost so far plus its hard bound exceeds **20.0**;
+  - the hard bound is 6 × (runner timeout + 30 + 2.04) s × 16 / 3600: 2.45 vCPU-hours for identity_etcd5509 blocks, 2.59 for identity_etcd7492 and 1.52 for detfail_grpc1859;
+  - a guard stop is final and is recorded here.
+- **Implementation verification so far:**
+  - The unit tests use a fake Docker and cost nothing.
+  - Pinning the images and reading `allEnv` used `docker image inspect` plus `docker create`, `docker cp` and `docker rm`. No container was started, so no metered job ran.
+
+### 7.6 Execution and stop rules
+
+These carry over from sections 1 and 2.4.
+
+- **Before starting**, recorded in `run_logs/controls_prestart_check.md`:
+  - no other agent Docker task is running, including the qualification session;
+  - `docker ps -a` is empty;
+  - `sha256sum -c FREEZE.sha256` passes, and the hashes below match.
+
+  The driver checks the rest itself: the plan, control and E1 manifest hashes, the identity derivation, all image IDs present, and `docker info`.
+- **Order:** identity_etcd5509 201–205, then identity_etcd7492 201–205, then detfail_grpc1859 211–213. Seeds follow the measured-block rule, SHA-256(`e1:<episode>:block:<n>`).
+- **Stops, with no retry:**
+  - on `docker info` failure (exit 2);
+  - on a guard stop (exit 3);
+  - at the first structural mismatch (exit 4): a version role without exactly three recorded attempts, a record with another manifest or episode, a ledger that disagrees with the executed statuses or fails `verify_chain`, or a container still present.
+- **Resume:** a stopped run resumes only from the next unrecorded block. An incomplete recorded block needs a decision recorded here.
+- **Output:** while running, exit statuses only, in `run_logs/controls_201-213.log`, plus the start and end UTC files.
+- **After the run:**
+  - oracle on each control ledger, then the 7.3 pre-declared override, then per-control analysis;
+  - all in a later entry here.
+
+### 7.7 Verification and hashes
+
+- **Tests:**
+  - The unit suite runs 193 tests, all OK: the 172 from section 3 plus 21 for the control driver.
+  - Four deliberate breakages were each caught: disabling the guard, the leftover-container check, the block-completeness check and the identity-derivation check. `run_controls.py` was restored byte for byte afterwards.
+- **Byte-for-byte storage:** `e1_harness/.gitattributes` now also marks `tests/test_run_controls.py` `-text`. Everything else below is under `e1/` (`* -text`).
+
+| File | SHA-256 |
+|---|---|
+| `e1/run_controls.py` | `4feed4f0a83c8cc03839cd7e363b20d11b2464d360a5de092dfbe7901e4092f3` |
+| `e1/controls/plan.json` | `c67830841a540cf68f509115d0a4627f3890b7ae31f2de8a2b217c7f8f9f6cd7` |
+| `e1/controls/manifests.json` | `575244b1b663ce149cea5176fbed0ba960261db17e58550c29f04bf195ab556d` |
+| `e1_harness/tests/test_run_controls.py` | `537b452a39dac425c3eda311c3137a86c51ebee224285a6da3e8cf7757503d98` |
+
+| Control manifest | `Manifest.sha256` |
+|---|---|
+| `identity_etcd5509` | `973488c9d0d7a89b4259a5ff8f3e0f4371f7814652d28be84687a7fab4d681c1` |
+| `identity_etcd7492` | `362fa13a502e3eb1eb93ed18d3cacc57eeb550909562ca32df5f4d189e598358` |
+| `detfail_grpc1859` | `87d94b32c105903e2f59c7badba44d0716452f44a1c4fc36d4cd06ea3169d2f6` |
+
+- **From here:** the controls may run under this entry once the 7.6 pre-start conditions are met and recorded, and the Docker slot has been agreed with the qualification session.
