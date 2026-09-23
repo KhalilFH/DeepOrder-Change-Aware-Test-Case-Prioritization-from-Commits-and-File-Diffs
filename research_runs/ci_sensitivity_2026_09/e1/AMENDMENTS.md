@@ -224,3 +224,111 @@ This check was made on 2026-09-23 from the committed ledgers and `direct_checks_
 - The ledger file hashes are a snapshot at this entry. Later appends change them, but the chain heads above stay in the chain.
 
 - **From here:** the direct checks are complete and are not re-run or extended. Per section 2.3, the identity/no-change control and the deterministic-failure control each need a design, an oracle card and their own cost check against the reserve before they run.
+
+## 6. 2026-09-23 — oracle classification and analysis (plan step 5)
+
+- **Status:** the researcher approved step 5 on 2026-09-23. All 40 measured blocks are complete, which is the condition `e1_protocol.md` sets. No container ran, and no vCPU cost was charged.
+- **Order, disclosed:**
+  - Step 5 ran **before step 4**. Neither control has been designed or run.
+  - Oracle classification was finished and reviewed before any analysis output existed (plan §6, "Oracle").
+- **Unchanged:** the ledgers, `e1_protocol.md`, all hash-frozen harness files (hashes checked before running) and sections 1–5.
+
+### 6.1 Oracle classification
+
+- **Tool:** `oracle.py` (`e1-oracle/1`, `20a494f0…`), run once per episode ledger. It classified all 254 records: measured blocks 1–20 and direct checks 101–112.
+- **Every annotation is mechanical.** No record came out `UNRESOLVED` or `HARNESS_INVALID`, so there was nothing to adjudicate and no override exists.
+- **Signatures:** every nonzero exit matched its episode's frozen signature `a`, and every exit 0 is `PASS`.
+
+| Episode | Blocks | `V_bad` | `V_ok` |
+|---|---|---|---|
+| etcd5509 | measured 1–20 | 47 `FOCAL_DEFECT_WITNESS`, 13 `PASS` | 60 `PASS` |
+| etcd5509 | direct 101–106 | 5 `FOCAL_DEFECT_WITNESS` | 3 `PASS` |
+| etcd7492 | measured 1–20 | 4 `FOCAL_DEFECT_WITNESS`, 56 `PASS` | 60 `PASS` |
+| etcd7492 | direct 107–112 | 3 `PASS` | 3 `PASS` |
+
+### 6.2 Analysis settings
+
+These were fixed before any analysis output existed.
+
+- **Tool:** `analysis.py` (`e1-analysis/1`, `bc27c7de…`), run once per episode ledger with:
+  - `--blocks 1-20 --batch 1-10 --batch 11-20` (the batches from `e1_protocol.md`);
+  - `--direct-blocks 101-112` (a run skips direct blocks with no records for its episode);
+  - `--allocated-vcpus 16` (the conservative basis; the Q0-convention figures are those values divided by 16);
+  - the default `--invalid-threshold 0.10` for E1.
+- **Family alpha, a choice not fixed by earlier records:** `--family-alpha 0.025` per run.
+  - Plan §4's Bonferroni rule covers every contrast across all episodes.
+  - `analysis.py` takes one ledger per run and corrects only over the contrasts in that run. At the default 0.05, each episode would be its own two-contrast family (0.05/4 per interval).
+  - 0.025 per run gives 0.05/8 per interval, the plan's rule applied to E1's four contrasts (`L` and `R` for two episodes).
+  - Each report header says "over 2 contrasts (each side at 0.99375)". The 0.99375 (= 1 − 0.05/8) is the joint setting. The "2 contrasts" is only the per-run count.
+- **Section 1 sensitivity run:** etcd5509 again with `--blocks 2-20 --batch 2-10 --batch 11-20`, all other settings the same.
+- **Outputs:** `e1/analysis/<run>/report.md`, `summary.json` and `policy_decisions.csv` for the runs `etcd5509`, `etcd7492` and `etcd5509_excl_block1`. A second run of each produced byte-identical files.
+
+### 6.3 Results
+
+- **Observed, both episodes:**
+  - 20/20 measured blocks complete; 0 invalid (threshold 0.10); 0 undetermined blocks, so the best and worst assignments equal the complete-case value.
+  - No `V_ok` attempt failed, so `N = 0` under every policy and `R = 0`.
+  - `P3-retain` equals `P3` on every figure.
+  - The direct checks gave 6 traces per episode and 0 structural mismatches, as section 5.2 expected.
+
+| Episode | S(P1) | S(P3) | L = S(P1) − S(P3) | Simultaneous interval | Discordant +/− | `ACCEPT_WITH_PRIOR_FAILURE` | Margin 0.10 |
+|---|---|---|---|---|---|---|---|
+| etcd5509 | 12/20 = 0.600 | 9/20 = 0.450 | 0.150 | [−0.236, +0.468] | 3/0 | 3 | interval contains margin |
+| etcd7492 | 2/20 = 0.100 | 0/20 = 0.000 | 0.100 | [−0.246, +0.406] | 2/0 | 2 | interval contains margin |
+| etcd5509 without block 1 (§1) | 12/19 = 0.632 | 9/19 = 0.474 | 0.158 | [−0.246, +0.487] | 3/0 | 3 | interval contains margin |
+
+- **`R = N(P1) − N(P3)`:** 0.000 for both episodes, with interval [−0.251, +0.251]. Margin 0.05: the interval contains the margin.
+- **Focal witnesses that P3 ignored:**
+  - etcd5509: 5 witnesses in 3 blocks, where a prefix failure was followed by an accepting pass.
+  - etcd7492: 2 witnesses in 2 blocks.
+- **By batch, `S(P1)` / `S(P3)`:**
+  - etcd5509: 0.700 / 0.500 in blocks 1–10 and 0.500 / 0.400 in blocks 11–20.
+  - etcd7492: 0.100 / 0.000 in both batches.
+- **Prefix cost on `V_bad`, measured blocks (conservative):**
+  - etcd5509: P1 20 attempts, 527 s, 2.34 vCPU-h. P3 43 attempts, 1399 s, 6.22 vCPU-h.
+  - etcd7492: P1 20 attempts, 108 s, 0.48 vCPU-h. P3 22 attempts, 110 s, 0.49 vCPU-h.
+- **Hand check:** from the annotations, `S(P1)`, `S(P3)`, the discordant counts and the zero `V_ok` failures were recomputed independently of `analysis.py`. They match for all three runs.
+- **Section 1 sensitivity:** excluding block 1 changes etcd5509's `L` from 0.150 to 0.158. Block 1's `V_bad` prefix passed on its first attempt. Nothing changes in the pattern of which intervals contain the margin. So no etcd5509 conclusion depends on the section 1 incident.
+
+### 6.4 Interpretation
+
+This is labelled interpretation, not result.
+
+- **Retry loss.** On both episodes, every discordant block goes the same way: P1 blocked on a focal witness and P3 accepted after a retry. `L` estimates are 0.150 and 0.100. With 20 blocks, both simultaneous intervals include 0 and the 0.10 margin. E1 therefore neither shows nor rules out a material retry loss. This is calibration, as plan §6 intends.
+- **Noise reduction is not measured.** No verified nuisance occurred on either `V_ok`, so `N` and `R` are zero by construction. The noise-reduction side of RQ1 is not established for either episode. The report flags this for both.
+- **Plan §6 "Continue" criteria, as far as step 5 can check them:**
+  - the oracle and the policy interpretation work for both episodes;
+  - the invalid fraction is 0, well under 0.10;
+  - every outcome and intermediate failure traces to a hashed ledger record.
+  - Not assessed here: whether the projected E2 cost fits its cap, and the attribution check that step 4 provides.
+
+### 6.5 Limits
+
+- **Controls:** these results were read before the step 4 controls. If a control later shows an attribution or final-status problem, it must be recorded here, and these results re-read under that entry. The results are not edited.
+- **Labels and scope:**
+  - All labels are mechanical and there was one researcher (plan §6).
+  - Both episodes come from etcd (`e1_protocol.md`).
+  - The E1 data are for development only and are not E2 evidence (plan §6, Budget).
+- **Coverage assumption:** the intervals assume independent reset blocks, not independent retries.
+
+### 6.6 Hashes
+
+| File | SHA-256 |
+|---|---|
+| `e1/etcd5509/annotations.jsonl` | `304b110f208b22c59965c9e200acf5ba729a52de174c8fbd427282b802d9a5b9` |
+| `e1/etcd7492/annotations.jsonl` | `e9a625d48a7076be621b56f52bbaa0c4001efc33865e33bf48b039d86ed40aac` |
+| `e1/analysis/etcd5509/report.md` | `77736a921e2e7ecbf4766ac9205a8e128825629b9e8c5037c8d912d849999b10` |
+| `e1/analysis/etcd5509/summary.json` | `9685c45045a2d6c6ad74c128f2be94a87a4de55015be3df47ae52ff0a0baa070` |
+| `e1/analysis/etcd5509/policy_decisions.csv` | `1cc756f8f1030a6a096c8eb94acf4894d867115563955ebc0722a285b23c15b4` |
+| `e1/analysis/etcd7492/report.md` | `c86c7110333cd71b62efecf0a67fcdb520fdc87d57e8997665cdb5513c789fa6` |
+| `e1/analysis/etcd7492/summary.json` | `b79bb87da9ae9d37cda012eee548f5fc33dafc93b89d9ab1bd834b10aa4d6feb` |
+| `e1/analysis/etcd7492/policy_decisions.csv` | `f5f4cdde098b4b605e40f752978c9e8236a886bcc6d36f4568f91ea376d46f01` |
+| `e1/analysis/etcd5509_excl_block1/report.md` | `c7c1a53a8d4f6e163579ce842bb23c1d57fb2556f328800e6231c337e7426fb5` |
+| `e1/analysis/etcd5509_excl_block1/summary.json` | `740d6600cbe4eb4862248df7c46f7004e9746a182e6c308733cd76878b56fef8` |
+| `e1/analysis/etcd5509_excl_block1/policy_decisions.csv` | `20fb562c062ab88dfb84c75f17c41e935c386181e79b087c9aead3bf18418ee8` |
+
+- **Byte-for-byte storage:** everything is under `e1/`, whose `.gitattributes` is `* -text`. The CSVs keep the `\r\n` row endings that Python's `csv` module writes.
+- **To reproduce,** run from the repository root. `oracle.py` refuses to overwrite a differing file, and each command should reproduce the hashes above:
+  - `python e1_harness/oracle.py --ledger research_runs/ci_sensitivity_2026_09/e1/<episode>/attempts.jsonl --out <path>`
+  - `python e1_harness/analysis.py --ledger …/<episode>/attempts.jsonl --annotations …/<episode>/annotations.jsonl --blocks 1-20 --batch 1-10 --batch 11-20 --direct-blocks 101-112 --allocated-vcpus 16 --family-alpha 0.025 --out <dir>`
+- **From here:** step 4, the controls, is the remaining E1 work. Each control needs a design, an oracle card and a cost check against the 3.0 vCPU-hour reserve (section 2.3). After that comes the E1 "Continue" decision, including the projected E2 cost.
