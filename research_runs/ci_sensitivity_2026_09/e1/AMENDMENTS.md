@@ -77,3 +77,32 @@
 
 - `direct_checks_plan.json` was generated from the rules in 2.1 and checked against the table there before hashing.
 - `run_direct.py` does not exist yet. Its hash and its test results will be recorded in a later entry here before any direct check runs. It must refuse to start unless `direct_checks_plan.json` hashes to the value above. No direct check may run under this entry alone.
+
+## 3. 2026-09-23 — direct-check driver recorded (completes section 2.5)
+
+- **Status:** records the driver that section 2.5 requires before any direct check runs. No direct check or control has run.
+
+| File | SHA-256 |
+|---|---|
+| `e1/run_direct.py` | `59e4f9b4c2d06875ecad2a5d0e751a69414b3e24808b08b5d72b911a98fd93cd` |
+| `e1_harness/tests/test_run_direct.py` | `eb31d22ebffc5c3360e5911f5ffd8d7f7637907dceb8a1c70985cafb825d48a3` |
+| `e1/direct_checks_plan.json` (unchanged from 2.5) | `5e74dc813f665fb8fa4c6a27e7570d3c55c993a6eb25adbda0fe610db4768883` |
+
+- **Verification:**
+  - 22 driver tests pass. The full unit suite is 172 tests, all OK (150 at the E1 freeze plus these 22).
+  - Four deliberate breakages were each caught by the suite: disabling the guard, the "continued after exit 0" rule, the leftover-container check and the prefix rule for resuming. The file was restored byte for byte afterwards.
+  - A read-only `preflight` against the real Docker host on 2026-09-23 was clean: `docker info` succeeded, all four frozen image IDs were present and `docker ps -a` was empty.
+  - The E1 freeze still verifies.
+- **What the driver enforces, as implemented:**
+  - **Refuses to start** unless the plan and both manifests hash to their frozen values, all four images are present, `docker info` succeeds and `docker ps -a` is empty.
+  - **Runs** the 12 checks in plan order through `run_policy_direct` with `reserved_from=101`, applying the section 2.2 guard before each check.
+  - **Stops**, never retrying, when `docker info` fails before a check (exit 2); on a guard stop (exit 3); or on a structural mismatch (exit 4).
+  - **Structural mismatch** covers the section 2.4 conditions, plus two further ones: a recorded version other than the planned one, and ledger records that disagree with the trace the runner returned.
+  - **Resume:** a stopped run resumes only from the next unrecorded check, following `e1_protocol.md`'s rule for stopped runs. It refuses to resume if the recorded checks are not a prefix of the plan order, if any recorded check is structurally unsound, or if a ledger holds a direct-range block that is not in the plan. After a structural mismatch, this refusal means resuming needs a recorded decision here.
+  - **Files written** (append mode): `run_logs/direct_start_utc.txt`, one line per start with the preflight result; `run_logs/direct_101-112.log`, a header line, one line per check and the final status; and `run_logs/direct_end_utc.txt`, the end time and exit code, written even after a Python-level error.
+- **Not checkable by the driver:** that no other agent background task is running (AMENDMENTS §1). The operator must confirm it and record it in `run_logs/` before starting. No such record exists for batch 2 (`batch2_check.md`).
+- **Known disagreement with the frozen `analysis.py`:**
+  - Section 2.4 lists no rule for a P3 attempt with no exit status (a timeout or a run that never started). The runner treats it as not a pass and continues, so the driver accepts such a trace as sound. The reducer rates the check `INDETERMINATE`.
+  - `analysis.direct_checks` treats any such attempt before the last as inconsistent with P3, so it reports `structural_mismatch`.
+  - `analysis.py` is hash-frozen and is not changed. If such a trace occurs, the analysis report will show a mismatch that the driver did not stop on, and the report must cite this entry. It has not occurred: no direct check has run.
+- **From here:** direct checks may run under sections 2 and 3, once the pre-start conditions above are met and recorded.
