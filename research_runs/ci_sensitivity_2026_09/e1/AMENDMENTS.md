@@ -106,3 +106,48 @@
   - `analysis.direct_checks` treats any such attempt before the last as inconsistent with P3, so it reports `structural_mismatch`.
   - `analysis.py` is hash-frozen and is not changed. If such a trace occurs, the analysis report will show a mismatch that the driver did not stop on, and the report must cite this entry. It has not occurred: no direct check has run.
 - **From here:** direct checks may run under sections 2 and 3, once the pre-start conditions above are met and recorded.
+
+## 4. 2026-09-23 — line endings of the hash-frozen harness files
+
+- **Status:** records a storage fix that the researcher approved on 2026-09-23. No file content, committed blob or recorded hash changes. No E1 experiment was run for this entry.
+- **Unchanged:** `e1_protocol.md`, sections 1–3 above, and the content and committed blobs of every `e1_harness/` file.
+
+### 4.1 Finding
+
+- **Observed:** The machine has `core.autocrlf=true`, and `e1_harness/` had no `.gitattributes`. So Git stores these files with LF endings (the blob) and checks them out with CRLF endings. `git ls-files --eol` showed `i/lf w/crlf` for all six files in a fresh checkout at `4517834`.
+- **The recorded hashes mix both forms.** Every blob is pure LF. The CRLF form is the blob with each LF replaced by CRLF, so the text is identical.
+
+  | File | Recorded in | Recorded hash is | LF form (Git blob) | CRLF form |
+  |---|---|---|---|---|
+  | `e1_harness/runner.py` | `e1_protocol.md` | **CRLF** | `be3c39d816e609c2ead8108145e8acb026aa91acd78fc28e1c0338e8bbd255aa` | `2b831f91017679bbb913938a05333aa6ecbbda3bbeaecafb26ff3fc6c2ff6be7` |
+  | `e1_harness/ledger.py` | `e1_protocol.md` | LF | `9e51b801dba5f034cc1818192d86314e41f93343a4efe6eaa3053cbf8f8a34f3` | `b89123457e8f38e6d41f4d0f834f2d78a296201cda073e095a4c2ab619a685b5` |
+  | `e1_harness/policy.py` | `e1_protocol.md` | LF | `b5a2e4ba6638a7a6ae565b0962b47c0af9bf07466bfa0473773b240918ff7da4` | `cb4b31e95b99bc3c5adc4cf3df54b6e2ad9885f011fd69c15df2401bbfa78916` |
+  | `e1_harness/oracle.py` | `e1_protocol.md` | LF | `20a494f00b87d52a035b8a1d31b40d31ca46d9037854a5b0caafcf04b20a89a0` | `6f1b5f9bea748613032b285a3960811794305a22e36aff85381299d81418970e` |
+  | `e1_harness/analysis.py` | `e1_protocol.md` | LF | `bc27c7de7ebce6bd42c56749c134b76945f13c615bf0f0533336f5528ee1a841` | `4280d660a789feed8bb84bed1e80b58e993fd1f40c6520d31cc2aa9befec23f6` |
+  | `e1_harness/tests/test_run_direct.py` | section 3 | LF | `eb31d22ebffc5c3360e5911f5ffd8d7f7637907dceb8a1c70985cafb825d48a3` | `5a45697cd985dd0bd83438e988b52e4136aa8b7538ffa551c2b5cbddeee2fc61` |
+
+- **Observed:** `runner.py`'s blob is the same at the freeze commit `fc3fb2d` and at `4517834` (`be3c39d8…`). In the main checkout, `runner.py` is CRLF and hashes to the recorded `2b831f91…`, while the other five files are LF there and match their recorded hashes. In a fresh checkout on this machine, all six are CRLF, so the five LF hashes failed and only `runner.py` matched. On a checkout without autocrlf (Linux, CI), all six are LF, so `runner.py` fails and the other five match.
+- **Inference:** Each recorded hash was taken from whatever the working copy happened to hold at the time, not from a fixed byte form. The content of `runner.py` is what was frozen. Python reads CRLF and LF source identically, so the difference does not change harness behaviour.
+- **Nothing in the code checks these hashes.** `run_blocks.py` and `run_direct.py` verify manifest and plan hashes only, so no run was affected.
+
+### 4.2 Fix
+
+- Following commit `636a99e`, a new `e1_harness/.gitattributes` marks exactly these six files `-text`. Git now stores and checks them out byte-for-byte, which is LF, as already committed. No blob was re-added or renormalised.
+- `runner.py` stays LF. Storing its CRLF form would change a committed blob. Its recorded hash is therefore defined as the hash of its CRLF form, and it is verified as below.
+- **Existing checkouts** keep their old working-copy bytes until the files are checked out again. After this change, a CRLF `runner.py` in such a checkout shows as modified. `git checkout -- e1_harness/runner.py` restores the LF form.
+
+### 4.3 How to verify
+
+Run these from the repository root at this entry's commit or any later one. They behave the same on every platform and with any `core.autocrlf` setting.
+
+- **Five LF hashes** (`ledger.py`, `policy.py`, `oracle.py`, `analysis.py` and `tests/test_run_direct.py`). The working copy and the blob are the same bytes:
+  - `sha256sum e1_harness/ledger.py` (the same for the other four), or
+  - `git show HEAD:e1_harness/ledger.py | sha256sum`.
+- **`runner.py`, recorded CRLF hash `2b831f91…`.** Convert the blob to CRLF, then hash it:
+  - `git show HEAD:e1_harness/runner.py | python -c "import sys,hashlib;print(hashlib.sha256(sys.stdin.buffer.read().replace(b'\n',b'\r\n')).hexdigest())"`
+  - The blob contains no `\r`, so this conversion is exact.
+- **`runner.py`, LF form `be3c39d8…`** (not a recorded freeze value; it identifies the same content):
+  - `sha256sum e1_harness/runner.py`, or
+  - `git show HEAD:e1_harness/runner.py | sha256sum`.
+- **Check that the fix is in effect:** `git ls-files --eol e1_harness/runner.py` shows `i/lf w/lf attr/-text`.
+- **Result on 2026-09-23:** after re-checkout at `4517834` with the new `.gitattributes`, all six files were `i/lf w/lf attr/-text`. All five LF hashes and the `runner.py` CRLF conversion matched their recorded values.
