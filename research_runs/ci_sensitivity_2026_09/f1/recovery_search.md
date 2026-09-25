@@ -53,3 +53,19 @@ The chain is recorded at `25eb6b7`. Each step's cost is an estimate, not a measu
 5. **Apply R2's test:** all 30 cohort cycles must reproduce the report's `apfd_hist` and `apfd_t0` within 1e-9. On failure, the ranking part stops (no retuning).
 
 The protocol already flags whether R2 counts as recovery at all as the researcher's decision.
+
+## Researcher decision (2026-09-25)
+
+After reading the sections above, the researcher instructed "open it and do the work". This authorises:
+- R2 as a recovery route, under the protocol's all-30-cycles equality test;
+- streaming the local archive;
+- the isolated environment install and, if needed, the Airavata clone listed in "What R2 would need".
+
+R2 is therefore no longer provisional on that decision. It still stands or falls on the equality test.
+
+## R2 environment rule (fixed before any R2 output exists)
+
+- **Interpreter:** this host's Python 3.14.3, which matches "Python 3.14" in `docs/RESUME.md` at `25eb6b7`.
+- **Environment:** a new isolated venv at `C:\Users\Mega-PC\f1work\venv`, outside the repository.
+- **Packages:** only numpy, pandas, scipy and scikit-learn, the sole third-party imports of the five R2 scripts. Each is installed at whatever pip resolves on 2026-09-25 for the ranges in `requirements.txt` at `25eb6b7`, and the exact versions are recorded (`pip freeze`).
+- **One attempt only.** If the equality test fails, no other library version, interpreter, seed or setting is tried. The failure is the finding (protocol, R2).

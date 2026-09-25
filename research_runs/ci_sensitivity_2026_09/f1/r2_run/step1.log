@@ -1,0 +1,16 @@
+== Step 1: name join + gate ==
+tests: 55   unresolved: 0   test-class paths: 55/55
+    4003 -> org.apache.airavata.security.configurations.AuthenticatorConfigurationReaderTest
+    4008 -> org.apache.airavata.security.userstore.JDBCUserStoreTest
+    4009 -> org.apache.airavata.security.userstore.LDAPUserStoreTest
+    4010 -> org.apache.airavata.security.userstore.SessionDBUserStoreTest
+    4508 -> org.apache.airavata.credential.store.store.impl.db.CommunityUserDAOTest
+    4509 -> org.apache.airavata.credential.store.store.impl.db.CredentialsDAOTest
+    4549 -> org.apache.airavata.common.utils.ApplicationSettingsTest
+    4909 -> org.apache.airavata.credential.store.util.TokenGeneratorTest
+cycles evaluated (changed files & tests present): 233
+cycles with >=1 test<->diff overlap: 166 (71.2%)
+failing execs with overlap: 927/1173 (79.0%)
+wrote: C:/Users/Mega-PC/f1work/slice/TCP-CI-dataset/datasets/apache@airavata\test_name_map.csv , step1_gate_report.json
+
+PASS: names resolve and test<->diff overlap is non-trivial. Proceed to Step 2 (history-only per-cycle APFD baseline).

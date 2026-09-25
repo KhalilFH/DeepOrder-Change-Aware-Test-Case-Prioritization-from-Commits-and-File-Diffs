@@ -1,0 +1,18 @@
+
+=== Generating Enhanced TCP Dataset for apache@airavata ===
+✓ Loaded exe.csv: 11484 records
+✓ Loaded builds.csv: 652 records
+✓ Loaded id_map.csv: 19849 records
+✓ Loaded entity_change_history.csv: 138680 records
+✓ Loaded travis-torrent data: 652 builds
+Loaded 13468 entity ID to filepath mappings
+Processing 11484 test executions across 652 builds...
+Verdict distribution: {0: np.int64(10311), 1: np.int64(1145), 2: np.int64(28)}
+✓ Using external name map: 55 test ids -> real FQNs (all 55 executed ids resolved)
+Created test name mappings for 55 tests
+✓ Dataset saved to: C:\Users\Mega-PC\f1work\out\apache@airavata_enhanced_tcp_dataset.csv
+✓ Generated enhanced dataset with 11429 test execution records
+✓ Completed apache@airavata: 11429 records
+
+✓ All enhanced datasets saved to: C:\Users\Mega-PC\f1work\out
+schema exit=0

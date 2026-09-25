@@ -1,0 +1,39 @@
+== Step 3/4: T0 path-token relevance -- prequential, paired ==
+identity=path  T0 nonzero 58.1%  within-cycle variation in 163/235 cycles
+scored cycles 82  (unscorable 152, untrainable-prefix 1)
+
+[PRIMARY_small_fault]  n=30
+  APFD  HIST   0.8237 (median 0.8333)
+        HIST+T00.8176 (median 0.8333)
+  mean paired diff -0.0061  boot95 [-0.0429, 0.0229]  Wilcoxon p 0.916511907863894  A12 0.4894
+  win/tie/loss [4, 24, 2]
+
+[small_fault_tiny_cycles (n<=5)]  n=16
+  APFD  HIST   0.8333 (median 0.8333)
+        HIST+T00.8333 (median 0.8333)
+  mean paired diff +0.0000  boot95 [0.0, 0.0]  Wilcoxon p None  A12 0.5
+  win/tie/loss [0, 16, 0]
+  note: T0 produced NO ranking change in any cycle of this stratum (all diffs == 0); Wilcoxon undefined. This is a reported state, not a swallowed failure.
+
+[small_fault_large_cycles (n>5)]  n=14
+  APFD  HIST   0.8128 (median 0.9608)
+        HIST+T00.7997 (median 0.9706)
+  mean paired diff -0.0131  boot95 [-0.0892, 0.049]  Wilcoxon p 0.916511907863894  A12 0.5332
+  win/tie/loss [4, 8, 2]
+
+[SECONDARY_chronic]  n=52
+  APFD  HIST   0.7731 (median 0.7857)
+        HIST+T00.7706 (median 0.7857)
+  mean paired diff -0.0025  boot95 [-0.0129, 0.0045]  Wilcoxon p 0.6114529869535043  A12 0.5168
+  win/tie/loss [5, 45, 2]
+
+[SECONDARY_all_scored]  n=82
+  APFD  HIST   0.7916 (median 0.7941)
+        HIST+T00.7878 (median 0.7899)
+  mean paired diff -0.0038  boot95 [-0.0182, 0.008]  Wilcoxon p 0.7006164252362665  A12 0.4915
+  win/tie/loss [9, 69, 4]
+
+wrote: C:/Users/Mega-PC/f1work/out_step3\step3_report.json
+
+PRIMARY claim = small_fault (m<=4). Chronic reported separately.
+recorded 10044 ranked rows -> C:/Users/Mega-PC/f1work/out_step3/rankings.csv

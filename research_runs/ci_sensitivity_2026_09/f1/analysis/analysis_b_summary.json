@@ -1,0 +1,26 @@
+{
+  "cohort": "PRIMARY_small_fault (m<=4), 30 cycles",
+  "M1_mean_diff": -0.006100217864923746,
+  "M1_win_tie_loss": [
+    4,
+    24,
+    2
+  ],
+  "M2_mean_diff": 0.0006535947712418277,
+  "M2_win_tie_loss": [
+    2,
+    27,
+    1
+  ],
+  "M2_mean_hist": 0.849046285180739,
+  "M2_mean_t0": 0.8496998799519808,
+  "M3_mean_diff_range": [
+    -0.01851851851851851,
+    0.013725490196078433
+  ],
+  "cycles_where_mapping_changes_diff": 9,
+  "cycles_whose_sign_differs_M1_vs_M2": 3,
+  "note": "exact values from recovered rankings; mapping ranges are assumptions, not sampling intervals; cycles are correlated",
+  "M2_mean_sign_reversal_vs_M1": true,
+  "M3_mean_sign_reversal_possible": true
+}

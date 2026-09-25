@@ -1,0 +1,88 @@
+{
+  "data": "C:\\Users\\Mega-PC\\f1work\\slice\\TCP-CI-dataset\\datasets\\apache@airavata",
+  "n_tests": 55,
+  "n_unresolved": 0,
+  "unresolved_ids": [],
+  "n_test_class_paths": 55,
+  "n_builds_exe": 236,
+  "cycles_evaluated": 233,
+  "cycles_with_overlap": 166,
+  "frac_cycles_with_overlap": 0.7124,
+  "failing_execs": 1173,
+  "failing_execs_with_overlap": 927,
+  "frac_failing_execs_with_overlap": 0.7903,
+  "sample_names": [
+    {
+      "test_id": 4003,
+      "path": "modules/security/src/test/java/org/apache/airavata/security/configurations/AuthenticatorConfigurationReaderTest.java",
+      "fqn": "org.apache.airavata.security.configurations.AuthenticatorConfigurationReaderTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 4008,
+      "path": "modules/security/src/test/java/org/apache/airavata/security/userstore/JDBCUserStoreTest.java",
+      "fqn": "org.apache.airavata.security.userstore.JDBCUserStoreTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 4009,
+      "path": "modules/security/src/test/java/org/apache/airavata/security/userstore/LDAPUserStoreTest.java",
+      "fqn": "org.apache.airavata.security.userstore.LDAPUserStoreTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 4010,
+      "path": "modules/security/src/test/java/org/apache/airavata/security/userstore/SessionDBUserStoreTest.java",
+      "fqn": "org.apache.airavata.security.userstore.SessionDBUserStoreTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 4508,
+      "path": "modules/credential-store/src/test/java/org/apache/airavata/credential/store/store/impl/db/CommunityUserDAOTest.java",
+      "fqn": "org.apache.airavata.credential.store.store.impl.db.CommunityUserDAOTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 4509,
+      "path": "modules/credential-store/src/test/java/org/apache/airavata/credential/store/store/impl/db/CredentialsDAOTest.java",
+      "fqn": "org.apache.airavata.credential.store.store.impl.db.CredentialsDAOTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 4549,
+      "path": "modules/commons/utils/src/test/java/org/apache/airavata/common/utils/ApplicationSettingsTest.java",
+      "fqn": "org.apache.airavata.common.utils.ApplicationSettingsTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 4909,
+      "path": "modules/credential-store/src/test/java/org/apache/airavata/credential/store/util/TokenGeneratorTest.java",
+      "fqn": "org.apache.airavata.credential.store.util.TokenGeneratorTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 5025,
+      "path": "modules/credential-store/src/test/java/org/apache/airavata/credential/store/util/ConfigurationReaderTest.java",
+      "fqn": "org.apache.airavata.credential.store.util.ConfigurationReaderTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 5053,
+      "path": "modules/commons/utils/src/test/java/org/apache/airavata/common/utils/SecurityUtilTest.java",
+      "fqn": "org.apache.airavata.common.utils.SecurityUtilTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 5416,
+      "path": "modules/credential-store/src/test/java/org/apache/airavata/credential/store/notifier/impl/EmailNotifierTest.java",
+      "fqn": "org.apache.airavata.credential.store.notifier.impl.EmailNotifierTest",
+      "is_test_class": true
+    },
+    {
+      "test_id": 5447,
+      "path": "modules/orchestrator/orchestrator-core/src/test/java/org/apache/airavata/orchestrator/core/AbstractOrchestratorTest.java",
+      "fqn": "org.apache.airavata.orchestrator.core.AbstractOrchestratorTest",
+      "is_test_class": true
+    }
+  ]
+}
