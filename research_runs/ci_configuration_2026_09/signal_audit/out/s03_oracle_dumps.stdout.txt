@@ -1,0 +1,90 @@
+{
+ "label": "EXPLORATORY/POST-HOC s03; descriptive dump structure, frozen labels unchanged",
+ "q0_results_csv_header": [
+  "version",
+  "attempt",
+  "start_utc",
+  "end_utc",
+  "elapsed_s",
+  "exit_code",
+  "classification",
+  "note"
+ ],
+ "dump_summary_by_source": {
+  "C1-R": {
+   "get_goroutine_present=False": 24,
+   "n": 24,
+   "other_clientv3=": 24,
+   "shape=i: test goroutine in Close's own RWMutex.Lock": 5,
+   "shape=ii: test goroutine in Close chan receive": 19,
+   "timeout_panic=True": 24,
+   "waiters=": 5,
+   "waiters=clientv3.(*Client).connMonitor @ client.go:358": 7,
+   "waiters=clientv3.(*Client).connMonitor.func1 @ client.go:344": 5,
+   "waiters=clientv3.(*Client).retryConnection @ client.go:286": 7
+  },
+  "C1-L": {
+   "get_goroutine_present=False": 26,
+   "n": 26,
+   "other_clientv3=": 26,
+   "shape=i: test goroutine in Close's own RWMutex.Lock": 5,
+   "shape=ii: test goroutine in Close chan receive": 21,
+   "timeout_panic=True": 26,
+   "waiters=": 4,
+   "waiters=clientv3.(*Client).connMonitor @ client.go:358": 10,
+   "waiters=clientv3.(*Client).connMonitor.func1 @ client.go:344": 1,
+   "waiters=clientv3.(*Client).retryConnection @ client.go:286": 11
+  },
+  "E1-unrestricted": {
+   "get_goroutine_present=False": 52,
+   "n": 52,
+   "other_clientv3=": 52,
+   "shape=i: test goroutine in Close's own RWMutex.Lock": 6,
+   "shape=ii: test goroutine in Close chan receive": 46,
+   "timeout_panic=True": 52,
+   "waiters=": 5,
+   "waiters=clientv3.(*Client).connMonitor @ client.go:358": 15,
+   "waiters=clientv3.(*Client).connMonitor.func1 @ client.go:344": 14,
+   "waiters=clientv3.(*Client).retryConnection @ client.go:286": 18
+  },
+  "Q0-unrestricted": {
+   "get_goroutine_present=False": 16,
+   "n": 16,
+   "other_clientv3=": 16,
+   "shape=i: test goroutine in Close's own RWMutex.Lock": 1,
+   "shape=ii: test goroutine in Close chan receive": 15,
+   "timeout_panic=True": 16,
+   "waiters=": 1,
+   "waiters=clientv3.(*Client).connMonitor @ client.go:358": 4,
+   "waiters=clientv3.(*Client).connMonitor.func1 @ client.go:344": 5,
+   "waiters=clientv3.(*Client).retryConnection @ client.go:286": 6
+  }
+ },
+ "test_reported_pass_duration_s": {
+  "L/bad": {
+   "n": 4,
+   "min": 0.04,
+   "median": 0.05,
+   "max": 0.05
+  },
+  "L/ok": {
+   "n": 30,
+   "min": 0.04,
+   "median": 0.05,
+   "max": 0.06
+  },
+  "R/bad": {
+   "n": 6,
+   "min": 0.04,
+   "median": 0.05,
+   "max": 0.06
+  },
+  "R/ok": {
+   "n": 30,
+   "min": 0.04,
+   "median": 0.05,
+   "max": 0.06
+  }
+ },
+ "any_kv_get_took_too_long_anywhere": false
+}

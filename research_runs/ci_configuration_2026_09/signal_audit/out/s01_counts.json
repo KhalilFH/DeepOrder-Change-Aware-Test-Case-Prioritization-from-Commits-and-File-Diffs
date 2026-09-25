@@ -1,0 +1,213 @@
+{
+  "categories": {
+    "FOCAL_DEFECT_WITNESS": 180,
+    "PASS": 540
+  },
+  "claimed_etcd5509": {
+    "L/P1": 10,
+    "L/P3": 7,
+    "L/all": 26,
+    "R/P1": 7,
+    "R/P3": 5,
+    "R/all": 24
+  },
+  "claims_verified": true,
+  "counts": {
+    "etcd5509": {
+      "L/P1": 10,
+      "L/P3": 7,
+      "L/P3_accept_after_focal": 3,
+      "L/all_attempt_focal": 26,
+      "L/attempts_2_3_focal": 16,
+      "L/first_attempt_focal": 10,
+      "L/ok_nonpass": 0,
+      "P1/batchA": -0.4,
+      "P1/batchB": -0.2,
+      "P1/d_plus_minus_zero": [
+        0,
+        3,
+        7
+      ],
+      "P1/delta": -0.3,
+      "P3/batchA": -0.2,
+      "P3/batchB": -0.2,
+      "P3/d_plus_minus_zero": [
+        2,
+        4,
+        4
+      ],
+      "P3/delta": -0.2,
+      "R/P1": 7,
+      "R/P3": 5,
+      "R/P3_accept_after_focal": 2,
+      "R/all_attempt_focal": 24,
+      "R/attempts_2_3_focal": 17,
+      "R/first_attempt_focal": 7,
+      "R/ok_nonpass": 0
+    },
+    "etcd7492": {
+      "L/P1": 0,
+      "L/P3": 0,
+      "L/P3_accept_after_focal": 0,
+      "L/all_attempt_focal": 3,
+      "L/attempts_2_3_focal": 3,
+      "L/first_attempt_focal": 0,
+      "L/ok_nonpass": 0,
+      "P1/batchA": 0.8,
+      "P1/batchB": 0.0,
+      "P1/d_plus_minus_zero": [
+        4,
+        0,
+        6
+      ],
+      "P1/delta": 0.4,
+      "P3/batchA": 0.0,
+      "P3/batchB": 0.0,
+      "P3/d_plus_minus_zero": [
+        0,
+        0,
+        10
+      ],
+      "P3/delta": 0.0,
+      "R/P1": 4,
+      "R/P3": 0,
+      "R/P3_accept_after_focal": 4,
+      "R/all_attempt_focal": 7,
+      "R/attempts_2_3_focal": 3,
+      "R/first_attempt_focal": 4,
+      "R/ok_nonpass": 0
+    },
+    "grpc1859": {
+      "L/P1": 0,
+      "L/P3": 0,
+      "L/P3_accept_after_focal": 0,
+      "L/all_attempt_focal": 1,
+      "L/attempts_2_3_focal": 1,
+      "L/first_attempt_focal": 0,
+      "L/ok_nonpass": 0,
+      "P1/batchA": 0.0,
+      "P1/batchB": 0.4,
+      "P1/d_plus_minus_zero": [
+        2,
+        0,
+        8
+      ],
+      "P1/delta": 0.2,
+      "P3/batchA": 0.0,
+      "P3/batchB": 0.0,
+      "P3/d_plus_minus_zero": [
+        0,
+        0,
+        10
+      ],
+      "P3/delta": 0.0,
+      "R/P1": 2,
+      "R/P3": 0,
+      "R/P3_accept_after_focal": 2,
+      "R/all_attempt_focal": 4,
+      "R/attempts_2_3_focal": 2,
+      "R/first_attempt_focal": 2,
+      "R/ok_nonpass": 0
+    },
+    "grpc2391": {
+      "L/P1": 8,
+      "L/P3": 7,
+      "L/P3_accept_after_focal": 1,
+      "L/all_attempt_focal": 27,
+      "L/attempts_2_3_focal": 19,
+      "L/first_attempt_focal": 8,
+      "L/ok_nonpass": 0,
+      "P1/batchA": 0.2,
+      "P1/batchB": 0.0,
+      "P1/d_plus_minus_zero": [
+        1,
+        0,
+        9
+      ],
+      "P1/delta": 0.1,
+      "P3/batchA": 0.2,
+      "P3/batchB": 0.0,
+      "P3/d_plus_minus_zero": [
+        2,
+        1,
+        7
+      ],
+      "P3/delta": 0.1,
+      "R/P1": 9,
+      "R/P3": 8,
+      "R/P3_accept_after_focal": 1,
+      "R/all_attempt_focal": 28,
+      "R/attempts_2_3_focal": 19,
+      "R/first_attempt_focal": 9,
+      "R/ok_nonpass": 0
+    },
+    "istio17860": {
+      "L/P1": 10,
+      "L/P3": 10,
+      "L/P3_accept_after_focal": 0,
+      "L/all_attempt_focal": 30,
+      "L/attempts_2_3_focal": 20,
+      "L/first_attempt_focal": 10,
+      "L/ok_nonpass": 0,
+      "P1/batchA": 0.0,
+      "P1/batchB": 0.0,
+      "P1/d_plus_minus_zero": [
+        0,
+        0,
+        10
+      ],
+      "P1/delta": 0.0,
+      "P3/batchA": 0.0,
+      "P3/batchB": 0.0,
+      "P3/d_plus_minus_zero": [
+        0,
+        0,
+        10
+      ],
+      "P3/delta": 0.0,
+      "R/P1": 10,
+      "R/P3": 10,
+      "R/P3_accept_after_focal": 0,
+      "R/all_attempt_focal": 30,
+      "R/attempts_2_3_focal": 20,
+      "R/first_attempt_focal": 10,
+      "R/ok_nonpass": 0
+    },
+    "k8s26980": {
+      "L/P1": 0,
+      "L/P3": 0,
+      "L/P3_accept_after_focal": 0,
+      "L/all_attempt_focal": 0,
+      "L/attempts_2_3_focal": 0,
+      "L/first_attempt_focal": 0,
+      "L/ok_nonpass": 0,
+      "P1/batchA": 0.0,
+      "P1/batchB": 0.0,
+      "P1/d_plus_minus_zero": [
+        0,
+        0,
+        10
+      ],
+      "P1/delta": 0.0,
+      "P3/batchA": 0.0,
+      "P3/batchB": 0.0,
+      "P3/d_plus_minus_zero": [
+        0,
+        0,
+        10
+      ],
+      "P3/delta": 0.0,
+      "R/P1": 0,
+      "R/P3": 0,
+      "R/P3_accept_after_focal": 0,
+      "R/all_attempt_focal": 0,
+      "R/attempts_2_3_focal": 0,
+      "R/first_attempt_focal": 0,
+      "R/ok_nonpass": 0
+    }
+  },
+  "exit_vs_focal_mismatches": [],
+  "label": "EXPLORATORY/POST-HOC s01",
+  "ok_variant_focal": 0,
+  "ok_variant_nonpass": 0
+}

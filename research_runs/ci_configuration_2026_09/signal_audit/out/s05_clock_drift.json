@@ -1,0 +1,95 @@
+{
+  "etcd5509_focal_elapsed_by_block": {
+    "1": [
+      42.06,
+      42.19
+    ],
+    "2": [
+      42.09,
+      42.16
+    ],
+    "3": [
+      42.06,
+      42.2
+    ],
+    "4": [
+      41.9,
+      42.15
+    ],
+    "5": [
+      41.96,
+      42.13
+    ],
+    "6": [
+      43.97,
+      44.78
+    ],
+    "7": [
+      45.28,
+      45.32
+    ],
+    "8": [
+      45.36,
+      45.53
+    ],
+    "9": [
+      45.34,
+      45.43
+    ],
+    "10": [
+      45.39,
+      45.5
+    ]
+  },
+  "label": "EXPLORATORY/POST-HOC s05",
+  "timeout_elapsed_by_subject_batch_profile": {
+    "etcd5509/A/L": {
+      "inner_over_median_host": 1.0699,
+      "inner_timeout_s": 45,
+      "max": 42.19,
+      "median": 42.06,
+      "min": 41.9,
+      "n": 13
+    },
+    "etcd5509/A/R": {
+      "inner_over_median_host": 1.0682,
+      "inner_timeout_s": 45,
+      "max": 42.2,
+      "median": 42.13,
+      "min": 42.03,
+      "n": 11
+    },
+    "etcd5509/B/L": {
+      "inner_over_median_host": 0.9925,
+      "inner_timeout_s": 45,
+      "max": 45.5,
+      "median": 45.34,
+      "min": 44.24,
+      "n": 13
+    },
+    "etcd5509/B/R": {
+      "inner_over_median_host": 0.9908,
+      "inner_timeout_s": 45,
+      "max": 45.53,
+      "median": 45.42,
+      "min": 43.97,
+      "n": 13
+    },
+    "etcd7492/A/L": {
+      "inner_over_median_host": 1.0699,
+      "inner_timeout_s": 50,
+      "max": 46.74,
+      "median": 46.73,
+      "min": 46.66,
+      "n": 3
+    },
+    "etcd7492/A/R": {
+      "inner_over_median_host": 1.0695,
+      "inner_timeout_s": 50,
+      "max": 46.81,
+      "median": 46.75,
+      "min": 46.67,
+      "n": 7
+    }
+  }
+}

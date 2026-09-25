@@ -1,0 +1,189 @@
+{
+  "annotations": {
+    "raw_records": 720,
+    "record_sha_links_ok": 720,
+    "rows": 720,
+    "unique_ids": 720
+  },
+  "chains": {
+    "etcd5509__L.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "etcd5509__R.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "etcd7492__L.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "etcd7492__R.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "events.jsonl": {
+      "head": "f24ed11c61da57b0e374c47fb185ea1e0f2c6432c193858144d7ee381098a019",
+      "ok": true,
+      "rows": 101
+    },
+    "grpc1859__L.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "grpc1859__R.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "grpc2391__L.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "grpc2391__R.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "istio17860__L.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "istio17860__R.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "k8s26980__L.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "k8s26980__R.jsonl": {
+      "ok": true,
+      "rows": 60
+    },
+    "resource_ledger.jsonl": {
+      "head": "53f23c931bac4bc77dc05822055484e0e4f689d24f969ccf5395933d9cec009e",
+      "ok": true,
+      "rows": 1061
+    }
+  },
+  "design_freeze": {
+    "committed_HEAD_match": 8,
+    "entries": 8,
+    "file_sha256_normalized": "087b338dc83dd9978811daf277b916d923776dcb810ad61f60e41a3988bff9fc",
+    "mismatches": [],
+    "working_tree_match": 8
+  },
+  "label": "EXPLORATORY/POST-HOC signal audit s00 (integrity)",
+  "launch_freeze": {
+    "entries": 71,
+    "file_sha256_normalized": "45c524f168f743ad211cb0d939e161c966cfdfc4c5fa956694f8c6233230070d",
+    "header": [
+      "# C1 executable launch freeze v1 (c1_ci_configuration_visibility_v1)",
+      "# frozen_utc 2026-09-25T12:15:02Z",
+      "# SHA-256 of LF-normalized bytes; paths relative to the repository root; excludes itself",
+      "# HEAD 721d885a315a2c0ef26a82f2613248a4abcc110c; C1 files uncommitted"
+    ],
+    "matched": 71,
+    "mismatches": []
+  },
+  "seal": {
+    "files": 12,
+    "matched": 12,
+    "rows": [
+      {
+        "file": "etcd5509__L.jsonl",
+        "match": true,
+        "now": "a8fbab6330a0973b6a2216dec7e7f22ad3bbe3b0a263c110075e9b1879ce125d",
+        "sealed": "a8fbab6330a0973b6a2216dec7e7f22ad3bbe3b0a263c110075e9b1879ce125d"
+      },
+      {
+        "file": "etcd5509__R.jsonl",
+        "match": true,
+        "now": "a24d480724f93245f1146e24760cd00beaaafc80783a9e430be405fb05663050",
+        "sealed": "a24d480724f93245f1146e24760cd00beaaafc80783a9e430be405fb05663050"
+      },
+      {
+        "file": "etcd7492__L.jsonl",
+        "match": true,
+        "now": "ac0fc51b532f611a684c355e336d3a20427ce7e53d12689f513a57502acc3006",
+        "sealed": "ac0fc51b532f611a684c355e336d3a20427ce7e53d12689f513a57502acc3006"
+      },
+      {
+        "file": "etcd7492__R.jsonl",
+        "match": true,
+        "now": "76800a7206403d9898126534d0d096b3ade3df5a3ea99c12c9a6aa6dd64b9f8e",
+        "sealed": "76800a7206403d9898126534d0d096b3ade3df5a3ea99c12c9a6aa6dd64b9f8e"
+      },
+      {
+        "file": "grpc1859__L.jsonl",
+        "match": true,
+        "now": "07e03ad229b04ad6c0e0db0b136cad82ded84ce3614e17fd82e46aecabd2386a",
+        "sealed": "07e03ad229b04ad6c0e0db0b136cad82ded84ce3614e17fd82e46aecabd2386a"
+      },
+      {
+        "file": "grpc1859__R.jsonl",
+        "match": true,
+        "now": "e95859c19dae08a778ab05c34d2baf69e4a7bd1a3dc9a2af77897b5e36f8d1f2",
+        "sealed": "e95859c19dae08a778ab05c34d2baf69e4a7bd1a3dc9a2af77897b5e36f8d1f2"
+      },
+      {
+        "file": "grpc2391__L.jsonl",
+        "match": true,
+        "now": "69d224d482540da73a1f93fbddd1828f31be0f575d9198f19729f3572134f109",
+        "sealed": "69d224d482540da73a1f93fbddd1828f31be0f575d9198f19729f3572134f109"
+      },
+      {
+        "file": "grpc2391__R.jsonl",
+        "match": true,
+        "now": "5691cc87240e41dde42b533bb37346fb02f1447509603fbbd1693c99eaa756a3",
+        "sealed": "5691cc87240e41dde42b533bb37346fb02f1447509603fbbd1693c99eaa756a3"
+      },
+      {
+        "file": "istio17860__L.jsonl",
+        "match": true,
+        "now": "0a8963c7bfb25f227db72650407db4209c72f7a07cc63bbf2efcb41d3450edfa",
+        "sealed": "0a8963c7bfb25f227db72650407db4209c72f7a07cc63bbf2efcb41d3450edfa"
+      },
+      {
+        "file": "istio17860__R.jsonl",
+        "match": true,
+        "now": "91555e7f8e416d97c561077cf29b7c9f0c286457851a60ef41fe9869addb1b54",
+        "sealed": "91555e7f8e416d97c561077cf29b7c9f0c286457851a60ef41fe9869addb1b54"
+      },
+      {
+        "file": "k8s26980__L.jsonl",
+        "match": true,
+        "now": "5c9e54a0b699a690cab52c58e06749ce9a999300852abc58995f0c29c163eb52",
+        "sealed": "5c9e54a0b699a690cab52c58e06749ce9a999300852abc58995f0c29c163eb52"
+      },
+      {
+        "file": "k8s26980__R.jsonl",
+        "match": true,
+        "now": "3cf32d07cc9f0676c0cd03f31bddc91f4c999acdd5d24486eaecfc1ece1b8259",
+        "sealed": "3cf32d07cc9f0676c0cd03f31bddc91f4c999acdd5d24486eaecfc1ece1b8259"
+      }
+    ],
+    "seal_design_freeze_sha256": "087b338dc83dd9978811daf277b916d923776dcb810ad61f60e41a3988bff9fc",
+    "seal_executable_freeze_sha256": "45c524f168f743ad211cb0d939e161c966cfdfc4c5fa956694f8c6233230070d",
+    "seal_freeze_digests_match_now": [
+      true,
+      true
+    ],
+    "sealed_utc": "2026-09-25T16:04:25.928423+00:00"
+  },
+  "status": "PASS",
+  "summary_inputs_match": {
+    "annotations.jsonl": true,
+    "etcd5509__L.jsonl": true,
+    "etcd5509__R.jsonl": true,
+    "etcd7492__L.jsonl": true,
+    "etcd7492__R.jsonl": true,
+    "grpc1859__L.jsonl": true,
+    "grpc1859__R.jsonl": true,
+    "grpc2391__L.jsonl": true,
+    "grpc2391__R.jsonl": true,
+    "istio17860__L.jsonl": true,
+    "istio17860__R.jsonl": true,
+    "k8s26980__L.jsonl": true,
+    "k8s26980__R.jsonl": true
+  }
+}

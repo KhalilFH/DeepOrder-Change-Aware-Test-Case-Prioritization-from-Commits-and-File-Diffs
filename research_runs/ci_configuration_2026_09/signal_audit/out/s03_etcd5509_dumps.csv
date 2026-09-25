@@ -1,0 +1,119 @@
+source,attempt_id,batch,timeout_panic,n_goroutines,test_state,shape,rwmutex_lock_waiters_other_than_test,waiter_sites,get_goroutine_present,other_clientv3_goroutines,kv_get_took_too_long
+C1-R,c1v1-measured-etcd5509-b01-R-bad-a2,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-R,c1v1-measured-etcd5509-b01-R-bad-a3,A,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-L,c1v1-measured-etcd5509-b01-L-bad-a1,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-L,c1v1-measured-etcd5509-b01-L-bad-a2,A,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-L,c1v1-measured-etcd5509-b02-L-bad-a1,A,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-L,c1v1-measured-etcd5509-b02-L-bad-a2,A,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+C1-L,c1v1-measured-etcd5509-b02-L-bad-a3,A,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-R,c1v1-measured-etcd5509-b02-R-bad-a2,A,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-R,c1v1-measured-etcd5509-b02-R-bad-a3,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-R,c1v1-measured-etcd5509-b03-R-bad-a1,A,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-R,c1v1-measured-etcd5509-b03-R-bad-a2,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-R,c1v1-measured-etcd5509-b03-R-bad-a3,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+C1-L,c1v1-measured-etcd5509-b03-L-bad-a1,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-L,c1v1-measured-etcd5509-b03-L-bad-a2,A,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-L,c1v1-measured-etcd5509-b03-L-bad-a3,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-R,c1v1-measured-etcd5509-b04-R-bad-a1,A,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+C1-R,c1v1-measured-etcd5509-b04-R-bad-a2,A,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-R,c1v1-measured-etcd5509-b04-R-bad-a3,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+C1-L,c1v1-measured-etcd5509-b04-L-bad-a1,A,True,25,semacquire,i: test goroutine in Close's own RWMutex.Lock,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-L,c1v1-measured-etcd5509-b04-L-bad-a2,A,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-L,c1v1-measured-etcd5509-b05-L-bad-a1,A,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+C1-L,c1v1-measured-etcd5509-b05-L-bad-a2,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-L,c1v1-measured-etcd5509-b05-L-bad-a3,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+C1-R,c1v1-measured-etcd5509-b05-R-bad-a1,A,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-R,c1v1-measured-etcd5509-b06-R-bad-a2,B,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-R,c1v1-measured-etcd5509-b06-R-bad-a3,B,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+C1-L,c1v1-measured-etcd5509-b06-L-bad-a1,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-L,c1v1-measured-etcd5509-b06-L-bad-a2,B,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+C1-L,c1v1-measured-etcd5509-b06-L-bad-a3,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-L,c1v1-measured-etcd5509-b07-L-bad-a1,B,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+C1-L,c1v1-measured-etcd5509-b07-L-bad-a2,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-L,c1v1-measured-etcd5509-b07-L-bad-a3,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-R,c1v1-measured-etcd5509-b07-R-bad-a1,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+C1-R,c1v1-measured-etcd5509-b07-R-bad-a3,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+C1-R,c1v1-measured-etcd5509-b08-R-bad-a1,B,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+C1-R,c1v1-measured-etcd5509-b08-R-bad-a2,B,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+C1-R,c1v1-measured-etcd5509-b08-R-bad-a3,B,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+C1-L,c1v1-measured-etcd5509-b08-L-bad-a1,B,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-L,c1v1-measured-etcd5509-b09-L-bad-a1,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-L,c1v1-measured-etcd5509-b09-L-bad-a2,B,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-L,c1v1-measured-etcd5509-b09-L-bad-a3,B,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-R,c1v1-measured-etcd5509-b09-R-bad-a1,B,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-R,c1v1-measured-etcd5509-b09-R-bad-a2,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-R,c1v1-measured-etcd5509-b09-R-bad-a3,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+C1-L,c1v1-measured-etcd5509-b10-L-bad-a1,B,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-L,c1v1-measured-etcd5509-b10-L-bad-a2,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-L,c1v1-measured-etcd5509-b10-L-bad-a3,B,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+C1-R,c1v1-measured-etcd5509-b10-R-bad-a1,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-R,c1v1-measured-etcd5509-b10-R-bad-a2,B,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+C1-R,c1v1-measured-etcd5509-b10-R-bad-a3,B,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq2,,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+E1-unrestricted,e1-seq7,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq8,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq13,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq14,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq15,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq22,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq23,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq24,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq28,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq29,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq30,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq34,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq36,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq41,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq42,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq44,,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+E1-unrestricted,e1-seq45,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq52,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq53,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq54,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq55,,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+E1-unrestricted,e1-seq56,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq57,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq65,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq66,,True,25,semacquire,i: test goroutine in Close's own RWMutex.Lock,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq68,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq69,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq73,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq74,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq75,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq82,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq83,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq84,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq89,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq91,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq92,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq93,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq98,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq99,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq103,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq104,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq105,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq109,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq110,,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+E1-unrestricted,e1-seq119,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+E1-unrestricted,e1-seq120,,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+E1-unrestricted,e1-seq122,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq123,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq124,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+E1-unrestricted,e1-seq125,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+E1-unrestricted,e1-seq128,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+Q0-unrestricted,vbad_attempt_2.log,,True,24,semacquire,i: test goroutine in Close's own RWMutex.Lock,0,,False,,False
+Q0-unrestricted,vbad_attempt_4.log,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+Q0-unrestricted,vbad_attempt_5.log,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+Q0-unrestricted,vbad_attempt_6.log,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+Q0-unrestricted,vbad_attempt_7.log,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+Q0-unrestricted,vbad_attempt_10.log,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+Q0-unrestricted,vbad_attempt_11.log,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+Q0-unrestricted,vbad_attempt_12.log,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+Q0-unrestricted,vbad_attempt_13.log,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+Q0-unrestricted,vbad_attempt_14.log,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False
+Q0-unrestricted,vbad_attempt_15.log,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+Q0-unrestricted,vbad_attempt_16.log,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+Q0-unrestricted,vbad_attempt_17.log,,True,30,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).retryConnection @ client.go:286,False,,False
+Q0-unrestricted,vbad_attempt_18.log,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+Q0-unrestricted,vbad_attempt_19.log,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor.func1 @ client.go:344,False,,False
+Q0-unrestricted,vbad_attempt_20.log,,True,25,chan receive,ii: test goroutine in Close chan receive,1,clientv3.(*Client).connMonitor @ client.go:358,False,,False

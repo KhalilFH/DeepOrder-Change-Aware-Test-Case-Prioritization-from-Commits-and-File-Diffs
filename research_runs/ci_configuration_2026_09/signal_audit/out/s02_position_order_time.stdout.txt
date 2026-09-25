@@ -1,0 +1,672 @@
+{
+ "label": "EXPLORATORY/POST-HOC s02; descriptive diagnostics, not confirmatory tests",
+ "etcd5509_position": {
+  "R/a1": [
+   7,
+   10
+  ],
+  "R/a2": [
+   8,
+   10
+  ],
+  "R/a3": [
+   9,
+   10
+  ],
+  "L/a1": [
+   10,
+   10
+  ],
+  "L/a2": [
+   9,
+   10
+  ],
+  "L/a3": [
+   7,
+   10
+  ],
+  "pooled/a1": [
+   17,
+   20
+  ],
+  "pooled/a2_a3": [
+   33,
+   40
+  ]
+ },
+ "etcd5509_transitions": {
+  "L:F->F": 16,
+  "L:F->P": 3,
+  "L:P->P": 1,
+  "R:F->F": 13,
+  "R:F->P": 2,
+  "R:P->F": 4,
+  "R:P->P": 1
+ },
+ "etcd5509_within_cell": {
+  "R": {
+   "observed_cells_by_failures_0_1_2_3": [
+    0,
+    1,
+    4,
+    5
+   ],
+   "binomial_expected_0_1_2_3": [
+    0.08,
+    0.96,
+    3.84,
+    5.12
+   ],
+   "p_hat": 0.8
+  },
+  "L": {
+   "observed_cells_by_failures_0_1_2_3": [
+    0,
+    1,
+    2,
+    7
+   ],
+   "binomial_expected_0_1_2_3": [
+    0.02,
+    0.46,
+    3.0,
+    6.51
+   ],
+   "p_hat": 0.8667
+  },
+  "pooled": {
+   "observed": [
+    0,
+    2,
+    6,
+    12
+   ],
+   "binomial_expected": [
+    0.09,
+    1.39,
+    6.94,
+    11.57
+   ],
+   "p_hat": 0.8333
+  },
+  "icc_anova_estimate": 0.0579
+ },
+ "etcd5509_a1_by_cell_position": {
+  "L/cellpos1": [
+   3,
+   3
+  ],
+  "L/cellpos2": [
+   3,
+   3
+  ],
+  "L/cellpos3": [
+   2,
+   2
+  ],
+  "L/cellpos4": [
+   2,
+   2
+  ],
+  "R/cellpos1": [
+   2,
+   4
+  ],
+  "R/cellpos2": [
+   2,
+   3
+  ],
+  "R/cellpos3": [
+   1,
+   1
+  ],
+  "R/cellpos4": [
+   2,
+   2
+  ]
+ },
+ "etcd5509_a1_by_preceding_attempt": {
+  "L/etcd5509_bad_F": [
+   3,
+   3
+  ],
+  "L/etcd5509_ok": [
+   4,
+   4
+  ],
+  "L/other_subject": [
+   3,
+   3
+  ],
+  "R/etcd5509_bad_F": [
+   3,
+   4
+  ],
+  "R/etcd5509_ok": [
+   2,
+   2
+  ],
+  "R/other_subject": [
+   2,
+   4
+  ]
+ },
+ "etcd5509_R_vs_L_bad_order": [
+  {
+   "block": 1,
+   "R_bad_before_L_bad": true,
+   "R_a1": "P",
+   "L_a1": "F"
+  },
+  {
+   "block": 2,
+   "R_bad_before_L_bad": false,
+   "R_a1": "P",
+   "L_a1": "F"
+  },
+  {
+   "block": 3,
+   "R_bad_before_L_bad": true,
+   "R_a1": "F",
+   "L_a1": "F"
+  },
+  {
+   "block": 4,
+   "R_bad_before_L_bad": true,
+   "R_a1": "F",
+   "L_a1": "F"
+  },
+  {
+   "block": 5,
+   "R_bad_before_L_bad": false,
+   "R_a1": "F",
+   "L_a1": "F"
+  },
+  {
+   "block": 6,
+   "R_bad_before_L_bad": true,
+   "R_a1": "P",
+   "L_a1": "F"
+  },
+  {
+   "block": 7,
+   "R_bad_before_L_bad": false,
+   "R_a1": "F",
+   "L_a1": "F"
+  },
+  {
+   "block": 8,
+   "R_bad_before_L_bad": true,
+   "R_a1": "F",
+   "L_a1": "F"
+  },
+  {
+   "block": 9,
+   "R_bad_before_L_bad": false,
+   "R_a1": "F",
+   "L_a1": "F"
+  },
+  {
+   "block": 10,
+   "R_bad_before_L_bad": false,
+   "R_a1": "F",
+   "L_a1": "F"
+  }
+ ],
+ "etcd5509_by_batch": {
+  "R/A": {
+   "a1": [
+    3,
+    5
+   ],
+   "all": [
+    11,
+    15
+   ]
+  },
+  "R/B": {
+   "a1": [
+    4,
+    5
+   ],
+   "all": [
+    13,
+    15
+   ]
+  },
+  "L/A": {
+   "a1": [
+    5,
+    5
+   ],
+   "all": [
+    13,
+    15
+   ]
+  },
+  "L/B": {
+   "a1": [
+    5,
+    5
+   ],
+   "all": [
+    13,
+    15
+   ]
+  }
+ },
+ "host_load_block_start_pct": {
+  "1": 6,
+  "2": 21,
+  "3": 13,
+  "4": 26,
+  "5": 29,
+  "6": 13,
+  "7": 20,
+  "8": 16,
+  "9": 14,
+  "10": 15
+ },
+ "host_load_note": "One Win32_Processor.LoadPercentage snapshot per block index, taken before all six subjects; shared by R and L cells of a block, so it cannot vary within a matched block.",
+ "etcd5509_elapsed_s": {
+  "L/A/F": [
+   13,
+   41.896,
+   42.062,
+   42.189
+  ],
+  "L/A/P": [
+   2,
+   0.477,
+   0.485,
+   0.485
+  ],
+  "L/B/F": [
+   13,
+   44.241,
+   45.34,
+   45.5
+  ],
+  "L/B/P": [
+   2,
+   0.523,
+   0.546,
+   0.546
+  ],
+  "R/A/F": [
+   11,
+   42.032,
+   42.128,
+   42.197
+  ],
+  "R/A/P": [
+   4,
+   0.398,
+   0.499,
+   0.554
+  ],
+  "R/B/F": [
+   13,
+   43.972,
+   45.417,
+   45.533
+  ],
+  "R/B/P": [
+   2,
+   0.509,
+   0.605,
+   0.605
+  ]
+ },
+ "focal_vm_runtime_over_host_elapsed": {
+  "etcd5509/A": [
+   24,
+   0.9655,
+   1.0243
+  ],
+  "etcd5509/B": [
+   26,
+   0.9741,
+   1.0087
+  ],
+  "etcd7492/A": [
+   10,
+   0.977,
+   1.0257
+  ],
+  "grpc1859/A": [
+   2,
+   0.9367,
+   1.0481
+  ],
+  "grpc1859/B": [
+   3,
+   0.9667,
+   0.9754
+  ],
+  "grpc2391/A": [
+   27,
+   0.9394,
+   1.0721
+  ],
+  "grpc2391/B": [
+   28,
+   0.9611,
+   1.0285
+  ],
+  "istio17860/A": [
+   30,
+   0.5718,
+   1.0421
+  ],
+  "istio17860/B": [
+   30,
+   0.8166,
+   0.9898
+  ]
+ },
+ "vm_minus_host_start_offset_s": {
+  "A": [
+   -1.298,
+   -0.119,
+   1.184
+  ],
+  "B": [
+   0.006,
+   0.138,
+   2.055
+  ]
+ },
+ "vm_minus_host_offset_series": [
+  {
+   "seq": 1,
+   "batch": "A",
+   "host_start": "2026-09-25T13:06:52.091416Z",
+   "vm_minus_host_s": -0.973
+  },
+  {
+   "seq": 61,
+   "batch": "A",
+   "host_start": "2026-09-25T13:17:09.254865Z",
+   "vm_minus_host_s": -0.583
+  },
+  {
+   "seq": 121,
+   "batch": "A",
+   "host_start": "2026-09-25T13:24:33.854062Z",
+   "vm_minus_host_s": -0.688
+  },
+  {
+   "seq": 181,
+   "batch": "A",
+   "host_start": "2026-09-25T13:35:43.527337Z",
+   "vm_minus_host_s": -0.384
+  },
+  {
+   "seq": 241,
+   "batch": "A",
+   "host_start": "2026-09-25T13:44:34.882242Z",
+   "vm_minus_host_s": -0.05
+  },
+  {
+   "seq": 301,
+   "batch": "A",
+   "host_start": "2026-09-25T13:52:12.241774Z",
+   "vm_minus_host_s": -1.246
+  },
+  {
+   "seq": 361,
+   "batch": "B",
+   "host_start": "2026-09-25T14:09:39.480067Z",
+   "vm_minus_host_s": 1.839
+  },
+  {
+   "seq": 421,
+   "batch": "B",
+   "host_start": "2026-09-25T14:15:13.706602Z",
+   "vm_minus_host_s": 0.418
+  },
+  {
+   "seq": 481,
+   "batch": "B",
+   "host_start": "2026-09-25T14:24:34.709324Z",
+   "vm_minus_host_s": 0.167
+  },
+  {
+   "seq": 541,
+   "batch": "B",
+   "host_start": "2026-09-25T14:33:25.616993Z",
+   "vm_minus_host_s": 0.114
+  },
+  {
+   "seq": 601,
+   "batch": "B",
+   "host_start": "2026-09-25T14:42:17.514894Z",
+   "vm_minus_host_s": 0.15
+  },
+  {
+   "seq": 661,
+   "batch": "B",
+   "host_start": "2026-09-25T14:52:00.215342Z",
+   "vm_minus_host_s": 0.124
+  }
+ ],
+ "null_models": {
+  "historical_unrestricted_rate": {
+   "focal": 68,
+   "n": 85,
+   "p": 0.8,
+   "source": "Q0 16/20 (task5_etcd5509_restoration.md) + E1 52/65 (ci_sensitivity_2026_09/e1/etcd5509)"
+  },
+  "iid_expected_P1_blocks": {
+   "R": 8.0,
+   "L": 8.67,
+   "at_hist_p": 8.0
+  },
+  "iid_expected_P3_blocks_p_cubed": {
+   "R": 5.12,
+   "L": 6.51,
+   "at_hist_p": 5.12
+  },
+  "observed": {
+   "R/P1": 7,
+   "L/P1": 10,
+   "R/P3": 5,
+   "L/P3": 7
+  },
+  "P_absdiff_P1_ge_3_common_p_pooled": 0.1274,
+  "P_absdiff_P1_ge_3_common_p_hist": 0.1566,
+  "P_absdiff_P3_ge_2_common_p_pooled": 0.4977,
+  "P_absdiff_P3_ge_2_common_p_hist": 0.5033,
+  "P_L_a1_10_of_10_at_hist_p": 0.1074,
+  "P_R_a1_le_7_of_10_at_hist_p": 0.3222,
+  "batchA_rate_predicts_batchB_P3": {
+   "R": {
+    "p_A": 0.7333,
+    "expected_B_blocks": 1.97,
+    "observed_B_blocks": 3
+   },
+   "L": {
+    "p_A": 0.8667,
+    "expected_B_blocks": 3.25,
+    "observed_B_blocks": 4
+   }
+  }
+ },
+ "within_block_signflip_exact_p": {
+  "P1_S": {
+   "diffs": [
+    -1,
+    -1,
+    0,
+    0,
+    0,
+    -1,
+    0,
+    0,
+    0,
+    0
+   ],
+   "p": 0.25
+  },
+  "P3_S": {
+   "diffs": [
+    0,
+    -1,
+    0,
+    1,
+    -1,
+    -1,
+    -1,
+    1,
+    0,
+    0
+   ],
+   "p": 0.6875
+  },
+  "per_cell_failure_count": {
+   "diffs": [
+    0,
+    -1,
+    0,
+    1,
+    -2,
+    -1,
+    -1,
+    2,
+    0,
+    0
+   ],
+   "p": 0.78125
+  },
+  "note": "post hoc, unadjusted, conditional on the observed blocks; not a replacement for the frozen simultaneous intervals"
+ },
+ "context_position_by_subject": {
+  "etcd5509": {
+   "R/a1": [
+    7,
+    10
+   ],
+   "R/a2_a3": [
+    17,
+    20
+   ],
+   "L/a1": [
+    10,
+    10
+   ],
+   "L/a2_a3": [
+    16,
+    20
+   ]
+  },
+  "etcd7492": {
+   "R/a1": [
+    4,
+    10
+   ],
+   "R/a2_a3": [
+    3,
+    20
+   ],
+   "L/a1": [
+    0,
+    10
+   ],
+   "L/a2_a3": [
+    3,
+    20
+   ]
+  },
+  "grpc1859": {
+   "R/a1": [
+    2,
+    10
+   ],
+   "R/a2_a3": [
+    2,
+    20
+   ],
+   "L/a1": [
+    0,
+    10
+   ],
+   "L/a2_a3": [
+    1,
+    20
+   ]
+  },
+  "grpc2391": {
+   "R/a1": [
+    9,
+    10
+   ],
+   "R/a2_a3": [
+    19,
+    20
+   ],
+   "L/a1": [
+    8,
+    10
+   ],
+   "L/a2_a3": [
+    19,
+    20
+   ]
+  },
+  "istio17860": {
+   "R/a1": [
+    10,
+    10
+   ],
+   "R/a2_a3": [
+    20,
+    20
+   ],
+   "L/a1": [
+    10,
+    10
+   ],
+   "L/a2_a3": [
+    20,
+    20
+   ]
+  },
+  "k8s26980": {
+   "R/a1": [
+    0,
+    10
+   ],
+   "R/a2_a3": [
+    0,
+    20
+   ],
+   "L/a1": [
+    0,
+    10
+   ],
+   "L/a2_a3": [
+    0,
+    20
+   ]
+  }
+ },
+ "context_position_pooled_intermittent_4_subjects": {
+  "R/a1": [
+   22,
+   40
+  ],
+  "R/a2_a3": [
+   41,
+   80
+  ],
+  "L/a1": [
+   18,
+   40
+  ],
+  "L/a2_a3": [
+   39,
+   80
+  ]
+ }
+}

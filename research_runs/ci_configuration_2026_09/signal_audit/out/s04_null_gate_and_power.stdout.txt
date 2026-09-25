@@ -1,0 +1,125 @@
+{
+ "label": "EXPLORATORY/POST-HOC s04",
+ "c3_under_no_profile_effect": {
+  "etcd5509": {
+   "p_pooled": 0.8333,
+   "P1": 0.2113,
+   "P3": 0.2816,
+   "any": 0.4054,
+   "P1_negative_direction": 0.1057
+  },
+  "etcd7492": {
+   "p_pooled": 0.1667,
+   "P1": 0.2113,
+   "P3": 0.001,
+   "any": 0.2119,
+   "P1_negative_direction": 0.1057
+  },
+  "grpc1859": {
+   "p_pooled": 0.0833,
+   "P1": 0.1209,
+   "P3": 0.0,
+   "any": 0.1209,
+   "P1_negative_direction": 0.0604
+  },
+  "grpc2391": {
+   "p_pooled": 0.9167,
+   "P1": 0.1209,
+   "P3": 0.2447,
+   "any": 0.3088,
+   "P1_negative_direction": 0.0604
+  },
+  "istio17860": {
+   "p_pooled": 1.0,
+   "P1": 0.0,
+   "P3": 0.0,
+   "any": 0.0,
+   "P1_negative_direction": 0.0
+  },
+  "k8s26980": {
+   "p_pooled": 0.0,
+   "P1": 0.0,
+   "P3": 0.0,
+   "any": 0.0,
+   "P1_negative_direction": 0.0
+  },
+  "P_at_least_one_subject_fires": 0.7153,
+  "etcd5509_at_historical_p_0.80": {
+   "P1": 0.2314,
+   "P3": 0.2841,
+   "any": 0.4227,
+   "P1_negative_direction": 0.1157
+  },
+  "note": "iid attempts, common rate for R and L; exact enumeration; the observed within-cell ICC estimate (~0.06, s02) is consistent with near-independence"
+ },
+ "etcd5509_measured_cost_per_attempt": {
+  "R/bad": {
+   "attempts": 30,
+   "alloc_vcpu_h_per_attempt": 0.16755,
+   "host_reservation_h_per_attempt": 0.16755
+  },
+  "R/ok": {
+   "attempts": 30,
+   "alloc_vcpu_h_per_attempt": 0.01392,
+   "host_reservation_h_per_attempt": 0.01392
+  },
+  "L/ok": {
+   "attempts": 30,
+   "alloc_vcpu_h_per_attempt": 0.00173,
+   "host_reservation_h_per_attempt": 0.01386
+  },
+  "L/bad": {
+   "attempts": 30,
+   "alloc_vcpu_h_per_attempt": 0.02246,
+   "host_reservation_h_per_attempt": 0.17968
+  }
+ },
+ "cost_per_confirmation_block_single_attempt_4_cells": {
+  "alloc_vcpu_h": 0.2057,
+  "host_reservation_vcpu_h": 0.375,
+  "wall_h_approx": 0.0234
+ },
+ "power_single_contrast_two_sided_0.05": {
+  "pilot_attempt_rates_0.80_vs_0.867": {
+   "50": 0.008,
+   "100": 0.031,
+   "150": 0.058,
+   "200": 0.097,
+   "300": 0.192,
+   "400": 0.308,
+   "500": 0.423,
+   "600": 0.534
+  },
+  "historical_R_0.80_vs_L_0.90": {
+   "50": 0.025,
+   "100": 0.12,
+   "150": 0.239,
+   "200": 0.383,
+   "300": 0.644,
+   "400": 0.827,
+   "500": 0.922,
+   "600": 0.969
+  },
+  "R_0.80_vs_L_0.95": {
+   "50": 0.125,
+   "100": 0.545,
+   "150": 0.809,
+   "200": 0.94,
+   "300": 0.996,
+   "400": 1.0,
+   "500": 1.0,
+   "600": 1.0
+  },
+  "pilot_first_attempt_point_0.70_vs_1.00": {
+   "50": 0.959,
+   "100": 1.0,
+   "150": 1.0,
+   "200": 1.0,
+   "300": 1.0,
+   "400": 1.0,
+   "500": 1.0,
+   "600": 1.0
+  }
+ },
+ "power_note": "One primary contrast (not a 12-contrast family); single fresh attempt per profile per block; within-block independence assumed; power = P(interval excludes 0 in the L-higher direction)."
+}
