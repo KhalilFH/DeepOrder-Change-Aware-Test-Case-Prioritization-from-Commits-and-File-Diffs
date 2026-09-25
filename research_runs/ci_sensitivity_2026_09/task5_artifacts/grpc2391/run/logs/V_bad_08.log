@@ -1,0 +1,4 @@
+=== RUN   TestGoAwayThenClose
+--- FAIL: TestGoAwayThenClose (20.13s)
+    end2end_test.go:7084: UnaryCall(_) = _, rpc error: code = DeadlineExceeded desc = context deadline exceeded; want _, nil
+FAIL
