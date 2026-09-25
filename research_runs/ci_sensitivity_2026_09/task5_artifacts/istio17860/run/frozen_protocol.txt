@@ -1,0 +1,21 @@
+Q0 frozen execution protocol - istio-17860 (card C-05)
+Frozen 2026-09-25T08:34:14Z, after uncounted exploratory runs, BEFORE any counted attempt.
+  image_bad      = istio17860-bug  sha256:23e14b796ad0c487e7536b9213cab2c3a0897548489bb4f0e8a8944182296ba8
+                   (V_bad: parent 7a9a996f agent.go blob f6644419 + UNCHANGED fix test blob 09ea287d)
+  image_ok       = istio17860-fix  sha256:7fba6b07fc8d68fa362eec12eefb20408dcc2406bdae963414ca75184fd9c679
+                   (V_ok : squash-merge c6e91302, agent.go blob 638578e3, test blob 09ea287d)
+  environment    = identical go.mod replace bitbucket.org/ww/goautoneg => github.com/munnerz/goautoneg
+                   on BOTH images (build attempt 1 failed on both: bitbucket 404)
+  workdir        = /go/src/istio.io/istio/pkg/envoy
+  command        = /go/gobench.test -test.v -test.count 1 -test.run '^TestExitDuringWaitForLive$'
+                   -test.timeout 30s
+  outer timeout  = 60 s (below the plan's 120 s attempt ceiling)
+  reset          = fresh `docker run --rm` per attempt; no state persists between attempts
+  concurrency    = strictly one job at a time
+  batches        = 10 V_bad, 10 V_ok, then 10 more V_bad and 10 more V_ok regardless of outcomes
+  signature (a)  = '--- FAIL: TestExitDuringWaitForLive' and 'timed out waiting for epoch 1 to start'
+                   (card C-05, unchanged by the exploratory runs)
+  PASS           = exit 0 and '--- PASS: TestExitDuringWaitForLive'
+  other outcomes = UNRESOLVED (incl. a Gomega BeTemporally failure, on either version) /
+                   HARNESS_INVALID (no '=== RUN   TestExitDuringWaitForLive' line, docker error)
+  exploratory    = 2 V_ok (both PASS, 0.50 s), 5 V_bad (all signature (a), 5.0 s), timing/ ; not counted

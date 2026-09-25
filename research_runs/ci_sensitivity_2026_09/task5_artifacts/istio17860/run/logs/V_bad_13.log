@@ -1,0 +1,11 @@
+2026-09-25T08:35:43.903792Z	warn	unable to resolve ISTIO_OUT. Dir /go/out/linux_amd64 does not exist
+=== RUN   TestExitDuringWaitForLive
+2026-09-25T08:35:43.904050Z	info	Received new config
+2026-09-25T08:35:43.904055Z	info	no previous epoch exists, starting now
+2026-09-25T08:35:43.904059Z	info	Received new config
+2026-09-25T08:35:43.904068Z	info	waiting for epoch 0 to go live before performing a hot restart
+2026-09-25T08:35:43.904084Z	info	Starting proxy agent
+2026-09-25T08:35:43.904099Z	info	Epoch 0 starting
+--- FAIL: TestExitDuringWaitForLive (5.00s)
+    agent_test.go:213: timed out waiting for epoch 1 to start
+FAIL

@@ -5,3 +5,7 @@
 protocol.md -text
 baseline_applicability.md -text
 candidate_cards.md -text
+# These files are hashed (SHA-256) in resource_ledger.md (Addenda v5 and v7).
+# Their recorded hashes are of the stored LF form, so they are also kept byte-for-byte.
+task5_grpc1859_restoration.md -text
+task_c3_candidate_acquisition.md -text

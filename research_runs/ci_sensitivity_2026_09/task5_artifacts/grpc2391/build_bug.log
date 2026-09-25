@@ -1,0 +1,82 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from bug.Dockerfile
+#1 transferring dockerfile: 919B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.13
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/8] FROM docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8
+#4 resolve docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8 0.0s done
+#4 DONE 0.0s
+
+#5 [2/8] RUN git init -q /go/src/google.golang.org/grpc
+#5 CACHED
+
+#6 [3/8] WORKDIR /go/src/google.golang.org/grpc
+#6 CACHED
+
+#7 [4/8] RUN git remote add origin https://github.com/grpc/grpc-go.git &&     git fetch -q --depth 1 origin ff2aa05958775030998dbe2f9bccbe2af324adf4 &&     git checkout -q FETCH_HEAD
+#7 CACHED
+
+#8 [internal] load build context
+#8 transferring context: 531B done
+#8 DONE 0.0s
+
+#9 [5/8] COPY bug_patch.diff /tmp/bug_patch.diff
+#9 DONE 0.1s
+
+#10 [6/8] RUN git apply /tmp/bug_patch.diff
+#10 DONE 0.2s
+
+#11 [7/8] RUN go test ./test -c -o /go/gobench.test
+#11 0.572 go: downloading github.com/golang/protobuf v1.2.0
+#11 0.572 go: downloading google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8
+#11 0.572 go: downloading golang.org/x/net v0.0.0-20180826012351-8a410e7b638d
+#11 0.578 go: downloading github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+#11 0.667 go: extracting github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+#11 0.803 go: extracting github.com/golang/protobuf v1.2.0
+#11 0.837 go: downloading golang.org/x/sys v0.0.0-20180830151530-49385e6e1522
+#11 1.060 go: extracting golang.org/x/net v0.0.0-20180826012351-8a410e7b638d
+#11 1.137 go: downloading golang.org/x/text v0.3.0
+#11 1.331 go: extracting google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8
+#11 2.038 go: extracting golang.org/x/sys v0.0.0-20180830151530-49385e6e1522
+#11 3.241 go: extracting golang.org/x/text v0.3.0
+#11 3.412 go: finding golang.org/x/net v0.0.0-20180826012351-8a410e7b638d
+#11 3.462 go: finding golang.org/x/text v0.3.0
+#11 3.499 go: finding github.com/golang/protobuf v1.2.0
+#11 3.499 go: finding google.golang.org/genproto v0.0.0-20180817151627-c66870c02cf8
+#11 3.500 go: finding github.com/golang/glog v0.0.0-20160126235308-23def4e6c14b
+#11 3.503 go: finding golang.org/x/sys v0.0.0-20180830151530-49385e6e1522
+#11 DONE 6.3s
+
+#12 [8/8] RUN go list -m all > /go/dep_versions.txt &&     { git rev-parse HEAD; git hash-object clientconn.go test/end2end_test.go; } > /go/blob_check.txt
+#12 0.219 go: finding cloud.google.com/go v0.26.0
+#12 0.426 go: finding github.com/client9/misspell v0.3.4
+#12 0.477 go: finding github.com/golang/lint v0.0.0-20180702182130-06c8688daad7
+#12 0.535 go: finding github.com/golang/mock v1.1.1
+#12 0.575 go: finding github.com/kisielk/gotool v1.0.0
+#12 0.642 go: finding golang.org/x/lint v0.0.0-20180702182130-06c8688daad7
+#12 0.707 go: finding golang.org/x/oauth2 v0.0.0-20180821212333-d2e6202438be
+#12 0.808 go: finding golang.org/x/sync v0.0.0-20180314180146-1d60e4601c6f
+#12 0.881 go: finding golang.org/x/tools v0.0.0-20180828015842-6cd1fcedba52
+#12 0.949 go: finding google.golang.org/appengine v1.1.0
+#12 1.012 go: finding honnef.co/go/tools v0.0.0-20180728063816-88497007e858
+#12 DONE 1.1s
+
+#13 exporting to image
+#13 exporting layers
+#13 exporting layers 2.6s done
+#13 exporting manifest sha256:e45097823460f980952a565dd7b92b02c20051b5a610c6bc7272d6ff067fce4f done
+#13 exporting config sha256:9ad8cfdbcde4ed2c7bc0abfbe5d60d7eb1a951e960d90df503c22054006e8392 0.0s done
+#13 exporting attestation manifest sha256:5b20b2a2ab29348f7fafc2e3bb950cc3ff59ad9cf97f23023f3e910c68cfbe21 0.0s done
+#13 exporting manifest list sha256:cc6e5a69cd7a032623f39b04acc0e9f108d18cf22b4891fc629a413f152a92a2 0.0s done
+#13 naming to docker.io/library/grpc2391-bug:latest done
+#13 unpacking to docker.io/library/grpc2391-bug:latest
+#13 unpacking to docker.io/library/grpc2391-bug:latest 1.0s done
+#13 DONE 3.6s

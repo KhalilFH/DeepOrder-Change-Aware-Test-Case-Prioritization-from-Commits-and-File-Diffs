@@ -318,3 +318,142 @@ Every future execution pass writes its recipes, frozen protocol, runner and per-
 - The Docker images. Rebuildable from the preserved recipes, but not bit-reproducible: the `golang:1.13` base tag and each subject's `git clone` resolve at build time. For grpc-go-1859 the dependency commits are pinned and were captured inside the images at `/go/dep_versions.txt`; for the two etcd passes the dependency state was whatever their recipes resolved at build time and was never recorded. **A13's dependency gap therefore remains open for etcd-5509 and etcd-7492**, and cannot now be closed retrospectively.
 - Human hours for every pass, which remain `UNKNOWN` per this ledger's accounting rule.
 - The artifact salvage itself consumed no measured compute and is provenance work; human effort `UNKNOWN`.
+
+---
+
+# Addendum v7 — 2026-09-25 (append-only; entries above, including Addenda v2–v6, are historical and unchanged)
+
+- Addendum identifier: `ci_policy_sensitivity_resource_ledger_2026-09-25_v7`
+- Scope: the C3 metadata pass for two further non-etcd primary candidates, the roster follow-up and the day-10 gate status.
+- Full record: `task_c3_candidate_acquisition.md` (SHA-256 `a2434a42765e45199c4e55b97f643467025045196b99da14e3bd5b76c8b0607a`).
+- The accounting rule is unchanged, and nothing in A1–A19 is rewritten.
+
+## A20. C3 pass
+
+| Item | Value | Evidence basis |
+|---|---|---|
+| Pass window | `2026-09-25T08:06:08.831Z` → screening stop `08:12:12.479Z`; card checks to `08:13:35.878Z` | recorded at start and stop, not backdated |
+| Operational day | 8 | A1 clock start `2026-09-17T23:02:26Z` |
+| Screening wall clock | **EXACT**, 363.648 s agent/tool elapsed | timestamps |
+| Order traversed | GoReal orders 21–26 (grpc_2391 → istio_17860), continuing C2 | `task_c3_candidate_acquisition.md` |
+| Carded | **C-04 grpc-go-2391** and **C-05 istio-17860**, both `PRIMARY_METADATA_READY`, both historical pairs with an identical test backport, blob-checked against their historical parents | same |
+| Dispositioned, not carded | grpc_3017 `SCREENED_INELIGIBLE_PROJECT_CAP` (also a deterministic lead); hugo_3251 and hugo_5379 `SCREENED_DETERMINISTIC_LEAD`; istio_16224 `SCREENED_TEST_ONLY_FIX` | same |
+| Restoration/qualification vCPU-h | **EXACT, zero** | nothing built or executed |
+| Human metadata effort | **UNKNOWN** | accounting rule |
+
+## A4-addendum-4 — roster follow-up (2026-09-25; earlier roster tables not edited in place)
+
+| Entry | Label as of this addendum | Tier | Note |
+|---|---|---:|---|
+| grpc-go-2391 | **`PRIMARY_METADATA_READY`** (historical pair with identical test backport; `V_bad` = `39444b99…` + test, `V_ok` = `ff2aa059…`) | 4 | card C-04; fills grpc-go's second primary slot |
+| istio-17860 | **`PRIMARY_METADATA_READY`** (historical pair with identical test backport; `V_bad` = `7a9a996f…` + upstream test **unchanged**, `V_ok` = `c6e91302…`) | 4 | card C-05; GoReal's `V_bad`-only test instrumentation is **not** adopted |
+
+- **Roster:** **11 of 12 primary entries used (1 remains); 0 of 2 nuisance/control slots used.**
+- **Per-project:** etcd 2/2, grpc-go 2/2, istio 1/2, commons-pool 2/2, commons-dbcp 2/2, log4j 2/2.
+
+## A21. Gate status after this addendum
+
+- **Day-7 gate:** MET (A9); unchanged.
+- **Day-10 gate** (four qualified episodes across ≥2 projects by `2026-09-27T23:02:26Z`): **NOT MET.**
+  - Meeting it now requires Task 5 restoration and qualification of **both** C-04 and C-05 to pass, which would give 4 episodes across 3 projects.
+  - Each Task 5 is a separate budgeted decision: ≤2 human restoration hours and ≤4 allocated vCPU-hours per candidate.
+  - This addendum authorises no Task 5, no cap increase and no broadened defect definition.
+- **Q0 compute so far:** ≈0.969 of 20 allocated vCPU-hours (A14). The first-ten-days ceiling of 40 also carries E1's 12.71 (span basis, E1 AMENDMENTS §8), for a combined total of ≈13.7.
+
+---
+
+# Addendum v8 — 2026-09-25 (append-only; entries above, including Addenda v2–v7, are historical and unchanged)
+
+- Addendum identifier: `ci_policy_sensitivity_resource_ledger_2026-09-25_v8`
+- Scope: Task 5 restoration and Q0 qualification of cards C-04 (grpc-go-2391) and C-05 (istio-17860), the C4 metadata pass that carded C-06 (kubernetes-26980), the roster follow-up and the day-10 gate status.
+- Full records:
+  - `task5_grpc2391_restoration.md` (SHA-256 `4da215184ea376a2bee764e16d29684fd7cf8e1ef710a3d66fe0048aed469ffd`)
+  - `task5_istio17860_restoration.md` (SHA-256 `c940f885e7936981d77b95c6d36392f5fcf1c0ba004d2899a001984151898d75`)
+  - `task_c4_candidate_acquisition.md` (SHA-256 `0bc78bd5d0786dea117e90867f127fa73a3b641deddf8dec565ccfd5915a66c1`)
+- The accounting rule is unchanged, and nothing in A1–A21 is rewritten.
+
+## A22. Task 5 pass — grpc-go-2391 (card C-04)
+
+| Item | Value | Evidence basis |
+|---|---|---|
+| Authority | researcher's Task 5 authorisation of 2026-09-25, covering C-04 then C-05 | record, "Authority and timing" |
+| Task 5 window | `2026-09-25T08:18:58.909Z` → `08:28:59.352Z` | recorded at start and end, not backdated |
+| Operational day | 8 | A1 clock start `2026-09-17T23:02:26Z` |
+| Counterpart type | historical pair with identical test backport | card C-04 |
+| Blob-equivalence check | **PASS** — both images match the card's pre-declared blob IDs | record Step 1 |
+| Build deviations disclosed | one: module mode from the revision's own `go.mod` and a shallow fetch of the exact commit, in place of GoReal's unpinned GOPATH `go get -d` and full clone; identical on both images; decided before any run | record Step 2 |
+| Dependency reproducibility | **RESOLVED** — 18 modules pinned by the project's `go.mod`, identical in both images (`dep_versions_{bug,fix}.txt`); closes the A13/A19 gap for this candidate | record Step 2 |
+| Evaluator-signature correction | **none needed** — exploratory failures matched signature (a) verbatim | record Step 3 |
+| `V_bad` result | 20 attempts: **18 `FOCAL_DEFECT_WITNESS_A`, 2 `PASS`**, 0 unresolved/invalid | record Step 5 |
+| `V_ok` result | 20 attempts: **20 `PASS`**, 0 focal witnesses | record Step 5 |
+| Q0 intermittency criterion | **MET, at the minimum** for passes (2 of the required ≥2) | record, "Result" |
+| **Q0 verdict** | **`Q0_QUALIFIED`** | record |
+| Rescue attempts | none needed or made | record, "What was deliberately not done" |
+| Task 5 wall clock | **EXACT**, `600.4 s` ≈ `0.1668` allocated vCPU-h (counted attempts `369.0 s` ≈ `0.1025` h) | timestamps |
+| Human restoration hours | **UNKNOWN** (agent-executed pass) | accounting rule |
+| Per-candidate cap status | ≤4 allocated vCPU-h not reached (4.2 % used); ≤2 human-hour cap provisional | above |
+
+## A23. Task 5 pass — istio-17860 (card C-05)
+
+| Item | Value | Evidence basis |
+|---|---|---|
+| Authority | same authorisation as A22 | record, "Authority and timing" |
+| Task 5 window | `2026-09-25T08:29:46.682Z` → `08:37:04.156Z` | recorded at start and end, not backdated |
+| Operational day | 8 | A1 clock |
+| Counterpart type | historical pair with identical test backport; upstream test **unchanged** (GoReal's `V_bad`-only instrumentation not adopted) | card C-05 |
+| Blob-equivalence check | **PASS** | record Step 1 |
+| Build deviations disclosed | one environment deviation, pre-declared on the card: GoReal's `replace bitbucket.org/ww/goautoneg => github.com/munnerz/goautoneg …` line, applied to **both** images (GoReal applies it to the bug image only). Build attempt 1 failed on both images with a Bitbucket 404 before the line was added; no test had run | record Step 2 |
+| Dependency reproducibility | **RESOLVED** — 493 modules pinned by istio's own `go.sum`, identical in both images; closes the A13/A19 gap for this candidate | record Step 2 |
+| Evaluator-signature correction | **none needed** | record Step 3 |
+| `V_bad` result | 20 attempts: **20 `FOCAL_DEFECT_WITNESS_A`, 0 `PASS`** | record Step 5 |
+| `V_ok` result | 20 attempts: **20 `PASS`** | record Step 5 |
+| Q0 intermittency criterion | **NOT MET** — 0 passes against the required ≥2 | record, "Result" |
+| **Q0 verdict** | **`Q0_NOT_QUALIFIED`** (primary track); retained as **`STABLE_CONTROL_ONLY`**. Zero passes in 20 is not a proof of determinism | record |
+| Rescue attempts | **none** — no extra attempts, no timeout, load, `-test.cpu` or GOMAXPROCS change, no switch to the instrumented test, no relabelling | record, "What was deliberately not done" |
+| Task 5 wall clock | **EXACT**, `437.5 s` ≈ `0.1215` allocated vCPU-h, including the failed first build (counted attempts `129.5 s`) | timestamps |
+| Human restoration hours | **UNKNOWN** (agent-executed pass) | accounting rule |
+| Per-candidate cap status | ≤4 allocated vCPU-h not reached | above |
+| Control value | a candidate for the "B2" stable-defect control deferred by E1 AMENDMENTS §7.4. Enrolment is a separate budgeted decision and is **not** made here | record, "Result" |
+
+## A24. C4 pass
+
+| Item | Value | Evidence basis |
+|---|---|---|
+| Pass window | after `2026-09-25T08:37:04.156Z` (exact start not recorded) → `08:40:22.131Z` | `task_c4_candidate_acquisition.md` |
+| Operational day | 8 | A1 clock |
+| Screening wall clock | **at most 198 s** agent/tool elapsed (upper bound, because the start was not recorded) | timestamps |
+| Order traversed | GoReal orders 27–32 (istio_18454 → kubernetes_26980), continuing C3; orders 33–40 `NOT_SCREENED` | same |
+| Carded | **C-06 kubernetes-26980** (`TestPopReleaseLock`), `PRIMARY_METADATA_READY`, historical pair with identical test backport, blob-checked against its historical parent | same |
+| Dispositioned, not carded | istio_18454, kubernetes_1321, kubernetes_25331 `SCREENED_DETERMINISTIC_LEAD`; kubernetes_16851 `SCREENED_TEST_ONLY_FIX`; kubernetes_11298 **`SCREENED_NOT_ISOLATABLE`** (new disposition, defined in that record: two defects fixed together; the researcher may overrule) | same |
+| Restoration/qualification vCPU-h | **EXACT, zero** | nothing built or executed |
+| Human metadata effort | **UNKNOWN** | accounting rule |
+
+## A4-addendum-5 — roster follow-up (2026-09-25; earlier roster tables not edited in place)
+
+| Entry | Label as of this addendum | Tier | Note |
+|---|---|---:|---|
+| grpc-go-2391 | **`Q0_QUALIFIED`** (18/20 focal, 2/20 pass on `V_bad`; 20/20 pass on `V_ok`) | 4 | supersedes the `PRIMARY_METADATA_READY` label in A4-addendum-4 |
+| istio-17860 | **`Q0_NOT_QUALIFIED`**, retained as **`STABLE_CONTROL_ONLY`** (20/20 focal on `V_bad`; 20/20 pass on `V_ok`) | 4 | supersedes the `PRIMARY_METADATA_READY` label in A4-addendum-4 |
+| kubernetes-26980 | **`PRIMARY_METADATA_READY`** (historical pair with identical test backport; `V_bad` = `98f0d22b…` + upstream test, `V_ok` = `628af356…`) | 4 | card C-06; intermittency unmeasured |
+
+- **Roster:** **12 of 12 primary entries used (0 remain); 0 of 2 nuisance/control slots used.** No further primary candidate can be carded this month.
+- **Per-project:** etcd 2/2, grpc-go 2/2, istio 1/2, kubernetes 1/2, commons-pool 2/2, commons-dbcp 2/2, log4j 2/2.
+- **Qualified episodes:** **three across two projects** — etcd-5509, etcd-7492, grpc-go-2391.
+
+## A25. Gate status after this addendum
+
+- **Day-7 gate:** MET (A9); unchanged.
+- **Day-10 gate** (four qualified episodes across ≥2 projects by `2026-09-27T23:02:26Z`): **NOT MET; one episode short.** The project-diversity condition is already satisfied.
+  - The only remaining route is Task 5 of **C-06 kubernetes-26980**. If it qualifies, the episode condition is met (4 episodes across 3 projects).
+  - If it does not qualify, the primary roster is exhausted and **G1b applies**: no E2; finish the small feasibility report and trigger F1 where possible.
+  - C-06 Task 5 is a separate budgeted decision (≤2 human restoration hours, ≤4 allocated vCPU-hours) and is **not** authorised by this addendum.
+- **G1b's "E2 affordable" condition** is unresolved: it depends on the vCPU basis used for the E2 projection, which is the researcher's decision.
+- This addendum authorises no Task 5, no cap increase, no broadened defect definition and no enrolment of istio-17860 as a control.
+- **Q0 compute so far:** ≈**1.257** of 20 allocated vCPU-hours (0.969 in A14 + 0.1668 + 0.1215). Including E1's 12.71 (span basis, E1 AMENDMENTS §8), the first-ten-days total is ≈**13.97** of 40.
+
+## A26. Unresolved accounting uncertainty (carried forward, additive to A7, A10, A13, A16, A19)
+
+- Human time for all three passes is not recorded.
+- The C4 pass start was not recorded; its 198 s is an upper bound.
+- The `V_bad` rates (18/20 for grpc-go-2391, 20/20 for istio-17860) are host-specific and imprecise; no population rate is claimed.
+- The Docker images for both Task 5 passes are not preserved; the recipes and per-attempt ledgers are, in `task5_artifacts/grpc2391/` and `task5_artifacts/istio17860/` (ledger A18).

@@ -1,0 +1,13 @@
+2026-09-25T08:35:29.691728Z	warn	unable to resolve ISTIO_OUT. Dir /go/out/linux_amd64 does not exist
+=== RUN   TestExitDuringWaitForLive
+2026-09-25T08:35:29.692001Z	info	Received new config, creating new Envoy epoch 0
+2026-09-25T08:35:29.692008Z	info	Received new config, creating new Envoy epoch 1
+2026-09-25T08:35:29.692012Z	info	waiting for epoch 0 to go live before performing a hot restart
+2026-09-25T08:35:29.692030Z	info	Epoch 0 starting
+2026-09-25T08:35:29.692057Z	info	Starting proxy agent
+2026-09-25T08:35:29.692100Z	error	Epoch 0 exited with error: fake
+2026-09-25T08:35:29.692126Z	info	1 active epochs running
+2026-09-25T08:35:30.199200Z	warn	epoch 0 exited while waiting for it to go live.
+2026-09-25T08:35:30.199252Z	info	Epoch 1 starting
+--- PASS: TestExitDuringWaitForLive (0.51s)
+PASS
