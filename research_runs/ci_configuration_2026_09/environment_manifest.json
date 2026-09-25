@@ -1,0 +1,74 @@
+{
+  "study_id": "c1_ci_configuration_visibility_v1",
+  "artifact": "c1_environment_manifest_v1",
+  "observed_utc": "2026-09-25T12:00:53.374531Z",
+  "host": {
+    "cpu": "AMD Ryzen 7 7700 8-Core Processor",
+    "logical_cpus": 16,
+    "cores": 8,
+    "os": "Microsoft Windows 11 Professionnel",
+    "os_version": "10.0.26200",
+    "memory_kib": 32614388
+  },
+  "docker": {
+    "ncpu": 16,
+    "mem_total": 16292966400,
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "server_version": "29.7.2",
+    "cgroup_version": "2",
+    "cgroup_driver": "cgroupfs",
+    "operating_system": "Docker Desktop",
+    "name": "docker-desktop",
+    "id": "3ae310fc-b8b6-4d81-ab7a-dbdbf07c28e0",
+    "client": "29.7.2",
+    "server": "29.7.2",
+    "platform": "Docker Desktop 4.90.0 (238679)",
+    "api": "1.55",
+    "context": "desktop-linux (Windows host client)"
+  },
+  "driver": {
+    "python": "3.14.3",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "harness_version": "c1-harness/1"
+  },
+  "repository": {
+    "head": "721d885a315a2c0ef26a82f2613248a4abcc110c",
+    "branch": "research/revival-2026",
+    "note": "C1 implementation files are uncommitted; FREEZE.sha256 binds their LF-normalized hashes"
+  },
+  "profiles": {
+    "R": {
+      "profile": "R",
+      "docker_args": [
+        "-e",
+        "GOMAXPROCS=16"
+      ],
+      "cpu_period_us": 0,
+      "cpu_quota_us": 0,
+      "gomaxprocs": "16",
+      "allocated_vcpus": 16,
+      "expected_cgroup_cpu_max": "max 100000"
+    },
+    "L": {
+      "profile": "L",
+      "docker_args": [
+        "--cpu-period=100000",
+        "--cpu-quota=200000",
+        "-e",
+        "GOMAXPROCS=16"
+      ],
+      "cpu_period_us": 100000,
+      "cpu_quota_us": 200000,
+      "gomaxprocs": "16",
+      "allocated_vcpus": 2,
+      "expected_cgroup_cpu_max": "200000 100000"
+    }
+  },
+  "profile_probe_files": {
+    "profile_probe_prep1.json": false,
+    "profile_probe_prep2.json": true
+  },
+  "memory_limit": "none on either profile (identical)",
+  "network": "default bridge on either profile (identical)",
+  "cpu_affinity": "none on either profile; cpuset.cpus.effective 0-15 observed on both"
+}

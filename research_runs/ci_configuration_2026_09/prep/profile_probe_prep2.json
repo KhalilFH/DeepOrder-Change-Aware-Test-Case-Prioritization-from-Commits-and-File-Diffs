@@ -1,0 +1,174 @@
+{
+  "cgroup": {
+    "L": {
+      "busy_loops": 4,
+      "charge_seq": 22,
+      "cleanup_ok": true,
+      "cpu_max": "200000 100000",
+      "cpu_seconds": 6.2025,
+      "cpuset_effective": "0-15",
+      "exit_status": 0,
+      "gomaxprocs_env": "16",
+      "inspect": {
+        "cmd": [
+          "-c",
+          "echo CPU_MAX=$(cat /sys/fs/cgroup/cpu.max); echo CPUSET=$(cat /sys/fs/cgroup/cpuset.cpus.effective); echo NPROC=$(nproc); echo GOMAXPROCS_ENV=$GOMAXPROCS; grep -E '^(usage_usec|nr_periods|nr_throttled|throttled_usec) ' /sys/fs/cgroup/cpu.stat | sed 's/^/BEFORE_/;s/ /=/'; T0=$(cut -d' ' -f1 /proc/uptime); P=; for i in $(seq 4); do (while :; do :; done) & P=\"$P $!\"; done; sleep 3; kill $P 2>/dev/null; wait 2>/dev/null; T1=$(cut -d' ' -f1 /proc/uptime); echo WALL_T0=$T0; echo WALL_T1=$T1; grep -E '^(usage_usec|nr_periods|nr_throttled|throttled_usec) ' /sys/fs/cgroup/cpu.stat | sed 's/^/AFTER_/;s/ /=/'"
+        ],
+        "container_id": "7c5921837d21c93ade69266de0b548d5225bd54ab4f07be039c68d98483c1f23",
+        "cpu_period": 100000,
+        "cpu_quota": 200000,
+        "cpu_shares": 0,
+        "cpuset_cpus": "",
+        "gomaxprocs_env": [
+          "GOMAXPROCS=16"
+        ],
+        "image": "sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b",
+        "memory": 0,
+        "nano_cpus": 0,
+        "network_mode": "bridge",
+        "working_dir": "/"
+      },
+      "nproc": "16",
+      "observed_cpus": 2.034,
+      "passed": true,
+      "problems": [],
+      "profile_problems": [],
+      "raw": "CPU_MAX=200000 100000\nCPUSET=0-15\nNPROC=16\nGOMAXPROCS_ENV=16\nBEFORE_usage_usec=28336\nBEFORE_nr_periods=1\nBEFORE_nr_throttled=0\nBEFORE_throttled_usec=0\nWALL_T0=13893.62\nWALL_T1=13896.67\nAFTER_usage_usec=6230804\nAFTER_nr_periods=32\nAFTER_nr_throttled=31\nAFTER_throttled_usec=5023100\n",
+      "throttled_periods": 31,
+      "wall_seconds": 3.05
+    },
+    "R": {
+      "busy_loops": 4,
+      "charge_seq": 21,
+      "cleanup_ok": true,
+      "cpu_max": "max 100000",
+      "cpu_seconds": 11.2301,
+      "cpuset_effective": "0-15",
+      "exit_status": 0,
+      "gomaxprocs_env": "16",
+      "inspect": {
+        "cmd": [
+          "-c",
+          "echo CPU_MAX=$(cat /sys/fs/cgroup/cpu.max); echo CPUSET=$(cat /sys/fs/cgroup/cpuset.cpus.effective); echo NPROC=$(nproc); echo GOMAXPROCS_ENV=$GOMAXPROCS; grep -E '^(usage_usec|nr_periods|nr_throttled|throttled_usec) ' /sys/fs/cgroup/cpu.stat | sed 's/^/BEFORE_/;s/ /=/'; T0=$(cut -d' ' -f1 /proc/uptime); P=; for i in $(seq 4); do (while :; do :; done) & P=\"$P $!\"; done; sleep 3; kill $P 2>/dev/null; wait 2>/dev/null; T1=$(cut -d' ' -f1 /proc/uptime); echo WALL_T0=$T0; echo WALL_T1=$T1; grep -E '^(usage_usec|nr_periods|nr_throttled|throttled_usec) ' /sys/fs/cgroup/cpu.stat | sed 's/^/AFTER_/;s/ /=/'"
+        ],
+        "container_id": "dbd5992dd3aa6b6387cfe0ba362bd4fdfcd0564d23afbc28d518f5ada921eaa8",
+        "cpu_period": 0,
+        "cpu_quota": 0,
+        "cpu_shares": 0,
+        "cpuset_cpus": "",
+        "gomaxprocs_env": [
+          "GOMAXPROCS=16"
+        ],
+        "image": "sha256:28bd5fe8b56d1bd048e5babf5b10710ebe0bae67db86916198a6eec434943f8b",
+        "memory": 0,
+        "nano_cpus": 0,
+        "network_mode": "bridge",
+        "working_dir": "/"
+      },
+      "nproc": "16",
+      "observed_cpus": 3.719,
+      "passed": true,
+      "problems": [],
+      "profile_problems": [],
+      "raw": "CPU_MAX=max 100000\nCPUSET=0-15\nNPROC=16\nGOMAXPROCS_ENV=16\nBEFORE_usage_usec=27945\nBEFORE_nr_periods=0\nBEFORE_nr_throttled=0\nBEFORE_throttled_usec=0\nWALL_T0=13889.49\nWALL_T1=13892.51\nAFTER_usage_usec=11258006\nAFTER_nr_periods=0\nAFTER_nr_throttled=0\nAFTER_throttled_usec=0\n",
+      "throttled_periods": 0,
+      "wall_seconds": 3.02
+    }
+  },
+  "ended_utc": "2026-09-25T11:44:28.240698Z",
+  "go": {
+    "go1.10-L": {
+      "charge_seq": 24,
+      "cleanup_ok": true,
+      "cpu_max": "200000 100000",
+      "exit_status": 0,
+      "go_version": "go1.10.8",
+      "gomaxprocs": "16",
+      "image": "etcd5509-fix",
+      "image_id": "sha256:ffc618679d85e331c3b957c1af0ad561118bf488460dd5f80baeb10187800b26",
+      "numcpu": "16",
+      "passed": true,
+      "problems": [],
+      "raw": "GO_VERSION=go1.10.8\nGO_GOMAXPROCS=16\nGO_NUMCPU=16\nGO_ENV=16\nCPU_MAX=200000 100000\n",
+      "stderr": ""
+    },
+    "go1.10-R": {
+      "charge_seq": 23,
+      "cleanup_ok": true,
+      "cpu_max": "max 100000",
+      "exit_status": 0,
+      "go_version": "go1.10.8",
+      "gomaxprocs": "16",
+      "image": "etcd5509-fix",
+      "image_id": "sha256:ffc618679d85e331c3b957c1af0ad561118bf488460dd5f80baeb10187800b26",
+      "numcpu": "16",
+      "passed": true,
+      "problems": [],
+      "raw": "GO_VERSION=go1.10.8\nGO_GOMAXPROCS=16\nGO_NUMCPU=16\nGO_ENV=16\nCPU_MAX=max 100000\n",
+      "stderr": ""
+    },
+    "go1.12-L": {
+      "charge_seq": 26,
+      "cleanup_ok": true,
+      "cpu_max": "200000 100000",
+      "exit_status": 0,
+      "go_version": "go1.12.17",
+      "gomaxprocs": "16",
+      "image": "k8s26980-fix",
+      "image_id": "sha256:6c93e46a3848354353a72d545dc782257d620432c07d3497ded117476f75d5d4",
+      "numcpu": "16",
+      "passed": true,
+      "problems": [],
+      "raw": "GO_VERSION=go1.12.17\nGO_GOMAXPROCS=16\nGO_NUMCPU=16\nGO_ENV=16\nCPU_MAX=200000 100000\n",
+      "stderr": ""
+    },
+    "go1.12-R": {
+      "charge_seq": 25,
+      "cleanup_ok": true,
+      "cpu_max": "max 100000",
+      "exit_status": 0,
+      "go_version": "go1.12.17",
+      "gomaxprocs": "16",
+      "image": "k8s26980-fix",
+      "image_id": "sha256:6c93e46a3848354353a72d545dc782257d620432c07d3497ded117476f75d5d4",
+      "numcpu": "16",
+      "passed": true,
+      "problems": [],
+      "raw": "GO_VERSION=go1.12.17\nGO_GOMAXPROCS=16\nGO_NUMCPU=16\nGO_ENV=16\nCPU_MAX=max 100000\n",
+      "stderr": ""
+    },
+    "go1.13-L": {
+      "charge_seq": 28,
+      "cleanup_ok": true,
+      "cpu_max": "200000 100000",
+      "exit_status": 0,
+      "go_version": "go1.13.15",
+      "gomaxprocs": "16",
+      "image": "etcd7492-fix",
+      "image_id": "sha256:2b66d59152c86f601c5f85bdffe6b919f98197cf9dc5c0a66409c54756cd047c",
+      "numcpu": "16",
+      "passed": true,
+      "problems": [],
+      "raw": "GO_VERSION=go1.13.15\nGO_GOMAXPROCS=16\nGO_NUMCPU=16\nGO_ENV=16\nCPU_MAX=200000 100000\n",
+      "stderr": ""
+    },
+    "go1.13-R": {
+      "charge_seq": 27,
+      "cleanup_ok": true,
+      "cpu_max": "max 100000",
+      "exit_status": 0,
+      "go_version": "go1.13.15",
+      "gomaxprocs": "16",
+      "image": "etcd7492-fix",
+      "image_id": "sha256:2b66d59152c86f601c5f85bdffe6b919f98197cf9dc5c0a66409c54756cd047c",
+      "numcpu": "16",
+      "passed": true,
+      "problems": [],
+      "raw": "GO_VERSION=go1.13.15\nGO_GOMAXPROCS=16\nGO_NUMCPU=16\nGO_ENV=16\nCPU_MAX=max 100000\n",
+      "stderr": ""
+    }
+  },
+  "passed": true,
+  "stage": "preparation",
+  "started_utc": "2026-09-25T11:44:12.222820Z"
+}

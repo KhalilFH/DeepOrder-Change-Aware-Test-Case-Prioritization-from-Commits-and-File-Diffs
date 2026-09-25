@@ -1,0 +1,1639 @@
+{
+  "study_id": "c1_ci_configuration_visibility_v1",
+  "artifact": "c1_subject_manifest_v1",
+  "generated_from": [
+    "research_runs/ci_configuration_2026_09/prep/image_checks.json",
+    "research_runs/ci_configuration_2026_09/prep/oracle_replay.json",
+    "c1_harness/dossier.py"
+  ],
+  "roster_order": [
+    "etcd5509",
+    "etcd7492",
+    "grpc1859",
+    "grpc2391",
+    "istio17860",
+    "k8s26980"
+  ],
+  "subjects": {
+    "etcd5509": {
+      "subject": "etcd5509",
+      "project": "etcd",
+      "upstream": {
+        "fix": "etcd PR 5509 'clientv3: fix deadlock on Get with concurrent Close', merge 9ed3b446cadd9f43734d9eed9dcb03f3b12567a5 (2016-06-01)",
+        "defective_revision": "first parent 36fcc9e9d4ce993998a9170b2293c30b4e5a601a (remote_client.go only)",
+        "introducing_revision": null,
+        "introducing_revision_reason": "not established by any record"
+      },
+      "counterpart_class": "historical pair, identical test backport",
+      "counterpart_justification": "GoReal reverse patch restores the parent's remote_client.go blob exactly; kv_test.go and harness script identical (re-verified in image 2026-09-25).",
+      "obligation": "remoteClient.acquire must not return holding the client read lock when the client is closed; a Get concurrent with Client.Close must terminate and Close must return.",
+      "mechanism": "leaked r.client.mu.RLock() on acquire's closed-client failure path blocks the next c.mu.Lock() (Close's second Lock or connMonitor).",
+      "reconstruction_deviations": [
+        "bug_patch.diff CR bytes stripped (Windows checkout artifact); content identical modulo CR",
+        "fix.Dockerfile apt-get vim python3 dropped (Debian stretch archive 404); unused by build/test",
+        "bug image carries inert untracked bug_patch.diff (GoReal COPY step)"
+      ],
+      "evidence": [
+        "research_runs/ci_sensitivity_2026_09/task5_etcd5509_restoration.md",
+        "research_runs/ci_sensitivity_2026_09/task_c_candidate_acquisition.md (card C-01)",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/DEVIATIONS.md",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/VERIFICATION.md",
+        "research_runs/ci_sensitivity_2026_09/e1/manifests.json",
+        "research_runs/ci_configuration_2026_09/prep/image_checks.json"
+      ],
+      "variants": {
+        "V_bad": {
+          "image_tag": "etcd5509-bug",
+          "image_id": "sha256:399e13203fc432de8a91473df1e91a64ea2ab1afecdb906166033d86f51589c6",
+          "commit": "9ed3b446cadd9f43734d9eed9dcb03f3b12567a5",
+          "focal_blobs": {
+            "clientv3/integration/kv_test.go": "24252c428ac5290faa3d30ed32c4d646da06670e",
+            "clientv3/remote_client.go": "b8209b8a5e2ebefcac268b64e0a62482266b9a3d",
+            "test": "450298e284efd06677209466475b36540ce89476"
+          },
+          "target_package_test_files": {
+            "clientv3/integration/cluster_test.go": "e562d416f9b3249044b7edc676a5c9b5964293cd",
+            "clientv3/integration/kv_test.go": "24252c428ac5290faa3d30ed32c4d646da06670e",
+            "clientv3/integration/lease_test.go": "8d250fd2919c7a84d6ae6afcf9f579465936a361",
+            "clientv3/integration/main_test.go": "2913ce51154853beac8c379be075705a65b68fa8",
+            "clientv3/integration/mirror_test.go": "de74e09e6e63998a72d4a063bb82761820a8a4b7",
+            "clientv3/integration/role_test.go": "74ff2fd3f7411998fc34bee1e3f677b55eb3ca25",
+            "clientv3/integration/txn_test.go": "f381ccfad74a4642443740a559f88b45d62a5f33",
+            "clientv3/integration/user_test.go": "67d52a3cb7c49a2d429d528bd57746596c498735",
+            "clientv3/integration/watch_test.go": "93cbbc20eae953613c828d7896673467e0ad9c09"
+          },
+          "test_binary_sha256": "f334d73560d877dbaaf29eb17dc032eee92c1685ea2bc1f0ba70efcb28d86c64",
+          "test_binary_bytes": 21976877,
+          "go_version": "go version go1.10.8 linux/amd64",
+          "gopath_nonrepo_sources_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "gopath_dependency_repos": {},
+          "dep_versions_txt_sha256": null,
+          "go_list_m_all_sha256": null,
+          "vendored_in_tree": true,
+          "tree_changes_vs_commit": [
+            " M clientv3/remote_client.go",
+            " M test",
+            "?? github.com/coreos/etcd/bug_patch.diff"
+          ],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        },
+        "V_ok": {
+          "image_tag": "etcd5509-fix",
+          "image_id": "sha256:ffc618679d85e331c3b957c1af0ad561118bf488460dd5f80baeb10187800b26",
+          "commit": "9ed3b446cadd9f43734d9eed9dcb03f3b12567a5",
+          "focal_blobs": {
+            "clientv3/integration/kv_test.go": "24252c428ac5290faa3d30ed32c4d646da06670e",
+            "clientv3/remote_client.go": "b511163058cb31ebab14f42869e6e99d1b9dff68",
+            "test": "450298e284efd06677209466475b36540ce89476"
+          },
+          "target_package_test_files": {
+            "clientv3/integration/cluster_test.go": "e562d416f9b3249044b7edc676a5c9b5964293cd",
+            "clientv3/integration/kv_test.go": "24252c428ac5290faa3d30ed32c4d646da06670e",
+            "clientv3/integration/lease_test.go": "8d250fd2919c7a84d6ae6afcf9f579465936a361",
+            "clientv3/integration/main_test.go": "2913ce51154853beac8c379be075705a65b68fa8",
+            "clientv3/integration/mirror_test.go": "de74e09e6e63998a72d4a063bb82761820a8a4b7",
+            "clientv3/integration/role_test.go": "74ff2fd3f7411998fc34bee1e3f677b55eb3ca25",
+            "clientv3/integration/txn_test.go": "f381ccfad74a4642443740a559f88b45d62a5f33",
+            "clientv3/integration/user_test.go": "67d52a3cb7c49a2d429d528bd57746596c498735",
+            "clientv3/integration/watch_test.go": "93cbbc20eae953613c828d7896673467e0ad9c09"
+          },
+          "test_binary_sha256": "68925990e2ee9cf99401e9dc6bc0b5b2db7ffd6d557f14910474554502aadb33",
+          "test_binary_bytes": 21976877,
+          "go_version": "go version go1.10.8 linux/amd64",
+          "gopath_nonrepo_sources_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "gopath_dependency_repos": {},
+          "dep_versions_txt_sha256": null,
+          "go_list_m_all_sha256": null,
+          "vendored_in_tree": true,
+          "tree_changes_vs_commit": [
+            " M test"
+          ],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        }
+      },
+      "equal_treatment_checks": [
+        {
+          "check": "both containers completed",
+          "detail": null,
+          "passed": true
+        },
+        {
+          "check": "commit (bug, fix)",
+          "detail": [
+            "9ed3b446cadd9f43734d9eed9dcb03f3b12567a5",
+            "9ed3b446cadd9f43734d9eed9dcb03f3b12567a5",
+            "9ed3b446cadd9f43734d9eed9dcb03f3b12567a5"
+          ],
+          "passed": true
+        },
+        {
+          "check": "focal blob clientv3/remote_client.go",
+          "detail": {
+            "bug": "b8209b8a5e2ebefcac268b64e0a62482266b9a3d",
+            "fix": "b511163058cb31ebab14f42869e6e99d1b9dff68",
+            "want": [
+              "b8209b8a5e2ebefcac268b64e0a62482266b9a3d",
+              "b511163058cb31ebab14f42869e6e99d1b9dff68"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "identical clientv3/integration/kv_test.go",
+          "detail": {
+            "bug": "24252c428ac5290faa3d30ed32c4d646da06670e",
+            "fix": "24252c428ac5290faa3d30ed32c4d646da06670e"
+          },
+          "passed": true
+        },
+        {
+          "check": "identical test",
+          "detail": {
+            "bug": "450298e284efd06677209466475b36540ce89476",
+            "fix": "450298e284efd06677209466475b36540ce89476"
+          },
+          "passed": true
+        },
+        {
+          "check": "all target-package test files identical",
+          "detail": {
+            "count": 9,
+            "differ": []
+          },
+          "passed": true
+        },
+        {
+          "check": "tree delta is the focal production change only",
+          "detail": {
+            "bug_minus_fix": [
+              " M clientv3/remote_client.go",
+              "?? github.com/coreos/etcd/bug_patch.diff"
+            ],
+            "common_changes": [
+              " M test"
+            ],
+            "fix_minus_bug": [],
+            "inert_untracked": [
+              "?? github.com/coreos/etcd/bug_patch.diff"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "identical gopath_deps_digest",
+          "detail": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical go_version",
+          "detail": [
+            "go version go1.10.8 linux/amd64",
+            "go version go1.10.8 linux/amd64"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical dependency repositories",
+          "detail": {
+            "count": 0
+          },
+          "passed": true
+        },
+        {
+          "check": "test binaries differ (different product code)",
+          "detail": [
+            "f334d73560d877dbaaf29eb17dc032eee92c1685ea2bc1f0ba70efcb28d86c64",
+            "68925990e2ee9cf99401e9dc6bc0b5b2db7ffd6d557f14910474554502aadb33"
+          ],
+          "passed": true
+        }
+      ],
+      "execution": {
+        "argv": [
+          "/go/gobench.test",
+          "-test.v",
+          "-test.count",
+          "1",
+          "-test.run",
+          "TestKVGetErrConnClosed",
+          "-test.timeout",
+          "45s"
+        ],
+        "workdir": "/go/src/github.com/coreos/etcd/clientv3/integration",
+        "inner_timeout_s": 45,
+        "outer_timeout_s": 60,
+        "cleanup_timeout_s": 30,
+        "expected_target": "TestKVGetErrConnClosed"
+      },
+      "oracle": {
+        "card": "etcd5509",
+        "defined_in": "e1_harness/oracle.py",
+        "source": "research_runs/ci_sensitivity_2026_09/task5_etcd5509_restoration.md, Step 3b 'Final signature (a)'; signature (b) from task_c_candidate_acquisition.md card C-01, unchanged by Step 3b",
+        "signatures": {
+          "a": "test timeout; the TestKVGetErrConnClosed goroutine is in (*Client).Close and either (i) itself blocked in RWMutex.Lock, or (ii) in a chan receive while a distinct goroutine is blocked in RWMutex.Lock via (*Client).connMonitor",
+          "b": "runtime panic whose panicking goroutine passes through remoteClient/kv.Get within TestKVGetErrConnClosed"
+        },
+        "notes": [
+          "Signature (a) was corrected twice during Q0; the second correction came after 10 counted attempts and is disclosed in the restoration record. This card is the final text only.",
+          "Signature (b) never occurred in Q0, so it is unvalidated on real output."
+        ],
+        "rule_hashes": {
+          "e1_oracle_py": "20a494f00b87d52a035b8a1d31b40d31ca46d9037854a5b0caafcf04b20a89a0",
+          "c1_cards_py": "6cb638501f774ab1736c88547521c73fb66a4b66beed42b88f49aca9b1241075"
+        },
+        "replay": {
+          "e1_ledgers": {
+            "agree": 158,
+            "disagree": 0,
+            "logs": 158
+          },
+          "q0_counted": {
+            "agree": 40,
+            "disagree": 0,
+            "logs": 40
+          },
+          "uncounted": {
+            "agree": 1,
+            "disagree": 0,
+            "logs": 1
+          }
+        },
+        "historical_focal_positive_logs": 69,
+        "validation_status": "source review + replay of historical positive and negative logs",
+        "competing_explanations": "Test-timeout dump without the (i)/(ii) stack shapes is UNRESOLVED. 'kv.Get took too long' (3 s) failures are non-focal and UNRESOLVED. Signature (a) was corrected twice in Q0 (disclosed); (b) never observed.",
+        "slowness_review": "(a) requires the Go test-timeout (45 s) dump with the test goroutine in Close blocked on RWMutex.Lock, or in Close's chan receive while connMonitor blocks on the same mutex: a deadlock shape, not a slow run. A merely slow run would not reach the 45 s test timeout unless ~70x slower than its ~0.6 s pass, and would need to be caught in those exact frames. (b) is a panic shape. The 3 s kv.Get bound is the timing-sensitive assertion and is non-focal.",
+        "l_profile_validated": false,
+        "l_profile_note": "not yet executed under the limited profile; smoke calibration checks execution and capture only"
+      },
+      "identity_note": "Image IDs equal e1/manifests.json (historical exact images).",
+      "readiness": {
+        "disposition": "READY_HISTORICAL",
+        "enrolled": true,
+        "reason": "exact surviving images; counterpart, test/harness equality and dependency identity re-verified in image; oracle rules ported and replayed",
+        "reviewer": "C1 implementation agent (single agent)",
+        "date": "2026-09-25",
+        "q0_label_unchanged": true
+      }
+    },
+    "etcd7492": {
+      "subject": "etcd7492",
+      "project": "etcd",
+      "upstream": {
+        "fix": "etcd PR 7492 'auth: get rid of deadlocking channel passing scheme in simpleTokenTTL' (fixes issue 7471), merge 148c923c72c4aa9207173c03b775e2c0b8754067 (2017-03-14)",
+        "defective_revision": "historical parent 3a61fe596ba1eda2ae0900dfbb1f735ab574ab16 is the reference only; executed V_bad is the reversed pinned base",
+        "introducing_revision": null,
+        "introducing_revision_reason": "not established by any record"
+      },
+      "counterpart_class": "controlled historical-fix reversal on pinned base 148c923c; NOT a historical pair",
+      "counterpart_justification": "V_bad simple_token.go = parent + declared const->var move (blob 7aa80794), needed for the identical test to compile; store_test.go and harness identical (re-verified in image 2026-09-25).",
+      "obligation": "concurrent simple-token authentication and expiry must complete without the simpleTokensMu / addSimpleTokenCh cycle.",
+      "mechanism": "assignSimpleTokenToUser/info hold simpleTokensMu while blocked sending to a TTL-keeper channel whose run() goroutine is blocked acquiring the same mutex in deleteTokenFunc.",
+      "reconstruction_deviations": [
+        "declared const->var move of simpleTokenTTL/simpleTokenTTLResolution (non-behavioral; counterpart-class defining)",
+        "fix.Dockerfile apt-get vim python3 dropped; unused",
+        "bug image carries inert untracked bug_patch.diff"
+      ],
+      "evidence": [
+        "research_runs/ci_sensitivity_2026_09/task5_etcd7492_restoration.md",
+        "research_runs/ci_sensitivity_2026_09/task_c_candidate_acquisition.md (card C-02)",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/DEVIATIONS.md",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/VERIFICATION.md",
+        "research_runs/ci_sensitivity_2026_09/e1/manifests.json",
+        "research_runs/ci_configuration_2026_09/prep/image_checks.json"
+      ],
+      "variants": {
+        "V_bad": {
+          "image_tag": "etcd7492-bug",
+          "image_id": "sha256:b51cb62a901bbf0d386b3ae2197d3a67b5e587b587a3ba035cc2a6212bb0164f",
+          "commit": "148c923c72c4aa9207173c03b775e2c0b8754067",
+          "focal_blobs": {
+            "auth/simple_token.go": "7aa8079477132dec7447507a310394b49fa8ef33",
+            "auth/store_test.go": "d7a1d563817c39bf2c43272ea6d040745a10af51",
+            "test": "dd4beae0a37f33a65c83130baf35f53615fa454c"
+          },
+          "target_package_test_files": {
+            "auth/range_perm_cache_test.go": "2af31e0d56fc1284b63f18909984fe17b9e03141",
+            "auth/store_test.go": "d7a1d563817c39bf2c43272ea6d040745a10af51"
+          },
+          "test_binary_sha256": "233f3b989b1f0333049d1cf9dc9384fb07d7294d7592f95226d9ef192ceb2df3",
+          "test_binary_bytes": 14772202,
+          "go_version": "go version go1.13.15 linux/amd64",
+          "gopath_nonrepo_sources_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "gopath_dependency_repos": {},
+          "dep_versions_txt_sha256": null,
+          "go_list_m_all_sha256": null,
+          "vendored_in_tree": true,
+          "tree_changes_vs_commit": [
+            " M auth/simple_token.go",
+            " M test",
+            "?? github.com/coreos/etcd/bug_patch.diff"
+          ],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        },
+        "V_ok": {
+          "image_tag": "etcd7492-fix",
+          "image_id": "sha256:2b66d59152c86f601c5f85bdffe6b919f98197cf9dc5c0a66409c54756cd047c",
+          "commit": "148c923c72c4aa9207173c03b775e2c0b8754067",
+          "focal_blobs": {
+            "auth/simple_token.go": "ff48c5140cbe103af6297990fd406a641d529631",
+            "auth/store_test.go": "d7a1d563817c39bf2c43272ea6d040745a10af51",
+            "test": "dd4beae0a37f33a65c83130baf35f53615fa454c"
+          },
+          "target_package_test_files": {
+            "auth/range_perm_cache_test.go": "2af31e0d56fc1284b63f18909984fe17b9e03141",
+            "auth/store_test.go": "d7a1d563817c39bf2c43272ea6d040745a10af51"
+          },
+          "test_binary_sha256": "f9f2c966b5296aed814dd252c5b04f4415fa9497efc719766b13ba2562deacfd",
+          "test_binary_bytes": 14772316,
+          "go_version": "go version go1.13.15 linux/amd64",
+          "gopath_nonrepo_sources_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "gopath_dependency_repos": {},
+          "dep_versions_txt_sha256": null,
+          "go_list_m_all_sha256": null,
+          "vendored_in_tree": true,
+          "tree_changes_vs_commit": [
+            " M test"
+          ],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        }
+      },
+      "equal_treatment_checks": [
+        {
+          "check": "both containers completed",
+          "detail": null,
+          "passed": true
+        },
+        {
+          "check": "commit (bug, fix)",
+          "detail": [
+            "148c923c72c4aa9207173c03b775e2c0b8754067",
+            "148c923c72c4aa9207173c03b775e2c0b8754067",
+            "148c923c72c4aa9207173c03b775e2c0b8754067"
+          ],
+          "passed": true
+        },
+        {
+          "check": "focal blob auth/simple_token.go",
+          "detail": {
+            "bug": "7aa8079477132dec7447507a310394b49fa8ef33",
+            "fix": "ff48c5140cbe103af6297990fd406a641d529631",
+            "want": [
+              "7aa8079477132dec7447507a310394b49fa8ef33",
+              "ff48c5140cbe103af6297990fd406a641d529631"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "identical auth/store_test.go",
+          "detail": {
+            "bug": "d7a1d563817c39bf2c43272ea6d040745a10af51",
+            "fix": "d7a1d563817c39bf2c43272ea6d040745a10af51"
+          },
+          "passed": true
+        },
+        {
+          "check": "identical test",
+          "detail": {
+            "bug": "dd4beae0a37f33a65c83130baf35f53615fa454c",
+            "fix": "dd4beae0a37f33a65c83130baf35f53615fa454c"
+          },
+          "passed": true
+        },
+        {
+          "check": "all target-package test files identical",
+          "detail": {
+            "count": 2,
+            "differ": []
+          },
+          "passed": true
+        },
+        {
+          "check": "tree delta is the focal production change only",
+          "detail": {
+            "bug_minus_fix": [
+              " M auth/simple_token.go",
+              "?? github.com/coreos/etcd/bug_patch.diff"
+            ],
+            "common_changes": [
+              " M test"
+            ],
+            "fix_minus_bug": [],
+            "inert_untracked": [
+              "?? github.com/coreos/etcd/bug_patch.diff"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "identical gopath_deps_digest",
+          "detail": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical go_version",
+          "detail": [
+            "go version go1.13.15 linux/amd64",
+            "go version go1.13.15 linux/amd64"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical dependency repositories",
+          "detail": {
+            "count": 0
+          },
+          "passed": true
+        },
+        {
+          "check": "test binaries differ (different product code)",
+          "detail": [
+            "233f3b989b1f0333049d1cf9dc9384fb07d7294d7592f95226d9ef192ceb2df3",
+            "f9f2c966b5296aed814dd252c5b04f4415fa9497efc719766b13ba2562deacfd"
+          ],
+          "passed": true
+        }
+      ],
+      "execution": {
+        "argv": [
+          "/go/gobench.test",
+          "-test.v",
+          "-test.count",
+          "1",
+          "-test.run",
+          "TestHammerSimpleAuthenticate",
+          "-test.timeout",
+          "50s"
+        ],
+        "workdir": "/go/src/github.com/coreos/etcd/auth",
+        "inner_timeout_s": 50,
+        "outer_timeout_s": 65,
+        "cleanup_timeout_s": 30,
+        "expected_target": "TestHammerSimpleAuthenticate"
+      },
+      "oracle": {
+        "card": "etcd7492",
+        "defined_in": "e1_harness/oracle.py",
+        "source": "research_runs/ci_sensitivity_2026_09/task_c_candidate_acquisition.md card C-02 'Pre-declared evaluator signature'; confirmed without correction in task5_etcd7492_restoration.md Step 3",
+        "signatures": {
+          "a": "test timeout; a goroutine in tokenSimple.assignSimpleTokenToUser/info/invalidateUser blocked sending to a TTL-keeper channel (or acquiring a mutex), and a distinct simpleTokenTTLKeeper.run goroutine blocked in a mutex Lock via deleteTokenFunc"
+        },
+        "notes": [],
+        "rule_hashes": {
+          "e1_oracle_py": "20a494f00b87d52a035b8a1d31b40d31ca46d9037854a5b0caafcf04b20a89a0",
+          "c1_cards_py": "6cb638501f774ab1736c88547521c73fb66a4b66beed42b88f49aca9b1241075"
+        },
+        "replay": {
+          "e1_ledgers": {
+            "agree": 156,
+            "disagree": 0,
+            "logs": 156
+          },
+          "q0_counted": {
+            "agree": 40,
+            "disagree": 0,
+            "logs": 40
+          },
+          "uncounted": {
+            "agree": 7,
+            "disagree": 0,
+            "logs": 7
+          }
+        },
+        "historical_focal_positive_logs": 7,
+        "validation_status": "source review + replay of historical positive and negative logs",
+        "competing_explanations": "The test sets a 10 ms token TTL; a token expiring between Authenticate and AuthInfoFromCtx yields a non-focal t.Fatal (UNRESOLVED). Only the two-goroutine deadlock dump is focal.",
+        "slowness_review": "(a) requires the 50 s test-timeout dump showing both the blocked channel send/lock in a token caller and the keeper run() goroutine blocked in Lock via deleteTokenFunc: a deadlock cycle, not slowness. CPU throttling may raise non-focal token-expiry failures, which classify as UNRESOLVED.",
+        "l_profile_validated": false,
+        "l_profile_note": "not yet executed under the limited profile; smoke calibration checks execution and capture only"
+      },
+      "identity_note": "Image IDs equal e1/manifests.json (historical exact images).",
+      "readiness": {
+        "disposition": "READY_HISTORICAL",
+        "enrolled": true,
+        "reason": "exact surviving images; counterpart, test/harness equality and dependency identity re-verified in image; oracle rules ported and replayed",
+        "reviewer": "C1 implementation agent (single agent)",
+        "date": "2026-09-25",
+        "q0_label_unchanged": true
+      }
+    },
+    "grpc1859": {
+      "subject": "grpc1859",
+      "project": "grpc-go",
+      "upstream": {
+        "fix": "grpc-go PR 1859 (quota not returned on large-message write error), merge 484b3ebb4ab56d3decc8240d599718bdbefcf7eb (2018-02-13)",
+        "defective_revision": "historical parent 6c48c7f5 (transport/http2_client.go, http2_server.go)",
+        "introducing_revision": null,
+        "introducing_revision_reason": "not established by any record"
+      },
+      "counterpart_class": "historical pair, identical test backport",
+      "counterpart_justification": "reconstructed V_bad blobs equal the historical parent's; end2end_test.go identical (re-verified in image 2026-09-25).",
+      "obligation": "a failed large-message write must return acquired send quota, so later calls get ResourceExhausted rather than blocking until their deadline.",
+      "mechanism": "sendQuotaPool.add(tq) removed on the error path; quota leaks and writers block in quotaPool.get.",
+      "reconstruction_deviations": [
+        "fix.Dockerfile apt-get vim python3 dropped; recipes made symmetric",
+        "GoReal unpinned go get replaced by identical dated pinned clones (last commit <= 2018-02-13) in both images; /go/dep_versions.txt identical",
+        "-only_env tcp-clear-v1-balancer: test certificates expired 2024/2025; first clear-text env in upstream order (not chosen by failure rate)",
+        "bug image carries inert untracked bug_patch.diff"
+      ],
+      "evidence": [
+        "research_runs/ci_sensitivity_2026_09/task5_grpc1859_restoration.md",
+        "research_runs/ci_sensitivity_2026_09/task_c2_candidate_acquisition.md (card C-03)",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/grpc1859/run/frozen_protocol.txt",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/DEVIATIONS.md",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/VERIFICATION.md",
+        "research_runs/ci_configuration_2026_09/prep/image_checks.json"
+      ],
+      "variants": {
+        "V_bad": {
+          "image_tag": "grpc1859-bug",
+          "image_id": "sha256:6b890fa74bedace16bf8049b8a1968f7928a596312210bc17a9ba86b96e03a03",
+          "commit": "484b3ebb4ab56d3decc8240d599718bdbefcf7eb",
+          "focal_blobs": {
+            "test/end2end_test.go": "6a583182170323ec5b23d760d926c92d3816be18",
+            "transport/http2_client.go": "717e4192ea13547ffe323613d3d4945c9c5a9b00",
+            "transport/http2_server.go": "5233d6f3db6bd29622f694a59befd50d9e6d7365"
+          },
+          "target_package_test_files": {
+            "test/end2end_test.go": "6a583182170323ec5b23d760d926c92d3816be18",
+            "test/gracefulstop_test.go": "7ac12b09b5d195fb2eee8c8f64fcde5d8e97bc95"
+          },
+          "test_binary_sha256": "88e63334adbcb725e6e04b22dd376373d8c9dc7148ea8a0ff01f2cce9e60ec5c",
+          "test_binary_bytes": 14610125,
+          "go_version": "go version go1.13.15 linux/amd64",
+          "gopath_nonrepo_sources_digest": "09f9c708162aea5cd9296ab984a2225f03ece9c1f62b6406fd4078dd01af2ba6",
+          "gopath_dependency_repos": {
+            "/go/src/github.com/golang/glog": "23def4e6c14b4da8ac2ed8007337bc5eb5007998",
+            "/go/src/github.com/golang/protobuf": "e6af52bec88380a7a18ecc0977fa4312370a970b",
+            "/go/src/golang.org/x/net": "f5dfe339be1d06f81b22525fe34671ee7d2c8904",
+            "/go/src/golang.org/x/text": "4e4a3210bb54bb31f6ab2cdca2edcc0b50c420c1",
+            "/go/src/google.golang.org/genproto": "2b5a72b8730b0b16380010cfe5286c42108d88e7"
+          },
+          "dep_versions_txt_sha256": "2a49c5c6f739e009c44d1cc7dc383b1d9b40ad428a78e6c57140a96a75b84059",
+          "go_list_m_all_sha256": null,
+          "vendored_in_tree": false,
+          "tree_changes_vs_commit": [
+            " M transport/http2_client.go",
+            " M transport/http2_server.go",
+            "?? google.golang.org/grpc/bug_patch.diff"
+          ],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        },
+        "V_ok": {
+          "image_tag": "grpc1859-fix",
+          "image_id": "sha256:3b72ed206066bb8ea69f5dfbf0271c753f25e832797069d6abc560ec6c4e9034",
+          "commit": "484b3ebb4ab56d3decc8240d599718bdbefcf7eb",
+          "focal_blobs": {
+            "test/end2end_test.go": "6a583182170323ec5b23d760d926c92d3816be18",
+            "transport/http2_client.go": "56b434ef37fed92f87811d9d08e3c9c834cf9971",
+            "transport/http2_server.go": "24c2c7e18c48b007dd8a060cb4e09bfab1a55ebd"
+          },
+          "target_package_test_files": {
+            "test/end2end_test.go": "6a583182170323ec5b23d760d926c92d3816be18",
+            "test/gracefulstop_test.go": "7ac12b09b5d195fb2eee8c8f64fcde5d8e97bc95"
+          },
+          "test_binary_sha256": "a563f1a33e7248c153fad64789928c1a66b9033d9aeca1a8ec939f46b0a3d132",
+          "test_binary_bytes": 14610125,
+          "go_version": "go version go1.13.15 linux/amd64",
+          "gopath_nonrepo_sources_digest": "09f9c708162aea5cd9296ab984a2225f03ece9c1f62b6406fd4078dd01af2ba6",
+          "gopath_dependency_repos": {
+            "/go/src/github.com/golang/glog": "23def4e6c14b4da8ac2ed8007337bc5eb5007998",
+            "/go/src/github.com/golang/protobuf": "e6af52bec88380a7a18ecc0977fa4312370a970b",
+            "/go/src/golang.org/x/net": "f5dfe339be1d06f81b22525fe34671ee7d2c8904",
+            "/go/src/golang.org/x/text": "4e4a3210bb54bb31f6ab2cdca2edcc0b50c420c1",
+            "/go/src/google.golang.org/genproto": "2b5a72b8730b0b16380010cfe5286c42108d88e7"
+          },
+          "dep_versions_txt_sha256": "2a49c5c6f739e009c44d1cc7dc383b1d9b40ad428a78e6c57140a96a75b84059",
+          "go_list_m_all_sha256": null,
+          "vendored_in_tree": false,
+          "tree_changes_vs_commit": [],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        }
+      },
+      "equal_treatment_checks": [
+        {
+          "check": "both containers completed",
+          "detail": null,
+          "passed": true
+        },
+        {
+          "check": "commit (bug, fix)",
+          "detail": [
+            "484b3ebb4ab56d3decc8240d599718bdbefcf7eb",
+            "484b3ebb4ab56d3decc8240d599718bdbefcf7eb",
+            "484b3ebb4ab56d3decc8240d599718bdbefcf7eb"
+          ],
+          "passed": true
+        },
+        {
+          "check": "focal blob transport/http2_client.go",
+          "detail": {
+            "bug": "717e4192ea13547ffe323613d3d4945c9c5a9b00",
+            "fix": "56b434ef37fed92f87811d9d08e3c9c834cf9971",
+            "want": [
+              "717e4192ea13547ffe323613d3d4945c9c5a9b00",
+              "56b434ef37fed92f87811d9d08e3c9c834cf9971"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "focal blob transport/http2_server.go",
+          "detail": {
+            "bug": "5233d6f3db6bd29622f694a59befd50d9e6d7365",
+            "fix": "24c2c7e18c48b007dd8a060cb4e09bfab1a55ebd",
+            "want": [
+              "5233d6f3db6bd29622f694a59befd50d9e6d7365",
+              "24c2c7e18c48b007dd8a060cb4e09bfab1a55ebd"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "identical test/end2end_test.go",
+          "detail": {
+            "bug": "6a583182170323ec5b23d760d926c92d3816be18",
+            "fix": "6a583182170323ec5b23d760d926c92d3816be18"
+          },
+          "passed": true
+        },
+        {
+          "check": "all target-package test files identical",
+          "detail": {
+            "count": 2,
+            "differ": []
+          },
+          "passed": true
+        },
+        {
+          "check": "tree delta is the focal production change only",
+          "detail": {
+            "bug_minus_fix": [
+              " M transport/http2_client.go",
+              " M transport/http2_server.go",
+              "?? google.golang.org/grpc/bug_patch.diff"
+            ],
+            "common_changes": [],
+            "fix_minus_bug": [],
+            "inert_untracked": [
+              "?? google.golang.org/grpc/bug_patch.diff"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "identical gopath_deps_digest",
+          "detail": [
+            "09f9c708162aea5cd9296ab984a2225f03ece9c1f62b6406fd4078dd01af2ba6",
+            "09f9c708162aea5cd9296ab984a2225f03ece9c1f62b6406fd4078dd01af2ba6"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical dep_versions_sha256",
+          "detail": [
+            "2a49c5c6f739e009c44d1cc7dc383b1d9b40ad428a78e6c57140a96a75b84059",
+            "2a49c5c6f739e009c44d1cc7dc383b1d9b40ad428a78e6c57140a96a75b84059"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical go_version",
+          "detail": [
+            "go version go1.13.15 linux/amd64",
+            "go version go1.13.15 linux/amd64"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical dependency repositories",
+          "detail": {
+            "count": 5
+          },
+          "passed": true
+        },
+        {
+          "check": "test binaries differ (different product code)",
+          "detail": [
+            "88e63334adbcb725e6e04b22dd376373d8c9dc7148ea8a0ff01f2cce9e60ec5c",
+            "a563f1a33e7248c153fad64789928c1a66b9033d9aeca1a8ec939f46b0a3d132"
+          ],
+          "passed": true
+        }
+      ],
+      "execution": {
+        "argv": [
+          "/go/gobench.test",
+          "-test.v",
+          "-test.count",
+          "1",
+          "-test.run",
+          "^TestClientDoesntDeadlockWhileWritingErrornousLargeMessages$",
+          "-test.timeout",
+          "110s",
+          "-only_env",
+          "tcp-clear-v1-balancer"
+        ],
+        "workdir": "/go/src/google.golang.org/grpc/test",
+        "inner_timeout_s": 110,
+        "outer_timeout_s": 120,
+        "cleanup_timeout_s": 30,
+        "expected_target": "TestClientDoesntDeadlockWhileWritingErrornousLargeMessages"
+      },
+      "oracle": {
+        "card": "grpc1859",
+        "defined_in": "e1_harness/oracle.py",
+        "source": "research_runs/ci_sensitivity_2026_09/task_c2_candidate_acquisition.md card C-03 'Pre-declared evaluator signatures'; frozen_protocol.txt",
+        "signatures": {
+          "a": "a DeadlineExceeded line with 'want code: ResourceExhausted'",
+          "b": "test timeout or leakcheck report with a goroutine in quotaPool.get called from http2Client/http2Server.Write"
+        },
+        "notes": [
+          "Q0_NOT_QUALIFIED: a named non-primary case, not an E1 subject. The card is kept so the classifier is validated on a non-hang witness."
+        ],
+        "rule_hashes": {
+          "e1_oracle_py": "20a494f00b87d52a035b8a1d31b40d31ca46d9037854a5b0caafcf04b20a89a0",
+          "c1_cards_py": "6cb638501f774ab1736c88547521c73fb66a4b66beed42b88f49aca9b1241075"
+        },
+        "replay": {
+          "e1_ledgers": {
+            "agree": 18,
+            "disagree": 0,
+            "logs": 18
+          },
+          "q0_counted": {
+            "agree": 40,
+            "disagree": 0,
+            "logs": 40
+          },
+          "uncounted": {
+            "agree": 29,
+            "disagree": 0,
+            "logs": 29
+          }
+        },
+        "historical_focal_positive_logs": 4,
+        "validation_status": "source review + replay of historical positive and negative logs",
+        "competing_explanations": "Expired-certificate Dial hangs (other envs) are excluded by -only_env and never match either signature (replayed). Card C-03 records a post-merge Travis hang of the fixed test (issue 1850 comment) as an unresolved counterpart-validity caveat.",
+        "slowness_review": "(a) requires a call to exceed its own 10 s per-call deadline while sending a 1 MiB payload the server rejects after the header; a pass takes ~0.8 s for all 1000 calls. (b) requires quotaPool.get frames under http2 Write in a timeout/leak dump. A 2-CPU bandwidth limit is not expected to create a 10 s per-call stall, but the witness cannot distinguish an extreme stall from the leak: source argument only.",
+        "l_profile_validated": false,
+        "l_profile_note": "not yet executed under the limited profile; smoke calibration checks execution and capture only"
+      },
+      "identity_note": "No image ID was recorded in Q0. Current IDs are bound here; identity with the Q0 images is inferred from creation times (17:50:11Z/17:50:33Z, inside the Task 5 window, matching build_end.txt 17:50:35Z) and blob checks, not proven.",
+      "readiness": {
+        "disposition": "READY_HISTORICAL",
+        "enrolled": true,
+        "reason": "exact surviving images; counterpart, test/harness equality and dependency identity re-verified in image; oracle rules ported and replayed",
+        "reviewer": "C1 implementation agent (single agent)",
+        "date": "2026-09-25",
+        "q0_label_unchanged": true
+      }
+    },
+    "grpc2391": {
+      "subject": "grpc2391",
+      "project": "grpc-go",
+      "upstream": {
+        "fix": "grpc-go PR 2391 'internal: fix GO_AWAY deadlock', squash-merge ff2aa05958775030998dbe2f9bccbe2af324adf4 (2018-10-19)",
+        "defective_revision": "sole parent 39444b99c097c9f53536ad8f16cd9f0288c7f695 (clientconn.go)",
+        "introducing_revision": null,
+        "introducing_revision_reason": "not established by any record"
+      },
+      "counterpart_class": "historical pair, identical test backport",
+      "counterpart_justification": "V_bad clientconn.go blob e74f8e40 = parent; end2end_test.go 30d8a8c8 in both; go.mod/go.sum and module list identical (re-verified 2026-09-25).",
+      "obligation": "after GO_AWAY on connection 1 and its closure, the client keeps using the healthy replacement transport; ten UnaryCalls succeed within the test's 20 s context.",
+      "mechanism": "createTransport's allowedToReset branch nils a healthy ac.transport after the GO_AWAY reset; oneReset already fired, so the picker spins on a READY addrConn with nil transport.",
+      "reconstruction_deviations": [
+        "module mode from the revision's own go.mod instead of GoReal's unpinned GOPATH go get",
+        "shallow fetch of the exact commit instead of full clone+reset"
+      ],
+      "evidence": [
+        "research_runs/ci_sensitivity_2026_09/task5_grpc2391_restoration.md",
+        "research_runs/ci_sensitivity_2026_09/task_c3_candidate_acquisition.md (card C-04)",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/grpc2391/run/frozen_protocol.txt",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/grpc2391/run/attempt.sh",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/grpc2391/blob_check_bug.txt",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/grpc2391/dep_versions_bug.txt",
+        "research_runs/ci_configuration_2026_09/prep/image_checks.json"
+      ],
+      "variants": {
+        "V_bad": {
+          "image_tag": "grpc2391-bug",
+          "image_id": "sha256:cc6e5a69cd7a032623f39b04acc0e9f108d18cf22b4891fc629a413f152a92a2",
+          "commit": "ff2aa05958775030998dbe2f9bccbe2af324adf4",
+          "focal_blobs": {
+            "clientconn.go": "e74f8e40ea3c697b5479cf020a97a82c5cabb897",
+            "go.mod": "5856dced25dfcaedcfb50b506c09a252a653a268",
+            "go.sum": "6b70e58e5812941bf189f081f355a2c2e21a4853",
+            "test/end2end_test.go": "30d8a8c8d0516165b46723900e72de61e7e242ce"
+          },
+          "target_package_test_files": {
+            "test/balancer_test.go": "5eb51af0402234a42f5e606c0ec6fa88dddea2ae",
+            "test/channelz_linux_go110_test.go": "31ce11dbc0e1e046b69511ae42e32d5d24293b7b",
+            "test/channelz_test.go": "c204e35f1ec6c7b30ec2df31ccd8114724403649",
+            "test/creds_test.go": "f56440fa2e1071343e4acccc65e28ebbbd07f149",
+            "test/end2end_test.go": "30d8a8c8d0516165b46723900e72de61e7e242ce",
+            "test/gracefulstop_test.go": "560235859a18885906e9d10f65eb1918bc17f751",
+            "test/retry_test.go": "c53b66db6eafa2ff49a0763b8e9d72767bce3795"
+          },
+          "test_binary_sha256": "a7ab35eaa54a7e52eb0edd15954e7a1eaacc24cf86bde1eebcf8f73cb54f3a23",
+          "test_binary_bytes": 15634550,
+          "go_version": "go version go1.13.15 linux/amd64",
+          "gopath_nonrepo_sources_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "gopath_dependency_repos": {},
+          "dep_versions_txt_sha256": "b1bd4c8a81d273c5bd0911777f5c3364af7c6fc750af1f01800b4c25227a24d5",
+          "go_list_m_all_sha256": "b1bd4c8a81d273c5bd0911777f5c3364af7c6fc750af1f01800b4c25227a24d5",
+          "vendored_in_tree": false,
+          "tree_changes_vs_commit": [
+            " M clientconn.go",
+            " M go.mod"
+          ],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        },
+        "V_ok": {
+          "image_tag": "grpc2391-fix",
+          "image_id": "sha256:65a2902bbfce1dbc8afba7cd792dfeef134ad9aba2049ad65d333808b8906510",
+          "commit": "ff2aa05958775030998dbe2f9bccbe2af324adf4",
+          "focal_blobs": {
+            "clientconn.go": "d04043137a7ed5bfa5fe9df401e064e693573569",
+            "go.mod": "5856dced25dfcaedcfb50b506c09a252a653a268",
+            "go.sum": "6b70e58e5812941bf189f081f355a2c2e21a4853",
+            "test/end2end_test.go": "30d8a8c8d0516165b46723900e72de61e7e242ce"
+          },
+          "target_package_test_files": {
+            "test/balancer_test.go": "5eb51af0402234a42f5e606c0ec6fa88dddea2ae",
+            "test/channelz_linux_go110_test.go": "31ce11dbc0e1e046b69511ae42e32d5d24293b7b",
+            "test/channelz_test.go": "c204e35f1ec6c7b30ec2df31ccd8114724403649",
+            "test/creds_test.go": "f56440fa2e1071343e4acccc65e28ebbbd07f149",
+            "test/end2end_test.go": "30d8a8c8d0516165b46723900e72de61e7e242ce",
+            "test/gracefulstop_test.go": "560235859a18885906e9d10f65eb1918bc17f751",
+            "test/retry_test.go": "c53b66db6eafa2ff49a0763b8e9d72767bce3795"
+          },
+          "test_binary_sha256": "5564bf4d61fe4fb0c0830adbbec6877571ca8158ccbacb6d7e0ff6f6a70541b2",
+          "test_binary_bytes": 15634550,
+          "go_version": "go version go1.13.15 linux/amd64",
+          "gopath_nonrepo_sources_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "gopath_dependency_repos": {},
+          "dep_versions_txt_sha256": "b1bd4c8a81d273c5bd0911777f5c3364af7c6fc750af1f01800b4c25227a24d5",
+          "go_list_m_all_sha256": "b1bd4c8a81d273c5bd0911777f5c3364af7c6fc750af1f01800b4c25227a24d5",
+          "vendored_in_tree": false,
+          "tree_changes_vs_commit": [
+            " M go.mod"
+          ],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        }
+      },
+      "equal_treatment_checks": [
+        {
+          "check": "both containers completed",
+          "detail": null,
+          "passed": true
+        },
+        {
+          "check": "commit (bug, fix)",
+          "detail": [
+            "ff2aa05958775030998dbe2f9bccbe2af324adf4",
+            "ff2aa05958775030998dbe2f9bccbe2af324adf4",
+            "ff2aa05958775030998dbe2f9bccbe2af324adf4"
+          ],
+          "passed": true
+        },
+        {
+          "check": "focal blob clientconn.go",
+          "detail": {
+            "bug": "e74f8e40ea3c697b5479cf020a97a82c5cabb897",
+            "fix": "d04043137a7ed5bfa5fe9df401e064e693573569",
+            "want": [
+              "e74f8e40ea3c697b5479cf020a97a82c5cabb897",
+              "d04043137a7ed5bfa5fe9df401e064e693573569"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "identical test/end2end_test.go",
+          "detail": {
+            "bug": "30d8a8c8d0516165b46723900e72de61e7e242ce",
+            "fix": "30d8a8c8d0516165b46723900e72de61e7e242ce"
+          },
+          "passed": true
+        },
+        {
+          "check": "identical go.mod",
+          "detail": {
+            "bug": "5856dced25dfcaedcfb50b506c09a252a653a268",
+            "fix": "5856dced25dfcaedcfb50b506c09a252a653a268"
+          },
+          "passed": true
+        },
+        {
+          "check": "identical go.sum",
+          "detail": {
+            "bug": "6b70e58e5812941bf189f081f355a2c2e21a4853",
+            "fix": "6b70e58e5812941bf189f081f355a2c2e21a4853"
+          },
+          "passed": true
+        },
+        {
+          "check": "all target-package test files identical",
+          "detail": {
+            "count": 7,
+            "differ": []
+          },
+          "passed": true
+        },
+        {
+          "check": "tree delta is the focal production change only",
+          "detail": {
+            "bug_minus_fix": [
+              " M clientconn.go"
+            ],
+            "common_changes": [
+              " M go.mod"
+            ],
+            "fix_minus_bug": [],
+            "inert_untracked": []
+          },
+          "passed": true
+        },
+        {
+          "check": "identical gopath_deps_digest",
+          "detail": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical dep_versions_sha256",
+          "detail": [
+            "b1bd4c8a81d273c5bd0911777f5c3364af7c6fc750af1f01800b4c25227a24d5",
+            "b1bd4c8a81d273c5bd0911777f5c3364af7c6fc750af1f01800b4c25227a24d5"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical module_dirs_digest",
+          "detail": [
+            "0b99f3cbcd8120f7c17b2d4afcd635bb71d00f1a3bc290449ab92e327650c511",
+            "0b99f3cbcd8120f7c17b2d4afcd635bb71d00f1a3bc290449ab92e327650c511"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical go_list_m_all_sha256",
+          "detail": [
+            "b1bd4c8a81d273c5bd0911777f5c3364af7c6fc750af1f01800b4c25227a24d5",
+            "b1bd4c8a81d273c5bd0911777f5c3364af7c6fc750af1f01800b4c25227a24d5"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical go_version",
+          "detail": [
+            "go version go1.13.15 linux/amd64",
+            "go version go1.13.15 linux/amd64"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical dependency repositories",
+          "detail": {
+            "count": 0
+          },
+          "passed": true
+        },
+        {
+          "check": "test binaries differ (different product code)",
+          "detail": [
+            "a7ab35eaa54a7e52eb0edd15954e7a1eaacc24cf86bde1eebcf8f73cb54f3a23",
+            "5564bf4d61fe4fb0c0830adbbec6877571ca8158ccbacb6d7e0ff6f6a70541b2"
+          ],
+          "passed": true
+        }
+      ],
+      "execution": {
+        "argv": [
+          "/go/gobench.test",
+          "-test.v",
+          "-test.count",
+          "1",
+          "-test.run",
+          "^TestGoAwayThenClose$",
+          "-test.timeout",
+          "60s"
+        ],
+        "workdir": "/go/src/google.golang.org/grpc/test",
+        "inner_timeout_s": 60,
+        "outer_timeout_s": 90,
+        "cleanup_timeout_s": 30,
+        "expected_target": "TestGoAwayThenClose"
+      },
+      "oracle": {
+        "card": "grpc2391",
+        "defined_in": "c1_harness/cards.py",
+        "source": "research_runs/ci_sensitivity_2026_09/task_c3_candidate_acquisition.md card C-04 'Pre-declared evaluator signatures' (a); applied in Q0 by task5_artifacts/grpc2391/run/attempt.sh; unchanged by exploratory runs (task5_grpc2391_restoration.md Step 3)",
+        "signatures": {
+          "a": "a `UnaryCall(_) = _, rpc error: code = DeadlineExceeded ...; want _, nil` line: a call issued after connection 1's closure did not complete within the test's 20 s context"
+        },
+        "notes": [
+          "Card text requires one line carrying both the UnaryCall form and DeadlineExceeded; the Q0 shell rule grepped the two fragments separately. The line rule is the card's and is the stricter of the two.",
+          "Everything else, including a leakcheck report without an (a) line, is not focal."
+        ],
+        "rule_hashes": {
+          "e1_oracle_py": "20a494f00b87d52a035b8a1d31b40d31ca46d9037854a5b0caafcf04b20a89a0",
+          "c1_cards_py": "6cb638501f774ab1736c88547521c73fb66a4b66beed42b88f49aca9b1241075"
+        },
+        "replay": {
+          "e1_ledgers": null,
+          "q0_counted": {
+            "agree": 40,
+            "disagree": 0,
+            "logs": 40
+          },
+          "uncounted": {
+            "agree": 7,
+            "disagree": 0,
+            "logs": 7
+          }
+        },
+        "historical_focal_positive_logs": 23,
+        "validation_status": "source review + replay of historical positive and negative logs",
+        "competing_explanations": "FullDuplexCall failure, 'expected the stream to die', listen/start failure, leakcheck without an (a) line, or UnaryCall errors with other codes are not focal.",
+        "slowness_review": "See c1_harness/cards.py: the 20 s context spans the whole test (pass ~0.01 s); a non-defect DeadlineExceeded needs ~2000x slowdown. The witness cannot itself distinguish that from the spin; source argument only.",
+        "l_profile_validated": false,
+        "l_profile_note": "not yet executed under the limited profile; smoke calibration checks execution and capture only"
+      },
+      "identity_note": "Image IDs equal the restoration record and frozen protocol.",
+      "readiness": {
+        "disposition": "READY_HISTORICAL",
+        "enrolled": true,
+        "reason": "exact surviving images; counterpart, test/harness equality and dependency identity re-verified in image; oracle rules ported and replayed",
+        "reviewer": "C1 implementation agent (single agent)",
+        "date": "2026-09-25",
+        "q0_label_unchanged": true
+      }
+    },
+    "istio17860": {
+      "subject": "istio17860",
+      "project": "istio",
+      "upstream": {
+        "fix": "istio PR 17860 'Fix deadlock in envoy restart logic.', squash-merge c6e9130227497ab064dd571a1409236d17aa2ef3 (2019-10-15)",
+        "defective_revision": "sole parent 7a9a996f6641024298e6010c6f1d7e87a83a48dc (pkg/envoy/agent.go)",
+        "introducing_revision": null,
+        "introducing_revision_reason": "not established; PR body is an unfilled template and links no issue"
+      },
+      "counterpart_class": "historical production pair, identical fix test",
+      "counterpart_justification": "V_bad agent.go blob f6644419 = parent; agent_test.go 09ea287d in both (GoReal's V_bad-only test edit not applied); identical go.mod replace and module list (re-verified 2026-09-25).",
+      "obligation": "while a hot restart waits for the previous epoch to go live, the agent still processes that epoch's exit; epoch 1 starts within the test's 5 s bound.",
+      "mechanism": "Restart holds a.mu through waitUntilLive (up to 20 s); Run's exit handler needs a.mu to delete the exited epoch.",
+      "reconstruction_deviations": [
+        "replace bitbucket.org/ww/goautoneg => github.com/munnerz/goautoneg on BOTH images (Bitbucket 404; GoReal adds it to bug only)",
+        "GoReal's vim/python3 install not reproduced on either image",
+        "agent.go-only patch (GoReal's V_bad test edit excluded)"
+      ],
+      "evidence": [
+        "research_runs/ci_sensitivity_2026_09/task5_istio17860_restoration.md",
+        "research_runs/ci_sensitivity_2026_09/task_c3_candidate_acquisition.md (card C-05)",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/istio17860/run/frozen_protocol.txt",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/istio17860/run/attempt.sh",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/istio17860/blob_check_bug.txt",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/istio17860/dep_versions_bug.txt",
+        "research_runs/ci_configuration_2026_09/prep/image_checks.json"
+      ],
+      "variants": {
+        "V_bad": {
+          "image_tag": "istio17860-bug",
+          "image_id": "sha256:23e14b796ad0c487e7536b9213cab2c3a0897548489bb4f0e8a8944182296ba8",
+          "commit": "c6e9130227497ab064dd571a1409236d17aa2ef3",
+          "focal_blobs": {
+            "go.mod": "4f8277b743b57d6571b75ae5328b06389fd5df4f",
+            "go.sum": "7cf6b9921680cca56d31740fdfdea196c6d47baa",
+            "pkg/envoy/agent.go": "f6644419ad8c6bf453fd120cadb75714842b4420",
+            "pkg/envoy/agent_test.go": "09ea287d1f94319c7284f281838a579fdc98d442"
+          },
+          "target_package_test_files": {
+            "pkg/envoy/agent_test.go": "09ea287d1f94319c7284f281838a579fdc98d442",
+            "pkg/envoy/instance_test.go": "9ad105495f44a76d5ea6e1850c945efa288fa5f3",
+            "pkg/envoy/options_test.go": "f09e95888cd5c1d6f8bd88f59d88142372dbd5c5",
+            "pkg/envoy/proxy_test.go": "0866ddabcec863062073f65c063b87186e336bf4",
+            "pkg/envoy/watcher_test.go": "4b62fe58a59c8f07467d2d37bbd6c4dd39c0682a"
+          },
+          "test_binary_sha256": "f7aa4fff7f72f96fb1bc92474c4b6666b94036e00b50d25014fda8aa62eca519",
+          "test_binary_bytes": 31245066,
+          "go_version": "go version go1.13.15 linux/amd64",
+          "gopath_nonrepo_sources_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "gopath_dependency_repos": {},
+          "dep_versions_txt_sha256": "e9be38d9221f33f730146dea1e0c42dd2fe8e0b39b98674fdb047cea2f026a10",
+          "go_list_m_all_sha256": "e9be38d9221f33f730146dea1e0c42dd2fe8e0b39b98674fdb047cea2f026a10",
+          "vendored_in_tree": false,
+          "tree_changes_vs_commit": [
+            " M go.mod",
+            " M go.sum",
+            " M pkg/envoy/agent.go"
+          ],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        },
+        "V_ok": {
+          "image_tag": "istio17860-fix",
+          "image_id": "sha256:7fba6b07fc8d68fa362eec12eefb20408dcc2406bdae963414ca75184fd9c679",
+          "commit": "c6e9130227497ab064dd571a1409236d17aa2ef3",
+          "focal_blobs": {
+            "go.mod": "4f8277b743b57d6571b75ae5328b06389fd5df4f",
+            "go.sum": "7cf6b9921680cca56d31740fdfdea196c6d47baa",
+            "pkg/envoy/agent.go": "638578e3341536ebdf3b93e1699ce2568d05d83b",
+            "pkg/envoy/agent_test.go": "09ea287d1f94319c7284f281838a579fdc98d442"
+          },
+          "target_package_test_files": {
+            "pkg/envoy/agent_test.go": "09ea287d1f94319c7284f281838a579fdc98d442",
+            "pkg/envoy/instance_test.go": "9ad105495f44a76d5ea6e1850c945efa288fa5f3",
+            "pkg/envoy/options_test.go": "f09e95888cd5c1d6f8bd88f59d88142372dbd5c5",
+            "pkg/envoy/proxy_test.go": "0866ddabcec863062073f65c063b87186e336bf4",
+            "pkg/envoy/watcher_test.go": "4b62fe58a59c8f07467d2d37bbd6c4dd39c0682a"
+          },
+          "test_binary_sha256": "8c7d7829251a7b2f15d26f98463894b71b5a2d484a30138cd6b935c25cd6a8fb",
+          "test_binary_bytes": 31249465,
+          "go_version": "go version go1.13.15 linux/amd64",
+          "gopath_nonrepo_sources_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "gopath_dependency_repos": {},
+          "dep_versions_txt_sha256": "e9be38d9221f33f730146dea1e0c42dd2fe8e0b39b98674fdb047cea2f026a10",
+          "go_list_m_all_sha256": "e9be38d9221f33f730146dea1e0c42dd2fe8e0b39b98674fdb047cea2f026a10",
+          "vendored_in_tree": false,
+          "tree_changes_vs_commit": [
+            " M go.mod",
+            " M go.sum"
+          ],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        }
+      },
+      "equal_treatment_checks": [
+        {
+          "check": "both containers completed",
+          "detail": null,
+          "passed": true
+        },
+        {
+          "check": "commit (bug, fix)",
+          "detail": [
+            "c6e9130227497ab064dd571a1409236d17aa2ef3",
+            "c6e9130227497ab064dd571a1409236d17aa2ef3",
+            "c6e9130227497ab064dd571a1409236d17aa2ef3"
+          ],
+          "passed": true
+        },
+        {
+          "check": "focal blob pkg/envoy/agent.go",
+          "detail": {
+            "bug": "f6644419ad8c6bf453fd120cadb75714842b4420",
+            "fix": "638578e3341536ebdf3b93e1699ce2568d05d83b",
+            "want": [
+              "f6644419ad8c6bf453fd120cadb75714842b4420",
+              "638578e3341536ebdf3b93e1699ce2568d05d83b"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "identical pkg/envoy/agent_test.go",
+          "detail": {
+            "bug": "09ea287d1f94319c7284f281838a579fdc98d442",
+            "fix": "09ea287d1f94319c7284f281838a579fdc98d442"
+          },
+          "passed": true
+        },
+        {
+          "check": "identical go.mod",
+          "detail": {
+            "bug": "4f8277b743b57d6571b75ae5328b06389fd5df4f",
+            "fix": "4f8277b743b57d6571b75ae5328b06389fd5df4f"
+          },
+          "passed": true
+        },
+        {
+          "check": "identical go.sum",
+          "detail": {
+            "bug": "7cf6b9921680cca56d31740fdfdea196c6d47baa",
+            "fix": "7cf6b9921680cca56d31740fdfdea196c6d47baa"
+          },
+          "passed": true
+        },
+        {
+          "check": "all target-package test files identical",
+          "detail": {
+            "count": 5,
+            "differ": []
+          },
+          "passed": true
+        },
+        {
+          "check": "tree delta is the focal production change only",
+          "detail": {
+            "bug_minus_fix": [
+              " M pkg/envoy/agent.go"
+            ],
+            "common_changes": [
+              " M go.mod",
+              " M go.sum"
+            ],
+            "fix_minus_bug": [],
+            "inert_untracked": []
+          },
+          "passed": true
+        },
+        {
+          "check": "identical gopath_deps_digest",
+          "detail": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical dep_versions_sha256",
+          "detail": [
+            "e9be38d9221f33f730146dea1e0c42dd2fe8e0b39b98674fdb047cea2f026a10",
+            "e9be38d9221f33f730146dea1e0c42dd2fe8e0b39b98674fdb047cea2f026a10"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical module_dirs_digest",
+          "detail": [
+            "e695a435d123d04ad6599284bb026e9617aac9da1c42ca07e0c75a704da4258c",
+            "e695a435d123d04ad6599284bb026e9617aac9da1c42ca07e0c75a704da4258c"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical go_list_m_all_sha256",
+          "detail": [
+            "e9be38d9221f33f730146dea1e0c42dd2fe8e0b39b98674fdb047cea2f026a10",
+            "e9be38d9221f33f730146dea1e0c42dd2fe8e0b39b98674fdb047cea2f026a10"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical go_version",
+          "detail": [
+            "go version go1.13.15 linux/amd64",
+            "go version go1.13.15 linux/amd64"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical dependency repositories",
+          "detail": {
+            "count": 0
+          },
+          "passed": true
+        },
+        {
+          "check": "test binaries differ (different product code)",
+          "detail": [
+            "f7aa4fff7f72f96fb1bc92474c4b6666b94036e00b50d25014fda8aa62eca519",
+            "8c7d7829251a7b2f15d26f98463894b71b5a2d484a30138cd6b935c25cd6a8fb"
+          ],
+          "passed": true
+        }
+      ],
+      "execution": {
+        "argv": [
+          "/go/gobench.test",
+          "-test.v",
+          "-test.count",
+          "1",
+          "-test.run",
+          "^TestExitDuringWaitForLive$",
+          "-test.timeout",
+          "30s"
+        ],
+        "workdir": "/go/src/istio.io/istio/pkg/envoy",
+        "inner_timeout_s": 30,
+        "outer_timeout_s": 60,
+        "cleanup_timeout_s": 30,
+        "expected_target": "TestExitDuringWaitForLive"
+      },
+      "oracle": {
+        "card": "istio17860",
+        "defined_in": "c1_harness/cards.py",
+        "source": "research_runs/ci_sensitivity_2026_09/task_c3_candidate_acquisition.md card C-05 'Pre-declared evaluator signatures' (a); applied in Q0 by task5_artifacts/istio17860/run/attempt.sh; unchanged by exploratory runs",
+        "signatures": {
+          "a": "`--- FAIL: TestExitDuringWaitForLive` together with `timed out waiting for epoch 1 to start`"
+        },
+        "notes": [
+          "A Gomega BeTemporally failure (epoch 1 started, but outside 1 s) is UNRESOLVED on either version; it matches no signature, so classify() already returns UNRESOLVED for it."
+        ],
+        "rule_hashes": {
+          "e1_oracle_py": "20a494f00b87d52a035b8a1d31b40d31ca46d9037854a5b0caafcf04b20a89a0",
+          "c1_cards_py": "6cb638501f774ab1736c88547521c73fb66a4b66beed42b88f49aca9b1241075"
+        },
+        "replay": {
+          "e1_ledgers": null,
+          "q0_counted": {
+            "agree": 40,
+            "disagree": 0,
+            "logs": 40
+          },
+          "uncounted": {
+            "agree": 7,
+            "disagree": 0,
+            "logs": 7
+          }
+        },
+        "historical_focal_positive_logs": 25,
+        "validation_status": "source review + replay of historical positive and negative logs",
+        "competing_explanations": "Gomega BeTemporally failures (1 s threshold, author-flagged flake risk) are UNRESOLVED on either version and reported separately on V_ok.",
+        "slowness_review": "See c1_harness/cards.py: 5 s for a few goroutine hand-offs (pass ~0.5 s). The 1 s BeTemporally check is the timing-sensitive, non-focal assertion.",
+        "l_profile_validated": false,
+        "l_profile_note": "not yet executed under the limited profile; smoke calibration checks execution and capture only"
+      },
+      "identity_note": "Image IDs equal the restoration record and frozen protocol.",
+      "readiness": {
+        "disposition": "READY_HISTORICAL",
+        "enrolled": true,
+        "reason": "exact surviving images; counterpart, test/harness equality and dependency identity re-verified in image; oracle rules ported and replayed",
+        "reviewer": "C1 implementation agent (single agent)",
+        "date": "2026-09-25",
+        "q0_label_unchanged": true
+      }
+    },
+    "k8s26980": {
+      "subject": "k8s26980",
+      "project": "kubernetes",
+      "upstream": {
+        "fix": "kubernetes PR 26980 'processor listener: fix locking in pop()', merge 628af356b8c83f98ee3b50dfcf8b0250816a5581 (2016-06-13)",
+        "defective_revision": "first parent 98f0d22bcccbacaa0f5a6846b55ecfc6590b18bc (shared_informer.go)",
+        "introducing_revision": null,
+        "introducing_revision_reason": "not established by any record"
+      },
+      "counterpart_class": "historical parent production plus identical fix test",
+      "counterpart_justification": "V_bad shared_informer.go blob ce9ddf2c = first parent; processor_listener_test.go ffd72d8f in both (GoReal's V_bad-only test mutation not restored); Godeps.json identical; vendored deps (re-verified 2026-09-25).",
+      "obligation": "processorListener.pop must not hold p.lock while blocked sending to nextCh; another goroutine can acquire p.lock while pop waits.",
+      "mechanism": "pop takes p.lock at entry and keeps it while selecting on the unbuffered nextCh send; with a pending notification and no receiver it blocks holding the lock.",
+      "reconstruction_deviations": [
+        "shallow fetch of the merge commit instead of full clone+reset",
+        "GoReal's rsync/vim/python3 installs dropped on both images",
+        "shared_informer.go-only patch (GoReal's V_bad test edit excluded)"
+      ],
+      "evidence": [
+        "research_runs/ci_sensitivity_2026_09/task5_k8s26980_restoration.md",
+        "research_runs/ci_sensitivity_2026_09/task_c4_candidate_acquisition.md (card C-06)",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/k8s26980/run/frozen_protocol.txt",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/k8s26980/run/attempt.sh",
+        "research_runs/ci_sensitivity_2026_09/task5_artifacts/k8s26980/blob_check_bug.txt",
+        "research_runs/ci_configuration_2026_09/prep/image_checks.json"
+      ],
+      "variants": {
+        "V_bad": {
+          "image_tag": "k8s26980-bug",
+          "image_id": "sha256:8a215c592956b0f99ff977285822ffcbc3116d1ff7fab1da692b0e67d28bafaf",
+          "commit": "628af356b8c83f98ee3b50dfcf8b0250816a5581",
+          "focal_blobs": {
+            "Godeps/Godeps.json": "980fd6aca303e97c4b9e2c6ab6e2ee283730b67d",
+            "pkg/controller/framework/processor_listener_test.go": "ffd72d8fae243a1e221a574781a87ed2107aaf1a",
+            "pkg/controller/framework/shared_informer.go": "ce9ddf2c7140ff2d9d9752ac8626cef1bb01a236"
+          },
+          "target_package_test_files": {
+            "pkg/controller/framework/controller_test.go": "b17aba4ab679e4518db1166466b7b7d2a68aa3c2",
+            "pkg/controller/framework/fake_controller_source_test.go": "01269ce643544cccd4378621fbd4ae5c67e4fafb",
+            "pkg/controller/framework/processor_listener_test.go": "ffd72d8fae243a1e221a574781a87ed2107aaf1a"
+          },
+          "test_binary_sha256": "585070ec85ed5aef339f415c4f4dc8c90d67599631ad312f18eb786bd44d4cfb",
+          "test_binary_bytes": 30436232,
+          "go_version": "go version go1.12.17 linux/amd64",
+          "gopath_nonrepo_sources_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "gopath_dependency_repos": {},
+          "dep_versions_txt_sha256": null,
+          "go_list_m_all_sha256": null,
+          "vendored_in_tree": true,
+          "tree_changes_vs_commit": [
+            " M pkg/controller/framework/shared_informer.go"
+          ],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        },
+        "V_ok": {
+          "image_tag": "k8s26980-fix",
+          "image_id": "sha256:6c93e46a3848354353a72d545dc782257d620432c07d3497ded117476f75d5d4",
+          "commit": "628af356b8c83f98ee3b50dfcf8b0250816a5581",
+          "focal_blobs": {
+            "Godeps/Godeps.json": "980fd6aca303e97c4b9e2c6ab6e2ee283730b67d",
+            "pkg/controller/framework/processor_listener_test.go": "ffd72d8fae243a1e221a574781a87ed2107aaf1a",
+            "pkg/controller/framework/shared_informer.go": "c557bf97548a4e7054b05e0b158ba194b7dd59f2"
+          },
+          "target_package_test_files": {
+            "pkg/controller/framework/controller_test.go": "b17aba4ab679e4518db1166466b7b7d2a68aa3c2",
+            "pkg/controller/framework/fake_controller_source_test.go": "01269ce643544cccd4378621fbd4ae5c67e4fafb",
+            "pkg/controller/framework/processor_listener_test.go": "ffd72d8fae243a1e221a574781a87ed2107aaf1a"
+          },
+          "test_binary_sha256": "7a68ca76d2ffbf0be13c0581b313fbdcc81ddf09b513dcaa9af338b290955905",
+          "test_binary_bytes": 30440496,
+          "go_version": "go version go1.12.17 linux/amd64",
+          "gopath_nonrepo_sources_digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "gopath_dependency_repos": {},
+          "dep_versions_txt_sha256": null,
+          "go_list_m_all_sha256": null,
+          "vendored_in_tree": true,
+          "tree_changes_vs_commit": [],
+          "base_image_digest": null,
+          "base_image_digest_reason": "locally built image; no registry digest recorded and no golang base image present locally",
+          "archive": null,
+          "archive_reason": "image retained only in the local Docker Desktop VM; no docker save archive exists"
+        }
+      },
+      "equal_treatment_checks": [
+        {
+          "check": "both containers completed",
+          "detail": null,
+          "passed": true
+        },
+        {
+          "check": "commit (bug, fix)",
+          "detail": [
+            "628af356b8c83f98ee3b50dfcf8b0250816a5581",
+            "628af356b8c83f98ee3b50dfcf8b0250816a5581",
+            "628af356b8c83f98ee3b50dfcf8b0250816a5581"
+          ],
+          "passed": true
+        },
+        {
+          "check": "focal blob pkg/controller/framework/shared_informer.go",
+          "detail": {
+            "bug": "ce9ddf2c7140ff2d9d9752ac8626cef1bb01a236",
+            "fix": "c557bf97548a4e7054b05e0b158ba194b7dd59f2",
+            "want": [
+              "ce9ddf2c7140ff2d9d9752ac8626cef1bb01a236",
+              "c557bf97548a4e7054b05e0b158ba194b7dd59f2"
+            ]
+          },
+          "passed": true
+        },
+        {
+          "check": "identical pkg/controller/framework/processor_listener_test.go",
+          "detail": {
+            "bug": "ffd72d8fae243a1e221a574781a87ed2107aaf1a",
+            "fix": "ffd72d8fae243a1e221a574781a87ed2107aaf1a"
+          },
+          "passed": true
+        },
+        {
+          "check": "identical Godeps/Godeps.json",
+          "detail": {
+            "bug": "980fd6aca303e97c4b9e2c6ab6e2ee283730b67d",
+            "fix": "980fd6aca303e97c4b9e2c6ab6e2ee283730b67d"
+          },
+          "passed": true
+        },
+        {
+          "check": "all target-package test files identical",
+          "detail": {
+            "count": 3,
+            "differ": []
+          },
+          "passed": true
+        },
+        {
+          "check": "tree delta is the focal production change only",
+          "detail": {
+            "bug_minus_fix": [
+              " M pkg/controller/framework/shared_informer.go"
+            ],
+            "common_changes": [],
+            "fix_minus_bug": [],
+            "inert_untracked": []
+          },
+          "passed": true
+        },
+        {
+          "check": "identical gopath_deps_digest",
+          "detail": [
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical go_version",
+          "detail": [
+            "go version go1.12.17 linux/amd64",
+            "go version go1.12.17 linux/amd64"
+          ],
+          "passed": true
+        },
+        {
+          "check": "identical dependency repositories",
+          "detail": {
+            "count": 0
+          },
+          "passed": true
+        },
+        {
+          "check": "test binaries differ (different product code)",
+          "detail": [
+            "585070ec85ed5aef339f415c4f4dc8c90d67599631ad312f18eb786bd44d4cfb",
+            "7a68ca76d2ffbf0be13c0581b313fbdcc81ddf09b513dcaa9af338b290955905"
+          ],
+          "passed": true
+        }
+      ],
+      "execution": {
+        "argv": [
+          "/go/gobench.test",
+          "-test.v",
+          "-test.count",
+          "1",
+          "-test.run",
+          "^TestPopReleaseLock$",
+          "-test.timeout",
+          "60s"
+        ],
+        "workdir": "/go/src/k8s.io/kubernetes/pkg/controller/framework",
+        "inner_timeout_s": 60,
+        "outer_timeout_s": 90,
+        "cleanup_timeout_s": 30,
+        "expected_target": "TestPopReleaseLock"
+      },
+      "oracle": {
+        "card": "k8s26980",
+        "defined_in": "c1_harness/cards.py",
+        "source": "research_runs/ci_sensitivity_2026_09/task_c4_candidate_acquisition.md card C-06 'Pre-declared evaluator signatures' (a); applied in Q0 by task5_artifacts/k8s26980/run/attempt.sh",
+        "signatures": {
+          "a": "`--- FAIL: TestPopReleaseLock` together with `Timeout after 30s`"
+        },
+        "notes": [
+          "No focal witness has ever been observed (Q0 0/20 + 0/5 exploratory). The rule is validated on source review and synthetic parsing fixtures only.",
+          "A Go test-timeout dump or panic is UNRESOLVED, per the card."
+        ],
+        "rule_hashes": {
+          "e1_oracle_py": "20a494f00b87d52a035b8a1d31b40d31ca46d9037854a5b0caafcf04b20a89a0",
+          "c1_cards_py": "6cb638501f774ab1736c88547521c73fb66a4b66beed42b88f49aca9b1241075"
+        },
+        "replay": {
+          "e1_ledgers": null,
+          "q0_counted": {
+            "agree": 40,
+            "disagree": 0,
+            "logs": 40
+          },
+          "uncounted": {
+            "agree": 7,
+            "disagree": 0,
+            "logs": 7
+          }
+        },
+        "historical_focal_positive_logs": 0,
+        "validation_status": "source review + replay; no positive runtime example exists",
+        "competing_explanations": "Go test-timeout dump or panic is UNRESOLVED. Q0 observed 0/20 (+0/5) focal on V_bad: stable-pass behaviour under the default scheduler.",
+        "slowness_review": "See c1_harness/cards.py: 30 s to acquire an unheld mutex in V_ok. No positive log exists; source review and synthetic parsing fixtures only.",
+        "l_profile_validated": false,
+        "l_profile_note": "not yet executed under the limited profile; smoke calibration checks execution and capture only"
+      },
+      "identity_note": "Image IDs equal the restoration record and frozen protocol.",
+      "readiness": {
+        "disposition": "READY_HISTORICAL",
+        "enrolled": true,
+        "reason": "exact surviving images; counterpart, test/harness equality and dependency identity re-verified in image; oracle rules ported and replayed",
+        "reviewer": "C1 implementation agent (single agent)",
+        "date": "2026-09-25",
+        "q0_label_unchanged": true
+      }
+    }
+  }
+}

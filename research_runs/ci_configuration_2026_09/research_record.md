@@ -100,3 +100,40 @@ Post-data amendments cannot become preregistered primary choices. Preserve raw d
 8. Reproduction commands, hashes, data availability and limitations.
 
 Do not report a favorable outcome in advance. A closed study with no useful configuration effect or with sufficient ordinary assessment is a valid deliverable.
+
+## R002: implementation handoff: inventory, preparation, implementation (2026-09-25)
+
+- ID / UTC date / author: R002 / 2026-09-25 / C1 implementation agent (single agent, no delegation), acting under `HANDOFF_PROMPT.md`.
+- Stage and affected subjects/artifacts: Phase 0 inventory, Phase 1 preparation, Phase 2 implementation. All six subjects. New files: `readiness.md`, `subject_manifest.json`, `environment_manifest.json`, `prep/`, `resources/`, `events.jsonl`, `schedule.csv`, `schedule.json`, `calibration/plan.json`, and the `c1_harness/` package.
+- Trigger: planned gate (the handoff).
+- Observations already visible when decisions were made:
+  - Design freeze verified: 8/8 digests match in the checkout and in commit `721d885`.
+  - All 12 images present, with IDs equal to the durable records (grpc1859's were never recorded; identity is inferred).
+  - In-image checks passed 6/6.
+  - Profile probes: the first failed on a probe timing bug; the second passed.
+  - Oracle replay agrees 630/630.
+  - No subject test had been executed by C1 when the schedule and calibration plan were written.
+- Evidence paths and hashes: `readiness.md` sections 1–6 and `prep/*.json`. Hashes are bound in `FREEZE.sha256` if a launch freeze is written.
+- Decision and rationale:
+  - All six subjects are `READY_HISTORICAL`, so C0 passes on structural evidence.
+  - The schedule was generated over all six, before calibration.
+  - The CPU profiles are enforced through `docker create` plus `docker inspect` of every container before it starts, plus a helper cgroup probe at every executing session start.
+  - Implementation choices within the contract:
+    - An unrelated running container stops collection; this is a validity alarm with no threshold in the design.
+    - Host load is recorded but not gated.
+    - CPU time is `null` (not instrumented).
+- Effect on original estimand, budget, inclusion or frozen files: none. No frozen file edited. No amendment.
+- Earlier results kept unchanged; new outputs labelled: Q0/E1/F1 files were read only. `e1_harness/` is unchanged; its 193 tests pass.
+- Next action and stop/resume boundary: fixed calibration (smoke, identity, direct, helpers) under the validation cap. Stop before measured blocks.
+- Resource use: preparation 0.258 allocated vCPU-h of 8, with host reservation equal. Agent wall-clock from 11:34Z is logged in `resources/resource_ledger.jsonl`; human effort is unknown.
+
+## R003: post-collection verification, annotation and analysis (2026-09-25)
+
+- Authority: researcher asked to verify that experiments were done and proceed with measured annotation and analysis. Earlier pre-collection holds do not prevent this requested post-collection work.
+- Initial state: both measured sessions were already complete, with all 720 scheduled attempts. No measured annotation or analysis output existed. The existing implementation and run artifacts were uncommitted; this pass neither commits them nor infers earlier collection authorization from the current request.
+- Verification: 8/8 design and 71/71 executable-freeze entries match. Measured/event/resource chains verified; exact scheduled identities and actual recorded order match. Raw input hashes were sealed before annotation and remained unchanged afterwards. All recorded profile and cleanup checks passed.
+- Work: ran frozen `annotate --stage measured`, then `analyze --out analysis`, without overrides or replacement. Added a separate independent arithmetic audit; all primary counts, contrasts, batch directions and C3 flags agree. No frozen implementation/design or raw measured record changed.
+- Results: 540 passes and 180 mechanical focal witnesses; all 360 acceptable-variant attempts passed; zero unresolved/invalid. C2 passes. C3 passes for etcd5509 under P1/P3 only; limited CPU gives greater supported blocking there. Every primary confidence interval includes zero. No nuisance reduction established.
+- Evidence: [post-collection review](analysis_audit/POST_COLLECTION_REVIEW.md), [raw seal](analysis_audit/pre_analysis_seal.json), [independent verification](analysis_audit/independent_verification.json), [mechanical report](analysis/report.md).
+- Cost: 0.002832 analysis vCPU-h charged for the three timed computation jobs; 1.997168 remains of the 2.0 cap. No new subject execution. Human/agent reasoning effort unmeasured.
+- Disposition: completed pilot with a prespecified development signal, not a confirmed effect. Any C4 confirmation requires a separate protocol and fresh data. Existing readiness-board entries above are historical snapshots; this event is the current completion record.

@@ -1,0 +1,7 @@
+calibration plan regenerates identically
+schedule regenerates identically
+{"job": "c1v1-helpers-R-marker", "exit": 0, "timed_out": false, "elapsed_s": 0.378297, "stdout": "WROTE 67e4c7e63fd9", "cleanup_ok": true, "passed": true}
+{"job": "c1v1-helpers-R-check_timeout", "exit": null, "timed_out": true, "elapsed_s": 10.08536, "stdout": "ABSENT\nHOST 4af02a87c2ce", "cleanup_ok": true, "passed": true}
+{"job": "c1v1-helpers-L-marker", "exit": 0, "timed_out": false, "elapsed_s": 0.398149, "stdout": "WROTE de2217c27b7c", "cleanup_ok": true, "passed": true}
+{"job": "c1v1-helpers-L-check_timeout", "exit": null, "timed_out": true, "elapsed_s": 10.085746, "stdout": "ABSENT\nHOST a66749721ce4", "cleanup_ok": true, "passed": true}
+calibration helpers completed: 4 items; budget {"cap_vcpu_h": 6.0, "spent_vcpu_h": 1.282118, "reserved_vcpu_h": 0, "remaining_vcpu_h": 4.717882, "host_reservation_h": 1.956092}

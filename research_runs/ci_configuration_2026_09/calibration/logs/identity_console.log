@@ -1,0 +1,16 @@
+calibration plan regenerates identically
+schedule regenerates identically
+c1v1-identity-etcd5509-R-slotbad-a1 exit=0 elapsed=0.540651s
+c1v1-identity-etcd5509-R-slotbad-a2 exit=0 elapsed=0.469823s
+c1v1-identity-etcd5509-R-slotbad-a3 exit=0 elapsed=0.490304s
+c1v1-identity-etcd5509-R-slotok-a1 exit=0 elapsed=0.480823s
+c1v1-identity-etcd5509-R-slotok-a2 exit=0 elapsed=0.496568s
+c1v1-identity-etcd5509-R-slotok-a3 exit=0 elapsed=0.515956s
+c1v1-identity-etcd5509-L-slotbad-a1 exit=0 elapsed=0.474326s
+c1v1-identity-etcd5509-L-slotbad-a2 exit=0 elapsed=0.477283s
+c1v1-identity-etcd5509-L-slotbad-a3 exit=0 elapsed=0.479385s
+c1v1-identity-etcd5509-L-slotok-a1 exit=0 elapsed=0.496054s
+c1v1-identity-etcd5509-L-slotok-a2 exit=0 elapsed=0.46403s
+c1v1-identity-etcd5509-L-slotok-a3 exit=0 elapsed=0.483328s
+calibration identity completed: 12 items; budget {"cap_vcpu_h": 6.0, "spent_vcpu_h": 0.862801, "reserved_vcpu_h": 0, "remaining_vcpu_h": 5.137199, "host_reservation_h": 1.265051}
+exit=0

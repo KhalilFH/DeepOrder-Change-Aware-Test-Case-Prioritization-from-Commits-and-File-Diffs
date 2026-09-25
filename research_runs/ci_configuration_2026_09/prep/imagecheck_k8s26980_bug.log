@@ -1,0 +1,15 @@
+COMMIT=628af356b8c83f98ee3b50dfcf8b0250816a5581
+BLOB:Godeps/Godeps.json=980fd6aca303e97c4b9e2c6ab6e2ee283730b67d
+BLOB:pkg/controller/framework/processor_listener_test.go=ffd72d8fae243a1e221a574781a87ed2107aaf1a
+BLOB:pkg/controller/framework/shared_informer.go=ce9ddf2c7140ff2d9d9752ac8626cef1bb01a236
+PORCELAIN= M pkg/controller/framework/shared_informer.go
+TESTFILE:pkg/controller/framework/controller_test.go=b17aba4ab679e4518db1166466b7b7d2a68aa3c2
+TESTFILE:pkg/controller/framework/fake_controller_source_test.go=01269ce643544cccd4378621fbd4ae5c67e4fafb
+TESTFILE:pkg/controller/framework/processor_listener_test.go=ffd72d8fae243a1e221a574781a87ed2107aaf1a
+BINARY_SHA256=585070ec85ed5aef339f415c4f4dc8c90d67599631ad312f18eb786bd44d4cfb
+BINARY_BYTES=30436232
+GO_VERSION=go version go1.12.17 linux/amd64
+GOPATH_DEPS_DIGEST=e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+GOPATH_DEPS_FILES=0
+VENDOR_DIR=present
+END=1

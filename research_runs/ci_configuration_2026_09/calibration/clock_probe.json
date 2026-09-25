@@ -1,0 +1,23 @@
+{
+  "L": {
+    "charge_seq": 109,
+    "cleanup_ok": true,
+    "exit_status": 0,
+    "host_elapsed_s": 19.091367,
+    "host_over_vm_uptime": 0.9521878802992519,
+    "in_vm_sleep_s": 20,
+    "vm_uptime_delta_s": 20.05,
+    "vm_wall_delta_s": "18"
+  },
+  "R": {
+    "charge_seq": 108,
+    "cleanup_ok": true,
+    "exit_status": 0,
+    "host_elapsed_s": 19.086667,
+    "host_over_vm_uptime": 0.9519534663341644,
+    "in_vm_sleep_s": 20,
+    "vm_uptime_delta_s": 20.05,
+    "vm_wall_delta_s": "21"
+  },
+  "observed_utc": "2026-09-25T12:05:42.574266Z"
+}

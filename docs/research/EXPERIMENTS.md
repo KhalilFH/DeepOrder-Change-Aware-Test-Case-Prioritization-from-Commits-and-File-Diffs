@@ -34,3 +34,11 @@ Record material experiments here.
 - Result: none. No implementation, runtime checks, calibration or measured runs performed by the design-freeze pass.
 - Command: pending implementation and validation; no executable CLI is asserted.
 - Artifacts: [C1 package](../../research_runs/ci_configuration_2026_09/README.md), [analysis plan](../../research_runs/ci_configuration_2026_09/analysis_plan.md).
+
+#### EXC1 completion update — 2026-09-25
+
+- Status: 720 scheduled attempts already collected across batches A/B; post-collection annotation and frozen analysis completed and independently checked.
+- Identity: design 8/8 and executable launch freeze 71/71 match. Raw measured hashes unchanged; no implementation edits.
+- Result: C2 passes; C3 signals for etcd5509 P1/P3 only, in the direction of greater blocking under CPU limitation. All primary simultaneous intervals include zero. Acceptable variants passed 360/360; nuisance reduction remains unmeasured.
+- Interpretation: descriptive pilot and a fresh-confirmation candidate; no population or adaptive-assessor claim.
+- Artifacts: [review](../../research_runs/ci_configuration_2026_09/analysis_audit/POST_COLLECTION_REVIEW.md), [frozen analysis outputs](../../research_runs/ci_configuration_2026_09/analysis/report.md), [independent arithmetic](../../research_runs/ci_configuration_2026_09/analysis_audit/independent_verification.json).

@@ -1,0 +1,173 @@
+{
+  "method": "c1_harness/projection.py: Q0 mean durations (VM clock, ~5% longer than host) per variant; L uses max(Q0 mean, smoke L); overhead = max smoke create/inspect/remove overhead per subject; +2 s gap; R at 16, verified L at 2",
+  "per_subject": {
+    "etcd5509": {
+      "q0": {
+        "V_bad": {
+          "mean_s": 36.5371,
+          "max_s": 45.707,
+          "n": 20,
+          "fail_rate": 0.8
+        },
+        "V_ok": {
+          "mean_s": 0.66815,
+          "max_s": 0.744,
+          "n": 20,
+          "fail_rate": 0.0
+        }
+      },
+      "block_vcpu_h": {
+        "expected": 0.6468373833333334,
+        "conservative": 1.4294193,
+        "reservation": 2.76
+      }
+    },
+    "etcd7492": {
+      "q0": {
+        "V_bad": {
+          "mean_s": 5.64415,
+          "max_s": 50.492,
+          "n": 20,
+          "fail_rate": 0.1
+        },
+        "V_ok": {
+          "mean_s": 0.67195,
+          "max_s": 0.744,
+          "n": 20,
+          "fail_rate": 0.0
+        }
+      },
+      "block_vcpu_h": {
+        "expected": 0.17338643999999998,
+        "conservative": 1.50440172,
+        "reservation": 2.91
+      }
+    },
+    "grpc1859": {
+      "q0": {
+        "V_bad": {
+          "mean_s": 1.33785,
+          "max_s": 10.493,
+          "n": 20,
+          "fail_rate": 0.05
+        },
+        "V_ok": {
+          "mean_s": 0.8282,
+          "max_s": 0.883,
+          "n": 20,
+          "fail_rate": 0.0
+        }
+      },
+      "block_vcpu_h": {
+        "expected": 0.11127456000000001,
+        "conservative": 2.3318149050000003,
+        "reservation": 4.56
+      }
+    },
+    "grpc2391": {
+      "q0": {
+        "V_bad": {
+          "mean_s": 17.83775,
+          "max_s": 19.873,
+          "n": 20,
+          "fail_rate": 0.9
+        },
+        "V_ok": {
+          "mean_s": 0.6112,
+          "max_s": 0.675,
+          "n": 20,
+          "fail_rate": 0.0
+        }
+      },
+      "block_vcpu_h": {
+        "expected": 0.35528240999999994,
+        "conservative": 1.8784420800000001,
+        "reservation": 3.66
+      }
+    },
+    "istio17860": {
+      "q0": {
+        "V_bad": {
+          "mean_s": 5.36845,
+          "max_s": 5.414,
+          "n": 20,
+          "fail_rate": 1.0
+        },
+        "V_ok": {
+          "mean_s": 1.1046,
+          "max_s": 1.327,
+          "n": 20,
+          "fail_rate": 0.0
+        }
+      },
+      "block_vcpu_h": {
+        "expected": 0.17694795000000002,
+        "conservative": 1.4364951,
+        "reservation": 2.76
+      }
+    },
+    "k8s26980": {
+      "q0": {
+        "V_bad": {
+          "mean_s": 0.61855,
+          "max_s": 0.675,
+          "n": 20,
+          "fail_rate": 0.0
+        },
+        "V_ok": {
+          "mean_s": 0.6147,
+          "max_s": 0.653,
+          "n": 20,
+          "fail_rate": 0.0
+        }
+      },
+      "block_vcpu_h": {
+        "expected": 0.09751896000000002,
+        "conservative": 1.878730605,
+        "reservation": 3.66
+      }
+    }
+  },
+  "totals_10_blocks_vcpu_h": {
+    "expected": 15.612,
+    "conservative": 104.593,
+    "reservation": 203.1
+  },
+  "admission_simulation": {
+    "expected": {
+      "scenario": "expected",
+      "admitted_blocks": 60,
+      "total_blocks": 60,
+      "first_refused": null,
+      "projected_total": 15.612477033333331,
+      "remaining_after": 8.387522966666669
+    },
+    "conservative": {
+      "scenario": "conservative",
+      "admitted_blocks": 13,
+      "total_blocks": 60,
+      "first_refused": {
+        "block": 3,
+        "subject": "etcd7492",
+        "remaining": 1.6519732800000035,
+        "reservation": 2.91
+      },
+      "spent_at_refusal": 22.348026719999996
+    },
+    "reservation": {
+      "scenario": "reservation",
+      "admitted_blocks": 7,
+      "total_blocks": 60,
+      "first_refused": {
+        "block": 2,
+        "subject": "istio17860",
+        "remaining": 0.030000000000001137,
+        "reservation": 2.76
+      },
+      "spent_at_refusal": 23.97
+    }
+  },
+  "measured_cap_vcpu_h": 24.0,
+  "host_reservation_expected_h": 27.756,
+  "note": "host reservation counts 16 vCPUs for every job on both profiles; approximated here as expected capacity scaled from the (16+2) to (16+16) basis"
+}

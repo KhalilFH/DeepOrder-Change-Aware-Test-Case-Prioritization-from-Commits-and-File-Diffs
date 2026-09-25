@@ -2,6 +2,12 @@
 
 This document is the authoritative description of the project's current research direction.
 
+## Latest result — C1 post-collection review, 2026-09-25
+
+C1 collection is complete: 720/720 attempts, both batches. Frozen mechanical annotation and matched analysis have now run, with independent arithmetic checks. All 360 acceptable-variant attempts passed; no nuisance reduction was observed. C2 passes; the C3 development signal occurs only for etcd5509, where limited CPU increased supported blocking (P1 7/10 to 10/10; P3 5/10 to 7/10). All primary simultaneous intervals include zero. This supports considering fresh confirmation, not a confirmed configuration effect or an adaptive-system claim.
+
+See the [post-collection review](../../research_runs/ci_configuration_2026_09/analysis_audit/POST_COLLECTION_REVIEW.md) and [mechanical report](../../research_runs/ci_configuration_2026_09/analysis/report.md). This update supersedes the earlier pending-readiness status below. No new subject run, implementation change, commit or push occurred during analysis. C4 remains unstarted.
+
 ## Current routing update — 2026-09-25
 
 **Adopted next work:** C1, CPU configuration and defect visibility. The researcher requested design freeze and an implementation handoff. Read the [C1 entry point](../../research_runs/ci_configuration_2026_09/README.md) and [design freeze](../../research_runs/ci_configuration_2026_09/DESIGN_FREEZE.md). The design is frozen; implementation, current artifact readiness and operational launch validation remain pending. No C1 executions are claimed.

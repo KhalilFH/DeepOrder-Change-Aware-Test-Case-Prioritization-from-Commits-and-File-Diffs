@@ -1,0 +1,371 @@
+{
+  "study_id": "c1_ci_configuration_visibility_v1",
+  "first_structurally_ready_subject": "etcd5509",
+  "smoke": [
+    {
+      "position": 1,
+      "subject": "etcd5509",
+      "profile": "L",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-etcd5509-L-bad-a1"
+    },
+    {
+      "position": 2,
+      "subject": "etcd5509",
+      "profile": "L",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-etcd5509-L-ok-a1"
+    },
+    {
+      "position": 3,
+      "subject": "etcd5509",
+      "profile": "R",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-etcd5509-R-ok-a1"
+    },
+    {
+      "position": 4,
+      "subject": "etcd5509",
+      "profile": "R",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-etcd5509-R-bad-a1"
+    },
+    {
+      "position": 5,
+      "subject": "etcd7492",
+      "profile": "R",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-etcd7492-R-bad-a1"
+    },
+    {
+      "position": 6,
+      "subject": "etcd7492",
+      "profile": "L",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-etcd7492-L-bad-a1"
+    },
+    {
+      "position": 7,
+      "subject": "etcd7492",
+      "profile": "L",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-etcd7492-L-ok-a1"
+    },
+    {
+      "position": 8,
+      "subject": "etcd7492",
+      "profile": "R",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-etcd7492-R-ok-a1"
+    },
+    {
+      "position": 9,
+      "subject": "grpc1859",
+      "profile": "L",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-grpc1859-L-bad-a1"
+    },
+    {
+      "position": 10,
+      "subject": "grpc1859",
+      "profile": "L",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-grpc1859-L-ok-a1"
+    },
+    {
+      "position": 11,
+      "subject": "grpc1859",
+      "profile": "R",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-grpc1859-R-ok-a1"
+    },
+    {
+      "position": 12,
+      "subject": "grpc1859",
+      "profile": "R",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-grpc1859-R-bad-a1"
+    },
+    {
+      "position": 13,
+      "subject": "grpc2391",
+      "profile": "L",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-grpc2391-L-ok-a1"
+    },
+    {
+      "position": 14,
+      "subject": "grpc2391",
+      "profile": "R",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-grpc2391-R-ok-a1"
+    },
+    {
+      "position": 15,
+      "subject": "grpc2391",
+      "profile": "L",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-grpc2391-L-bad-a1"
+    },
+    {
+      "position": 16,
+      "subject": "grpc2391",
+      "profile": "R",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-grpc2391-R-bad-a1"
+    },
+    {
+      "position": 17,
+      "subject": "istio17860",
+      "profile": "L",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-istio17860-L-bad-a1"
+    },
+    {
+      "position": 18,
+      "subject": "istio17860",
+      "profile": "R",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-istio17860-R-bad-a1"
+    },
+    {
+      "position": 19,
+      "subject": "istio17860",
+      "profile": "L",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-istio17860-L-ok-a1"
+    },
+    {
+      "position": 20,
+      "subject": "istio17860",
+      "profile": "R",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-istio17860-R-ok-a1"
+    },
+    {
+      "position": 21,
+      "subject": "k8s26980",
+      "profile": "L",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-k8s26980-L-bad-a1"
+    },
+    {
+      "position": 22,
+      "subject": "k8s26980",
+      "profile": "R",
+      "variant": "bad",
+      "attempt_id": "c1v1-smoke-k8s26980-R-bad-a1"
+    },
+    {
+      "position": 23,
+      "subject": "k8s26980",
+      "profile": "L",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-k8s26980-L-ok-a1"
+    },
+    {
+      "position": 24,
+      "subject": "k8s26980",
+      "profile": "R",
+      "variant": "ok",
+      "attempt_id": "c1v1-smoke-k8s26980-R-ok-a1"
+    }
+  ],
+  "identity": [
+    {
+      "position": 1,
+      "subject": "etcd5509",
+      "profile": "R",
+      "slot": "bad",
+      "attempt": 1,
+      "attempt_id": "c1v1-identity-etcd5509-R-slotbad-a1"
+    },
+    {
+      "position": 2,
+      "subject": "etcd5509",
+      "profile": "R",
+      "slot": "bad",
+      "attempt": 2,
+      "attempt_id": "c1v1-identity-etcd5509-R-slotbad-a2"
+    },
+    {
+      "position": 3,
+      "subject": "etcd5509",
+      "profile": "R",
+      "slot": "bad",
+      "attempt": 3,
+      "attempt_id": "c1v1-identity-etcd5509-R-slotbad-a3"
+    },
+    {
+      "position": 4,
+      "subject": "etcd5509",
+      "profile": "R",
+      "slot": "ok",
+      "attempt": 1,
+      "attempt_id": "c1v1-identity-etcd5509-R-slotok-a1"
+    },
+    {
+      "position": 5,
+      "subject": "etcd5509",
+      "profile": "R",
+      "slot": "ok",
+      "attempt": 2,
+      "attempt_id": "c1v1-identity-etcd5509-R-slotok-a2"
+    },
+    {
+      "position": 6,
+      "subject": "etcd5509",
+      "profile": "R",
+      "slot": "ok",
+      "attempt": 3,
+      "attempt_id": "c1v1-identity-etcd5509-R-slotok-a3"
+    },
+    {
+      "position": 7,
+      "subject": "etcd5509",
+      "profile": "L",
+      "slot": "bad",
+      "attempt": 1,
+      "attempt_id": "c1v1-identity-etcd5509-L-slotbad-a1"
+    },
+    {
+      "position": 8,
+      "subject": "etcd5509",
+      "profile": "L",
+      "slot": "bad",
+      "attempt": 2,
+      "attempt_id": "c1v1-identity-etcd5509-L-slotbad-a2"
+    },
+    {
+      "position": 9,
+      "subject": "etcd5509",
+      "profile": "L",
+      "slot": "bad",
+      "attempt": 3,
+      "attempt_id": "c1v1-identity-etcd5509-L-slotbad-a3"
+    },
+    {
+      "position": 10,
+      "subject": "etcd5509",
+      "profile": "L",
+      "slot": "ok",
+      "attempt": 1,
+      "attempt_id": "c1v1-identity-etcd5509-L-slotok-a1"
+    },
+    {
+      "position": 11,
+      "subject": "etcd5509",
+      "profile": "L",
+      "slot": "ok",
+      "attempt": 2,
+      "attempt_id": "c1v1-identity-etcd5509-L-slotok-a2"
+    },
+    {
+      "position": 12,
+      "subject": "etcd5509",
+      "profile": "L",
+      "slot": "ok",
+      "attempt": 3,
+      "attempt_id": "c1v1-identity-etcd5509-L-slotok-a3"
+    }
+  ],
+  "direct": [
+    {
+      "position": 1,
+      "subject": "etcd5509",
+      "profile": "R",
+      "variant": "bad",
+      "policy": "P1",
+      "block": 101,
+      "trace_id": "c1v1-direct-etcd5509-R-bad-P1"
+    },
+    {
+      "position": 2,
+      "subject": "etcd5509",
+      "profile": "R",
+      "variant": "bad",
+      "policy": "P3",
+      "block": 102,
+      "trace_id": "c1v1-direct-etcd5509-R-bad-P3"
+    },
+    {
+      "position": 3,
+      "subject": "etcd5509",
+      "profile": "R",
+      "variant": "ok",
+      "policy": "P1",
+      "block": 103,
+      "trace_id": "c1v1-direct-etcd5509-R-ok-P1"
+    },
+    {
+      "position": 4,
+      "subject": "etcd5509",
+      "profile": "R",
+      "variant": "ok",
+      "policy": "P3",
+      "block": 104,
+      "trace_id": "c1v1-direct-etcd5509-R-ok-P3"
+    },
+    {
+      "position": 5,
+      "subject": "etcd5509",
+      "profile": "L",
+      "variant": "bad",
+      "policy": "P1",
+      "block": 105,
+      "trace_id": "c1v1-direct-etcd5509-L-bad-P1"
+    },
+    {
+      "position": 6,
+      "subject": "etcd5509",
+      "profile": "L",
+      "variant": "bad",
+      "policy": "P3",
+      "block": 106,
+      "trace_id": "c1v1-direct-etcd5509-L-bad-P3"
+    },
+    {
+      "position": 7,
+      "subject": "etcd5509",
+      "profile": "L",
+      "variant": "ok",
+      "policy": "P1",
+      "block": 107,
+      "trace_id": "c1v1-direct-etcd5509-L-ok-P1"
+    },
+    {
+      "position": 8,
+      "subject": "etcd5509",
+      "profile": "L",
+      "variant": "ok",
+      "policy": "P3",
+      "block": 108,
+      "trace_id": "c1v1-direct-etcd5509-L-ok-P3"
+    }
+  ],
+  "helpers": [
+    {
+      "profile": "R",
+      "step": "marker"
+    },
+    {
+      "profile": "R",
+      "step": "check_timeout"
+    },
+    {
+      "profile": "L",
+      "step": "marker"
+    },
+    {
+      "profile": "L",
+      "step": "check_timeout"
+    }
+  ],
+  "helper_timeout_s": 10,
+  "max_primitive_attempts": {
+    "smoke": 24,
+    "identity": 12,
+    "direct": 16,
+    "helpers": 4
+  }
+}

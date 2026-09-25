@@ -1,0 +1,133 @@
+{
+  "sealed_utc": "2026-09-25T16:04:25.928423+00:00",
+  "authority": "User requested verification and annotation/analysis after completed runs.",
+  "raw_ledger_sha256": {
+    "measured\\etcd5509__L.jsonl": "a8fbab6330a0973b6a2216dec7e7f22ad3bbe3b0a263c110075e9b1879ce125d",
+    "measured\\etcd5509__R.jsonl": "a24d480724f93245f1146e24760cd00beaaafc80783a9e430be405fb05663050",
+    "measured\\etcd7492__L.jsonl": "ac0fc51b532f611a684c355e336d3a20427ce7e53d12689f513a57502acc3006",
+    "measured\\etcd7492__R.jsonl": "76800a7206403d9898126534d0d096b3ade3df5a3ea99c12c9a6aa6dd64b9f8e",
+    "measured\\grpc1859__L.jsonl": "07e03ad229b04ad6c0e0db0b136cad82ded84ce3614e17fd82e46aecabd2386a",
+    "measured\\grpc1859__R.jsonl": "e95859c19dae08a778ab05c34d2baf69e4a7bd1a3dc9a2af77897b5e36f8d1f2",
+    "measured\\grpc2391__L.jsonl": "69d224d482540da73a1f93fbddd1828f31be0f575d9198f19729f3572134f109",
+    "measured\\grpc2391__R.jsonl": "5691cc87240e41dde42b533bb37346fb02f1447509603fbbd1693c99eaa756a3",
+    "measured\\istio17860__L.jsonl": "0a8963c7bfb25f227db72650407db4209c72f7a07cc63bbf2efcb41d3450edfa",
+    "measured\\istio17860__R.jsonl": "91555e7f8e416d97c561077cf29b7c9f0c286457851a60ef41fe9869addb1b54",
+    "measured\\k8s26980__L.jsonl": "5c9e54a0b699a690cab52c58e06749ce9a999300852abc58995f0c29c163eb52",
+    "measured\\k8s26980__R.jsonl": "3cf32d07cc9f0676c0cd03f31bddc91f4c999acdd5d24486eaecfc1ece1b8259"
+  },
+  "counts": {
+    "etcd5509__L.jsonl": 60,
+    "etcd5509__R.jsonl": 60,
+    "etcd7492__L.jsonl": 60,
+    "etcd7492__R.jsonl": 60,
+    "grpc1859__L.jsonl": 60,
+    "grpc1859__R.jsonl": 60,
+    "grpc2391__L.jsonl": 60,
+    "grpc2391__R.jsonl": 60,
+    "istio17860__L.jsonl": 60,
+    "istio17860__R.jsonl": 60,
+    "k8s26980__L.jsonl": 60,
+    "k8s26980__R.jsonl": 60
+  },
+  "scheduled_attempts": 720,
+  "unique_measured_attempts": 720,
+  "exact_schedule_identity_match": true,
+  "design_freeze_sha256": "087b338dc83dd9978811daf277b916d923776dcb810ad61f60e41a3988bff9fc",
+  "executable_freeze_sha256": "45c524f168f743ad211cb0d939e161c966cfdfc4c5fa956694f8c6233230070d",
+  "sessions": [
+    {
+      "kind": "session_end",
+      "outcome": "completed",
+      "prev_sha256": "f1ab1f0c654402da07433781202de2dd5df00ae104e05b10a8df87520ebedd02",
+      "seq": 62,
+      "session": "measured-A-2026-09-25T13:06:39.629330Z",
+      "sha256": "026cb9326b31c9ecb573cf497f0000d5f3b451011cd5f4a643fc19c0b921a483",
+      "utc": "2026-09-25T14:01:09.019969Z"
+    },
+    {
+      "kind": "session_end",
+      "outcome": "completed",
+      "prev_sha256": "1caa394ff29f812da8f857d805033af286564c049cb1e9c79938b07ff26ee1c7",
+      "seq": 101,
+      "session": "measured-B-2026-09-25T14:09:27.187634Z",
+      "sha256": "f24ed11c61da57b0e374c47fb185ea1e0f2c6432c193858144d7ee381098a019",
+      "utc": "2026-09-25T15:00:21.564946Z"
+    }
+  ],
+  "gate_a": [
+    {
+      "cost": {
+        "largest_block_reservation_vcpu_h": 4.56,
+        "measured_remaining_vcpu_h": 15.622683641111111,
+        "measured_spent_vcpu_h": 8.377316358888889,
+        "note": "the live block-admission guard still stops batch B if a reservation cannot be covered",
+        "projected_batch_b_vcpu_h_at_batch_a_rate": 8.377316358888889,
+        "projection_within_remaining": true
+      },
+      "integrity_passed": true,
+      "integrity_problems": [],
+      "kind": "gate_a",
+      "prev_sha256": "026cb9326b31c9ecb573cf497f0000d5f3b451011cd5f4a643fc19c0b921a483",
+      "seq": 63,
+      "sha256": "3e9ccdf33dd93657e922bf31d4aafa81c1cde355e11bdd80384aede10f3a5c39",
+      "subjects": [
+        {
+          "harness_invalid": 0,
+          "invalid_fraction_of_scheduled": 0.0,
+          "missing": 0,
+          "recorded": 60,
+          "scheduled_A": 60,
+          "stop_subject": false,
+          "subject": "etcd5509"
+        },
+        {
+          "harness_invalid": 0,
+          "invalid_fraction_of_scheduled": 0.0,
+          "missing": 0,
+          "recorded": 60,
+          "scheduled_A": 60,
+          "stop_subject": false,
+          "subject": "etcd7492"
+        },
+        {
+          "harness_invalid": 0,
+          "invalid_fraction_of_scheduled": 0.0,
+          "missing": 0,
+          "recorded": 60,
+          "scheduled_A": 60,
+          "stop_subject": false,
+          "subject": "grpc1859"
+        },
+        {
+          "harness_invalid": 0,
+          "invalid_fraction_of_scheduled": 0.0,
+          "missing": 0,
+          "recorded": 60,
+          "scheduled_A": 60,
+          "stop_subject": false,
+          "subject": "grpc2391"
+        },
+        {
+          "harness_invalid": 0,
+          "invalid_fraction_of_scheduled": 0.0,
+          "missing": 0,
+          "recorded": 60,
+          "scheduled_A": 60,
+          "stop_subject": false,
+          "subject": "istio17860"
+        },
+        {
+          "harness_invalid": 0,
+          "invalid_fraction_of_scheduled": 0.0,
+          "missing": 0,
+          "recorded": 60,
+          "scheduled_A": 60,
+          "stop_subject": false,
+          "subject": "k8s26980"
+        }
+      ],
+      "utc": "2026-09-25T14:01:28.506139Z"
+    }
+  ],
+  "note": "No outcome labels changed; raw files remain immutable; independent arithmetic follows frozen analysis."
+}

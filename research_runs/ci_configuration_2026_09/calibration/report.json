@@ -1,0 +1,632 @@
+{
+  "stages": {
+    "smoke": {
+      "records": 24,
+      "unique_attempt_ids": 24,
+      "profile_verified": 24,
+      "quota_matches_profile": 24,
+      "gomaxprocs_env_ok": 24,
+      "cleanup_verified": 24,
+      "outer_timeouts": 0,
+      "harness_invalid": 0,
+      "acceptable_variant_focal": [],
+      "identity_slot_focal": [],
+      "category_counts": [
+        {
+          "subject": "etcd5509",
+          "profile": "L",
+          "version": "V_bad",
+          "categories": "FOCAL_DEFECT_WITNESS",
+          "n": 1
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "L",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "R",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "R",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "etcd7492",
+          "profile": "L",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "etcd7492",
+          "profile": "L",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "etcd7492",
+          "profile": "R",
+          "version": "V_bad",
+          "categories": "FOCAL_DEFECT_WITNESS",
+          "n": 1
+        },
+        {
+          "subject": "etcd7492",
+          "profile": "R",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "grpc1859",
+          "profile": "L",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "grpc1859",
+          "profile": "L",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "grpc1859",
+          "profile": "R",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "grpc1859",
+          "profile": "R",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "grpc2391",
+          "profile": "L",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "grpc2391",
+          "profile": "L",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "grpc2391",
+          "profile": "R",
+          "version": "V_bad",
+          "categories": "FOCAL_DEFECT_WITNESS",
+          "n": 1
+        },
+        {
+          "subject": "grpc2391",
+          "profile": "R",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "istio17860",
+          "profile": "L",
+          "version": "V_bad",
+          "categories": "FOCAL_DEFECT_WITNESS",
+          "n": 1
+        },
+        {
+          "subject": "istio17860",
+          "profile": "L",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "istio17860",
+          "profile": "R",
+          "version": "V_bad",
+          "categories": "FOCAL_DEFECT_WITNESS",
+          "n": 1
+        },
+        {
+          "subject": "istio17860",
+          "profile": "R",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "k8s26980",
+          "profile": "L",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "k8s26980",
+          "profile": "L",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "k8s26980",
+          "profile": "R",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "k8s26980",
+          "profile": "R",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 1
+        }
+      ],
+      "attempt_elapsed_s": {
+        "min": 0.409035,
+        "max": 47.277372
+      }
+    },
+    "identity": {
+      "records": 12,
+      "unique_attempt_ids": 12,
+      "profile_verified": 12,
+      "quota_matches_profile": 12,
+      "gomaxprocs_env_ok": 12,
+      "cleanup_verified": 12,
+      "outer_timeouts": 0,
+      "harness_invalid": 0,
+      "acceptable_variant_focal": [],
+      "identity_slot_focal": [],
+      "category_counts": [
+        {
+          "subject": "etcd5509",
+          "profile": "L",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 3
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "L",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 3
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "R",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 3
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "R",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 3
+        }
+      ],
+      "attempt_elapsed_s": {
+        "min": 0.46403,
+        "max": 0.540651
+      }
+    },
+    "direct": {
+      "records": 8,
+      "unique_attempt_ids": 8,
+      "profile_verified": 8,
+      "quota_matches_profile": 8,
+      "gomaxprocs_env_ok": 8,
+      "cleanup_verified": 8,
+      "outer_timeouts": 0,
+      "harness_invalid": 0,
+      "acceptable_variant_focal": [],
+      "identity_slot_focal": [],
+      "category_counts": [
+        {
+          "subject": "etcd5509",
+          "profile": "L",
+          "version": "V_bad",
+          "categories": "FOCAL_DEFECT_WITNESS",
+          "n": 1
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "L",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "L",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 2
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "R",
+          "version": "V_bad",
+          "categories": "FOCAL_DEFECT_WITNESS",
+          "n": 1
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "R",
+          "version": "V_bad",
+          "categories": "PASS",
+          "n": 1
+        },
+        {
+          "subject": "etcd5509",
+          "profile": "R",
+          "version": "V_ok",
+          "categories": "PASS",
+          "n": 2
+        }
+      ],
+      "attempt_elapsed_s": {
+        "min": 0.45618,
+        "max": 42.396597
+      }
+    }
+  },
+  "direct_traces": [
+    {
+      "trace_id": "c1v1-direct-etcd5509-R-bad-P1",
+      "policy": "P1",
+      "profile": "R",
+      "variant": "bad",
+      "executed": [
+        2
+      ],
+      "ledger_prefix": [
+        2
+      ],
+      "direct_decision": "BLOCK",
+      "replayed_decision": "BLOCK",
+      "decision_match": true,
+      "stopping_rule_respected": true,
+      "attempt_ids": [
+        "c1v1-direct-etcd5509-R-bad-P1-a1"
+      ]
+    },
+    {
+      "trace_id": "c1v1-direct-etcd5509-R-bad-P3",
+      "policy": "P3",
+      "profile": "R",
+      "variant": "bad",
+      "executed": [
+        0
+      ],
+      "ledger_prefix": [
+        0
+      ],
+      "direct_decision": "ACCEPT",
+      "replayed_decision": "ACCEPT",
+      "decision_match": true,
+      "stopping_rule_respected": true,
+      "attempt_ids": [
+        "c1v1-direct-etcd5509-R-bad-P3-a1"
+      ]
+    },
+    {
+      "trace_id": "c1v1-direct-etcd5509-R-ok-P1",
+      "policy": "P1",
+      "profile": "R",
+      "variant": "ok",
+      "executed": [
+        0
+      ],
+      "ledger_prefix": [
+        0
+      ],
+      "direct_decision": "ACCEPT",
+      "replayed_decision": "ACCEPT",
+      "decision_match": true,
+      "stopping_rule_respected": true,
+      "attempt_ids": [
+        "c1v1-direct-etcd5509-R-ok-P1-a1"
+      ]
+    },
+    {
+      "trace_id": "c1v1-direct-etcd5509-R-ok-P3",
+      "policy": "P3",
+      "profile": "R",
+      "variant": "ok",
+      "executed": [
+        0
+      ],
+      "ledger_prefix": [
+        0
+      ],
+      "direct_decision": "ACCEPT",
+      "replayed_decision": "ACCEPT",
+      "decision_match": true,
+      "stopping_rule_respected": true,
+      "attempt_ids": [
+        "c1v1-direct-etcd5509-R-ok-P3-a1"
+      ]
+    },
+    {
+      "trace_id": "c1v1-direct-etcd5509-L-bad-P1",
+      "policy": "P1",
+      "profile": "L",
+      "variant": "bad",
+      "executed": [
+        2
+      ],
+      "ledger_prefix": [
+        2
+      ],
+      "direct_decision": "BLOCK",
+      "replayed_decision": "BLOCK",
+      "decision_match": true,
+      "stopping_rule_respected": true,
+      "attempt_ids": [
+        "c1v1-direct-etcd5509-L-bad-P1-a1"
+      ]
+    },
+    {
+      "trace_id": "c1v1-direct-etcd5509-L-bad-P3",
+      "policy": "P3",
+      "profile": "L",
+      "variant": "bad",
+      "executed": [
+        0
+      ],
+      "ledger_prefix": [
+        0
+      ],
+      "direct_decision": "ACCEPT",
+      "replayed_decision": "ACCEPT",
+      "decision_match": true,
+      "stopping_rule_respected": true,
+      "attempt_ids": [
+        "c1v1-direct-etcd5509-L-bad-P3-a1"
+      ]
+    },
+    {
+      "trace_id": "c1v1-direct-etcd5509-L-ok-P1",
+      "policy": "P1",
+      "profile": "L",
+      "variant": "ok",
+      "executed": [
+        0
+      ],
+      "ledger_prefix": [
+        0
+      ],
+      "direct_decision": "ACCEPT",
+      "replayed_decision": "ACCEPT",
+      "decision_match": true,
+      "stopping_rule_respected": true,
+      "attempt_ids": [
+        "c1v1-direct-etcd5509-L-ok-P1-a1"
+      ]
+    },
+    {
+      "trace_id": "c1v1-direct-etcd5509-L-ok-P3",
+      "policy": "P3",
+      "profile": "L",
+      "variant": "ok",
+      "executed": [
+        0
+      ],
+      "ledger_prefix": [
+        0
+      ],
+      "direct_decision": "ACCEPT",
+      "replayed_decision": "ACCEPT",
+      "decision_match": true,
+      "stopping_rule_respected": true,
+      "attempt_ids": [
+        "c1v1-direct-etcd5509-L-ok-P3-a1"
+      ]
+    }
+  ],
+  "helpers": [
+    {
+      "job": "c1v1-helpers-R-marker",
+      "profile": "R",
+      "step": "marker",
+      "exit": 0,
+      "timed_out": false,
+      "elapsed_s": 0.378297,
+      "stdout": "WROTE 67e4c7e63fd9",
+      "cleanup_ok": true,
+      "profile_verified": true,
+      "passed": true
+    },
+    {
+      "job": "c1v1-helpers-R-check_timeout",
+      "profile": "R",
+      "step": "check_timeout",
+      "exit": null,
+      "timed_out": true,
+      "elapsed_s": 10.08536,
+      "stdout": "ABSENT\nHOST 4af02a87c2ce",
+      "cleanup_ok": true,
+      "profile_verified": true,
+      "passed": true
+    },
+    {
+      "job": "c1v1-helpers-L-marker",
+      "profile": "L",
+      "step": "marker",
+      "exit": 0,
+      "timed_out": false,
+      "elapsed_s": 0.398149,
+      "stdout": "WROTE de2217c27b7c",
+      "cleanup_ok": true,
+      "profile_verified": true,
+      "passed": true
+    },
+    {
+      "job": "c1v1-helpers-L-check_timeout",
+      "profile": "L",
+      "step": "check_timeout",
+      "exit": null,
+      "timed_out": true,
+      "elapsed_s": 10.085746,
+      "stdout": "ABSENT\nHOST a66749721ce4",
+      "cleanup_ok": true,
+      "profile_verified": true,
+      "passed": true
+    }
+  ],
+  "session_probes": [
+    {
+      "tag": "cal-smoke-2026-09-25T12:01:06.226512Z",
+      "stage": "validation",
+      "passed": true,
+      "summary": {
+        "L": {
+          "cpu_max": "200000 100000",
+          "observed_cpus": 2.01,
+          "problems": [],
+          "throttled_periods": 30
+        },
+        "R": {
+          "cpu_max": "max 100000",
+          "observed_cpus": 3.723,
+          "problems": [],
+          "throttled_periods": 0
+        }
+      }
+    },
+    {
+      "tag": "cal-identity-2026-09-25T12:05:54.682248Z",
+      "stage": "validation",
+      "passed": true,
+      "summary": {
+        "L": {
+          "cpu_max": "200000 100000",
+          "observed_cpus": 2.024,
+          "problems": [],
+          "throttled_periods": 30
+        },
+        "R": {
+          "cpu_max": "max 100000",
+          "observed_cpus": 3.745,
+          "problems": [],
+          "throttled_periods": 0
+        }
+      }
+    },
+    {
+      "tag": "cal-direct-2026-09-25T12:06:52.165638Z",
+      "stage": "validation",
+      "passed": true,
+      "summary": {
+        "L": {
+          "cpu_max": "200000 100000",
+          "observed_cpus": 2.016,
+          "problems": [],
+          "throttled_periods": 30
+        },
+        "R": {
+          "cpu_max": "max 100000",
+          "observed_cpus": 3.733,
+          "problems": [],
+          "throttled_periods": 0
+        }
+      }
+    },
+    {
+      "tag": "cal-helpers-2026-09-25T12:09:31.756704Z",
+      "stage": "validation",
+      "passed": true,
+      "summary": {
+        "L": {
+          "cpu_max": "200000 100000",
+          "observed_cpus": 2.01,
+          "problems": [],
+          "throttled_periods": 30
+        },
+        "R": {
+          "cpu_max": "max 100000",
+          "observed_cpus": 3.735,
+          "problems": [],
+          "throttled_periods": 0
+        }
+      }
+    }
+  ],
+  "stops": [],
+  "budget": {
+    "preparation": {
+      "cap_vcpu_h": 8.0,
+      "spent_vcpu_h": 0.257949,
+      "reserved_vcpu_h": 0,
+      "remaining_vcpu_h": 7.742051,
+      "host_reservation_h": 0.257949
+    },
+    "validation": {
+      "cap_vcpu_h": 6.0,
+      "spent_vcpu_h": 1.282118,
+      "reserved_vcpu_h": 0,
+      "remaining_vcpu_h": 4.717882,
+      "host_reservation_h": 1.956092
+    },
+    "measured": {
+      "cap_vcpu_h": 24.0,
+      "spent_vcpu_h": 0,
+      "reserved_vcpu_h": 0,
+      "remaining_vcpu_h": 24.0,
+      "host_reservation_h": 0
+    },
+    "analysis": {
+      "cap_vcpu_h": 2.0,
+      "spent_vcpu_h": 0,
+      "reserved_vcpu_h": 0,
+      "remaining_vcpu_h": 2.0,
+      "host_reservation_h": 0
+    }
+  },
+  "clock_probe": {
+    "L": {
+      "charge_seq": 109,
+      "cleanup_ok": true,
+      "exit_status": 0,
+      "host_elapsed_s": 19.091367,
+      "host_over_vm_uptime": 0.9521878802992519,
+      "in_vm_sleep_s": 20,
+      "vm_uptime_delta_s": 20.05,
+      "vm_wall_delta_s": "18"
+    },
+    "R": {
+      "charge_seq": 108,
+      "cleanup_ok": true,
+      "exit_status": 0,
+      "host_elapsed_s": 19.086667,
+      "host_over_vm_uptime": 0.9519534663341644,
+      "in_vm_sleep_s": 20,
+      "vm_uptime_delta_s": 20.05,
+      "vm_wall_delta_s": "21"
+    },
+    "observed_utc": "2026-09-25T12:05:42.574266Z"
+  }
+}

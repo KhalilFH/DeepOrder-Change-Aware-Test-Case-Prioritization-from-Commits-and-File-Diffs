@@ -1,0 +1,5 @@
+# C1 code is hashed into FREEZE.sha256; keep checkout bytes LF so raw and
+# LF-normalized digests agree on every platform.
+*.py text eol=lf
+*.json text eol=lf
+*.md text eol=lf

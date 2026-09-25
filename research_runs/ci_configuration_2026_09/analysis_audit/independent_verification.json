@@ -1,0 +1,174 @@
+{
+  "status": "PASS",
+  "scope": "All primary numerators, contrasts, batch directions and C3 flags independently recomputed; raw bytes, order and recorded profile evidence verified. Causal oracle validity and confidence-interval numerical implementation are not independently re-established here.",
+  "raw_attempts": 720,
+  "categories": {
+    "PASS": 540,
+    "FOCAL_DEFECT_WITNESS": 180
+  },
+  "subjects": [
+    {
+      "subject": "etcd5509",
+      "counts": {
+        "R/P1": 7,
+        "R/P3": 5,
+        "L/P1": 10,
+        "L/P3": 7
+      },
+      "masked_P3_blocks": {
+        "R": 2,
+        "L": 3
+      },
+      "contrasts": {
+        "P1": {
+          "delta": -0.3,
+          "batch_A": -0.4,
+          "batch_B": -0.2,
+          "C3_signal": true
+        },
+        "P3": {
+          "delta": -0.2,
+          "batch_A": -0.2,
+          "batch_B": -0.2,
+          "C3_signal": true
+        }
+      }
+    },
+    {
+      "subject": "etcd7492",
+      "counts": {
+        "R/P1": 4,
+        "R/P3": 0,
+        "L/P1": 0,
+        "L/P3": 0
+      },
+      "masked_P3_blocks": {
+        "R": 4,
+        "L": 0
+      },
+      "contrasts": {
+        "P1": {
+          "delta": 0.4,
+          "batch_A": 0.8,
+          "batch_B": 0.0,
+          "C3_signal": false
+        },
+        "P3": {
+          "delta": 0.0,
+          "batch_A": 0.0,
+          "batch_B": 0.0,
+          "C3_signal": false
+        }
+      }
+    },
+    {
+      "subject": "grpc1859",
+      "counts": {
+        "R/P1": 2,
+        "R/P3": 0,
+        "L/P1": 0,
+        "L/P3": 0
+      },
+      "masked_P3_blocks": {
+        "R": 2,
+        "L": 0
+      },
+      "contrasts": {
+        "P1": {
+          "delta": 0.2,
+          "batch_A": 0.0,
+          "batch_B": 0.4,
+          "C3_signal": false
+        },
+        "P3": {
+          "delta": 0.0,
+          "batch_A": 0.0,
+          "batch_B": 0.0,
+          "C3_signal": false
+        }
+      }
+    },
+    {
+      "subject": "grpc2391",
+      "counts": {
+        "R/P1": 9,
+        "R/P3": 8,
+        "L/P1": 8,
+        "L/P3": 7
+      },
+      "masked_P3_blocks": {
+        "R": 1,
+        "L": 1
+      },
+      "contrasts": {
+        "P1": {
+          "delta": 0.1,
+          "batch_A": 0.2,
+          "batch_B": 0.0,
+          "C3_signal": false
+        },
+        "P3": {
+          "delta": 0.1,
+          "batch_A": 0.2,
+          "batch_B": 0.0,
+          "C3_signal": false
+        }
+      }
+    },
+    {
+      "subject": "istio17860",
+      "counts": {
+        "R/P1": 10,
+        "R/P3": 10,
+        "L/P1": 10,
+        "L/P3": 10
+      },
+      "masked_P3_blocks": {
+        "R": 0,
+        "L": 0
+      },
+      "contrasts": {
+        "P1": {
+          "delta": 0.0,
+          "batch_A": 0.0,
+          "batch_B": 0.0,
+          "C3_signal": false
+        },
+        "P3": {
+          "delta": 0.0,
+          "batch_A": 0.0,
+          "batch_B": 0.0,
+          "C3_signal": false
+        }
+      }
+    },
+    {
+      "subject": "k8s26980",
+      "counts": {
+        "R/P1": 0,
+        "R/P3": 0,
+        "L/P1": 0,
+        "L/P3": 0
+      },
+      "masked_P3_blocks": {
+        "R": 0,
+        "L": 0
+      },
+      "contrasts": {
+        "P1": {
+          "delta": 0.0,
+          "batch_A": 0.0,
+          "batch_B": 0.0,
+          "C3_signal": false
+        },
+        "P3": {
+          "delta": 0.0,
+          "batch_A": 0.0,
+          "batch_B": 0.0,
+          "C3_signal": false
+        }
+      }
+    }
+  ],
+  "source_script_sha256": "f40241cfd3ab705fb096be780a76d0b466cffb98825ec53496277cf223d045ba"
+}

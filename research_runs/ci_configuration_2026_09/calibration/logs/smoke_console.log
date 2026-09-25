@@ -1,0 +1,28 @@
+calibration plan regenerates identically
+schedule regenerates identically
+c1v1-smoke-etcd5509-L-bad-a1 exit=2 elapsed=42.51582s timed_out=False
+c1v1-smoke-etcd5509-L-ok-a1 exit=0 elapsed=0.576533s timed_out=False
+c1v1-smoke-etcd5509-R-ok-a1 exit=0 elapsed=0.499105s timed_out=False
+c1v1-smoke-etcd5509-R-bad-a1 exit=0 elapsed=0.523301s timed_out=False
+c1v1-smoke-etcd7492-R-bad-a1 exit=2 elapsed=47.277372s timed_out=False
+c1v1-smoke-etcd7492-L-bad-a1 exit=0 elapsed=0.443111s timed_out=False
+c1v1-smoke-etcd7492-L-ok-a1 exit=0 elapsed=0.524276s timed_out=False
+c1v1-smoke-etcd7492-R-ok-a1 exit=0 elapsed=0.480886s timed_out=False
+c1v1-smoke-grpc1859-L-bad-a1 exit=0 elapsed=0.710577s timed_out=False
+c1v1-smoke-grpc1859-L-ok-a1 exit=0 elapsed=0.686591s timed_out=False
+c1v1-smoke-grpc1859-R-ok-a1 exit=0 elapsed=0.550712s timed_out=False
+c1v1-smoke-grpc1859-R-bad-a1 exit=0 elapsed=0.599681s timed_out=False
+c1v1-smoke-grpc2391-L-ok-a1 exit=0 elapsed=0.482131s timed_out=False
+c1v1-smoke-grpc2391-R-ok-a1 exit=0 elapsed=0.409035s timed_out=False
+c1v1-smoke-grpc2391-L-bad-a1 exit=0 elapsed=0.471287s timed_out=False
+c1v1-smoke-grpc2391-R-bad-a1 exit=1 elapsed=19.186796s timed_out=False
+c1v1-smoke-istio17860-L-bad-a1 exit=1 elapsed=5.184427s timed_out=False
+c1v1-smoke-istio17860-R-bad-a1 exit=1 elapsed=5.060844s timed_out=False
+c1v1-smoke-istio17860-L-ok-a1 exit=0 elapsed=0.982276s timed_out=False
+c1v1-smoke-istio17860-R-ok-a1 exit=0 elapsed=0.924302s timed_out=False
+c1v1-smoke-k8s26980-L-bad-a1 exit=0 elapsed=0.505288s timed_out=False
+c1v1-smoke-k8s26980-R-bad-a1 exit=0 elapsed=0.466865s timed_out=False
+c1v1-smoke-k8s26980-L-ok-a1 exit=0 elapsed=0.474848s timed_out=False
+c1v1-smoke-k8s26980-R-ok-a1 exit=0 elapsed=0.413636s timed_out=False
+calibration smoke completed: 24 items; budget {"cap_vcpu_h": 6.0, "spent_vcpu_h": 0.560553, "reserved_vcpu_h": 0, "remaining_vcpu_h": 5.439447, "host_reservation_h": 0.890849}
+exit=0
