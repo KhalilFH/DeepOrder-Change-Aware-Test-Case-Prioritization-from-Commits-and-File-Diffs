@@ -1,0 +1,18 @@
+scanned 50,000 members, 2.67 GB read, 10s, kept 1
+scanned 100,000 members, 4.39 GB read, 23s, kept 7594
+scanned 150,000 members, 5.96 GB read, 30s, kept 7594
+scanned 200,000 members, 8.28 GB read, 43s, kept 7594
+scanned 250,000 members, 12.00 GB read, 56s, kept 7594
+scanned 300,000 members, 15.61 GB read, 74s, kept 7594
+scanned 350,000 members, 16.65 GB read, 80s, kept 7594
+{
+  "archive": "TCP-CI-dataset.tar.gz",
+  "archive_bytes": 16978768994,
+  "archive_sha256": "6c73c9b826ff777ab569cca88859ec86176ac76e8d3cffeb739832958ef74087",
+  "filter": "fetch_airavata_slice.want @25eb6b7, SUBJECT=airavata, no analysis/, no build_logs/",
+  "members_scanned": 366023,
+  "bundled_git_found": true,
+  "extracted_count": 7594,
+  "elapsed_sec": 81.7
+}
+exit=0

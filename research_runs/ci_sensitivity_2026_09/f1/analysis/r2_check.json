@@ -1,0 +1,18 @@
+{
+  "committed_report": "inputs/step3_report_25eb6b7.json",
+  "rerun_report": "r2_run/step3_report_rerun.json",
+  "fields_compared": [
+    "m",
+    "n",
+    "apfd_hist",
+    "apfd_t0"
+  ],
+  "tolerance": 1e-09,
+  "n_cycles_committed": 82,
+  "n_cycles_rerun": 82,
+  "cohort_cycles": 30,
+  "cohort_mismatches": [],
+  "all_cycle_mismatches": [],
+  "ranking_self_consistency_mismatches": [],
+  "R2_PASS": true
+}

@@ -516,3 +516,27 @@ Every future execution pass writes its recipes, frozen protocol, runner and per-
 - The `V_bad` outcome (0/20 counted, 0/5 exploratory) is host-specific. The explanation for the skew (Go's `runnext` hand-off favouring the last-started goroutine) is source reasoning, not measured.
 - The Docker images are not preserved; the recipes and per-attempt ledgers are, in `task5_artifacts/k8s26980/` (ledger A18).
 - The `--family-alpha 0.025` choice (E1 AMENDMENTS §6.2) still awaits the researcher's acceptance.
+
+---
+
+# Addendum v10 — 2026-09-25 (append-only; entries above, including Addenda v2–v9, are historical and unchanged)
+
+- Addendum identifier: `ci_policy_sensitivity_resource_ledger_2026-09-25_v10`
+- Scope: accounting for the F1 fallback audit that G1b triggered (A28).
+- Full record: `f1/report.md` (SHA-256 `42168004779048342462493db0586b97447cb0339ac5c5f7d2f9ab159c9f8cbe`; `f1/` is stored `-text`), under the frozen `f1/protocol.md`.
+- The accounting rule is unchanged, and nothing in A1–A29 is rewritten.
+
+## A30. F1 pass
+
+| Item | Value | Evidence basis |
+|---|---|---|
+| Authority | researcher's "start F1" and "open it and do the work" (R2), 2026-09-25 | `f1/recovery_search.md` |
+| F1 window | `2026-09-25T09:50:16.856Z` → report at about `10:08Z` | `f1/f1_start_utc.txt`, `f1/r2_run/*_utc.txt` |
+| Compute | **EXACT for the timed steps:** extraction 81.9 s, schema generation 77.9 s, step 3 55.2 s. Step 1, the pip install and Analyses A/B are untimed and each took seconds. Total ≈ **0.06** allocated vCPU-h (1-vCPU convention), 0.96 on the 16-vCPU basis | timestamps |
+| F1 cap | 10 allocated vCPU-h and three researcher-days; neither approached | plan §9 |
+| Human hours | **UNKNOWN** | accounting rule |
+| Downloads and installs | pip packages from PyPI into an isolated venv outside the repository (`f1/r2_run/pip_freeze.txt`). The TCP-CI archive was already on disk; no clone was needed | `f1/recovery_search.md` |
+| Outcome | rankings recovered by R2 (82/82 cycles reproduced exactly). The Airavata null is **stable** under the declared fault mappings; its sign is not (M1 −0.0061, M2 +0.0007). There is a demonstrated evidence gap in the aggregate-only record | `f1/report.md` |
+
+- **Cumulative compute** on each stage's own basis: Q0 ≈1.353, E1 12.71, F1 ≈0.06.
+- **Plan total:** ≈14.1 of the 160 allocated vCPU-hour ceiling. This mixes bases, as A25 and the feasibility report note.
