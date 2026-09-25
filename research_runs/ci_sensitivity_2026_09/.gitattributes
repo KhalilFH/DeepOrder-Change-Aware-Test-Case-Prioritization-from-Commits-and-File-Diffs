@@ -9,3 +9,9 @@ candidate_cards.md -text
 # Their recorded hashes are of the stored LF form, so they are also kept byte-for-byte.
 task5_grpc1859_restoration.md -text
 task_c3_candidate_acquisition.md -text
+# Hashed in resource_ledger.md Addendum v8 (stored LF form), kept byte-for-byte.
+task5_grpc2391_restoration.md -text
+task5_istio17860_restoration.md -text
+task_c4_candidate_acquisition.md -text
+# C-06 Task 5 record, kept byte-for-byte for a later ledger hash.
+task5_k8s26980_restoration.md -text

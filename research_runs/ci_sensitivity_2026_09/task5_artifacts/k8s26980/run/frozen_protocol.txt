@@ -1,0 +1,21 @@
+Q0 frozen execution protocol - kubernetes-26980 (card C-06)
+Frozen 2026-09-25T09:06:43Z, after uncounted exploratory runs, BEFORE any counted attempt.
+  image_bad      = k8s26980-bug  sha256:8a215c592956b0f99ff977285822ffcbc3116d1ff7fab1da692b0e67d28bafaf
+                   (V_bad: parent 98f0d22b shared_informer.go blob ce9ddf2c + fix test blob ffd72d8f, unchanged)
+  image_ok       = k8s26980-fix  sha256:6c93e46a3848354353a72d545dc782257d620432c07d3497ded117476f75d5d4
+                   (V_ok : merge 628af356, shared_informer.go blob c557bf97, test blob ffd72d8f)
+  toolchain      = golang:1.12 (go1.12.17), GOPATH mode, vendored deps (Godeps.json blob 980fd6ac on both)
+  workdir        = /go/src/k8s.io/kubernetes/pkg/controller/framework
+  command        = /go/gobench.test -test.v -test.count 1 -test.run '^TestPopReleaseLock$'
+                   -test.timeout 60s   (the card's provisional values, unchanged)
+  outer timeout  = 90 s (below the plan's 120 s attempt ceiling)
+  scheduler env  = Docker default; no -test.cpu, GOMAXPROCS, load or stress setting (container sees 16 CPUs)
+  reset          = fresh `docker run --rm` per attempt; no state persists between attempts
+  concurrency    = strictly one job at a time
+  batches        = 10 V_bad, 10 V_ok, then 10 more V_bad and 10 more V_ok regardless of outcomes
+  signature (a)  = '--- FAIL: TestPopReleaseLock' together with 'Timeout after 30s' (card C-06, unchanged)
+  PASS           = exit 0 and '--- PASS: TestPopReleaseLock'
+  other outcomes = UNRESOLVED (test-timeout dump, panic, other failure) / HARNESS_INVALID
+                   (no '=== RUN   TestPopReleaseLock' line, docker error) per the frozen categories
+  exploratory    = 2 V_ok (both PASS), 5 V_bad (all PASS, ~0.6 s), timing/ ; not counted.
+                   The exploratory V_bad passes did NOT change any setting above.

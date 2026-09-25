@@ -1,0 +1,56 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from bug.Dockerfile
+#1 transferring dockerfile: 1.15kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.12
+#2 DONE 0.6s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/9] FROM docker.io/library/golang:1.12@sha256:d0e79a9c39cdb3d71cc45fec929d1308d50420b79201467ec602b1b80cc314a8
+#4 resolve docker.io/library/golang:1.12@sha256:d0e79a9c39cdb3d71cc45fec929d1308d50420b79201467ec602b1b80cc314a8 0.0s done
+#4 DONE 0.0s
+
+#5 [2/9] RUN git init -q /go/src/k8s.io/kubernetes
+#5 CACHED
+
+#6 [3/9] WORKDIR /go/src/k8s.io/kubernetes
+#6 CACHED
+
+#7 [4/9] RUN git remote add origin https://github.com/kubernetes/kubernetes.git &&     git fetch -q --depth 1 origin 628af356b8c83f98ee3b50dfcf8b0250816a5581 &&     git checkout -q FETCH_HEAD
+#7 CACHED
+
+#8 [internal] load build context
+#8 transferring context: 1.26kB done
+#8 DONE 0.0s
+
+#9 [5/9] COPY bug_patch.diff /tmp/bug_patch.diff
+#9 DONE 0.2s
+
+#10 [6/9] RUN git apply /tmp/bug_patch.diff
+#10 DONE 0.2s
+
+#11 [7/9] RUN go test ./pkg/controller/framework -c -o /go/gobench.test
+#11 DONE 8.1s
+
+#12 [8/9] RUN { go version; git rev-parse HEAD; git hash-object pkg/controller/framework/shared_informer.go pkg/controller/framework/processor_listener_test.go Godeps/Godeps.json; } > /go/blob_check.txt
+#12 DONE 0.3s
+
+#13 [9/9] WORKDIR /go/src/k8s.io/kubernetes/pkg/controller/framework
+#13 DONE 0.0s
+
+#14 exporting to image
+#14 exporting layers
+#14 exporting layers 1.9s done
+#14 exporting manifest sha256:7f0e50450e69bc44d6b069289004ba26f18d353e5781ea715b1b38735a5724fa 0.0s done
+#14 exporting config sha256:385fe11db4269a51862a72e7028adc8c7956074610c46fc3b94b2fbcf1fed31f done
+#14 exporting attestation manifest sha256:3a174250ac70126ae3ea5449ea3d7625ef990aa187a34ddd4169ae0f007f84c9 0.0s done
+#14 exporting manifest list sha256:8a215c592956b0f99ff977285822ffcbc3116d1ff7fab1da692b0e67d28bafaf done
+#14 naming to docker.io/library/k8s26980-bug:latest done
+#14 unpacking to docker.io/library/k8s26980-bug:latest
+#14 unpacking to docker.io/library/k8s26980-bug:latest 0.5s done
+#14 DONE 2.5s
