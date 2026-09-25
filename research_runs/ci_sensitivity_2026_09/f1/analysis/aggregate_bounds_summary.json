@@ -1,0 +1,26 @@
+{
+  "input": "inputs/step3_report_25eb6b7.json",
+  "cohort": "PRIMARY_small_fault (m<=4)",
+  "n_cycles": 30,
+  "n_cycles_mapping_sensitive_m_ge_2": 14,
+  "verification": "cohort means, mean paired diff and win/tie/loss reproduce the report",
+  "M1_mean_diff": -0.006100217864923746,
+  "M1_win_tie_loss": [
+    4,
+    24,
+    2
+  ],
+  "M2_mean_diff_range": [
+    -0.06984126984126984,
+    0.06330532212885154
+  ],
+  "M3_mean_diff_range": [
+    -0.08062558356676003,
+    0.07343604108309991
+  ],
+  "M2_cycles_whose_diff_sign_can_differ_from_M1": 4,
+  "M1_tied_cycles_that_can_be_untied_under_M2": 2,
+  "note": "logical bounds from aggregates; not sampling intervals; cycles are correlated",
+  "M2_mean_diff_sign_reversal_logically_possible": true,
+  "M3_mean_diff_sign_reversal_logically_possible": true
+}
