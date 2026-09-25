@@ -1,0 +1,8 @@
+# Keep frozen design hashes identical in the working tree and Git checkout.
+*.md text eol=lf
+*.sha256 text eol=lf
+.gitattributes text eol=lf
+# Future experimental evidence is byte-preserved, not line-ending converted.
+*.jsonl -text
+*.csv -text
+*.log -text

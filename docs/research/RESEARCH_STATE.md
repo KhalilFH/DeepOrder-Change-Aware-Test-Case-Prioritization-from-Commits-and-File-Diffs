@@ -2,6 +2,14 @@
 
 This document is the authoritative description of the project's current research direction.
 
+## Current routing update — 2026-09-25
+
+**Adopted next work:** C1, CPU configuration and defect visibility. The researcher requested design freeze and an implementation handoff. Read the [C1 entry point](../../research_runs/ci_configuration_2026_09/README.md) and [design freeze](../../research_runs/ci_configuration_2026_09/DESIGN_FREEZE.md). The design is frozen; implementation, current artifact readiness and operational launch validation remain pending. No C1 executions are claimed.
+
+**Established prior results:** Q0/E1 closed expansion under G1b (three qualified episodes; no nuisance observed in E1). F1 reproduced Airavata score records and found small descriptive effects under the declared fault mappings, with a demonstrated aggregate-record evidence gap. See the [feasibility report](../../research_runs/ci_sensitivity_2026_09/feasibility_report.md) and [F1 report](../../research_runs/ci_sensitivity_2026_09/f1/report.md).
+
+This dated entry supersedes the unfilled legacy routing placeholders below for near-term execution. The Jev shortlist remains deferred; no benefit is established. Prior failed gates and historical findings remain unchanged.
+
 ## Current Research Question
 
 To be reconstructed and confirmed from the existing Airavata, HBase, and Hive research trajectory before new canonical experiments are started.
