@@ -543,3 +543,13 @@ This is labelled interpretation.
 - All files are under `e1/` (`* -text`), so each hash verifies from any checkout with `sha256sum`.
 - **To reproduce** from the repository root: `oracle.py --ledger …/controls/<control>/attempts.jsonl` (plus `--overrides …/detfail_grpc1859/overrides.jsonl` for B), then `analysis.py` with the settings in 8.2.
 - **From here:** E1 steps 1–5 are complete. Remaining before E2 are the E1 "Continue" decision (plan §6), including the projected E2 cost, and the day-10 gate (four qualified episodes across two projects by 2026-09-27T23:02:26Z). Both are the researcher's decisions.
+
+## 9. 2026-09-25 — researcher accepts `--family-alpha 0.025`
+
+- **Status:** on 2026-09-25 the researcher accepted the setting that section 6.2 recorded as "a choice not fixed by earlier records": `--family-alpha 0.025` per `analysis.py` run.
+- **What it means:** E1's four contrasts (`L` and `R` for etcd5509 and etcd7492) form one Bonferroni family, as plan §4.5 requires. Each category-probability interval is at confidence 1 − 0.05/8 = 0.99375.
+- **Effect on results: none.** Section 6 already used this setting. No output is re-run or edited, and the hashes in section 6.6 still apply.
+- **Unchanged:**
+  - the section 1 sensitivity run, which used the same setting;
+  - the section 8 controls, which used the tool's default and are outside the family (section 8.2).
+- **Scope:** this acceptance covers E1 only. Plan rule G1b means E2 will not run (ledger Addendum v9, A28), so no E2 family is defined here.
