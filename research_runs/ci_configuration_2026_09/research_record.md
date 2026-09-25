@@ -137,3 +137,24 @@ Do not report a favorable outcome in advance. A closed study with no useful conf
 - Evidence: [post-collection review](analysis_audit/POST_COLLECTION_REVIEW.md), [raw seal](analysis_audit/pre_analysis_seal.json), [independent verification](analysis_audit/independent_verification.json), [mechanical report](analysis/report.md).
 - Cost: 0.002832 analysis vCPU-h charged for the three timed computation jobs; 1.997168 remains of the 2.0 cap. No new subject execution. Human/agent reasoning effort unmeasured.
 - Disposition: completed pilot with a prespecified development signal, not a confirmed effect. Any C4 confirmation requires a separate protocol and fresh data. Existing readiness-board entries above are historical snapshots; this event is the current completion record.
+
+## R004: signal-validity audit and budget reconciliation (2026-09-25)
+
+- Authority: the researcher asked for a post-C1 signal-validity audit, then asked for its STOP result to be recorded and the budget reconciled.
+- Work:
+  - An offline, exploratory and post hoc audit in `signal_audit/`.
+  - No containers, builds, subject executions, new observations, label changes or frozen-file edits.
+  - Design freeze 8/8 (also against the committed bytes), launch freeze 71/71, raw seal 12/12 and every chain verified before analysis.
+- Result: **STOP**; no C4 confirmation of the etcd5509 signal.
+  - Under a common per-attempt rate, the frozen C3 gate fires for etcd5509 with probability about 0.41.
+  - P3 counts equal p³ arithmetic.
+  - The P1 gap comes from three R first-attempt passes whose research-only retries both failed.
+  - The oracle positives match the historical leaked-read-lock deadlock, with no generic-delay signature.
+  - A plausible small effect would need about 400 matched blocks.
+  - Frozen observations and outputs are unchanged. See [the audit](signal_audit/SIGNAL_VALIDITY_AUDIT.md).
+- Budget reconciliation:
+  - `signal_audit/s07_reconcile_budget.py` appended 11 analysis-stage charges (`signal-audit-v1-01` … `-11`) to `resources/resource_ledger.jsonl`, using `c1_harness.budget.ResourceLedger`.
+  - The rows cover the 10 runs logged in `signal_audit/cost_log.jsonl`, plus the reconciliation job itself: 0.578649 vCPU-h in total, on a conservative 16-vCPU basis.
+  - The charges were recorded retrospectively. No reservations were opened at run time, and none were fabricated.
+  - The chain verifies at 1072 rows. The analysis stage has now spent 0.581481 of 2.0; 1.418519 remains.
+- Documentation: the audit report's statement that its charges were not in the resource ledger was true when the report was written. This event supersedes it; the report is left unchanged to keep its manifest hash valid.

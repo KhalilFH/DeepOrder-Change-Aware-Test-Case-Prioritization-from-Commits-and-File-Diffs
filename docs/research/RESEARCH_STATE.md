@@ -2,6 +2,27 @@
 
 This document is the authoritative description of the project's current research direction.
 
+## Latest result — C1 signal-validity audit: STOP, 2026-09-25
+
+An exploratory, post hoc audit asked whether the etcd5509 C3 signal justifies a fresh confirmation study. It was offline only: no executions, no label or frozen-file changes. **Its recommendation is STOP: C4 confirmation of this signal is not pursued.** It supersedes the post-collection review's view below that the signal "supports considering fresh confirmation". The collected observations and frozen analysis are unchanged.
+
+- **Observed:**
+  - Both freezes, the raw-data seal and every chain verify. Counts reproduce: R/L P1 7/10 vs 10/10, P3 5/10 vs 7/10, all attempts 24/30 vs 26/30.
+  - The whole P1 gap comes from three R cells whose first attempt passed and whose research-only retries both failed. Pooled over profiles, first attempts are not special (17/20 vs 33/40), and within-cell intraclass correlation is about 0.06.
+  - P3 counts equal p³ arithmetic from the attempt rates: 5.12 and 6.51 expected; 5 and 7 observed.
+  - R's attempt rate equals the historical unrestricted rate (68/85 = 0.80).
+  - All 50 C1 focal dumps have the historical leaked-read-lock deadlock structure, as do 68 historical ones. The quota caused no test slowdown (0.04–0.06 s passes under both profiles), and V_ok passed 60/60.
+  - The VM-to-host clock ratio shifted from about 1.07 to about 0.99 between batches. etcd7492's focal failures all fell in batch A.
+- **Interpretation:**
+  - With no profile effect, the frozen C3 gate would fire for etcd5509 with probability about 0.41, and for at least one of six subjects about 0.72.
+  - The oracle is specific; the signal is weak statistically, not diagnostically.
+  - A plausible small effect (0.80 → 0.90 per attempt) would need about 400 matched blocks (about 82 allocated vCPU-h, 3–4 times C1's measured cap) for one subject on one host.
+  - Ordinary paired repetition with signatures remains sufficient (RQ3).
+- **What would reopen it:** independent evidence of a large quota effect (at least 0.15 per attempt), or a new, separately designed, mechanism-derived question.
+- **Budget:** the audit's 0.578649 vCPU-h is now charged to the C1 analysis stage in the resource ledger. Spent 0.581481 of 2.0; 1.418519 remains.
+
+See the [signal-validity audit](../../research_runs/ci_configuration_2026_09/signal_audit/SIGNAL_VALIDITY_AUDIT.md) and [research record R004](../../research_runs/ci_configuration_2026_09/research_record.md). Separate W1 routing is unaffected.
+
 ## Latest result — C1 post-collection review, 2026-09-25
 
 C1 collection is complete: 720/720 attempts, both batches. Frozen mechanical annotation and matched analysis have now run, with independent arithmetic checks. All 360 acceptable-variant attempts passed; no nuisance reduction was observed. C2 passes; the C3 development signal occurs only for etcd5509, where limited CPU increased supported blocking (P1 7/10 to 10/10; P3 5/10 to 7/10). All primary simultaneous intervals include zero. This supports considering fresh confirmation, not a confirmed configuration effect or an adaptive-system claim.
