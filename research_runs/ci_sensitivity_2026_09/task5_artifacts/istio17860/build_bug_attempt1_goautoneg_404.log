@@ -1,0 +1,62 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from bug.Dockerfile
+#1 transferring dockerfile: 876B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.13
+#2 DONE 0.4s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/8] FROM docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8
+#4 resolve docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8 0.0s done
+#4 DONE 0.0s
+
+#5 [2/8] RUN git init -q /go/src/istio.io/istio
+#5 CACHED
+
+#6 [3/8] WORKDIR /go/src/istio.io/istio
+#6 CACHED
+
+#7 [4/8] RUN git remote add origin https://github.com/istio/istio.git &&     git fetch -q --depth 1 origin c6e9130227497ab064dd571a1409236d17aa2ef3 &&     git checkout -q FETCH_HEAD
+#7 CACHED
+
+#8 [internal] load build context
+#8 transferring context: 4.81kB done
+#8 DONE 0.0s
+
+#9 [5/8] COPY bug_patch_agent_only.diff /tmp/bug_patch.diff
+#9 DONE 0.0s
+
+#10 [6/8] RUN git apply /tmp/bug_patch.diff
+#10 DONE 0.2s
+
+#11 [7/8] RUN go test ./pkg/envoy -c -o /go/gobench.test
+#11 7.331 go: istio.io/operator@v0.0.0-20191008215643-ac62f7e15efe requires
+#11 7.331 	github.com/operator-framework/operator-sdk@v0.10.0 requires
+#11 7.331 	github.com/operator-framework/operator-lifecycle-manager@v0.0.0-20190128024246-5eb7ae5bdb7a requires
+#11 7.331 	github.com/operator-framework/operator-registry@v1.0.4 requires
+#11 7.331 	github.com/operator-framework/operator-lifecycle-manager@v0.0.0-20190105193533-81104ffdc4fb requires
+#11 7.331 	bitbucket.org/ww/goautoneg@v0.0.0-20120707110453-75cd24fc2f2c: reading https://api.bitbucket.org/2.0/repositories/ww/goautoneg?fields=scm: 404 Not Found
+#11 ERROR: process "/bin/sh -c go test ./pkg/envoy -c -o /go/gobench.test" did not complete successfully: exit code: 1
+------
+ > [7/8] RUN go test ./pkg/envoy -c -o /go/gobench.test:
+7.331 go: istio.io/operator@v0.0.0-20191008215643-ac62f7e15efe requires
+7.331 	github.com/operator-framework/operator-sdk@v0.10.0 requires
+7.331 	github.com/operator-framework/operator-lifecycle-manager@v0.0.0-20190128024246-5eb7ae5bdb7a requires
+7.331 	github.com/operator-framework/operator-registry@v1.0.4 requires
+7.331 	github.com/operator-framework/operator-lifecycle-manager@v0.0.0-20190105193533-81104ffdc4fb requires
+7.331 	bitbucket.org/ww/goautoneg@v0.0.0-20120707110453-75cd24fc2f2c: reading https://api.bitbucket.org/2.0/repositories/ww/goautoneg?fields=scm: 404 Not Found
+------
+bug.Dockerfile:13
+--------------------
+  11 |     COPY bug_patch_agent_only.diff /tmp/bug_patch.diff
+  12 |     RUN git apply /tmp/bug_patch.diff
+  13 | >>> RUN go test ./pkg/envoy -c -o /go/gobench.test
+  14 |     RUN go list -m all > /go/dep_versions.txt && \
+  15 |         { git rev-parse HEAD; git hash-object pkg/envoy/agent.go pkg/envoy/agent_test.go; } > /go/blob_check.txt
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c go test ./pkg/envoy -c -o /go/gobench.test" did not complete successfully: exit code: 1

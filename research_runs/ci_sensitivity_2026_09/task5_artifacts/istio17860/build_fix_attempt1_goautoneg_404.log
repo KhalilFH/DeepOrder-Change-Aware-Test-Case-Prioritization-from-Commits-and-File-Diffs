@@ -1,0 +1,52 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from fix.Dockerfile
+#1 transferring dockerfile: 697B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.13
+#2 DONE 1.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/6] FROM docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8
+#4 resolve docker.io/library/golang:1.13@sha256:8ebb6d5a48deef738381b56b1d4cd33d99a5d608e0d03c5fe8dfa3f68d41a1f8 0.0s done
+#4 CACHED
+
+#5 [2/6] RUN git init -q /go/src/istio.io/istio
+#5 DONE 0.3s
+
+#6 [3/6] WORKDIR /go/src/istio.io/istio
+#6 DONE 0.1s
+
+#7 [4/6] RUN git remote add origin https://github.com/istio/istio.git &&     git fetch -q --depth 1 origin c6e9130227497ab064dd571a1409236d17aa2ef3 &&     git checkout -q FETCH_HEAD
+#7 DONE 5.9s
+
+#8 [5/6] RUN go test ./pkg/envoy -c -o /go/gobench.test
+#8 7.483 go: istio.io/operator@v0.0.0-20191008215643-ac62f7e15efe requires
+#8 7.483 	github.com/operator-framework/operator-sdk@v0.10.0 requires
+#8 7.483 	github.com/operator-framework/operator-lifecycle-manager@v0.0.0-20190128024246-5eb7ae5bdb7a requires
+#8 7.483 	github.com/operator-framework/operator-registry@v1.0.4 requires
+#8 7.483 	github.com/operator-framework/operator-lifecycle-manager@v0.0.0-20190105193533-81104ffdc4fb requires
+#8 7.483 	bitbucket.org/ww/goautoneg@v0.0.0-20120707110453-75cd24fc2f2c: reading https://api.bitbucket.org/2.0/repositories/ww/goautoneg?fields=scm: 404 Not Found
+#8 ERROR: process "/bin/sh -c go test ./pkg/envoy -c -o /go/gobench.test" did not complete successfully: exit code: 1
+------
+ > [5/6] RUN go test ./pkg/envoy -c -o /go/gobench.test:
+7.483 go: istio.io/operator@v0.0.0-20191008215643-ac62f7e15efe requires
+7.483 	github.com/operator-framework/operator-sdk@v0.10.0 requires
+7.483 	github.com/operator-framework/operator-lifecycle-manager@v0.0.0-20190128024246-5eb7ae5bdb7a requires
+7.483 	github.com/operator-framework/operator-registry@v1.0.4 requires
+7.483 	github.com/operator-framework/operator-lifecycle-manager@v0.0.0-20190105193533-81104ffdc4fb requires
+7.483 	bitbucket.org/ww/goautoneg@v0.0.0-20120707110453-75cd24fc2f2c: reading https://api.bitbucket.org/2.0/repositories/ww/goautoneg?fields=scm: 404 Not Found
+------
+fix.Dockerfile:10
+--------------------
+   8 |         git fetch -q --depth 1 origin c6e9130227497ab064dd571a1409236d17aa2ef3 && \
+   9 |         git checkout -q FETCH_HEAD
+  10 | >>> RUN go test ./pkg/envoy -c -o /go/gobench.test
+  11 |     RUN go list -m all > /go/dep_versions.txt && \
+  12 |         { git rev-parse HEAD; git hash-object pkg/envoy/agent.go pkg/envoy/agent_test.go; } > /go/blob_check.txt
+--------------------
+ERROR: failed to build: failed to solve: process "/bin/sh -c go test ./pkg/envoy -c -o /go/gobench.test" did not complete successfully: exit code: 1
