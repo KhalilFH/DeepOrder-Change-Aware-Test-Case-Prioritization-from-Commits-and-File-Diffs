@@ -457,3 +457,62 @@ Every future execution pass writes its recipes, frozen protocol, runner and per-
 - The C4 pass start was not recorded; its 198 s is an upper bound.
 - The `V_bad` rates (18/20 for grpc-go-2391, 20/20 for istio-17860) are host-specific and imprecise; no population rate is claimed.
 - The Docker images for both Task 5 passes are not preserved; the recipes and per-attempt ledgers are, in `task5_artifacts/grpc2391/` and `task5_artifacts/istio17860/` (ledger A18).
+
+---
+
+# Addendum v9 — 2026-09-25 (append-only; entries above, including Addenda v2–v8, are historical and unchanged)
+
+- Addendum identifier: `ci_policy_sensitivity_resource_ledger_2026-09-25_v9`
+- Scope: Task 5 restoration and Q0 qualification of card C-06 (kubernetes-26980), the roster follow-up, and day-10 gate status after the primary roster is exhausted.
+- Full record: `task5_k8s26980_restoration.md` (SHA-256 `703ccf0497d216b1295d5e039b09fb101e7b26a18389f6a33ed42c605a63496a`; stored `-text`).
+- The accounting rule is unchanged, and nothing in A1–A26 is rewritten.
+
+## A27. Task 5 pass — kubernetes-26980 (card C-06)
+
+| Item | Value | Evidence basis |
+|---|---|---|
+| Authority | researcher's Task 5 authorisation of 2026-09-25 ("run C-06 Task 5"), given after PR #5 was merged | record, "Authority and timing" |
+| Task 5 window | `2026-09-25T09:01:48.403Z` → `09:07:34.530Z` | recorded at start and end, not backdated |
+| Operational day | 8 | A1 clock start `2026-09-17T23:02:26Z` |
+| Counterpart type | historical pair with identical test backport; upstream test **unchanged** (GoReal's `V_bad`-only `t.Errorf` → `panic` edit not adopted) | card C-06 |
+| Blob-equivalence check | **PASS** — `shared_informer.go` `ce9ddf2c…` (`V_bad`, = first parent) / `c557bf97…` (`V_ok`); `processor_listener_test.go` `ffd72d8f…` in both | record Step 1 |
+| Build deviations disclosed | one: shallow fetch of the exact merge commit in place of a full clone and reset; GoReal's unused `apt install` steps dropped on both images. Same `golang:1.12` toolchain as GoReal, GOPATH mode | record Step 2 |
+| Dependency reproducibility | **NOT APPLICABLE** — dependencies vendored in-tree; `Godeps/Godeps.json` identical in both images (`980fd6ac…`); nothing resolved at build time | record Step 2 |
+| Evaluator-signature correction | **none** — no focal failure occurred at any point, so signature (a) stayed exactly as pre-declared | record Step 3 |
+| Exploratory runs (uncounted) | `V_ok` 2/2 `PASS`; `V_bad` 5/5 `PASS`. No setting was changed in response | record Step 3 |
+| `V_bad` result | 20 attempts: **0 `FOCAL_DEFECT_WITNESS_A`, 20 `PASS`**, 0 unresolved/invalid | record Step 5 |
+| `V_ok` result | 20 attempts: **20 `PASS`** | record Step 5 |
+| Q0 intermittency criterion | **NOT MET** — 0 focal failures against the required ≥2 | record, "Result" |
+| **Q0 verdict** | **`Q0_NOT_QUALIFIED`** (primary track). Zero failures in 20 is not a proof that the failing interleaving is impossible. No secondary (control) role is proposed, because the defect never manifested | record |
+| Rescue attempts | **none** — no extra attempts; no `-test.cpu`, GOMAXPROCS, pinning, load or stress; no instrumented test; no relabelling | record, "What was deliberately not done" |
+| Task 5 wall clock | **EXACT**, `346.1 s` ≈ `0.0961` allocated vCPU-h (counted attempts: span `30.9 s`, attempt-sum `24.7 s`) | timestamps |
+| Human restoration hours | **UNKNOWN** (agent-executed pass) | accounting rule |
+| Per-candidate cap status | ≤4 allocated vCPU-h not reached (2.4 % used); ≤2 human-hour cap provisional | above |
+
+## A4-addendum-6 — roster follow-up (2026-09-25; earlier roster tables not edited in place)
+
+| Entry | Label as of this addendum | Tier | Note |
+|---|---|---:|---|
+| kubernetes-26980 | **`Q0_NOT_QUALIFIED`** (0/20 focal, 20/20 pass on `V_bad`; 20/20 pass on `V_ok`) | 4 | supersedes the `PRIMARY_METADATA_READY` label in A4-addendum-5 |
+
+- **Roster:** **12 of 12 primary entries used (0 remain); 0 of 2 nuisance/control slots used.** No `PRIMARY_METADATA_READY` entry remains.
+- **Qualified episodes (final for this roster):** **three across two projects** — etcd-5509, etcd-7492, grpc-go-2391.
+- **Primary-track outcomes across the GoReal Task 5 passes:** 1 `Q0_QUALIFIED` (grpc-go-2391) and 3 `Q0_NOT_QUALIFIED` (grpc-go-1859 at 1 focal / 19 pass; istio-17860 at 20 / 0; kubernetes-26980 at 0 / 20). These are meaningful negative results and are preserved as such.
+
+## A28. Gate status after this addendum
+
+- **Day-7 gate:** MET (A9); unchanged.
+- **Day-10 gate** (four qualified episodes across ≥2 projects by `2026-09-27T23:02:26Z`): **the episode condition cannot be met under the plan as written.** Three episodes are qualified and no primary roster entry remains to supply a fourth.
+  - The gate is formally assessed at its deadline; nothing available under current authorisations can change the outcome before then.
+- **G1b therefore applies:** "No E2. Finish small feasibility report and trigger F1 where possible" (`NEXT_RESEARCH_ACTION_PLAN.md`, gate table).
+  - The E2 affordability basis (A25) no longer decides G1b, since the episode condition already fails. It stays relevant only as a descriptive figure for the feasibility report.
+  - F1 has its own 10 allocated vCPU-hour ceiling (plan compute ceiling; F1 in plan §9). Its start is a separate decision and is **not** authorised here.
+- **Guard against post-hoc rescue:** extending the roster, reclassifying a `Q0_NOT_QUALIFIED` entry, broadening the defect definition or re-running any candidate under a different environment would each be decided after seeing these results. Any such step needs an explicit, disclosed amendment by the researcher. This addendum authorises none of them.
+- **Q0 compute so far:** ≈**1.353** of 20 allocated vCPU-hours (1.257 in A25 + 0.0961). Including E1's 12.71 (span basis, E1 AMENDMENTS §8), the first-ten-days total is ≈**14.07** of 40.
+
+## A29. Unresolved accounting uncertainty (carried forward, additive to A7, A10, A13, A16, A19, A26)
+
+- Human time for this pass is not recorded.
+- The `V_bad` outcome (0/20 counted, 0/5 exploratory) is host-specific. The explanation for the skew (Go's `runnext` hand-off favouring the last-started goroutine) is source reasoning, not measured.
+- The Docker images are not preserved; the recipes and per-attempt ledgers are, in `task5_artifacts/k8s26980/` (ledger A18).
+- The `--family-alpha 0.025` choice (E1 AMENDMENTS §6.2) still awaits the researcher's acceptance.
