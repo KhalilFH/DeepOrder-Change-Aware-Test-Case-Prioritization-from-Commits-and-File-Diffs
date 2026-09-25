@@ -1,6 +1,6 @@
 {
   "committed_report": "inputs/step3_report_25eb6b7.json",
-  "rerun_report": "C:/Users/Mega-PC/f1work/out_step3/step3_report.json",
+  "rerun_report": "r2_run/step3_report_rerun.json",
   "fields_compared": [
     "m",
     "n",
