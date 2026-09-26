@@ -1,0 +1,72 @@
+{
+  "study_id": "W1",
+  "design_version": "1.1",
+  "design_date": "2026-09-26",
+  "amends": {"design_version": "1.0", "amendment": "AMENDMENT_2026-09-26.md"},
+  "status": "DESIGN_FROZEN_NOT_LAUNCH_READY",
+  "subjects": ["pool162", "grpc1859", "k8s26980", "istio17860"],
+  "minimum_subjects": 3,
+  "minimum_noncontrol_subjects": 2,
+  "arms": ["B0", "B1", "B2", "B3", "B4"],
+  "search_replicates": 3,
+  "schedule_seed": 20260925,
+  "search": {
+    "wall_seconds": 600,
+    "max_patch_proposals": 4,
+    "max_paired_runs": 6,
+    "max_input_tokens": 60000,
+    "max_output_tokens": 8000,
+    "max_usd": 8,
+    "max_generator_calls": {"B0": 0, "B1": 0, "B2": 4, "B3": 4, "B4": 3},
+    "max_jev_evaluations": {"B0": 0, "B1": 0, "B2": 0, "B3": 0, "B4": 8}
+  },
+  "validation": {
+    "triplets_per_variant": 5,
+    "attempts_per_triplet": 3,
+    "variants": ["V_bad", "V_ok"],
+    "minimum_bad_focal_attempts": 2,
+    "minimum_bad_focal_triplets": 2,
+    "required_ok_passes": 15,
+    "max_missing_or_unresolved_for_success": 0
+  },
+  "timeouts_seconds": {
+    "pool162": {"inner": 30, "outer": 60, "cleanup": 30},
+    "grpc1859": {"inner": 110, "outer": 120, "cleanup": 30},
+    "k8s26980": {"inner": 60, "outer": 90, "cleanup": 30},
+    "istio17860": {"inner": 30, "outer": 60, "cleanup": 30}
+  },
+  "environment": {
+    "visible_logical_cpus": 16,
+    "go_gomaxprocs": 16,
+    "cpu_bandwidth_limit": null,
+    "concurrent_subject_processes": 1,
+    "scheduler_backend": null
+  },
+  "study_caps": {
+    "allocated_vcpu_hours": 400,
+    "preparation_allocated_vcpu_hours": 80,
+    "human_hours": 80,
+    "generator_requests": 200,
+    "jev_atomic_evaluations": 500,
+    "input_tokens": 4000000,
+    "provider_usd": 300,
+    "expected_cost_headroom_fraction": 0.20
+  },
+  "calibration": {
+    "unchanged_attempts_per_variant_per_subject": 2,
+    "max_build_invocations_per_subject": 3,
+    "max_synthetic_smoke_requests_per_provider": 1
+  },
+  "provider_launch_fields": {
+    "requested_generator_family": "Claude Opus 5.5",
+    "generator_transport": null,
+    "generator_requested_model": null,
+    "generator_returned_identity": null,
+    "generator_settings": null,
+    "jev_transport": null,
+    "jev_requested_model": null,
+    "jev_returned_identity": null,
+    "pricing_snapshot": null,
+    "live_smoke_authorized": false
+  }
+}

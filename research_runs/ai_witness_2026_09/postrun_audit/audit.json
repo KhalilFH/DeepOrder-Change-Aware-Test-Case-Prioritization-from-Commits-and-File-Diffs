@@ -1,0 +1,5066 @@
+{
+  "ai_sessions": [
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B2/requests/w1.grpc1859.r1.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source",
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 8222
+            },
+            "cache_creation_input_tokens": 8222,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 420,
+            "output_tokens_details": {
+              "thinking_tokens": 211
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B2/requests/w1.grpc1859.r1.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 8222,
+            "input_tokens": 5429,
+            "output_tokens": 626,
+            "output_tokens_details": {
+              "thinking_tokens": 569
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B2/requests/w1.grpc1859.r1.B2.req03.response.json",
+          "messages": 5,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 8222,
+            "input_tokens": 6163,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B2/requests/w1.grpc1859.r1.B2.req04.response.json",
+          "messages": 7,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 8222,
+            "input_tokens": 6344,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        }
+      ],
+      "case": "grpc1859",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 50826,
+        "jev_evaluations": 0,
+        "output_tokens": 1156,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 0,
+            "pair_id": "w1.grpc1859.r1.B2.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.grpc1859.r1.B2.unchanged"
+        ],
+        "usd": 0.072924
+      },
+      "final_unchanged": null,
+      "id": "w1.grpc1859.r1.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 35.851,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {
+        "toolu_0135Uvf3f2m6rV1WVETDS4H4": "{\"error\": \"proposal must be built successfully on both variants first\"}"
+      },
+      "tools": {
+        "build_pair": 1,
+        "read_source": 2,
+        "run_pair": 2
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B3/requests/w1.grpc1859.r1.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source",
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7684
+            },
+            "cache_creation_input_tokens": 7684,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 281,
+            "output_tokens_details": {
+              "thinking_tokens": 72
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B3/requests/w1.grpc1859.r1.B3.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 7684,
+            "input_tokens": 5290,
+            "output_tokens": 3843,
+            "output_tokens_details": {
+              "thinking_tokens": 1575
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B3/requests/w1.grpc1859.r1.B3.req03.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 8945
+            },
+            "cache_creation_input_tokens": 8945,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 146,
+            "output_tokens_details": {
+              "thinking_tokens": 37
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B3/requests/w1.grpc1859.r1.B3.req04.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 2,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source",
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 10749
+            },
+            "cache_creation_input_tokens": 10749,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 294,
+            "output_tokens_details": {
+              "thinking_tokens": 85
+            }
+          }
+        }
+      ],
+      "case": "grpc1859",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 40358,
+        "jev_evaluations": 0,
+        "output_tokens": 4564,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.126214
+      },
+      "final_unchanged": null,
+      "id": "w1.grpc1859.r1.B3",
+      "judgment_sources": {
+        "default": 8
+      },
+      "judgments": {
+        "unknown": 8
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 57.005,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 5,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B4/requests/w1.grpc1859.r1.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7684
+            },
+            "cache_creation_input_tokens": 7684,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 185,
+            "output_tokens_details": {
+              "thinking_tokens": 76
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B4/requests/w1.grpc1859.r1.B4.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 7684,
+            "input_tokens": 922,
+            "output_tokens": 2532,
+            "output_tokens_details": {
+              "thinking_tokens": 279
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r1.B4/requests/w1.grpc1859.r1.B4.req03.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 1,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source",
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 10735
+            },
+            "cache_creation_input_tokens": 10735,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 251,
+            "output_tokens_details": {
+              "thinking_tokens": 42
+            }
+          }
+        }
+      ],
+      "case": "grpc1859",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 33622,
+        "jev_evaluations": 8,
+        "output_tokens": 3315,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.079393
+      },
+      "final_unchanged": null,
+      "id": "w1.grpc1859.r1.B4",
+      "judgment_sources": {
+        "jev": 8
+      },
+      "judgments": {
+        "contradicted": 1,
+        "supported": 2,
+        "unknown": 5
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 45.454,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 3,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B2/requests/w1.grpc1859.r2.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source",
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 8222
+            },
+            "cache_creation_input_tokens": 8222,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 472,
+            "output_tokens_details": {
+              "thinking_tokens": 263
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B2/requests/w1.grpc1859.r2.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 8222,
+            "input_tokens": 5481,
+            "output_tokens": 737,
+            "output_tokens_details": {
+              "thinking_tokens": 680
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B2/requests/w1.grpc1859.r2.B2.req03.response.json",
+          "messages": 5,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 8222,
+            "input_tokens": 6326,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B2/requests/w1.grpc1859.r2.B2.req04.response.json",
+          "messages": 7,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 8222,
+            "input_tokens": 6507,
+            "output_tokens": 83,
+            "output_tokens_details": {
+              "thinking_tokens": 27
+            }
+          }
+        }
+      ],
+      "case": "grpc1859",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 51204,
+        "jev_evaluations": 0,
+        "output_tokens": 1347,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 0,
+            "pair_id": "w1.grpc1859.r2.B2.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.grpc1859.r2.B2.unchanged"
+        ],
+        "usd": 0.07559
+      },
+      "final_unchanged": null,
+      "id": "w1.grpc1859.r2.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 27.976,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {
+        "toolu_01EJeexgB3jH3BXohSpUCPb1": "{\"error\": \"proposal must be built successfully on both variants first\"}"
+      },
+      "tools": {
+        "build_pair": 1,
+        "read_source": 2,
+        "run_pair": 2
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B3/requests/w1.grpc1859.r2.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7684
+            },
+            "cache_creation_input_tokens": 7684,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 183,
+            "output_tokens_details": {
+              "thinking_tokens": 74
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B3/requests/w1.grpc1859.r2.B3.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 7684,
+            "input_tokens": 920,
+            "output_tokens": 1521,
+            "output_tokens_details": {
+              "thinking_tokens": 1416
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B3/requests/w1.grpc1859.r2.B3.req03.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 1,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 8275
+            },
+            "cache_creation_input_tokens": 8275,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 811,
+            "output_tokens_details": {
+              "thinking_tokens": 702
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B3/requests/w1.grpc1859.r2.B3.req04.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 1,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 8275,
+            "input_tokens": 1548,
+            "output_tokens": 1356,
+            "output_tokens_details": {
+              "thinking_tokens": 1252
+            }
+          }
+        }
+      ],
+      "case": "grpc1859",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 34390,
+        "jev_evaluations": 0,
+        "output_tokens": 3871,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.086743
+      },
+      "final_unchanged": null,
+      "id": "w1.grpc1859.r2.B3",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 0,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 52.453,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 4
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B4/requests/w1.grpc1859.r2.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7684
+            },
+            "cache_creation_input_tokens": 7684,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 141,
+            "output_tokens_details": {
+              "thinking_tokens": 32
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B4/requests/w1.grpc1859.r2.B4.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 7684,
+            "input_tokens": 878,
+            "output_tokens": 3503,
+            "output_tokens_details": {
+              "thinking_tokens": 932
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r2.B4/requests/w1.grpc1859.r2.B4.req03.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 1,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 11045
+            },
+            "cache_creation_input_tokens": 11045,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 182,
+            "output_tokens_details": {
+              "thinking_tokens": 72
+            }
+          }
+        }
+      ],
+      "case": "grpc1859",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 34501,
+        "jev_evaluations": 8,
+        "output_tokens": 4170,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.088686
+      },
+      "final_unchanged": null,
+      "id": "w1.grpc1859.r2.B4",
+      "judgment_sources": {
+        "jev": 8
+      },
+      "judgments": {
+        "supported": 2,
+        "unknown": 6
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 50.342,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 2,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B2/requests/w1.grpc1859.r3.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source",
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 8222
+            },
+            "cache_creation_input_tokens": 8222,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 740,
+            "output_tokens_details": {
+              "thinking_tokens": 532
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B2/requests/w1.grpc1859.r3.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 8222,
+            "input_tokens": 6046,
+            "output_tokens": 1048,
+            "output_tokens_details": {
+              "thinking_tokens": 991
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B2/requests/w1.grpc1859.r3.B2.req03.response.json",
+          "messages": 5,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 8222,
+            "input_tokens": 7219,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B2/requests/w1.grpc1859.r3.B2.req04.response.json",
+          "messages": 7,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 8222,
+            "input_tokens": 7693,
+            "output_tokens": 1380,
+            "output_tokens_details": {
+              "thinking_tokens": 1274
+            }
+          }
+        }
+      ],
+      "case": "grpc1859",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 53848,
+        "jev_evaluations": 0,
+        "output_tokens": 3223,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 0,
+            "pair_id": "w1.grpc1859.r3.B2.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.grpc1859.r3.B2.unchanged"
+        ],
+        "usd": 0.099638
+      },
+      "final_unchanged": null,
+      "id": "w1.grpc1859.r3.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 52.588,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "build_pair": 1,
+        "read_source": 3,
+        "run_pair": 1
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B3/requests/w1.grpc1859.r3.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7684
+            },
+            "cache_creation_input_tokens": 7684,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 188,
+            "output_tokens_details": {
+              "thinking_tokens": 79
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B3/requests/w1.grpc1859.r3.B3.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 7684,
+            "input_tokens": 925,
+            "output_tokens": 3498,
+            "output_tokens_details": {
+              "thinking_tokens": 1049
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B3/requests/w1.grpc1859.r3.B3.req03.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 1,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 8956
+            },
+            "cache_creation_input_tokens": 8956,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 147,
+            "output_tokens_details": {
+              "thinking_tokens": 37
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B3/requests/w1.grpc1859.r3.B3.req04.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 1,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 10896
+            },
+            "cache_creation_input_tokens": 10896,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 146,
+            "output_tokens_details": {
+              "thinking_tokens": 37
+            }
+          }
+        }
+      ],
+      "case": "grpc1859",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 36151,
+        "jev_evaluations": 0,
+        "output_tokens": 3979,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.112029
+      },
+      "final_unchanged": null,
+      "id": "w1.grpc1859.r3.B3",
+      "judgment_sources": {
+        "default": 7
+      },
+      "judgments": {
+        "unknown": 7
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 7,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 50.146,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 3,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B4/requests/w1.grpc1859.r3.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7684
+            },
+            "cache_creation_input_tokens": 7684,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 159,
+            "output_tokens_details": {
+              "thinking_tokens": 50
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B4/requests/w1.grpc1859.r3.B4.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 7684,
+            "input_tokens": 896,
+            "output_tokens": 2966,
+            "output_tokens_details": {
+              "thinking_tokens": 488
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.grpc1859.r3.B4/requests/w1.grpc1859.r3.B4.req03.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 10955
+            },
+            "cache_creation_input_tokens": 10955,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 163,
+            "output_tokens_details": {
+              "thinking_tokens": 54
+            }
+          }
+        }
+      ],
+      "case": "grpc1859",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 35034,
+        "jev_evaluations": 8,
+        "output_tokens": 3635,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.083142
+      },
+      "final_unchanged": null,
+      "id": "w1.grpc1859.r3.B4",
+      "judgment_sources": {
+        "jev": 8
+      },
+      "judgments": {
+        "contradicted": 1,
+        "supported": 3,
+        "unknown": 4
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 45.009,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 2,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B2/requests/w1.istio17860.r1.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 9695
+            },
+            "cache_creation_input_tokens": 9695,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 437,
+            "output_tokens_details": {
+              "thinking_tokens": 380
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B2/requests/w1.istio17860.r1.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 9695,
+            "input_tokens": 547,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B2/requests/w1.istio17860.r1.B2.req03.response.json",
+          "messages": 5,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 9695,
+            "input_tokens": 728,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B2/requests/w1.istio17860.r1.B2.req04.response.json",
+          "messages": 7,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_final"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 9695,
+            "input_tokens": 3305,
+            "output_tokens": 1553,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        }
+      ],
+      "case": "istio17860",
+      "details": {
+        "final": {
+          "elapsed_seconds": 41.468,
+          "legal": true,
+          "malformed": false,
+          "meta": {
+            "obligation": "Preserve/demonstrate that Restart's wait-for-live logic must not hold the agent's internal state mutex for the duration of waitUntilLive, so that a concurrently exiting epoch can still be processed by Run (via a.mutex) and the waiting Restart can detect the epoch's exit (via isActive) and proceed promptly, rather than deadlocking until the 20s timeout.",
+            "rationale": "The supplied test TestExitDuringWaitForLive (shared/pkg/envoy/agent_test.go:169-221) already exercises exactly the behavior changed by the diff: it starts epoch 0 (which never goes live), immediately calls Restart for epoch 1 in a goroutine (which must wait for epoch 0's liveness per agent.go Restart/waitUntilLive), then delivers an exit error for epoch 0 via epoch0Exit and asserts (with a 5s bound and a BeTemporally ~1s threshold) that epoch 1 starts promptly rather than after the full 20s live-wait timeout.\n\nIn the defective version, Restart holds the single a.mu for the entire Restart call including the blocking waitUntilLive (agent.go:125-136 old), and Run's status-handling branch also needs a.mu (agent.go:193) to delete the exited epoch from activeEpochs. Since waitUntilLive only re-checks proxy.IsLive() (never true here) and does not release the lock, Run can never process epoch 0's exit status, so waitUntilLive can only end via its own 20s timer \u2014 well past the test's 5s bound. Paired execution confirms this: the defective run blocks and fails with `agent_test.go:213: timed out waiting for epoch 1 to start`, with goroutine dump showing goroutine 7 stuck in `waitUntilLive` (agent.go:175) inside `Restart` (agent.go:136), and goroutine 5 blocked trying to acquire the same mutex in `Run` (agent.go:193).\n\nIn the repaired version, Restart releases a.mutex before waiting (agent.go new Restart, `a.mutex.Unlock()` before wait) and waitUntilLive additionally polls `isActive(epoch)` (agent.go new isActive, guarded by a.mutex) so it can detect that epoch 0 exited (processed promptly by Run under the now-available mutex) and return quickly. Paired execution confirms this: the repaired run logs \"epoch 0 exited while waiting for it to go live.\" and epoch 1 starts within ~0.5s, and the test PASSes.\n\nThis paired run result (defective FAIL via timeout/goroutine-dump showing the lock contention, repaired PASS quickly) is direct evidence that the existing unmodified test already discriminates the changed obligation (lock-scope/liveness-wait interaction between Restart and Run), so no overlay edit is needed.</rationale>\n<parameter name=\"source_spans\">[\"shared/pkg/envoy/agent_test.go:169-221\", \"defective/pkg/envoy/agent.go:124-147\", \"defective/pkg/envoy/agent.go:150-186\", \"defective/pkg/envoy/agent.go:188-221\"]",
+            "source_spans": [
+              "shared/pkg/envoy/agent_test.go:169-221",
+              "defective/pkg/envoy/agent.go:124-147",
+              "defective/pkg/envoy/agent.go:150-186",
+              "defective/pkg/envoy/agent.go:188-221"
+            ],
+            "uncertainties": [
+              "The run_pair result is ordinary pass/fail(-timeout) evidence, not an independently validated defect witness; the failure is consistent with the described lock-scope defect but the paired feedback alone does not formally prove causality beyond the source-code reasoning given.",
+              "Test relies on timing thresholds (5s wait, 1s BeTemporally tolerance) which could in principle be flaky under heavy scheduler contention, though this is an existing, unmodified assertion/timeout that we were not permitted to alter."
+            ]
+          },
+          "overlay_sha256": "602e35a92eec4bc0a2ec6ae113f07bfc6933322fb69fe8dee416e5a67217e2a2",
+          "proposal_id": "w1.istio17860.r1.B2.unchanged",
+          "run_selection": [
+            "TestExitDuringWaitForLive"
+          ],
+          "sealed_utc": "2026-09-26T09:11:19.316Z",
+          "unchanged": true
+        },
+        "generator_calls": 4,
+        "input_tokens": 43362,
+        "jev_evaluations": 0,
+        "output_tokens": 2100,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 1,
+            "pair_id": "w1.istio17860.r1.B2.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.istio17860.r1.B2.unchanged"
+        ],
+        "usd": 0.060218
+      },
+      "final_unchanged": true,
+      "id": "w1.istio17860.r1.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "VALIDATED_WITNESS",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "END_FINAL"
+      ],
+      "seconds": 41.48,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {
+        "toolu_014zMmgqsTQpcouCZkgxehS7": "{\"error\": \"proposal must be built successfully on both variants first\"}"
+      },
+      "tools": {
+        "build_pair": 1,
+        "run_pair": 2,
+        "submit_final": 1
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B3/requests/w1.istio17860.r1.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 9157
+            },
+            "cache_creation_input_tokens": 9157,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 3351,
+            "output_tokens_details": {
+              "thinking_tokens": 1161
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B3/requests/w1.istio17860.r1.B3.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 10375
+            },
+            "cache_creation_input_tokens": 10375,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2328,
+            "output_tokens_details": {
+              "thinking_tokens": 2217
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 1,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B3/requests/w1.istio17860.r1.B3.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_judgments"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 10375,
+            "input_tokens": 3670,
+            "output_tokens": 72,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B3/requests/w1.istio17860.r1.B3.req04.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair",
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 12114
+            },
+            "cache_creation_input_tokens": 12114,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 219,
+            "output_tokens_details": {
+              "thinking_tokens": 110
+            }
+          }
+        }
+      ],
+      "case": "istio17860",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 45697,
+        "jev_evaluations": 0,
+        "output_tokens": 5970,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 1,
+            "pair_id": "w1.istio17860.r1.B3.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.istio17860.r1.B3.unchanged"
+        ],
+        "usd": 0.148242
+      },
+      "final_unchanged": null,
+      "id": "w1.istio17860.r1.B3",
+      "judgment_sources": {
+        "default": 7
+      },
+      "judgments": {
+        "unknown": 7
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 7,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 83.895,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "build_pair": 1,
+        "read_source": 1,
+        "run_pair": 1,
+        "submit_judgments": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B4/requests/w1.istio17860.r1.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 9157
+            },
+            "cache_creation_input_tokens": 9157,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 1202,
+            "output_tokens_details": {
+              "thinking_tokens": 1091
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B4/requests/w1.istio17860.r1.B4.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 9157,
+            "input_tokens": 2518,
+            "output_tokens": 2672,
+            "output_tokens_details": {
+              "thinking_tokens": 181
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r1.B4/requests/w1.istio17860.r1.B4.req03.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 12402
+            },
+            "cache_creation_input_tokens": 12402,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 128,
+            "output_tokens_details": {
+              "thinking_tokens": 71
+            }
+          }
+        }
+      ],
+      "case": "istio17860",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 44793,
+        "jev_evaluations": 7,
+        "output_tokens": 4303,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.istio17860.r1.B4.unchanged"
+        ],
+        "usd": 0.101278
+      },
+      "final_unchanged": null,
+      "id": "w1.istio17860.r1.B4",
+      "judgment_sources": {
+        "jev": 7
+      },
+      "judgments": {
+        "supported": 6,
+        "unknown": 1
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 7,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 55.424,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "build_pair": 1,
+        "read_source": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r2.B2/requests/w1.istio17860.r2.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 9695
+            },
+            "cache_creation_input_tokens": 9695,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 661,
+            "output_tokens_details": {
+              "thinking_tokens": 604
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r2.B2/requests/w1.istio17860.r2.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 9695,
+            "input_tokens": 771,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r2.B2/requests/w1.istio17860.r2.B2.req03.response.json",
+          "messages": 5,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 9695,
+            "input_tokens": 952,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r2.B2/requests/w1.istio17860.r2.B2.req04.response.json",
+          "messages": 7,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_final"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 9695,
+            "input_tokens": 3465,
+            "output_tokens": 1332,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        }
+      ],
+      "case": "istio17860",
+      "details": {
+        "final": {
+          "elapsed_seconds": 40.421,
+          "legal": true,
+          "malformed": false,
+          "meta": {
+            "obligation": "Restart() must not delay starting a new epoch beyond the time needed to detect the current epoch's exit; specifically, waitUntilLive must be interruptible when the epoch being waited on has already exited (removed from activeEpochs), rather than blocking on IsLive()/timer while holding a lock that also gates Run()'s exit-status processing.",
+            "rationale": "The production diff (agent.go) splits the single mutex `mu` into `restartMutex` and `mutex`, changes Restart to release `mutex` before calling waitUntilLive, and changes waitUntilLive to take an explicit epoch argument and poll `isActive(epoch)` (which itself takes `mutex`) so it can detect that the previous epoch already exited and return early instead of only checking `proxy.IsLive()`. In the defective version, Restart holds a single lock for its entire duration including the call to waitUntilLive, and waitUntilLive only checks proxy.IsLive() (never epoch liveness/removal), so when a proxy never goes \"live\" but does exit with an error, the second Restart call is stuck holding the lock and polling IsLive() until the 20s timeout, while Run()'s status-handling branch (which needs the same lock to delete the epoch and could unblock things) cannot make progress promptly either. The supplied test `TestExitDuringWaitForLive` (agent_test.go:169-221) already builds exactly this scenario: a proxy that never reports live, an epoch 0 that exits with an error, and asserts (with a 5s waiting bound and BeTemporally check) that epoch 1 starts promptly (within ~1s) after epoch 0's exit rather than waiting for the full timeout. Running this unchanged test via build_pair/run_pair confirms: on the defective variant it fails with \"timed out waiting for epoch 1 to start\" (5s bound exceeded, goroutine dump shows Restart still blocked inside waitUntilLive holding the lock while Run() blocks on the same lock trying to acquire it at agent.go:193), and on the repaired variant it passes in 0.5s with log output showing \"epoch 0 exited while waiting for it to go live\" followed immediately by epoch 1 starting. This is a direct, source-supported demonstration of the exact behavioral change (isActive-based early-exit detection decoupled from a single coarse lock), so no test modification is required.",
+            "source_spans": [
+              "agent.go:124-147 (defective Restart)",
+              "agent.go:150-186 (defective waitUntilLive)",
+              "agent.go:124-161 (repaired Restart)",
+              "agent.go:164-208 (repaired waitUntilLive/isActive)",
+              "shared/pkg/envoy/agent_test.go:169-221 (TestExitDuringWaitForLive)"
+            ],
+            "uncertainties": [
+              "The run_pair result is empirical evidence (fail on defective, pass on repaired) rather than a formal proof; the pass/fail relies on timing thresholds (5s wait, 1s error threshold for BeTemporally) which could in principle be flaky under extreme scheduling pressure, though the observed 5s timeout vs 0.5s pass gives a large margin.",
+              "I did not add a new test file since the existing supplied test already isolates and demonstrates the changed obligation without needing further strengthening within the edit-only-additive constraints."
+            ]
+          },
+          "overlay_sha256": "602e35a92eec4bc0a2ec6ae113f07bfc6933322fb69fe8dee416e5a67217e2a2",
+          "proposal_id": "w1.istio17860.r2.B2.unchanged",
+          "run_selection": [
+            "TestExitDuringWaitForLive"
+          ],
+          "sealed_utc": "2026-09-26T09:20:19.604Z",
+          "unchanged": true
+        },
+        "generator_calls": 4,
+        "input_tokens": 43970,
+        "jev_evaluations": 0,
+        "output_tokens": 2103,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 1,
+            "pair_id": "w1.istio17860.r2.B2.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.istio17860.r2.B2.unchanged"
+        ],
+        "usd": 0.061464
+      },
+      "final_unchanged": true,
+      "id": "w1.istio17860.r2.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "VALIDATED_WITNESS",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "END_FINAL"
+      ],
+      "seconds": 40.431,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {
+        "toolu_019PnCc1mh4YijiQajf8CTDb": "{\"error\": \"proposal must be built successfully on both variants first\"}"
+      },
+      "tools": {
+        "build_pair": 1,
+        "run_pair": 2,
+        "submit_final": 1
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r2.B3/requests/w1.istio17860.r2.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "max_tokens",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 9157
+            },
+            "cache_creation_input_tokens": 9157,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 4000,
+            "output_tokens_details": {
+              "thinking_tokens": 2380
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r2.B3/requests/w1.istio17860.r2.B3.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 10454
+            },
+            "cache_creation_input_tokens": 10454,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 134,
+            "output_tokens_details": {
+              "thinking_tokens": 23
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r2.B3/requests/w1.istio17860.r2.B3.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_judgments"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 10454,
+            "input_tokens": 1737,
+            "output_tokens": 1367,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r2.B3/requests/w1.istio17860.r2.B3.req04.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 11254
+            },
+            "cache_creation_input_tokens": 11254,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 155,
+            "output_tokens_details": {
+              "thinking_tokens": 98
+            }
+          }
+        }
+      ],
+      "case": "istio17860",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 43062,
+        "jev_evaluations": 0,
+        "output_tokens": 5656,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.istio17860.r2.B3.unchanged"
+        ],
+        "usd": 0.139299
+      },
+      "final_unchanged": null,
+      "id": "w1.istio17860.r2.B3",
+      "judgment_sources": {
+        "capable_model": 8
+      },
+      "judgments": {
+        "supported": 8
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 61.055,
+      "stop_reasons": {
+        "max_tokens": 1,
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 1,
+        "run_pair": 1,
+        "submit_judgments": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 1,
+          "file": "measured/w1.istio17860.r2.B4/requests/w1.istio17860.r2.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "max_tokens",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 9157
+            },
+            "cache_creation_input_tokens": 9157,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 4000,
+            "output_tokens_details": {
+              "thinking_tokens": 2799
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r2.B4/requests/w1.istio17860.r2.B4.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 9749
+            },
+            "cache_creation_input_tokens": 9749,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 1225,
+            "output_tokens_details": {
+              "thinking_tokens": 1169
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r2.B4/requests/w1.istio17860.r2.B4.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 9749,
+            "input_tokens": 1353,
+            "output_tokens": 79,
+            "output_tokens_details": {
+              "thinking_tokens": 23
+            }
+          }
+        }
+      ],
+      "case": "istio17860",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 30012,
+        "jev_evaluations": 0,
+        "output_tokens": 5304,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 1,
+            "pair_id": "w1.istio17860.r2.B4.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.istio17860.r2.B4.unchanged"
+        ],
+        "usd": 0.104969
+      },
+      "final_unchanged": null,
+      "id": "w1.istio17860.r2.B4",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 0,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 72.188,
+      "stop_reasons": {
+        "max_tokens": 1,
+        "tool_use": 2
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "build_pair": 1,
+        "run_pair": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r3.B2/requests/w1.istio17860.r3.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 9695
+            },
+            "cache_creation_input_tokens": 9695,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 769,
+            "output_tokens_details": {
+              "thinking_tokens": 712
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r3.B2/requests/w1.istio17860.r3.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 9695,
+            "input_tokens": 896,
+            "output_tokens": 72,
+            "output_tokens_details": {
+              "thinking_tokens": 16
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r3.B2/requests/w1.istio17860.r3.B2.req03.response.json",
+          "messages": 5,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_final"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 9695,
+            "input_tokens": 3552,
+            "output_tokens": 1737,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        }
+      ],
+      "case": "istio17860",
+      "details": {
+        "final": {
+          "elapsed_seconds": 49.465,
+          "legal": true,
+          "malformed": false,
+          "meta": {
+            "obligation": "Restart must not indefinitely hold the internal state lock while waiting for a previous epoch to become live; waitUntilLive must return promptly once the previous epoch has exited (not only when it becomes live or after a fixed 20s timeout), so that a subsequent Restart's new epoch starts soon after the prior epoch exits rather than being delayed by lock contention/full timeout.",
+            "rationale": "The production diff (pkg/envoy/agent.go) splits the single `mu` mutex into `restartMutex`/`mutex`, unlocks `mutex` before calling `waitUntilLive`, and changes `waitUntilLive` to take an explicit epoch and poll a new `isActive(epoch)` helper so it returns as soon as the given epoch is no longer active (not just when `IsLive()` becomes true or after the fixed 20s timer). The supplied test `TestExitDuringWaitForLive` (shared/pkg/envoy/agent_test.go:169-221) is built exactly to exercise this: it starts epoch 0 with a proxy that never reports live, starts a second Restart concurrently (so it must wait on epoch 0), sends epoch 0 an exit error, and then asserts (with only a 1s error threshold, and a 5s overall wait) that epoch 1 starts almost immediately after epoch 0 exits.\n\nPaired execution (run_pair, proposal_id=unchanged) confirms this discriminates the two variants precisely along the diff's changed functions:\n- Defective build: `Restart` holds the single `mu` across the whole call including `waitUntilLive`, and `waitUntilLive` (agent.go:150-186) has no way to observe that epoch 0 exited \u2014 it only polls `proxy.IsLive()`, which never returns true. Meanwhile `Run`'s status handler (agent.go:193) blocks forever trying to `Lock()` the same mutex held by `Restart`, so the exited epoch is never even removed from `activeEpochs`. The test's 5s wait for `epoch1Started` times out and `t.Fatalf` fires, followed by the harness's goroutine dump showing goroutine 42 stuck in `waitUntilLive`'s select and goroutine 40 stuck in `sync.Mutex.Lock` inside `Run` at agent.go:193 \u2014 directly corroborating the lock-scope defect described in the diff.\n- Repaired build: `Restart` unlocks `mutex` before waiting, `Run` promptly processes the exit status and deletes the epoch from `activeEpochs`, and `waitUntilLive`'s `isActive(epoch)` check (agent.go:203-208, new in repaired) detects the epoch is gone, so it returns immediately (log shows \"epoch 0 exited while waiting for it to go live.\" ~0.5s ticker interval later) and epoch 1 starts well within the 1s error threshold; the test passes in 0.5s.\n\nThis is a strong, source-supported demonstration of the changed obligation and requires no modification \u2014 the existing entry point already isolates the behavior change introduced by the diff (lock-splitting plus epoch-liveness/active-tracking in Restart/waitUntilLive/isActive).</rationale>\n<parameter name=\"source_spans\">[\"defective/pkg/envoy/agent.go:124-147\", \"defective/pkg/envoy/agent.go:150-186\", \"defective/pkg/envoy/agent.go:188-221\", \"shared/pkg/envoy/agent_test.go:169-221\"]",
+            "source_spans": [],
+            "uncertainties": [
+              "The defective run failed via the explicit 5s t.Fatalf timeout inside the test rather than the outer 30s/60s process timeout, so the observed failure is an assertion failure with a goroutine dump, not merely an unresolved outer-timeout kill; this is treated as ordinary pass/fail evidence corroborated by the goroutine dump showing the exact locking code paths named in the diff, not as an independently proven root-cause analysis.",
+              "I did not add new tests; I rely on the supplied TestExitDuringWaitForLive, whose adequacy is already strongly supported by both the diff and the paired run, so no overlay edits were judged necessary."
+            ]
+          },
+          "overlay_sha256": "602e35a92eec4bc0a2ec6ae113f07bfc6933322fb69fe8dee416e5a67217e2a2",
+          "proposal_id": "w1.istio17860.r3.B2.unchanged",
+          "run_selection": [
+            "TestExitDuringWaitForLive"
+          ],
+          "sealed_utc": "2026-09-26T09:56:32.314Z",
+          "unchanged": true
+        },
+        "generator_calls": 3,
+        "input_tokens": 33535,
+        "jev_evaluations": 0,
+        "output_tokens": 2578,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 1,
+            "pair_id": "w1.istio17860.r3.B2.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.istio17860.r3.B2.unchanged"
+        ],
+        "usd": 0.062796
+      },
+      "final_unchanged": true,
+      "id": "w1.istio17860.r3.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "VALIDATED_WITNESS",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "END_FINAL"
+      ],
+      "seconds": 49.48,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "build_pair": 1,
+        "run_pair": 1,
+        "submit_final": 1
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r3.B3/requests/w1.istio17860.r3.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 9157
+            },
+            "cache_creation_input_tokens": 9157,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 3334,
+            "output_tokens_details": {
+              "thinking_tokens": 1154
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r3.B3/requests/w1.istio17860.r3.B3.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 10164
+            },
+            "cache_creation_input_tokens": 10164,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 565,
+            "output_tokens_details": {
+              "thinking_tokens": 454
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r3.B3/requests/w1.istio17860.r3.B3.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_judgments"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 10164,
+            "input_tokens": 1853,
+            "output_tokens": 1084,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r3.B3/requests/w1.istio17860.r3.B3.req04.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 12062
+            },
+            "cache_creation_input_tokens": 12062,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 139,
+            "output_tokens_details": {
+              "thinking_tokens": 82
+            }
+          }
+        }
+      ],
+      "case": "istio17860",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 43406,
+        "jev_evaluations": 0,
+        "output_tokens": 5122,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.istio17860.r3.B3.unchanged"
+        ],
+        "usd": 0.135428
+      },
+      "final_unchanged": null,
+      "id": "w1.istio17860.r3.B3",
+      "judgment_sources": {
+        "capable_model": 6
+      },
+      "judgments": {
+        "supported": 6
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 6,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 64.804,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "build_pair": 1,
+        "read_source": 1,
+        "submit_judgments": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r3.B4/requests/w1.istio17860.r3.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 9157
+            },
+            "cache_creation_input_tokens": 9157,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 3352,
+            "output_tokens_details": {
+              "thinking_tokens": 984
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r3.B4/requests/w1.istio17860.r3.B4.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 12290
+            },
+            "cache_creation_input_tokens": 12290,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 139,
+            "output_tokens_details": {
+              "thinking_tokens": 82
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.istio17860.r3.B4/requests/w1.istio17860.r3.B4.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 12290,
+            "input_tokens": 266,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        }
+      ],
+      "case": "istio17860",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 46940,
+        "jev_evaluations": 7,
+        "output_tokens": 3847,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 1,
+            "pair_id": "w1.istio17860.r3.B4.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.istio17860.r3.B4.unchanged"
+        ],
+        "usd": 0.092619
+      },
+      "final_unchanged": null,
+      "id": "w1.istio17860.r3.B4",
+      "judgment_sources": {
+        "jev": 7
+      },
+      "judgments": {
+        "supported": 7
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 7,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 57.662,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "build_pair": 1,
+        "run_pair": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B2/requests/w1.k8s26980.r1.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 5005
+            },
+            "cache_creation_input_tokens": 5005,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 302,
+            "output_tokens_details": {
+              "thinking_tokens": 245
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B2/requests/w1.k8s26980.r1.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 5005,
+            "input_tokens": 412,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B2/requests/w1.k8s26980.r1.B2.req03.response.json",
+          "messages": 5,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 5005,
+            "input_tokens": 593,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B2/requests/w1.k8s26980.r1.B2.req04.response.json",
+          "messages": 7,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 5005,
+            "input_tokens": 925,
+            "output_tokens": 390,
+            "output_tokens_details": {
+              "thinking_tokens": 274
+            }
+          }
+        }
+      ],
+      "case": "k8s26980",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 21952,
+        "jev_evaluations": 0,
+        "output_tokens": 802,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 0,
+            "pair_id": "w1.k8s26980.r1.B2.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.k8s26980.r1.B2.unchanged"
+        ],
+        "usd": 0.0274
+      },
+      "final_unchanged": null,
+      "id": "w1.k8s26980.r1.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 21.985,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {
+        "toolu_01SkbSYVJqyd3QzPsLcTHRpm": "{\"error\": \"proposal must be built successfully on both variants first\"}"
+      },
+      "tools": {
+        "build_pair": 1,
+        "read_source": 1,
+        "run_pair": 2
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B3/requests/w1.k8s26980.r1.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 4467
+            },
+            "cache_creation_input_tokens": 4467,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2069,
+            "output_tokens_details": {
+              "thinking_tokens": 60
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B3/requests/w1.k8s26980.r1.B3.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 5499
+            },
+            "cache_creation_input_tokens": 5499,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 139,
+            "output_tokens_details": {
+              "thinking_tokens": 23
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B3/requests/w1.k8s26980.r1.B3.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_judgments"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 5499,
+            "input_tokens": 623,
+            "output_tokens": 1453,
+            "output_tokens_details": {
+              "thinking_tokens": 372
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B3/requests/w1.k8s26980.r1.B3.req04.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7225
+            },
+            "cache_creation_input_tokens": 7225,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 151,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        }
+      ],
+      "case": "k8s26980",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 23319,
+        "jev_evaluations": 0,
+        "output_tokens": 3812,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.k8s26980.r1.B3.unchanged"
+        ],
+        "usd": 0.083455
+      },
+      "final_unchanged": null,
+      "id": "w1.k8s26980.r1.B3",
+      "judgment_sources": {
+        "capable_model": 7
+      },
+      "judgments": {
+        "supported": 7
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 7,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 44.199,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 1,
+        "run_pair": 1,
+        "submit_judgments": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B4/requests/w1.k8s26980.r1.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source",
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 4467
+            },
+            "cache_creation_input_tokens": 4467,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 352,
+            "output_tokens_details": {
+              "thinking_tokens": 122
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B4/requests/w1.k8s26980.r1.B4.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 4467,
+            "input_tokens": 1273,
+            "output_tokens": 2442,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r1.B4/requests/w1.k8s26980.r1.B4.req03.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7637
+            },
+            "cache_creation_input_tokens": 7637,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 120,
+            "output_tokens_details": {
+              "thinking_tokens": 63
+            }
+          }
+        }
+      ],
+      "case": "k8s26980",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 26266,
+        "jev_evaluations": 8,
+        "output_tokens": 3258,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.k8s26980.r1.B4.unchanged"
+        ],
+        "usd": 0.063201
+      },
+      "final_unchanged": null,
+      "id": "w1.k8s26980.r1.B4",
+      "judgment_sources": {
+        "jev": 8
+      },
+      "judgments": {
+        "supported": 6,
+        "unknown": 2
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 45.348,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "build_pair": 1,
+        "read_source": 2,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B2/requests/w1.k8s26980.r2.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 5005
+            },
+            "cache_creation_input_tokens": 5005,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 231,
+            "output_tokens_details": {
+              "thinking_tokens": 174
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B2/requests/w1.k8s26980.r2.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 5005,
+            "input_tokens": 341,
+            "output_tokens": 76,
+            "output_tokens_details": {
+              "thinking_tokens": 19
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B2/requests/w1.k8s26980.r2.B2.req03.response.json",
+          "messages": 5,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 5005,
+            "input_tokens": 542,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B2/requests/w1.k8s26980.r2.B2.req04.response.json",
+          "messages": 7,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 5005,
+            "input_tokens": 874,
+            "output_tokens": 1441,
+            "output_tokens_details": {
+              "thinking_tokens": 1326
+            }
+          }
+        }
+      ],
+      "case": "k8s26980",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 21779,
+        "jev_evaluations": 0,
+        "output_tokens": 1803,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 0,
+            "pair_id": "w1.k8s26980.r2.B2.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.k8s26980.r2.B2.unchanged"
+        ],
+        "usd": 0.037063
+      },
+      "final_unchanged": null,
+      "id": "w1.k8s26980.r2.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 32.679,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {
+        "toolu_01LEcpG5xHYEZTVi22YYL5Jj": "{\"error\": \"proposal must be built successfully on both variants first\"}"
+      },
+      "tools": {
+        "build_pair": 1,
+        "read_source": 1,
+        "run_pair": 2
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B3/requests/w1.k8s26980.r2.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 4467
+            },
+            "cache_creation_input_tokens": 4467,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2370,
+            "output_tokens_details": {
+              "thinking_tokens": 138
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B3/requests/w1.k8s26980.r2.B3.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 5706
+            },
+            "cache_creation_input_tokens": 5706,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 139,
+            "output_tokens_details": {
+              "thinking_tokens": 23
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B3/requests/w1.k8s26980.r2.B3.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_judgments"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 5706,
+            "input_tokens": 623,
+            "output_tokens": 3301,
+            "output_tokens_details": {
+              "thinking_tokens": 1918
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B3/requests/w1.k8s26980.r2.B3.req04.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7476
+            },
+            "cache_creation_input_tokens": 7476,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 101,
+            "output_tokens_details": {
+              "thinking_tokens": 44
+            }
+          }
+        }
+      ],
+      "case": "k8s26980",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 23984,
+        "jev_evaluations": 0,
+        "output_tokens": 5911,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.k8s26980.r2.B3.unchanged"
+        ],
+        "usd": 0.105632
+      },
+      "final_unchanged": null,
+      "id": "w1.k8s26980.r2.B3",
+      "judgment_sources": {
+        "capable_model": 8
+      },
+      "judgments": {
+        "supported": 8
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 65.341,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 1,
+        "run_pair": 1,
+        "submit_judgments": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B4/requests/w1.k8s26980.r2.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 4467
+            },
+            "cache_creation_input_tokens": 4467,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2969,
+            "output_tokens_details": {
+              "thinking_tokens": 729
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B4/requests/w1.k8s26980.r2.B4.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7470
+            },
+            "cache_creation_input_tokens": 7470,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 164,
+            "output_tokens_details": {
+              "thinking_tokens": 107
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r2.B4/requests/w1.k8s26980.r2.B4.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 7470,
+            "input_tokens": 291,
+            "output_tokens": 75,
+            "output_tokens_details": {
+              "thinking_tokens": 19
+            }
+          }
+        }
+      ],
+      "case": "k8s26980",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 26936,
+        "jev_evaluations": 7,
+        "output_tokens": 3509,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 0,
+            "pair_id": "w1.k8s26980.r2.B4.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.k8s26980.r2.B4.unchanged"
+        ],
+        "usd": 0.06431
+      },
+      "final_unchanged": null,
+      "id": "w1.k8s26980.r2.B4",
+      "judgment_sources": {
+        "jev": 7
+      },
+      "judgments": {
+        "supported": 4,
+        "unknown": 3
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 7,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 49.243,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "build_pair": 1,
+        "run_pair": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r3.B2/requests/w1.k8s26980.r3.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_final"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 5005
+            },
+            "cache_creation_input_tokens": 5005,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 1027,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        }
+      ],
+      "case": "k8s26980",
+      "details": {
+        "final": {
+          "elapsed_seconds": 12.839,
+          "legal": true,
+          "malformed": false,
+          "meta": {
+            "obligation": "pop() must not hold p.lock while blocked sending a notification on p.nextCh, so that concurrent callers (e.g. add()) can still acquire the lock during a blocked send.",
+            "rationale": "The production diff narrows the lock scope in (processorListener).pop: originally p.lock was held for the entire loop body including the blocking send on p.nextCh (defective/shared_informer.go:282-303); the repair moves the lock/unlock into a `blockingGet` closure that only covers the pendingNotifications dequeue, releasing the lock before the blocking select on p.nextCh/stopCh (repaired diff lines 281-305). The supplied test TestPopReleaseLock (processor_listener_test.go:28-48) exactly targets this obligation: it calls pl.add(1) then runs pl.pop(stopCh) in a goroutine, which blocks on the p.nextCh send since no receiver drains it; concurrently it spawns a goroutine trying to pl.lock.Lock(). If pop() held the lock during the blocked send (defective), the second goroutine's Lock() would never succeed, resultCh would never close, and the test times out via time.After(wait.ForeverTestTimeout) with t.Errorf. If pop() releases the lock before blocking on the send (repaired), the lock acquisition succeeds promptly and the test passes quickly. This is a direct, minimal, already-present witness of the exact changed lock-scoping behavior; the T0 extraction also ranks it top overlap (score=9) with the changed function. No modification improves on this: the test's core structure already isolates the lock-release timing without relying on t.Errorf failure text or timeout duration changes, so I retain it unmodified.",
+            "source_spans": [
+              "defective/pkg/controller/framework/shared_informer.go:279-304",
+              "repaired diff lines 279-313 (production change block)",
+              "shared/pkg/controller/framework/processor_listener_test.go:28-48"
+            ],
+            "uncertainties": [
+              "I did not run build_pair/run_pair to empirically confirm timing behavior differs between variants under this container's scheduler; relying on static/source reasoning per task instructions that a timeout alone is not proof, but the test's structural correspondence to the lock-scope change is direct.",
+              "There is a small chance GOMAXPROCS=16 scheduling makes the defective variant's failure intermittent rather than deterministic, though the blocking design (cond.Wait/select with no receiver) should make it deterministic within the ForeverTestTimeout window."
+            ]
+          },
+          "overlay_sha256": "602e35a92eec4bc0a2ec6ae113f07bfc6933322fb69fe8dee416e5a67217e2a2",
+          "proposal_id": "w1.k8s26980.r3.B2.unchanged",
+          "run_selection": [
+            "TestPopReleaseLock"
+          ],
+          "sealed_utc": "2026-09-26T10:06:05.456Z",
+          "unchanged": true
+        },
+        "generator_calls": 1,
+        "input_tokens": 5007,
+        "jev_evaluations": 0,
+        "output_tokens": 1027,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.k8s26980.r3.B2.unchanged"
+        ],
+        "usd": 0.022787
+      },
+      "final_unchanged": true,
+      "id": "w1.k8s26980.r3.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_WITNESS_WITHIN_BUDGET",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "END_FINAL"
+      ],
+      "seconds": 12.855,
+      "stop_reasons": {
+        "tool_use": 1
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "submit_final": 1
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r3.B3/requests/w1.k8s26980.r3.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 4467
+            },
+            "cache_creation_input_tokens": 4467,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2677,
+            "output_tokens_details": {
+              "thinking_tokens": 379
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r3.B3/requests/w1.k8s26980.r3.B3.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_judgments"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 5707
+            },
+            "cache_creation_input_tokens": 5707,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2567,
+            "output_tokens_details": {
+              "thinking_tokens": 1317
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r3.B3/requests/w1.k8s26980.r3.B3.req03.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7545
+            },
+            "cache_creation_input_tokens": 7545,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 103,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r3.B3/requests/w1.k8s26980.r3.B3.req04.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 7545,
+            "input_tokens": 214,
+            "output_tokens": 55,
+            "output_tokens_details": {
+              "thinking_tokens": 0
+            }
+          }
+        }
+      ],
+      "case": "k8s26980",
+      "details": {
+        "final": {},
+        "generator_calls": 4,
+        "input_tokens": 25484,
+        "jev_evaluations": 0,
+        "output_tokens": 5402,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.k8s26980.r3.B3.unchanged"
+        ],
+        "usd": 0.100267
+      },
+      "final_unchanged": null,
+      "id": "w1.k8s26980.r3.B3",
+      "judgment_sources": {
+        "capable_model": 8
+      },
+      "judgments": {
+        "supported": 7,
+        "unknown": 1
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 67.146,
+      "stop_reasons": {
+        "tool_use": 4
+      },
+      "tool_errors_returned_to_model": {
+        "toolu_01PzTjfioSYspTPJo1HUbTZT": "{\"error\": \"proposal must be built successfully on both variants first\"}"
+      },
+      "tools": {
+        "build_pair": 1,
+        "run_pair": 1,
+        "submit_judgments": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r3.B4/requests/w1.k8s26980.r3.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 4467
+            },
+            "cache_creation_input_tokens": 4467,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 3064,
+            "output_tokens_details": {
+              "thinking_tokens": 792
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r3.B4/requests/w1.k8s26980.r3.B4.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "build_pair",
+            "run_pair"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 7521
+            },
+            "cache_creation_input_tokens": 7521,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 158,
+            "output_tokens_details": {
+              "thinking_tokens": 49
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.k8s26980.r3.B4/requests/w1.k8s26980.r3.B4.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 7521,
+            "input_tokens": 527,
+            "output_tokens": 1602,
+            "output_tokens_details": {
+              "thinking_tokens": 1486
+            }
+          }
+        }
+      ],
+      "case": "k8s26980",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 26341,
+        "jev_evaluations": 8,
+        "output_tokens": 5168,
+        "paired_runs": 1,
+        "pairs": [
+          {
+            "defective": 0,
+            "pair_id": "w1.k8s26980.r3.B4.unchanged.pair1",
+            "repaired": 0,
+            "timeouts": {
+              "defective": false,
+              "repaired": false
+            }
+          }
+        ],
+        "patch_proposals": 0,
+        "proposal_ids": [
+          "w1.k8s26980.r3.B4.unchanged"
+        ],
+        "usd": 0.081041
+      },
+      "final_unchanged": null,
+      "id": "w1.k8s26980.r3.B4",
+      "judgment_sources": {
+        "jev": 8
+      },
+      "judgments": {
+        "supported": 3,
+        "unknown": 5
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 68.212,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "build_pair": 1,
+        "read_source": 1,
+        "run_pair": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r1.B2/requests/w1.pool162.r1.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 14093
+            },
+            "cache_creation_input_tokens": 14093,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2192,
+            "output_tokens_details": {
+              "thinking_tokens": 2063
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r1.B2/requests/w1.pool162.r1.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 14093,
+            "input_tokens": 3899,
+            "output_tokens": 273,
+            "output_tokens_details": {
+              "thinking_tokens": 143
+            }
+          }
+        }
+      ],
+      "case": "pool162",
+      "details": {
+        "final": {},
+        "generator_calls": 2,
+        "input_tokens": 32087,
+        "jev_evaluations": 0,
+        "output_tokens": 2465,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.070503
+      },
+      "final_unchanged": null,
+      "id": "w1.pool162.r1.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "BUDGET_DENIED",
+        "END_BUDGET"
+      ],
+      "seconds": 28.676,
+      "stop_reasons": {
+        "tool_use": 2
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 2
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 1,
+          "file": "measured/w1.pool162.r1.B3/requests/w1.pool162.r1.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "max_tokens",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 13555
+            },
+            "cache_creation_input_tokens": 13555,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 4000,
+            "output_tokens_details": {
+              "thinking_tokens": 2511
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r1.B3/requests/w1.pool162.r1.B3.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 14147
+            },
+            "cache_creation_input_tokens": 14147,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2012,
+            "output_tokens_details": {
+              "thinking_tokens": 1884
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r1.B3/requests/w1.pool162.r1.B3.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_patch"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 14147,
+            "input_tokens": 3614,
+            "output_tokens": 389,
+            "output_tokens_details": {
+              "thinking_tokens": 239
+            }
+          }
+        }
+      ],
+      "case": "pool162",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 45467,
+        "jev_evaluations": 0,
+        "output_tokens": 6401,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 1,
+        "proposal_ids": [
+          "w1.pool162.r1.B3.p1"
+        ],
+        "usd": 0.14333
+      },
+      "final_unchanged": null,
+      "id": "w1.pool162.r1.B3",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 0,
+      "proposals": [
+        {
+          "error": "malformed proposal: edit 0: 'placeholder' is not an editable supplied test file",
+          "file": "measured/w1.pool162.r1.B3/proposals/w1.pool162.r1.B3.p1.json"
+        }
+      ],
+      "reasons": [
+        "BUDGET_DENIED",
+        "GENERATOR_END_BUDGET"
+      ],
+      "seconds": 69.027,
+      "stop_reasons": {
+        "max_tokens": 1,
+        "tool_use": 2
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 1,
+        "submit_patch": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r1.B4/requests/w1.pool162.r1.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 13555
+            },
+            "cache_creation_input_tokens": 13555,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2205,
+            "output_tokens_details": {
+              "thinking_tokens": 2036
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r1.B4/requests/w1.pool162.r1.B4.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 14254
+            },
+            "cache_creation_input_tokens": 14254,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 997,
+            "output_tokens_details": {
+              "thinking_tokens": 867
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r1.B4/requests/w1.pool162.r1.B4.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 14254,
+            "input_tokens": 2944,
+            "output_tokens": 1602,
+            "output_tokens_details": {
+              "thinking_tokens": 1475
+            }
+          }
+        }
+      ],
+      "case": "pool162",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 45932,
+        "jev_evaluations": 1,
+        "output_tokens": 4847,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.126348
+      },
+      "final_unchanged": null,
+      "id": "w1.pool162.r1.B4",
+      "judgment_sources": {
+        "jev": 1
+      },
+      "judgments": {
+        "unknown": 1
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 1,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 57.396,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 2,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r2.B2/requests/w1.pool162.r2.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 14093
+            },
+            "cache_creation_input_tokens": 14093,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 1229,
+            "output_tokens_details": {
+              "thinking_tokens": 1098
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r2.B2/requests/w1.pool162.r2.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source",
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 14093,
+            "input_tokens": 2636,
+            "output_tokens": 285,
+            "output_tokens_details": {
+              "thinking_tokens": 31
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r2.B2/requests/w1.pool162.r2.B2.req03.response.json",
+          "messages": 5,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 14093,
+            "input_tokens": 5186,
+            "output_tokens": 1648,
+            "output_tokens_details": {
+              "thinking_tokens": 1523
+            }
+          }
+        }
+      ],
+      "case": "pool162",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 50103,
+        "jev_evaluations": 0,
+        "output_tokens": 3162,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.088138
+      },
+      "final_unchanged": null,
+      "id": "w1.pool162.r2.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "BUDGET_DENIED",
+        "END_BUDGET"
+      ],
+      "seconds": 35.921,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 4
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r2.B3/requests/w1.pool162.r2.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 13555
+            },
+            "cache_creation_input_tokens": 13555,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 1641,
+            "output_tokens_details": {
+              "thinking_tokens": 1466
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r2.B3/requests/w1.pool162.r2.B3.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_judgments"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 13487
+            },
+            "cache_creation_input_tokens": 13487,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 176,
+            "output_tokens_details": {
+              "thinking_tokens": 38
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r2.B3/requests/w1.pool162.r2.B3.req03.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 14266
+            },
+            "cache_creation_input_tokens": 14266,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 1461,
+            "output_tokens_details": {
+              "thinking_tokens": 1330
+            }
+          }
+        }
+      ],
+      "case": "pool162",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 41314,
+        "jev_evaluations": 0,
+        "output_tokens": 3278,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.136062
+      },
+      "final_unchanged": null,
+      "id": "w1.pool162.r2.B3",
+      "judgment_sources": {
+        "capable_model": 1
+      },
+      "judgments": {
+        "unknown": 1
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 1,
+      "proposals": [],
+      "reasons": [
+        "BUDGET_DENIED",
+        "GENERATOR_END_BUDGET"
+      ],
+      "seconds": 43.756,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 1,
+        "submit_judgments": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r2.B4/requests/w1.pool162.r2.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source",
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 13555
+            },
+            "cache_creation_input_tokens": 13555,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 1733,
+            "output_tokens_details": {
+              "thinking_tokens": 1473
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r2.B4/requests/w1.pool162.r2.B4.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "max_tokens",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 13555,
+            "input_tokens": 3821,
+            "output_tokens": 4000,
+            "output_tokens_details": {
+              "thinking_tokens": 2004
+            }
+          }
+        }
+      ],
+      "case": "pool162",
+      "details": {
+        "final": {},
+        "generator_calls": 2,
+        "input_tokens": 41695,
+        "jev_evaluations": 8,
+        "output_tokens": 6080,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.102027
+      },
+      "final_unchanged": null,
+      "id": "w1.pool162.r2.B4",
+      "judgment_sources": {
+        "jev": 8
+      },
+      "judgments": {
+        "contradicted": 1,
+        "supported": 2,
+        "unknown": 5
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "BUDGET_DENIED",
+        "GENERATOR_END_BUDGET"
+      ],
+      "seconds": 64.777,
+      "stop_reasons": {
+        "max_tokens": 1,
+        "tool_use": 1
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 2,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B2",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r3.B2/requests/w1.pool162.r3.B2.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 14093
+            },
+            "cache_creation_input_tokens": 14093,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2399,
+            "output_tokens_details": {
+              "thinking_tokens": 2271
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r3.B2/requests/w1.pool162.r3.B2.req02.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 14093,
+            "input_tokens": 3068,
+            "output_tokens": 279,
+            "output_tokens_details": {
+              "thinking_tokens": 151
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r3.B2/requests/w1.pool162.r3.B2.req03.response.json",
+          "messages": 5,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "b2",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 14093,
+            "input_tokens": 4947,
+            "output_tokens": 351,
+            "output_tokens_details": {
+              "thinking_tokens": 226
+            }
+          }
+        }
+      ],
+      "case": "pool162",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 50296,
+        "jev_evaluations": 0,
+        "output_tokens": 3029,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.087194
+      },
+      "final_unchanged": null,
+      "id": "w1.pool162.r3.B2",
+      "judgment_sources": {},
+      "judgments": {},
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": null,
+      "proposals": [],
+      "reasons": [
+        "BUDGET_DENIED",
+        "END_BUDGET"
+      ],
+      "seconds": 36.291,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 3
+      }
+    },
+    {
+      "arm": "B3",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r3.B3/requests/w1.pool162.r3.B3.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 13555
+            },
+            "cache_creation_input_tokens": 13555,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 3961,
+            "output_tokens_details": {
+              "thinking_tokens": 1111
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r3.B3/requests/w1.pool162.r3.B3.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "judge",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_judgments"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 15563
+            },
+            "cache_creation_input_tokens": 15563,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 3159,
+            "output_tokens_details": {
+              "thinking_tokens": 1251
+            }
+          }
+        }
+      ],
+      "case": "pool162",
+      "details": {
+        "final": {},
+        "generator_calls": 2,
+        "input_tokens": 29122,
+        "jev_evaluations": 0,
+        "output_tokens": 7120,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.144003
+      },
+      "final_unchanged": null,
+      "id": "w1.pool162.r3.B3",
+      "judgment_sources": {
+        "capable_model": 8
+      },
+      "judgments": {
+        "supported": 7,
+        "unknown": 1
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 8,
+      "proposals": [],
+      "reasons": [
+        "BUDGET_DENIED",
+        "GENERATOR_END_BUDGET"
+      ],
+      "seconds": 72.764,
+      "stop_reasons": {
+        "tool_use": 2
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "submit_judgments": 1,
+        "submit_plan": 1
+      }
+    },
+    {
+      "arm": "B4",
+      "calls": [
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r3.B4/requests/w1.pool162.r3.B4.req01.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "planner",
+          "stop_reason": "tool_use",
+          "tools": [
+            "submit_plan"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 13555
+            },
+            "cache_creation_input_tokens": 13555,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 2328,
+            "output_tokens_details": {
+              "thinking_tokens": 2148
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r3.B4/requests/w1.pool162.r3.B4.req02.response.json",
+          "messages": 1,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 14275
+            },
+            "cache_creation_input_tokens": 14275,
+            "cache_read_input_tokens": 0,
+            "input_tokens": 2,
+            "output_tokens": 615,
+            "output_tokens_details": {
+              "thinking_tokens": 485
+            }
+          }
+        },
+        {
+          "empty_judgment_submissions": 0,
+          "empty_plan_submissions": 0,
+          "file": "measured/w1.pool162.r3.B4/requests/w1.pool162.r3.B4.req03.response.json",
+          "messages": 3,
+          "reads_fully_in_initial_excerpts": 0,
+          "reads_repeating_prior_stage_range": 0,
+          "stage": "generator",
+          "stop_reason": "tool_use",
+          "tools": [
+            "read_source"
+          ],
+          "usage": {
+            "cache_creation": {
+              "ephemeral_1h_input_tokens": 0,
+              "ephemeral_5m_input_tokens": 0
+            },
+            "cache_creation_input_tokens": 0,
+            "cache_read_input_tokens": 14275,
+            "input_tokens": 2562,
+            "output_tokens": 2266,
+            "output_tokens_details": {
+              "thinking_tokens": 2137
+            }
+          }
+        }
+      ],
+      "case": "pool162",
+      "details": {
+        "final": {},
+        "generator_calls": 3,
+        "input_tokens": 45592,
+        "jev_evaluations": 1,
+        "output_tokens": 5252,
+        "paired_runs": 0,
+        "pairs": [],
+        "patch_proposals": 0,
+        "proposal_ids": [],
+        "usd": 0.129691
+      },
+      "final_unchanged": null,
+      "id": "w1.pool162.r3.B4",
+      "judgment_sources": {
+        "jev": 1
+      },
+      "judgments": {
+        "unknown": 1
+      },
+      "outcome": "NO_SUBMISSION",
+      "plan_claims": 1,
+      "proposals": [],
+      "reasons": [
+        "GENERATOR_END_CALLS_EXHAUSTED"
+      ],
+      "seconds": 62.196,
+      "stop_reasons": {
+        "tool_use": 3
+      },
+      "tool_errors_returned_to_model": {},
+      "tools": {
+        "read_source": 2,
+        "submit_plan": 1
+      }
+    }
+  ],
+  "arms": {
+    "B2": {
+      "calls": 40,
+      "empty_judgment_submissions": 0,
+      "empty_plan_submissions": 0,
+      "generator_calls": 40,
+      "generator_calls_per_session": {
+        "1": 1,
+        "2": 1,
+        "3": 3,
+        "4": 7
+      },
+      "initial_only_requests": 12,
+      "max_seconds": 52.588,
+      "median_seconds": 35.885999999999996,
+      "plans_with_claims": 0,
+      "reads_fully_in_initial_excerpts": 0,
+      "reads_repeating_prior_stage_range": 0,
+      "sessions": 12,
+      "stops": {
+        "tool_use": 40
+      },
+      "tools": {
+        "build_pair": 8,
+        "read_source": 18,
+        "run_pair": 14,
+        "submit_final": 4
+      },
+      "usd": 0.765715
+    },
+    "B3": {
+      "calls": 44,
+      "empty_judgment_submissions": 1,
+      "empty_plan_submissions": 1,
+      "generator_calls": 14,
+      "generator_calls_per_session": {
+        "0": 1,
+        "1": 8,
+        "2": 3
+      },
+      "initial_only_requests": 33,
+      "max_seconds": 83.895,
+      "median_seconds": 62.929500000000004,
+      "plans_with_claims": 10,
+      "reads_fully_in_initial_excerpts": 0,
+      "reads_repeating_prior_stage_range": 6,
+      "sessions": 12,
+      "stops": {
+        "max_tokens": 2,
+        "tool_use": 42
+      },
+      "tools": {
+        "build_pair": 3,
+        "read_source": 19,
+        "run_pair": 5,
+        "submit_judgments": 8,
+        "submit_patch": 1,
+        "submit_plan": 11
+      },
+      "usd": 1.460704
+    },
+    "B4": {
+      "calls": 35,
+      "empty_judgment_submissions": 0,
+      "empty_plan_submissions": 1,
+      "generator_calls": 17,
+      "generator_calls_per_session": {
+        "0": 1,
+        "1": 5,
+        "2": 6
+      },
+      "initial_only_requests": 23,
+      "max_seconds": 72.188,
+      "median_seconds": 56.41,
+      "plans_with_claims": 11,
+      "reads_fully_in_initial_excerpts": 0,
+      "reads_repeating_prior_stage_range": 2,
+      "sessions": 12,
+      "stops": {
+        "max_tokens": 2,
+        "tool_use": 33
+      },
+      "tools": {
+        "build_pair": 6,
+        "read_source": 17,
+        "run_pair": 4,
+        "submit_plan": 12
+      },
+      "usd": 1.116705
+    }
+  },
+  "complete_policies_checked": 28,
+  "denials": [
+    {
+      "id": "w1.pool162.r1.B3.req04",
+      "reason": "input-token ceiling: need 27328, remaining 14533",
+      "stage": "generator"
+    },
+    {
+      "id": "w1.pool162.r1.B2.req03",
+      "reason": "input-token ceiling: need 28638, remaining 27913",
+      "stage": "b2"
+    },
+    {
+      "id": "w1.pool162.r2.B4.req03",
+      "reason": "input-token ceiling: need 22926, remaining 18305",
+      "stage": "generator"
+    },
+    {
+      "id": "w1.pool162.r2.B2.req04",
+      "reason": "input-token ceiling: need 37240, remaining 9897",
+      "stage": "b2"
+    },
+    {
+      "id": "w1.pool162.r2.B3.req04",
+      "reason": "input-token ceiling: need 25184, remaining 18686",
+      "stage": "generator"
+    },
+    {
+      "id": "w1.pool162.r3.B2.req04",
+      "reason": "input-token ceiling: need 30232, remaining 9704",
+      "stage": "b2"
+    },
+    {
+      "id": "w1.pool162.r3.B3.req03",
+      "reason": "output-token ceiling leaves 880 tokens",
+      "stage": "generator"
+    }
+  ],
+  "integrity": {
+    ".": {
+      "failures": [],
+      "files": 16,
+      "manifest_sha256": "1650c179e7d41474a028da9999035f730c68bd4a588ea170cae9b3daea923e20"
+    },
+    "events.jsonl": {
+      "events": 2152,
+      "tail": "393c546855930b0eb2f1725b2eecee03c15ea5667c47164f8e9590cf4fe33615"
+    },
+    "executable": {
+      "failures": [],
+      "files": 181,
+      "manifest_sha256": "2a18c91c65463f9b126ee7cc3798d681f0d3f9e48869379594b6804fa6bd66a4"
+    },
+    "raw": {
+      "failures": [],
+      "files": 1962,
+      "manifest_sha256": "90cf74cb89b089136fd3c44b70ff2891aba12251b1aa2dce2b7d68a8c812fce9"
+    },
+    "resources/resource_ledger.jsonl": {
+      "events": 3338,
+      "tail": "6b9a26e6015c6048e5fa1e3794b75ecbbdb1dcd6028da3782ebe1a777102562b"
+    },
+    "v1_1": {
+      "failures": [],
+      "files": 17,
+      "manifest_sha256": "86cef5ac02c9bc900f094d7aa9957af6e1c3ac675126a1823e15a3aa0f9fc59e"
+    },
+    "v1_2": {
+      "failures": [],
+      "files": 17,
+      "manifest_sha256": "fbfa5afccb6cc6471e12053009f434886bfd02e7888d2a87bd75a5f0eb52eeae"
+    }
+  },
+  "labels": {
+    "NO_SUBMISSION": 32,
+    "NO_WITNESS_WITHIN_BUDGET": 14,
+    "VALIDATED_WITNESS": 14
+  },
+  "labels_checked": 60,
+  "returned_models": {
+    "claude-sonnet-5": 119
+  },
+  "scope": "Offline rehash, label/policy arithmetic, and provider trace audit; no execution or oracle reclassification.",
+  "table": {
+    "grpc1859": {
+      "B0": 2,
+      "B1": 0,
+      "B2": 0,
+      "B3": 0,
+      "B4": 0
+    },
+    "istio17860": {
+      "B0": 3,
+      "B1": 3,
+      "B2": 3,
+      "B3": 0,
+      "B4": 0
+    },
+    "k8s26980": {
+      "B0": 0,
+      "B1": 0,
+      "B2": 0,
+      "B3": 0,
+      "B4": 0
+    },
+    "pool162": {
+      "B0": 0,
+      "B1": 3,
+      "B2": 0,
+      "B3": 0,
+      "B4": 0
+    }
+  }
+}

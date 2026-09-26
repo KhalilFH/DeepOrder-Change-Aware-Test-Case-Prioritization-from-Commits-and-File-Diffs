@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:deeporder:w1:payload:1.0",
+  "title": "W1 minimum event payloads",
+  "oneOf": [
+    {"$ref": "#/$defs/session"},
+    {"$ref": "#/$defs/request"},
+    {"$ref": "#/$defs/attempt"}
+  ],
+  "$defs": {
+    "hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "nullable_hash": {"anyOf": [{"$ref": "#/$defs/hash"}, {"type": "null"}]},
+    "nonnegative": {"type": "number", "minimum": 0},
+    "session": {
+      "type": "object",
+      "required": ["kind", "id", "case", "arm", "replicate", "packet_sha256", "launch_sha256", "elapsed_search_seconds", "final_patch_sha256", "status", "reason_codes", "details"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"const": "session"},
+        "id": {"type": "string", "pattern": "^w1\\.(pool162|grpc1859|k8s26980|istio17860)\\.r[1-3]\\.B[0-4]$"},
+        "case": {"enum": ["pool162", "grpc1859", "k8s26980", "istio17860"]},
+        "arm": {"enum": ["B0", "B1", "B2", "B3", "B4"]},
+        "replicate": {"type": "integer", "minimum": 1, "maximum": 3},
+        "packet_sha256": {"$ref": "#/$defs/hash"},
+        "launch_sha256": {"$ref": "#/$defs/hash"},
+        "elapsed_search_seconds": {"$ref": "#/$defs/nonnegative"},
+        "final_patch_sha256": {"$ref": "#/$defs/nullable_hash"},
+        "status": {"enum": ["SCHEDULED", "EXCLUDED", "RUNNING", "SEALED", "NO_SUBMISSION", "VALIDATED_WITNESS", "INVALID_CANDIDATE", "COUNTERPART_FAILURE", "NO_WITNESS_WITHIN_BUDGET", "UNRESOLVED", "NOT_RUN"]},
+        "reason_codes": {"type": "array", "items": {"type": "string"}},
+        "details": {"type": "object"}
+      }
+    },
+    "request": {
+      "type": "object",
+      "required": ["kind", "id", "session_id", "provider", "requested_model", "returned_model", "request_sha256", "response_sha256", "status", "elapsed_seconds", "input_tokens", "output_tokens", "usd", "usage_provenance", "details"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"const": "request"},
+        "id": {"type": "string", "minLength": 1},
+        "session_id": {"type": ["string", "null"]},
+        "provider": {"enum": ["generator", "jev"]},
+        "requested_model": {"type": "string", "minLength": 1},
+        "returned_model": {"type": ["string", "null"]},
+        "request_sha256": {"$ref": "#/$defs/hash"},
+        "response_sha256": {"$ref": "#/$defs/nullable_hash"},
+        "status": {"enum": ["PENDING", "COMPLETED", "FAILED", "INDETERMINATE", "REJECTED_BEFORE_SEND"]},
+        "elapsed_seconds": {"$ref": "#/$defs/nonnegative"},
+        "input_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "output_tokens": {"type": ["integer", "null"], "minimum": 0},
+        "usd": {"anyOf": [{"$ref": "#/$defs/nonnegative"}, {"type": "null"}]},
+        "usage_provenance": {"enum": ["provider_reported", "bounded_estimate", "unknown"]},
+        "details": {"type": "object"}
+      }
+    },
+    "attempt": {
+      "type": "object",
+      "required": ["kind", "id", "session_id", "phase", "variant", "patch_sha256", "triplet", "position", "seed", "status", "elapsed_seconds", "trace_sha256", "premise_evidence", "consequence_evidence", "details"],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {"const": "attempt"},
+        "id": {"type": "string", "minLength": 1},
+        "session_id": {"type": ["string", "null"]},
+        "phase": {"enum": ["calibration", "search", "validation"]},
+        "variant": {"enum": ["V_bad", "V_ok"]},
+        "patch_sha256": {"$ref": "#/$defs/hash"},
+        "triplet": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+        "position": {"type": ["integer", "null"], "minimum": 1, "maximum": 3},
+        "seed": {"type": ["integer", "null"], "minimum": 0},
+        "status": {"enum": ["PASS", "FOCAL_FAILURE", "NONFOCAL_FAILURE", "UNRESOLVED", "HARNESS_INVALID", "NOT_RUN"]},
+        "elapsed_seconds": {"$ref": "#/$defs/nonnegative"},
+        "trace_sha256": {"$ref": "#/$defs/nullable_hash"},
+        "premise_evidence": {"type": "array", "items": {"type": "string"}},
+        "consequence_evidence": {"type": "array", "items": {"type": "string"}},
+        "details": {"type": "object"}
+      }
+    }
+  }
+}
