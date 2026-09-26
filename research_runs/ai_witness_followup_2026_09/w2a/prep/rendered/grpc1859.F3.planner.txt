@@ -1,0 +1,426 @@
+# SYSTEM
+You are strengthening a supplied regression-test package for a known historical production repair. You have the defective-to-repaired production diff, allowed source and tests, and a paired build/run interface. Aim for a small, source-supported test that can reveal the changed behavioral obligation. Leaving the tests unchanged is allowed when appropriate. The supplied tests may already come from the repair. Do not assume an unknown-bug discovery task.
+
+Use only the allowed packet and tools. Preserve existing assertions and timeouts. Do not modify production code, branch on version identity, access the network, read held-out files or fabricate outputs. Ordinary pass/fail feedback is fallible. Explain source evidence separately from hypotheses; a timeout alone does not prove the target defect. All calls, tool work and retries count against the supplied budgets.
+
+Session mechanics. Every harness turn ends with a harness state block listing your proposals, their legality, build and run status, and the remaining budget. Act through tool calls; a response without a tool call uses a model call without progress. A proposal must be built on both variants with build_pair before run_pair can execute it. Each response is limited to 4,000 output tokens including thinking; a response cut off at that limit is discarded and none of its tool calls run. At most four tool calls per response are executed. One final model call is reserved: when the other calls or budgets are used up, the harness asks you to seal the session with submit_final, and only submit_final is executed in that call. A session without a sealed submission has no result; nothing is submitted on your behalf.
+
+# FIRST USER MESSAGE
+# Task
+Identify the changed behavioral obligation and the prerequisites for the supplied tests to witness its violation. Return at most eight atomic claims about whether a supplied test establishes a specific input/action, ordering condition, resource/state condition or observable consequence. Give evidence as source spans `file_id:start-end` using packet file ids, distinguish observed source from inference, and list unresolved premises explicitly. Also propose a minimal legal test intervention or unchanged result. Return structured `obligation`, `claims` (id, category, proposition, source_spans), `intervention`, and `uncertainties` with submit_plan. Do not invent runtime evidence. The harness checks the plan locally: one to eight claims with unique short ids, a listed category, a proposition and one to six valid source spans each; an invalid plan is returned with the errors.
+
+# Final submission format
+The runner, not the model, computes hashes and elapsed time. submit_final supplies a proposal id (or "latest" or "unchanged"), a rationale with source spans, the stated obligation, and uncertainties. Only a legal proposal or the unchanged submission can be sealed; an illegal or malformed proposal is refused with its violations. Do not rely on ad hoc parsing of text outside tool calls.
+
+# Stage limits
+This stage allows at most 2 model calls, including any corrected resubmission. Submit with submit_plan no later than the last of them; a stage without an accepted output ends the session.
+
+# Shared case packet
+
+# Build and run interface (grpc1859)
+
+Language: Go (go version go1.13.15 linux/amd64), package `test` in `test` (repository-relative). Build and run
+happen in the case's fixed container images without network access. Both production variants use
+identical test sources, instrumentation, arguments and timeouts; you cannot see or choose which
+variant is which beyond the paired result labels `defective` and `repaired`.
+
+Build: the harness copies your overlay into the package, adds its own file `zz_w1_harness_instrument_test.go`
+(which defines `TestMain`), and runs `go test -c -vet=off ./test` on each variant.
+
+Run: `<binary> -test.v -test.count 1 -test.run '^(<selected tests>)$' -test.timeout 110s -only_env tcp-clear-v1-balancer`
+with GOMAXPROCS=16 and GOTRACEBACK=all, working directory `test`. Selected tests are the supplied
+entry point(s) `TestClientDoesntDeadlockWhileWritingErrornousLargeMessages` plus any new `func TestXxx(t *testing.T)` your overlay adds (at most 4).
+Outer limit 120s per run (the process is killed and the run is unresolved), cleanup 30s.
+
+Harness instrumentation (identical everywhere): if any selected test fails, `TestMain` prints a full
+goroutine dump after the tests return; on the 110s test timeout the Go runtime dumps all
+goroutines. You may add bounded test-side observation (for example printing `runtime.Stack(buf, true)`).
+
+Editing rules: edit only `test/end2end_test.go` (insertion-only: every original line must remain, in order) and/or
+add at most 2 new files named like `test/w1_<name>_test.go` in package `test`. Do not modify
+production code, remove or weaken assertions, change timeouts or arguments, define `TestMain`, read
+files/environment/process information, exec processes, skip tests, access the network (loopback
+test servers are fine), branch on revision identity, or print text imitating runtime dumps.
+New imports must be standard library (not os, os/exec, io/ioutil, path/filepath, syscall, unsafe,
+net/http, plugin) or packages already imported by the supplied test files. At most 400 inserted lines.
+
+## Production change (defective -> repaired)
+```diff
+--- a/transport/http2_client.go
++++ b/transport/http2_client.go
+@@ -716,6 +716,8 @@
+ 			}
+ 			ltq, _, err := t.localSendQuota.get(size, s.waiters)
+ 			if err != nil {
++				// Add the acquired quota back to transport.
++				t.sendQuotaPool.add(tq)
+ 				return err
+ 			}
+ 			// even if ltq is smaller than size we don't adjust size since
+--- a/transport/http2_server.go
++++ b/transport/http2_server.go
+@@ -888,6 +888,8 @@
+ 			}
+ 			ltq, _, err := t.localSendQuota.get(size, s.waiters)
+ 			if err != nil {
++				// Add the acquired quota back to transport.
++				t.sendQuotaPool.add(tq)
+ 				return err
+ 			}
+ 			// even if ltq is smaller than size we don't adjust size since,
+```
+
+## Allowed packet files (read more with read_source)
+- `defective/transport/http2_client.go` (1399 lines, defective)
+- `defective/transport/http2_server.go` (1212 lines, defective)
+- `repaired/transport/http2_client.go` (1401 lines, repaired)
+- `repaired/transport/http2_server.go` (1214 lines, repaired)
+- `shared/test/end2end_test.go` (6042 lines, shared)
+- `shared/test/gracefulstop_test.go` (215 lines, shared)
+- `shared/test/race.go` (24 lines, shared)
+- `shared/test/servertester.go` (280 lines, shared)
+- `shared/transport/control.go` (334 lines, shared)
+- `shared/transport/transport.go` (778 lines, shared)
+
+## T0 static extraction
+```text
+tool: w1-T0/1 (lexical extraction; not a sound whole-program call graph; no obligation answers)
+
+Changed functions:
+- defective (http2Client).Write transport/http2_client.go:664-767 (changed lines 718-718)
+- repaired (http2Client).Write transport/http2_client.go:664-769 (changed lines 719-720)
+- defective (http2Server).Write transport/http2_server.go:835-924 (changed lines 890-890)
+- repaired (http2Server).Write transport/http2_server.go:835-926 (changed lines 891-892)
+
+Supplied tests ranked by changed-token overlap (top 15 of 93; ties lexical):
+  1. TestClientWriteFailsAfterServerClosesStream test/end2end_test.go:5077-5104 score=6
+  2. TestServerCredsDispatch test/end2end_test.go:4458-4482 score=6
+  3. TestStreamingRPCWithTimeoutInServiceConfigRecv test/end2end_test.go:1828-1897 score=6
+  4. TestContextDeadlineNotIgnored test/end2end_test.go:760-792 score=5
+  5. TestCredsHandshakeAuthority test/end2end_test.go:4507-4545 score=5
+  6. TestFlowControlLogicalRace test/end2end_test.go:4591-4672 score=5
+  7. TestNonFailFastRPCSucceedOnTimeoutCreds test/end2end_test.go:4412-4424 score=5
+  8. TestServeExitsWhenListenerClosed test/end2end_test.go:5952-5998 score=5
+  9. TestServiceConfigMaxMsgSize test/end2end_test.go:1564-1823 score=5
+ 10. TestStatsTagsAndTrace test/end2end_test.go:4986-5039 score=5
+ 11. TestStreamingProxyDoesNotForwardMetadata test/end2end_test.go:4922-4984 score=5
+ 12. TestTapTimeout test/end2end_test.go:5041-5075 score=5
+ 13. TestUnaryProxyDoesNotForwardMetadata test/end2end_test.go:4874-4920 score=5
+ 14. TestFailfastRPCFailOnFatalHandshakeError test/end2end_test.go:4569-4589 score=4
+ 15. TestGetMethodConfig test/end2end_test.go:1300-1382 score=4
+
+Entry points:
+- TestClientDoesntDeadlockWhileWritingErrornousLargeMessages rank=21 score=2 test/end2end_test.go:6000-6008
+
+Direct syntactic calls (unique callees in source order, first 25; definitions found in packet files):
+- TestClientDoesntDeadlockWhileWritingErrornousLargeMessages test/end2end_test.go:6000-6008: leakcheck.Check@L6001, listTestEnv@L6002 [def test/end2end_test.go:409-427], testClientDoesntDeadlockWhileWritingErrornousLargeMessages@L6006 [def test/end2end_test.go:6010-6042]
+- (http2Client).Write transport/http2_client.go:664-767: ContextErr@L667, var@L687
+- (http2Server).Write transport/http2_server.go:835-924: ContextErr@L838, t.WriteHeader@L851 [def transport/http2_server.go:706-759], var@L860, atomic.StoreUint32@L899
+```
+
+## Shared template bindings (deterministic metadata)
+```json
+{
+ "T3": {
+  "acquire": "tc.UnaryCall on a connection from newTest/startServer/clientConn",
+  "applicable": true,
+  "assertion": "the second call succeeds before its deadline (connection still makes progress)",
+  "derivation": "diff modifies the error return after localSendQuota.get in http2Client.Write and http2Server.Write",
+  "error_action": "UnaryCall with a payload larger than te.maxServerReceiveMsgSize (server rejects the write)",
+  "release": "the failed call returns (status ResourceExhausted)",
+  "resource": "transport send quota of one client connection",
+  "second_operation": "UnaryCall with a payload within the limit and a bounded context deadline",
+  "source_spans": [
+   "defective/transport/http2_client.go:664-767",
+   "shared/test/end2end_test.go:6010-6042"
+  ]
+ }
+}
+```
+
+## Initial excerpts
+### `shared/test/end2end_test.go` lines 6000-6008
+```
+ 6000  func TestClientDoesntDeadlockWhileWritingErrornousLargeMessages(t *testing.T) {
+ 6001  	defer leakcheck.Check(t)
+ 6002  	for _, e := range listTestEnv() {
+ 6003  		if e.httpHandler {
+ 6004  			continue
+ 6005  		}
+ 6006  		testClientDoesntDeadlockWhileWritingErrornousLargeMessages(t, e)
+ 6007  	}
+ 6008  }
+```
+
+### `defective/transport/http2_client.go` lines 664-767
+```
+  664  func (t *http2Client) Write(s *Stream, hdr []byte, data []byte, opts *Options) error {
+  665  	select {
+  666  	case <-s.ctx.Done():
+  667  		return ContextErr(s.ctx.Err())
+  668  	case <-s.done:
+  669  		return io.EOF
+  670  	case <-t.ctx.Done():
+  671  		return ErrConnClosing
+  672  	default:
+  673  	}
+  674  
+  675  	if hdr == nil && data == nil && opts.Last {
+  676  		// stream.CloseSend uses this to send an empty frame with endStream=True
+  677  		t.controlBuf.put(&dataFrame{streamID: s.id, endStream: true, f: func() {}})
+  678  		return nil
+  679  	}
+  680  	// Add data to header frame so that we can equally distribute data across frames.
+  681  	emptyLen := http2MaxFrameLen - len(hdr)
+  682  	if emptyLen > len(data) {
+  683  		emptyLen = len(data)
+  684  	}
+  685  	hdr = append(hdr, data[:emptyLen]...)
+  686  	data = data[emptyLen:]
+  687  	var (
+  688  		streamQuota    int
+  689  		streamQuotaVer uint32
+  690  		err            error
+  691  	)
+  692  	for idx, r := range [][]byte{hdr, data} {
+  693  		for len(r) > 0 {
+  694  			size := http2MaxFrameLen
+  695  			if size > len(r) {
+  696  				size = len(r)
+  697  			}
+  698  			if streamQuota == 0 { // Used up all the locally cached stream quota.
+  699  				// Get all the stream quota there is.
+  700  				streamQuota, streamQuotaVer, err = s.sendQuotaPool.get(math.MaxInt32, s.waiters)
+  701  				if err != nil {
+  702  					return err
+  703  				}
+  704  			}
+  705  			if size > streamQuota {
+  706  				size = streamQuota
+  707  			}
+  708  
+  709  			// Get size worth quota from transport.
+  710  			tq, _, err := t.sendQuotaPool.get(size, s.waiters)
+  711  			if err != nil {
+  712  				return err
+  713  			}
+  714  			if tq < size {
+  715  				size = tq
+  716  			}
+  717  			ltq, _, err := t.localSendQuota.get(size, s.waiters)
+  718  			if err != nil {
+  719  				return err
+  720  			}
+  721  			// even if ltq is smaller than size we don't adjust size since
+  722  			// ltq is only a soft limit.
+  723  			streamQuota -= size
+  724  			p := r[:size]
+  725  			var endStream bool
+  726  			// See if this is the last frame to be written.
+  727  			if opts.Last {
+  728  				if len(r)-size == 0 { // No more data in r after this iteration.
+  729  					if idx == 0 { // We're writing data header.
+  730  						if len(data) == 0 { // There's no data to follow.
+  731  							endStream = true
+  732  						}
+  733  					} else { // We're writing data.
+  734  						endStream = true
+  735  					}
+  736  				}
+  737  			}
+  738  			success := func() {
+  739  				ltq := ltq
+  740  				t.controlBuf.put(&dataFrame{streamID: s.id, endStream: endStream, d: p, f: func() { t.localSendQuota.add(ltq) }})
+  741  				r = r[size:]
+  742  			}
+  743  			failure := func() { // The stream quota version must have changed.
+  744  				// Our streamQuota cache is invalidated now, so give it back.
+  745  				s.sendQuotaPool.lockedAdd(streamQuota + size)
+  746  			}
+  747  			if !s.sendQuotaPool.compareAndExecute(streamQuotaVer, success, failure) {
+  748  				// Couldn't send this chunk out.
+  749  				t.sendQuotaPool.add(size)
+  750  				t.localSendQuota.add(ltq)
+  751  				streamQuota = 0
+  752  			}
+  753  		}
+  754  	}
+  755  	if streamQuota > 0 { // Add the left over quota back to stream.
+  756  		s.sendQuotaPool.add(streamQuota)
+  757  	}
+  758  	if !opts.Last {
+  759  		return nil
+  760  	}
+  761  	s.mu.Lock()
+  762  	if s.state != streamDone {
+  763  		s.state = streamWriteDone
+  764  	}
+  765  	s.mu.Unlock()
+  766  	return nil
+  767  }
+```
+
+### `defective/transport/http2_server.go` lines 835-924
+```
+  835  func (t *http2Server) Write(s *Stream, hdr []byte, data []byte, opts *Options) error {
+  836  	select {
+  837  	case <-s.ctx.Done():
+  838  		return ContextErr(s.ctx.Err())
+  839  	case <-t.ctx.Done():
+  840  		return ErrConnClosing
+  841  	default:
+  842  	}
+  843  
+  844  	var writeHeaderFrame bool
+  845  	s.mu.Lock()
+  846  	if !s.headerOk {
+  847  		writeHeaderFrame = true
+  848  	}
+  849  	s.mu.Unlock()
+  850  	if writeHeaderFrame {
+  851  		t.WriteHeader(s, nil)
+  852  	}
+  853  	// Add data to header frame so that we can equally distribute data across frames.
+  854  	emptyLen := http2MaxFrameLen - len(hdr)
+  855  	if emptyLen > len(data) {
+  856  		emptyLen = len(data)
+  857  	}
+  858  	hdr = append(hdr, data[:emptyLen]...)
+  859  	data = data[emptyLen:]
+  860  	var (
+  861  		streamQuota    int
+  862  		streamQuotaVer uint32
+  863  		err            error
+  864  	)
+  865  	for _, r := range [][]byte{hdr, data} {
+  866  		for len(r) > 0 {
+  867  			size := http2MaxFrameLen
+  868  			if size > len(r) {
+  869  				size = len(r)
+  870  			}
+  871  			if streamQuota == 0 { // Used up all the locally cached stream quota.
+  872  				// Get all the stream quota there is.
+  873  				streamQuota, streamQuotaVer, err = s.sendQuotaPool.get(math.MaxInt32, s.waiters)
+  874  				if err != nil {
+  875  					return err
+  876  				}
+  877  			}
+  878  			if size > streamQuota {
+  879  				size = streamQuota
+  880  			}
+  881  			// Get size worth quota from transport.
+  882  			tq, _, err := t.sendQuotaPool.get(size, s.waiters)
+  883  			if err != nil {
+  884  				return err
+  885  			}
+  886  			if tq < size {
+  887  				size = tq
+  888  			}
+  889  			ltq, _, err := t.localSendQuota.get(size, s.waiters)
+  890  			if err != nil {
+  891  				return err
+  892  			}
+  893  			// even if ltq is smaller than size we don't adjust size since,
+  894  			// ltq is only a soft limit.
+  895  			streamQuota -= size
+  896  			p := r[:size]
+  897  			// Reset ping strikes when sending data since this might cause
+  898  			// the peer to send ping.
+  899  			atomic.StoreUint32(&t.resetPingStrikes, 1)
+  900  			success := func() {
+  901  				ltq := ltq
+  902  				t.controlBuf.put(&dataFrame{streamID: s.id, endStream: false, d: p, f: func() {
+  903  					t.localSendQuota.add(ltq)
+  904  				}})
+  905  				r = r[size:]
+  906  			}
+  907  			failure := func() { // The stream quota version must have changed.
+  908  				// Our streamQuota cache is invalidated now, so give it back.
+  909  				s.sendQuotaPool.lockedAdd(streamQuota + size)
+  910  			}
+  911  			if !s.sendQuotaPool.compareAndExecute(streamQuotaVer, success, failure) {
+  912  				// Couldn't send this chunk out.
+  913  				t.sendQuotaPool.add(size)
+  914  				t.localSendQuota.add(ltq)
+  915  				streamQuota = 0
+  916  			}
+  917  		}
+  918  	}
+  919  	if streamQuota > 0 {
+  920  		// ADd the left over quota back to stream.
+  921  		s.sendQuotaPool.add(streamQuota)
+  922  	}
+  923  	return nil
+  924  }
+```
+
+## Entry-point helper definitions (fixed rule: direct test-side callees and JUnit 3 fixtures)
+
+### `shared/test/end2end_test.go` lines 409-427 (H1: listTestEnv for TestClientDoesntDeadlockWhileWritingErrornousLargeMessages)
+```
+  409  func listTestEnv() (envs []env) {
+  410  	if *onlyEnv != "" {
+  411  		for _, e := range allEnv {
+  412  			if e.name == *onlyEnv {
+  413  				if !e.runnable() {
+  414  					panic(fmt.Sprintf("--only_env environment %q does not run on %s", *onlyEnv, runtime.GOOS))
+  415  				}
+  416  				return []env{e}
+  417  			}
+  418  		}
+  419  		panic(fmt.Sprintf("invalid --only_env value %q", *onlyEnv))
+  420  	}
+  421  	for _, e := range allEnv {
+  422  		if e.runnable() {
+  423  			envs = append(envs, e)
+  424  		}
+  425  	}
+  426  	return envs
+  427  }
+```
+
+### `shared/test/end2end_test.go` lines 6010-6042 (H1: testClientDoesntDeadlockWhileWritingErrornousLargeMessages for TestClientDoesntDeadlockWhileWritingErrornousLargeMessages)
+```
+ 6010  func testClientDoesntDeadlockWhileWritingErrornousLargeMessages(t *testing.T, e env) {
+ 6011  	te := newTest(t, e)
+ 6012  	te.userAgent = testAppUA
+ 6013  	smallSize := 1024
+ 6014  	te.maxServerReceiveMsgSize = &smallSize
+ 6015  	te.startServer(&testServer{security: e.security})
+ 6016  	defer te.tearDown()
+ 6017  	tc := testpb.NewTestServiceClient(te.clientConn())
+ 6018  	payload, err := newPayload(testpb.PayloadType_COMPRESSABLE, 1048576)
+ 6019  	if err != nil {
+ 6020  		t.Fatal(err)
+ 6021  	}
+ 6022  	req := &testpb.SimpleRequest{
+ 6023  		ResponseType: testpb.PayloadType_COMPRESSABLE,
+ 6024  		Payload:      payload,
+ 6025  	}
+ 6026  	var wg sync.WaitGroup
+ 6027  	for i := 0; i < 10; i++ {
+ 6028  		wg.Add(1)
+ 6029  		go func() {
+ 6030  			defer wg.Done()
+ 6031  			for j := 0; j < 100; j++ {
+ 6032  				ctx, cancel := context.WithDeadline(context.Background(), time.Now().Add(time.Second*10))
+ 6033  				defer cancel()
+ 6034  				if _, err := tc.UnaryCall(ctx, req); status.Code(err) != codes.ResourceExhausted {
+ 6035  					t.Errorf("TestService/UnaryCall(_,_) = _. %v, want code: %s", err, codes.ResourceExhausted)
+ 6036  					return
+ 6037  				}
+ 6038  			}
+ 6039  		}()
+ 6040  	}
+ 6041  	wg.Wait()
+ 6042  }
+```
+
+## Harness state (F3 planner stage)
+- model calls: 2 discretionary left in this stage; the final call is reserved separately
+- session budget left: input_tokens=640000, output_tokens=24000, usd=1.0, seconds=600.0
+- patch proposals left: 4; paired runs left: 6
+- proposals: none yet ("unchanged" is always available)
+
+# Output
+Return the plan by calling submit_plan (one to eight claims).

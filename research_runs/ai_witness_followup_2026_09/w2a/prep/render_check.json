@@ -1,0 +1,53 @@
+{
+ "artifact": "w2a_render_check_v1",
+ "code_sha256": "0f18361a64e1964c70fa9ec81673acefbe9d7f9b1e16fb84b823e819cc6ef5c7",
+ "command": "python research_runs/ai_witness_followup_2026_09/w2a/w2a.py render",
+ "files": {
+  "grpc1859.F2.agent.txt": {
+   "chars": 19205,
+   "leaks": [],
+   "sha256": "349dbd415b0601a94387eeec63480b9460a77dec79d1ea9629cd66ef4d5efaf8"
+  },
+  "grpc1859.F3.planner.txt": {
+   "chars": 19637,
+   "leaks": [],
+   "sha256": "6099a7d518c4b8a122ea4c91e91eb6aef5fda861a2c4f7a434bd5b10929a1553"
+  },
+  "istio17860.F2.agent.txt": {
+   "chars": 20163,
+   "leaks": [],
+   "sha256": "b249c7dc8f39073dcc5d5c0b9d92bbe5da9184e3e4f2f3e5ef5f26ce97ca284f"
+  },
+  "istio17860.F3.planner.txt": {
+   "chars": 20595,
+   "leaks": [],
+   "sha256": "d16c4c309ae84ed16c1ab373e216028da81d64561211ba1a153a08d453e449fa"
+  },
+  "k8s26980.F2.agent.txt": {
+   "chars": 10098,
+   "leaks": [],
+   "sha256": "13a71715af0d8dac8b128533e3242f742ca0a28362ce164561c432362a9ebe56"
+  },
+  "k8s26980.F3.planner.txt": {
+   "chars": 10530,
+   "leaks": [],
+   "sha256": "5996abcd52949972566f612adc0765240409d2e3317f1ca4a58dd7dc716e87bc"
+  },
+  "pool162.F2.agent.txt": {
+   "chars": 38751,
+   "leaks": [],
+   "sha256": "aa89382c585cdb37b35b8c9f823aa20f0bb0990c8a6576ecdc65bfc69c3d2a79"
+  },
+  "pool162.F3.planner.txt": {
+   "chars": 39183,
+   "leaks": [],
+   "sha256": "3ea36b7836fa7c0cb9fb1a6060a1146f0be3191191b4c909fa1092061d8fdebb"
+  }
+ },
+ "ok": true,
+ "prompts_sha256": "b614b87ac6a77e21b4c83f36961a3d5c46b58f151823f2a5f79c69d51efdcb22",
+ "scope": "harness-authored text: system, task/notice texts, packet context, helper definitions, state block",
+ "tool_leaks": [],
+ "tools_sha256": "a4910a5539b62d6a35e2a527139eb2b37517084a072164a7dd40791e93a5827b",
+ "utc": "2026-09-26T13:12:52.075Z"
+}

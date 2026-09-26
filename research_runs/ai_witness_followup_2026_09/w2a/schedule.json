@@ -1,0 +1,426 @@
+{
+ "arms": [
+  "F2",
+  "F3"
+ ],
+ "artifact": "w2a_schedule_v1",
+ "blocks": [
+  {
+   "block_id": "w2a.pool162",
+   "case": "pool162",
+   "session_order": [
+    "F3",
+    "F2"
+   ],
+   "status": "SCHEDULED",
+   "validation_order": [
+    "w2a.pool162.F2",
+    "w2a.pool162.F3"
+   ]
+  },
+  {
+   "block_id": "w2a.istio17860",
+   "case": "istio17860",
+   "session_order": [
+    "F2",
+    "F3"
+   ],
+   "status": "SCHEDULED",
+   "validation_order": [
+    "w2a.istio17860.F3",
+    "w2a.istio17860.F2"
+   ]
+  },
+  {
+   "block_id": "w2a.k8s26980",
+   "case": "k8s26980",
+   "session_order": [
+    "F3",
+    "F2"
+   ],
+   "status": "SCHEDULED",
+   "validation_order": [
+    "w2a.k8s26980.F2",
+    "w2a.k8s26980.F3"
+   ]
+  },
+  {
+   "block_id": "w2a.grpc1859",
+   "case": "grpc1859",
+   "session_order": [
+    "F3",
+    "F2"
+   ],
+   "status": "SCHEDULED",
+   "validation_order": [
+    "w2a.grpc1859.F2",
+    "w2a.grpc1859.F3"
+   ]
+  }
+ ],
+ "cases": [
+  "pool162",
+  "grpc1859",
+  "k8s26980",
+  "istio17860"
+ ],
+ "counts": {
+  "blocks": 4,
+  "max_validation_attempts": 240,
+  "sessions": 8
+ },
+ "generator": "w2a-schedule/1 sha256-counter fisher-yates (W1 Stream)",
+ "schedule_sha256": "854d99c22c6c1985765e4ce898854698f1b038235a6dc937be5803d0880286b7",
+ "seed": 2026092602,
+ "sessions": [
+  {
+   "arm": "F3",
+   "block_id": "w2a.pool162",
+   "case": "pool162",
+   "position_in_block": 1,
+   "search_pair_first_variant": [
+    "V_bad",
+    "V_ok",
+    "V_ok",
+    "V_ok",
+    "V_ok",
+    "V_ok"
+   ],
+   "session_id": "w2a.pool162.F3",
+   "status": "SCHEDULED",
+   "validation_triplets": [
+    {
+     "first_variant": "V_bad",
+     "seed": 413789149,
+     "triplet": 1
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 2032551391,
+     "triplet": 2
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 1008361604,
+     "triplet": 3
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 1466848245,
+     "triplet": 4
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 209555594,
+     "triplet": 5
+    }
+   ]
+  },
+  {
+   "arm": "F2",
+   "block_id": "w2a.pool162",
+   "case": "pool162",
+   "position_in_block": 2,
+   "search_pair_first_variant": [
+    "V_bad",
+    "V_ok",
+    "V_bad",
+    "V_ok",
+    "V_bad",
+    "V_bad"
+   ],
+   "session_id": "w2a.pool162.F2",
+   "status": "SCHEDULED",
+   "validation_triplets": [
+    {
+     "first_variant": "V_ok",
+     "seed": 1956213776,
+     "triplet": 1
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 1988522513,
+     "triplet": 2
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 527721403,
+     "triplet": 3
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 761340981,
+     "triplet": 4
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 155926252,
+     "triplet": 5
+    }
+   ]
+  },
+  {
+   "arm": "F2",
+   "block_id": "w2a.istio17860",
+   "case": "istio17860",
+   "position_in_block": 1,
+   "search_pair_first_variant": [
+    "V_bad",
+    "V_bad",
+    "V_bad",
+    "V_bad",
+    "V_ok",
+    "V_ok"
+   ],
+   "session_id": "w2a.istio17860.F2",
+   "status": "SCHEDULED",
+   "validation_triplets": [
+    {
+     "first_variant": "V_bad",
+     "seed": 2055595251,
+     "triplet": 1
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 1466708794,
+     "triplet": 2
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 1895663389,
+     "triplet": 3
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 1676128501,
+     "triplet": 4
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 1948744525,
+     "triplet": 5
+    }
+   ]
+  },
+  {
+   "arm": "F3",
+   "block_id": "w2a.istio17860",
+   "case": "istio17860",
+   "position_in_block": 2,
+   "search_pair_first_variant": [
+    "V_bad",
+    "V_bad",
+    "V_ok",
+    "V_bad",
+    "V_bad",
+    "V_ok"
+   ],
+   "session_id": "w2a.istio17860.F3",
+   "status": "SCHEDULED",
+   "validation_triplets": [
+    {
+     "first_variant": "V_ok",
+     "seed": 1502387423,
+     "triplet": 1
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 1081546583,
+     "triplet": 2
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 375560706,
+     "triplet": 3
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 1214539532,
+     "triplet": 4
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 1029817423,
+     "triplet": 5
+    }
+   ]
+  },
+  {
+   "arm": "F3",
+   "block_id": "w2a.k8s26980",
+   "case": "k8s26980",
+   "position_in_block": 1,
+   "search_pair_first_variant": [
+    "V_ok",
+    "V_ok",
+    "V_ok",
+    "V_bad",
+    "V_bad",
+    "V_ok"
+   ],
+   "session_id": "w2a.k8s26980.F3",
+   "status": "SCHEDULED",
+   "validation_triplets": [
+    {
+     "first_variant": "V_bad",
+     "seed": 744123452,
+     "triplet": 1
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 1311650994,
+     "triplet": 2
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 2074185504,
+     "triplet": 3
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 386468411,
+     "triplet": 4
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 647167201,
+     "triplet": 5
+    }
+   ]
+  },
+  {
+   "arm": "F2",
+   "block_id": "w2a.k8s26980",
+   "case": "k8s26980",
+   "position_in_block": 2,
+   "search_pair_first_variant": [
+    "V_bad",
+    "V_ok",
+    "V_ok",
+    "V_ok",
+    "V_ok",
+    "V_ok"
+   ],
+   "session_id": "w2a.k8s26980.F2",
+   "status": "SCHEDULED",
+   "validation_triplets": [
+    {
+     "first_variant": "V_bad",
+     "seed": 1931904366,
+     "triplet": 1
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 1833714623,
+     "triplet": 2
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 747022714,
+     "triplet": 3
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 610356958,
+     "triplet": 4
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 500008887,
+     "triplet": 5
+    }
+   ]
+  },
+  {
+   "arm": "F3",
+   "block_id": "w2a.grpc1859",
+   "case": "grpc1859",
+   "position_in_block": 1,
+   "search_pair_first_variant": [
+    "V_ok",
+    "V_ok",
+    "V_ok",
+    "V_ok",
+    "V_bad",
+    "V_ok"
+   ],
+   "session_id": "w2a.grpc1859.F3",
+   "status": "SCHEDULED",
+   "validation_triplets": [
+    {
+     "first_variant": "V_bad",
+     "seed": 881216682,
+     "triplet": 1
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 1958208063,
+     "triplet": 2
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 1988623116,
+     "triplet": 3
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 2137258258,
+     "triplet": 4
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 512654528,
+     "triplet": 5
+    }
+   ]
+  },
+  {
+   "arm": "F2",
+   "block_id": "w2a.grpc1859",
+   "case": "grpc1859",
+   "position_in_block": 2,
+   "search_pair_first_variant": [
+    "V_bad",
+    "V_bad",
+    "V_ok",
+    "V_bad",
+    "V_ok",
+    "V_ok"
+   ],
+   "session_id": "w2a.grpc1859.F2",
+   "status": "SCHEDULED",
+   "validation_triplets": [
+    {
+     "first_variant": "V_bad",
+     "seed": 63856331,
+     "triplet": 1
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 661705442,
+     "triplet": 2
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 895547412,
+     "triplet": 3
+    },
+    {
+     "first_variant": "V_bad",
+     "seed": 244871578,
+     "triplet": 4
+    },
+    {
+     "first_variant": "V_ok",
+     "seed": 332505585,
+     "triplet": 5
+    }
+   ]
+  }
+ ],
+ "validation_design": {
+  "attempts_per_triplet": 3,
+  "order": "per triplet k: first_variant triplet (3 consecutive attempts), then the other",
+  "triplets_per_variant": 5
+ }
+}

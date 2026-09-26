@@ -1,0 +1,90 @@
+{
+ "accounting": {
+  "ledger_generator_requests": 54.0,
+  "ledger_input_tokens": 335183.0,
+  "open_reservations": 0,
+  "per_session_caps_respected": true,
+  "session_generator_calls": 54,
+  "session_input_tokens": 335183,
+  "wire_requests": 54
+ },
+ "artifact": "w2a_dry_run_v1",
+ "attrition": {
+  "F2": {
+   "final_modified": 3,
+   "final_sealed": 3,
+   "judgments_accepted": 0,
+   "legal_modified_proposed": 3,
+   "modified_built_both": 3,
+   "modified_paired_run": 3,
+   "modified_workflow_complete": 3,
+   "plan_accepted": 0,
+   "validated_witness": 1
+  },
+  "F3": {
+   "final_modified": 1,
+   "final_sealed": 3,
+   "judgments_accepted": 3,
+   "legal_modified_proposed": 1,
+   "modified_built_both": 1,
+   "modified_paired_run": 1,
+   "modified_workflow_complete": 1,
+   "plan_accepted": 3,
+   "validated_witness": 1
+  }
+ },
+ "code_sha256": "0f18361a64e1964c70fa9ec81673acefbe9d7f9b1e16fb84b823e819cc6ef5c7",
+ "command": "python research_runs/ai_witness_followup_2026_09/w2a/w2a.py dry-run",
+ "gate_live_feasibility": {
+  "F2": {
+   "meets": true,
+   "modified_workflow_noncontrol_cases": [
+    "grpc1859",
+    "k8s26980",
+    "pool162"
+   ],
+   "sealed_cases": 3,
+   "terminal_accounting_complete": true
+  },
+  "F3": {
+   "meets": false,
+   "modified_workflow_noncontrol_cases": [
+    "pool162"
+   ],
+   "sealed_cases": 3,
+   "terminal_accounting_complete": true
+  }
+ },
+ "harness_text_leaks": [],
+ "labels": {
+  "COUNTERPART_FAILURE": 0,
+  "INVALID_CANDIDATE": 0,
+  "NO_SUBMISSION": 2,
+  "NO_WITNESS_WITHIN_BUDGET": 4,
+  "UNRESOLVED": 0,
+  "VALIDATED_WITNESS": 2
+ },
+ "note": "fake providers and subjects: no credentials, network or containers; outcomes are synthetic",
+ "ok": true,
+ "scratch_dir": "C:\\Users\\Mega-PC\\AppData\\Local\\Temp\\w2a-dryrun-svejfqnl",
+ "seal_before_validation_and_scheduled_order": {
+  "grpc1859": true,
+  "istio17860": true,
+  "k8s26980": true,
+  "pool162": true
+ },
+ "sessions_ended": 8,
+ "stopped": null,
+ "terminals": {
+  "w2a.grpc1859.F2": "SEALED_DISCRETIONARY",
+  "w2a.grpc1859.F3": "SEALED_DISCRETIONARY",
+  "w2a.istio17860.F2": "FINAL_NO_SUBMIT",
+  "w2a.istio17860.F3": "SEALED_DISCRETIONARY",
+  "w2a.k8s26980.F2": "SEALED_FINAL_CALL",
+  "w2a.k8s26980.F3": "STAGE_FAILURE_PLAN",
+  "w2a.pool162.F2": "SEALED_DISCRETIONARY",
+  "w2a.pool162.F3": "SEALED_FINAL_CALL"
+ },
+ "utc": "2026-09-26T13:13:08.257Z",
+ "validations": 8
+}

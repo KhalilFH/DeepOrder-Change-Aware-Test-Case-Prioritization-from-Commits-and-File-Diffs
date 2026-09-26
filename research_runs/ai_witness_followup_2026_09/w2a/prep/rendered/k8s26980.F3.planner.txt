@@ -1,0 +1,201 @@
+# SYSTEM
+You are strengthening a supplied regression-test package for a known historical production repair. You have the defective-to-repaired production diff, allowed source and tests, and a paired build/run interface. Aim for a small, source-supported test that can reveal the changed behavioral obligation. Leaving the tests unchanged is allowed when appropriate. The supplied tests may already come from the repair. Do not assume an unknown-bug discovery task.
+
+Use only the allowed packet and tools. Preserve existing assertions and timeouts. Do not modify production code, branch on version identity, access the network, read held-out files or fabricate outputs. Ordinary pass/fail feedback is fallible. Explain source evidence separately from hypotheses; a timeout alone does not prove the target defect. All calls, tool work and retries count against the supplied budgets.
+
+Session mechanics. Every harness turn ends with a harness state block listing your proposals, their legality, build and run status, and the remaining budget. Act through tool calls; a response without a tool call uses a model call without progress. A proposal must be built on both variants with build_pair before run_pair can execute it. Each response is limited to 4,000 output tokens including thinking; a response cut off at that limit is discarded and none of its tool calls run. At most four tool calls per response are executed. One final model call is reserved: when the other calls or budgets are used up, the harness asks you to seal the session with submit_final, and only submit_final is executed in that call. A session without a sealed submission has no result; nothing is submitted on your behalf.
+
+# FIRST USER MESSAGE
+# Task
+Identify the changed behavioral obligation and the prerequisites for the supplied tests to witness its violation. Return at most eight atomic claims about whether a supplied test establishes a specific input/action, ordering condition, resource/state condition or observable consequence. Give evidence as source spans `file_id:start-end` using packet file ids, distinguish observed source from inference, and list unresolved premises explicitly. Also propose a minimal legal test intervention or unchanged result. Return structured `obligation`, `claims` (id, category, proposition, source_spans), `intervention`, and `uncertainties` with submit_plan. Do not invent runtime evidence. The harness checks the plan locally: one to eight claims with unique short ids, a listed category, a proposition and one to six valid source spans each; an invalid plan is returned with the errors.
+
+# Final submission format
+The runner, not the model, computes hashes and elapsed time. submit_final supplies a proposal id (or "latest" or "unchanged"), a rationale with source spans, the stated obligation, and uncertainties. Only a legal proposal or the unchanged submission can be sealed; an illegal or malformed proposal is refused with its violations. Do not rely on ad hoc parsing of text outside tool calls.
+
+# Stage limits
+This stage allows at most 2 model calls, including any corrected resubmission. Submit with submit_plan no later than the last of them; a stage without an accepted output ends the session.
+
+# Shared case packet
+
+# Build and run interface (k8s26980)
+
+Language: Go (go version go1.12.17 linux/amd64), package `framework` in `pkg/controller/framework` (repository-relative). Build and run
+happen in the case's fixed container images without network access. Both production variants use
+identical test sources, instrumentation, arguments and timeouts; you cannot see or choose which
+variant is which beyond the paired result labels `defective` and `repaired`.
+
+Build: the harness copies your overlay into the package, adds its own file `zz_w1_harness_instrument_test.go`
+(which defines `TestMain`), and runs `go test -c -vet=off ./pkg/controller/framework` on each variant.
+
+Run: `<binary> -test.v -test.count 1 -test.run '^(<selected tests>)$' -test.timeout 60s`
+with GOMAXPROCS=16 and GOTRACEBACK=all, working directory `pkg/controller/framework`. Selected tests are the supplied
+entry point(s) `TestPopReleaseLock` plus any new `func TestXxx(t *testing.T)` your overlay adds (at most 4).
+Outer limit 90s per run (the process is killed and the run is unresolved), cleanup 30s.
+
+Harness instrumentation (identical everywhere): if any selected test fails, `TestMain` prints a full
+goroutine dump after the tests return; on the 60s test timeout the Go runtime dumps all
+goroutines. You may add bounded test-side observation (for example printing `runtime.Stack(buf, true)`).
+
+Editing rules: edit only `pkg/controller/framework/processor_listener_test.go` (insertion-only: every original line must remain, in order) and/or
+add at most 2 new files named like `pkg/controller/framework/w1_<name>_test.go` in package `framework`. Do not modify
+production code, remove or weaken assertions, change timeouts or arguments, define `TestMain`, read
+files/environment/process information, exec processes, skip tests, access the network (loopback
+test servers are fine), branch on revision identity, or print text imitating runtime dumps.
+New imports must be standard library (not os, os/exec, io/ioutil, path/filepath, syscall, unsafe,
+net/http, plugin) or packages already imported by the supplied test files. At most 400 inserted lines.
+
+## Production change (defective -> repaired)
+```diff
+--- a/pkg/controller/framework/shared_informer.go
++++ b/pkg/controller/framework/shared_informer.go
+@@ -279,21 +279,30 @@
+ func (p *processorListener) pop(stopCh <-chan struct{}) {
+ 	defer utilruntime.HandleCrash()
+ 
+-	p.lock.Lock()
+-	defer p.lock.Unlock()
+ 	for {
+-		for len(p.pendingNotifications) == 0 {
+-			// check if we're shutdown
+-			select {
+-			case <-stopCh:
+-				return
+-			default:
++		blockingGet := func() (interface{}, bool) {
++			p.lock.Lock()
++			defer p.lock.Unlock()
++
++			for len(p.pendingNotifications) == 0 {
++				// check if we're shutdown
++				select {
++				case <-stopCh:
++					return nil, true
++				default:
++				}
++				p.cond.Wait()
+ 			}
+ 
+-			p.cond.Wait()
+-		}
+-		notification := p.pendingNotifications[0]
+-		p.pendingNotifications = p.pendingNotifications[1:]
++			nt := p.pendingNotifications[0]
++			p.pendingNotifications = p.pendingNotifications[1:]
++			return nt, false
++		}
++
++		notification, stopped := blockingGet()
++		if stopped {
++			return
++		}
+ 
+ 		select {
+ 		case <-stopCh:
+```
+
+## Allowed packet files (read more with read_source)
+- `defective/pkg/controller/framework/shared_informer.go` (333 lines, defective)
+- `repaired/pkg/controller/framework/shared_informer.go` (342 lines, repaired)
+- `shared/pkg/controller/framework/controller.go` (327 lines, shared)
+- `shared/pkg/controller/framework/controller_test.go` (414 lines, shared)
+- `shared/pkg/controller/framework/doc.go` (18 lines, shared)
+- `shared/pkg/controller/framework/fake_controller_source.go` (188 lines, shared)
+- `shared/pkg/controller/framework/fake_controller_source_test.go` (94 lines, shared)
+- `shared/pkg/controller/framework/processor_listener_test.go` (48 lines, shared)
+
+## T0 static extraction
+```text
+tool: w1-T0/1 (lexical extraction; not a sound whole-program call graph; no obligation answers)
+
+Changed functions:
+- defective (processorListener).pop pkg/controller/framework/shared_informer.go:279-304 (changed lines 282-296)
+- repaired (processorListener).pop pkg/controller/framework/shared_informer.go:279-313 (changed lines 281-305)
+
+Supplied tests ranked by changed-token overlap (top 15 of 1; ties lexical):
+  1. TestPopReleaseLock pkg/controller/framework/processor_listener_test.go:28-48 score=9
+
+Entry points:
+- TestPopReleaseLock rank=1 score=9 pkg/controller/framework/processor_listener_test.go:28-48
+
+Direct syntactic calls (unique callees in source order, first 25; definitions found in packet files):
+- TestPopReleaseLock pkg/controller/framework/processor_listener_test.go:28-48: newProcessListener@L29 [def pkg/controller/framework/shared_informer.go:260-269], close@L31, pl.add@L33 [def pkg/controller/framework/shared_informer.go:271-277], pl.pop@L34 [def pkg/controller/framework/shared_informer.go:279-304], time.After@L44, t.Errorf@L45
+- (processorListener).pop pkg/controller/framework/shared_informer.go:279-304: utilruntime.HandleCrash@L280
+```
+
+## Shared template bindings (deterministic metadata)
+```json
+{
+ "T3": {
+  "applicable": false,
+  "reason": "the diff narrows the lock scope around a blocking channel send in pop(); it changes no error or interruption handler, so the lifecycle template has no error/interruption action binding"
+ }
+}
+```
+
+## Initial excerpts
+### `shared/pkg/controller/framework/processor_listener_test.go` lines 28-48
+```
+   28  func TestPopReleaseLock(t *testing.T) {
+   29  	pl := newProcessListener(nil)
+   30  	stopCh := make(chan struct{})
+   31  	defer close(stopCh)
+   32  	// make pop() block on nextCh: waiting for receiver to get notification.
+   33  	pl.add(1)
+   34  	go pl.pop(stopCh)
+   35  
+   36  	resultCh := make(chan struct{})
+   37  	go func() {
+   38  		pl.lock.Lock()
+   39  		close(resultCh)
+   40  	}()
+   41  
+   42  	select {
+   43  	case <-resultCh:
+   44  	case <-time.After(wait.ForeverTestTimeout):
+   45  		t.Errorf("Timeout after %v", wait.ForeverTestTimeout)
+   46  	}
+   47  	pl.lock.Unlock()
+   48  }
+```
+
+### `defective/pkg/controller/framework/shared_informer.go` lines 279-304
+```
+  279  func (p *processorListener) pop(stopCh <-chan struct{}) {
+  280  	defer utilruntime.HandleCrash()
+  281  
+  282  	p.lock.Lock()
+  283  	defer p.lock.Unlock()
+  284  	for {
+  285  		for len(p.pendingNotifications) == 0 {
+  286  			// check if we're shutdown
+  287  			select {
+  288  			case <-stopCh:
+  289  				return
+  290  			default:
+  291  			}
+  292  
+  293  			p.cond.Wait()
+  294  		}
+  295  		notification := p.pendingNotifications[0]
+  296  		p.pendingNotifications = p.pendingNotifications[1:]
+  297  
+  298  		select {
+  299  		case <-stopCh:
+  300  			return
+  301  		case p.nextCh <- notification:
+  302  		}
+  303  	}
+  304  }
+```
+
+## Entry-point helper definitions
+None selected by the fixed helper rule.
+
+## Harness state (F3 planner stage)
+- model calls: 2 discretionary left in this stage; the final call is reserved separately
+- session budget left: input_tokens=640000, output_tokens=24000, usd=1.0, seconds=600.0
+- patch proposals left: 4; paired runs left: 6
+- proposals: none yet ("unchanged" is always available)
+
+# Output
+Return the plan by calling submit_plan (one to eight claims).

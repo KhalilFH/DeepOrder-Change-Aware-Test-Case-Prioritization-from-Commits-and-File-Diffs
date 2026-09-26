@@ -1,0 +1,10 @@
+{
+ "artifact": "w2a_offline_tests_v1",
+ "code_sha256": "0f18361a64e1964c70fa9ec81673acefbe9d7f9b1e16fb84b823e819cc6ef5c7",
+ "command": "python research_runs/ai_witness_followup_2026_09/w2a/w2a.py test",
+ "errors": 0,
+ "failures": 0,
+ "ok": true,
+ "tests_run": 24,
+ "utc": "2026-09-26T13:13:04.481Z"
+}

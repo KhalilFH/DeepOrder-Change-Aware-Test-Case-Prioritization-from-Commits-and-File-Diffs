@@ -1,0 +1,135 @@
+{
+ "artifact": "w2a_provenance_v1",
+ "copied_modules": [
+  {
+   "byte_identical": true,
+   "declared_change": null,
+   "module": "common.py",
+   "w1_sha256": "06286128085d024b14a9985badbd3209f1d6a373ebbb647796dfc56cefd1348e",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/common.py",
+   "w2a_sha256": "06286128085d024b14a9985badbd3209f1d6a373ebbb647796dfc56cefd1348e"
+  },
+  {
+   "byte_identical": true,
+   "declared_change": null,
+   "module": "charging.py",
+   "w1_sha256": "f32b91469a2a9d01fbb3ff2fd7b617fcbab98945d0654961bb88f976622839b9",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/charging.py",
+   "w2a_sha256": "f32b91469a2a9d01fbb3ff2fd7b617fcbab98945d0654961bb88f976622839b9"
+  },
+  {
+   "byte_identical": true,
+   "declared_change": null,
+   "module": "proc.py",
+   "w1_sha256": "cbf342356ff1b8e482ef366110c1500802129c4e692b8cf7eb3e56288029a449",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/proc.py",
+   "w2a_sha256": "cbf342356ff1b8e482ef366110c1500802129c4e692b8cf7eb3e56288029a449"
+  },
+  {
+   "byte_identical": true,
+   "declared_change": null,
+   "module": "casespec.py",
+   "w1_sha256": "04b645113e7ce9d7765bc72ef9f1d11808e3c3018a695a5a5c1e73cbc2a37823",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/casespec.py",
+   "w2a_sha256": "04b645113e7ce9d7765bc72ef9f1d11808e3c3018a695a5a5c1e73cbc2a37823"
+  },
+  {
+   "byte_identical": true,
+   "declared_change": null,
+   "module": "overlay.py",
+   "w1_sha256": "159f31fbc7616617f687e3ba0b0f9dd38b92fe198fbc82b8746f7db99e596177",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/overlay.py",
+   "w2a_sha256": "159f31fbc7616617f687e3ba0b0f9dd38b92fe198fbc82b8746f7db99e596177"
+  },
+  {
+   "byte_identical": true,
+   "declared_change": null,
+   "module": "oracles.py",
+   "w1_sha256": "7d049837bfa86f2f9a9dbfb639a80d47b971423f96d06ccd3be58c835c860e71",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/oracles.py",
+   "w2a_sha256": "7d049837bfa86f2f9a9dbfb639a80d47b971423f96d06ccd3be58c835c860e71"
+  },
+  {
+   "byte_identical": true,
+   "declared_change": null,
+   "module": "static_extract.py",
+   "w1_sha256": "764b5137d1096d17195822c7cd6bf9524feaa3aa15dbb1e35ebbc76ea6b96e47",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/static_extract.py",
+   "w2a_sha256": "764b5137d1096d17195822c7cd6bf9524feaa3aa15dbb1e35ebbc76ea6b96e47"
+  },
+  {
+   "byte_identical": true,
+   "declared_change": null,
+   "module": "templates.py",
+   "w1_sha256": "5833dd623ecc700bc92a6a93c86d878aa0253159d8a79b6066949953cba9c46d",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/templates.py",
+   "w2a_sha256": "5833dd623ecc700bc92a6a93c86d878aa0253159d8a79b6066949953cba9c46d"
+  },
+  {
+   "byte_identical": true,
+   "declared_change": null,
+   "module": "validation.py",
+   "w1_sha256": "8b33fcccc52b7cb0f64a96f91f33a4b0e1d8fff627a74b8d3f7099af0528eb69",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/validation.py",
+   "w2a_sha256": "8b33fcccc52b7cb0f64a96f91f33a4b0e1d8fff627a74b8d3f7099af0528eb69"
+  },
+  {
+   "byte_identical": true,
+   "declared_change": null,
+   "module": "oracle_fixtures.py",
+   "w1_sha256": "90008acf1fc14ea77ef0e3d5509b8b84f1204d32e1742d05f203dcd411bd6baa",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/oracle_fixtures.py",
+   "w2a_sha256": "90008acf1fc14ea77ef0e3d5509b8b84f1204d32e1742d05f203dcd411bd6baa"
+  },
+  {
+   "byte_identical": false,
+   "declared_change": "BUILD_TIMEOUT_S 300 -> 60 (matches the reserved build bound); container prefixes w2ab-/w2ar-; docstring",
+   "module": "backends.py",
+   "w1_sha256": "253e3f5ff6fd186da9caee159a779955279f31841baaa1dbe6af389af7d8dd3d",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/backends.py",
+   "w2a_sha256": "1accfbc82f24a5291518360f6b5166337af71badecc99b3a416e79927fea8919"
+  },
+  {
+   "byte_identical": false,
+   "declared_change": "SCHEMA_VERSION w1-event/1 -> w2a-event/1",
+   "module": "ledger.py",
+   "w1_sha256": "9821934ec556c396184c1d3e83b187ca963ac58b8738c46200e7c49caa6bc078",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/ledger.py",
+   "w2a_sha256": "9ed159f8fb44ddf7530b923c20bdab35f9e679a7c8915141043fea279ee30642"
+  },
+  {
+   "byte_identical": false,
+   "declared_change": "study output-token ceiling added; docstring",
+   "module": "resources.py",
+   "w1_sha256": "443758321dbdc761dc6f96f2762c60ad49b02e904e2bc58af4fa3024a3f04c31",
+   "w1_source": "research_runs/ai_witness_2026_09/w1_harness/resources.py",
+   "w2a_sha256": "0d679e6d634ee7be3735d8210ab32e32574cfcdc53c4d90e8029df3dc628b9e5"
+  }
+ ],
+ "new_modules": [
+  "__init__.py",
+  "analysis.py",
+  "budget.py",
+  "cli.py",
+  "config.py",
+  "fakes.py",
+  "launch.py",
+  "packet.py",
+  "prompts.py",
+  "providers.py",
+  "regressions.py",
+  "runner.py",
+  "schedule.py",
+  "session.py",
+  "stagecheck.py"
+ ],
+ "undeclared_changes": [],
+ "utc": "2026-09-26T13:12:51.953Z",
+ "w1_read_only_inputs": [
+  "inputs/<case>/ packets (pinned in design/w1_inputs.json)",
+  "launch_config.json images",
+  "measured/ responses used as offline replay fixtures and calibration",
+  "events.jsonl (calibration)",
+  "postrun_audit/audit.py (reproduction)"
+ ]
+}

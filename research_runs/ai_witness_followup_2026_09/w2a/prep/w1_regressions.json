@@ -1,0 +1,163 @@
+{
+ "artifact": "w2a_w1_regressions_v1",
+ "checks": [
+  {
+   "expectation": "W2A packet context includes the helper body by the fixed helper rule",
+   "id": "R1",
+   "observed": {
+    "w1_initial_context_has_helper": false,
+    "w2a_initial_context_has_helper": true
+   },
+   "pass": true,
+   "w1_evidence": "w1.grpc1859.r1.B3 req01: helper body (end2end_test.go:6010-6042) absent; read three times across stages"
+  },
+  {
+   "expectation": "discarded: no tool call executed or replayed, fixed notice sent, stage continues and accepts only the next complete valid plan",
+   "id": "R2",
+   "observed": {
+    "accepted_truncated_input": false,
+    "notice_sent": true,
+    "stage_end": "accepted",
+    "truncated_counter": 1,
+    "truncated_tool_use_replayed": false
+   },
+   "pass": true,
+   "w1_evidence": "w1.pool162.r1.B3/requests/w1.pool162.r1.B3.req01.response.json (stop_reason max_tokens; W1 accepted it as stage completion)"
+  },
+  {
+   "expectation": "discarded: no tool call executed or replayed, fixed notice sent, stage continues and accepts only the next complete valid plan",
+   "id": "R3",
+   "observed": {
+    "accepted_truncated_input": false,
+    "notice_sent": true,
+    "stage_end": "accepted",
+    "truncated_counter": 1,
+    "truncated_tool_use_replayed": false
+   },
+   "pass": true,
+   "w1_evidence": "w1.pool162.r2.B4/requests/w1.pool162.r2.B4.req02.response.json (stop_reason max_tokens; W1 accepted it as stage completion)"
+  },
+  {
+   "expectation": "empty list rejected with the missing claim ids; seven explicit unknown judgments accepted and kept distinct",
+   "id": "R4",
+   "observed": {
+    "empty_rejected": true,
+    "errors": [
+     "judgments must be a non-empty list with exactly one entry per claim id: C1, C2, C3, C4, C5, C6, C7"
+    ],
+    "explicit_unknown_accepted": true
+   },
+   "pass": true,
+   "w1_evidence": "w1.istio17860.r1.B3 req03: submit_judgments with [] against seven claims; W1 defaulted all to unknown"
+  },
+  {
+   "expectation": "explicit malformed-proposal error, counted as a proposal, refused by build_pair and submit_final, shown as MALFORMED in the state",
+   "id": "R5",
+   "observed": {
+    "build": {
+     "error": "proposal 'p1' is malformed and cannot be built: malformed proposal: edit 0: 'placeholder' is not an editable supplied test file"
+    },
+    "result": {
+     "error": "malformed proposal: edit 0: 'placeholder' is not an editable supplied test file",
+     "legal": false,
+     "note": "counted as a patch proposal; it cannot be built or sealed",
+     "proposal_id": "p1"
+    },
+    "seal": {
+     "error": "proposal 'p1' is malformed or illegal and cannot be sealed: malformed proposal: edit 0: 'placeholder' is not an editable supplied test file"
+    },
+    "state_marks_malformed": true
+   },
+   "pass": true,
+   "w1_evidence": "w1.pool162.r1.B3 p1: edit to a file literally named 'placeholder' (sole W1 AI patch)"
+  },
+  {
+   "expectation": "explicit 'call build_pair first' error, nothing executed, pair budget untouched, state shows 'not built'; after building the pair runs",
+   "id": "R6",
+   "observed": {
+    "after_build_run_ok": true,
+    "error": "proposal 'latest' has not been built on both variants; call build_pair first (nothing was run)",
+    "runs_executed_before_build": 0,
+    "state_not_built": true
+   },
+   "pass": true,
+   "w1_evidence": "seven W1 B2/B3 sessions called run_pair before build_pair and spent calls on the generic error"
+  },
+  {
+   "expectation": "each denied W1 request is admissible under W2A caps with the final-call reserve still held",
+   "id": "R7",
+   "observed": [
+    {
+     "w1_need": 27328,
+     "w1_request": "w1.pool162.r1.B3.req04",
+     "w1_used_input": 45467,
+     "w2a_admitted": true,
+     "w2a_final_reserve_held": 69328
+    },
+    {
+     "w1_need": 28638,
+     "w1_request": "w1.pool162.r1.B2.req03",
+     "w1_used_input": 32087,
+     "w2a_admitted": true,
+     "w2a_final_reserve_held": 70638
+    },
+    {
+     "w1_need": 22926,
+     "w1_request": "w1.pool162.r2.B4.req03",
+     "w1_used_input": 41695,
+     "w2a_admitted": true,
+     "w2a_final_reserve_held": 64926
+    },
+    {
+     "w1_need": 37240,
+     "w1_request": "w1.pool162.r2.B2.req04",
+     "w1_used_input": 50103,
+     "w2a_admitted": true,
+     "w2a_final_reserve_held": 79240
+    },
+    {
+     "w1_need": 25184,
+     "w1_request": "w1.pool162.r2.B3.req04",
+     "w1_used_input": 41314,
+     "w2a_admitted": true,
+     "w2a_final_reserve_held": 67184
+    },
+    {
+     "w1_need": 30232,
+     "w1_request": "w1.pool162.r3.B2.req04",
+     "w1_used_input": 50296,
+     "w2a_admitted": true,
+     "w2a_final_reserve_held": 72232
+    }
+   ],
+   "pass": true,
+   "w1_evidence": "6 W1 input-token admission denials (all pool162)"
+  },
+  {
+   "expectation": "a discretionary request that would eat the final reserve is refused, and the reserved final call is still admitted with 4,000 output tokens",
+   "id": "R8",
+   "observed": {
+    "discretionary": "output_tokens",
+    "final_max_output": 4000
+   },
+   "pass": true,
+   "w1_evidence": "w1.pool162.r3.B3.req03 denied: output-token ceiling left 880 tokens; session ended with no submission"
+  },
+  {
+   "expectation": "the planner's read is carried (deduplicated, with provenance) into the judge and generator first messages",
+   "id": "R9",
+   "observed": {
+    "generator_has_read": true,
+    "judge_has_read": true,
+    "terminal": "SEALED_DISCRETIONARY"
+   },
+   "pass": true,
+   "w1_evidence": "8 W1 read_source ranges repeated a range read in an earlier stage of the same session (fresh stage contexts)"
+  }
+ ],
+ "code_sha256": "0f18361a64e1964c70fa9ec81673acefbe9d7f9b1e16fb84b823e819cc6ef5c7",
+ "command": "python research_runs/ai_witness_followup_2026_09/w2a/w2a.py regressions",
+ "note": "offline harness regressions against recorded W1 failures; no provider or subject execution",
+ "ok": true,
+ "utc": "2026-09-26T13:13:04.737Z"
+}

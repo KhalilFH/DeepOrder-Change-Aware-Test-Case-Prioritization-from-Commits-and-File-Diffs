@@ -1,0 +1,131 @@
+{
+ "gates": [
+  {
+   "detail": "",
+   "evidence": "design/DESIGN_FREEZE.sha256",
+   "gate": "design freeze intact",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "",
+   "evidence": "design/w1_inputs.json",
+   "gate": "W1 read-only inputs match their pins",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "[]",
+   "evidence": "prep/provenance.json",
+   "gate": "copied W1 modules identical or declared",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "",
+   "evidence": "schedule.json",
+   "gate": "schedule regenerates from the frozen seed",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "",
+   "evidence": "prep/offline_tests.json",
+   "gate": "offline tests pass on current code",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "",
+   "evidence": "prep/dry_run.json",
+   "gate": "fake 8-session dry run passes on current code",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "",
+   "evidence": "prep/w1_regressions.json",
+   "gate": "W1 failure-case regressions pass on current code",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "",
+   "evidence": "prep/render_check.json",
+   "gate": "model-facing renderings are leak-free on current code",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "",
+   "evidence": "prep/budget_check.json",
+   "gate": "limit check passes on current code",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "",
+   "evidence": "prep/w1_audit_reproduction.json",
+   "gate": "W1 offline audit reproduced byte-identically",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "{'reachable': True, 'ncpu': '16'}",
+   "evidence": "docker info",
+   "gate": "16-CPU Docker environment reachable",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "[]",
+   "evidence": "design/w1_inputs.json images",
+   "gate": "pinned subject images present",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "",
+   "evidence": "PACKAGE_FREEZE.sha256",
+   "gate": "executable package freeze valid",
+   "group": "offline",
+   "status": "PASS"
+  },
+  {
+   "detail": "not set in this environment",
+   "evidence": "$W2A_GENERATOR_API_KEY",
+   "gate": "generator credential present in environment",
+   "group": "provider",
+   "status": "FAIL"
+  },
+  {
+   "detail": "returned_identity=None",
+   "evidence": "launch_config.json smoke",
+   "gate": "authorized smoke returned the frozen identity with the W2A request shape",
+   "group": "provider",
+   "status": "FAIL"
+  },
+  {
+   "detail": "record the source and date of the current price list",
+   "evidence": "launch_config.json pricing_confirmed",
+   "gate": "pricing snapshot re-confirmed at launch",
+   "group": "provider",
+   "status": "FAIL"
+  },
+  {
+   "detail": "{}",
+   "evidence": "resources/resource_ledger.jsonl",
+   "gate": "study reservations cover the full batch",
+   "group": "provider",
+   "status": "PASS"
+  },
+  {
+   "detail": "LAUNCH_FREEZE.sha256 absent",
+   "evidence": "LAUNCH_FREEZE.sha256",
+   "gate": "launch freeze valid",
+   "group": "launch",
+   "status": "FAIL"
+  }
+ ],
+ "utc": "2026-09-26T13:13:20.595Z"
+}

@@ -1,0 +1,48 @@
+{
+ "artifact": "w2a_w1_inputs_v1",
+ "images": {
+  "grpc1859": {
+   "V_bad": "sha256:6b890fa74bedace16bf8049b8a1968f7928a596312210bc17a9ba86b96e03a03",
+   "V_ok": "sha256:3b72ed206066bb8ea69f5dfbf0271c753f25e832797069d6abc560ec6c4e9034"
+  },
+  "istio17860": {
+   "V_bad": "sha256:23e14b796ad0c487e7536b9213cab2c3a0897548489bb4f0e8a8944182296ba8",
+   "V_ok": "sha256:7fba6b07fc8d68fa362eec12eefb20408dcc2406bdae963414ca75184fd9c679"
+  },
+  "k8s26980": {
+   "V_bad": "sha256:8a215c592956b0f99ff977285822ffcbc3116d1ff7fab1da692b0e67d28bafaf",
+   "V_ok": "sha256:6c93e46a3848354353a72d545dc782257d620432c07d3497ded117476f75d5d4"
+  },
+  "pool162": {
+   "V_bad": "sha256:0cd1289c452caa957f4690f70f2f5e36f65eaf6ddc7dcb7deddfbb2eb499a408",
+   "V_ok": "sha256:a6af02ba537db3b8cafefd609c05d0de9a5fd28b7f35e9327910644478f922e8"
+  }
+ },
+ "images_source": "research_runs/ai_witness_2026_09/launch_config.json (W1 executable freeze)",
+ "note": "Immutable W1 artifacts read (never written) by W2A. Hashes are of LF-normalized bytes, as in W1 FREEZE.sha256.",
+ "packets": {
+  "grpc1859": {
+   "files": 10,
+   "manifest_file_sha256": "007f9bec10af48beb688e7ff9507db5ae3e161e8131dab41f2dc7c359ead96fd",
+   "packet_sha256": "79823d6436d99df5503ce8742f37d04bfe3b1fed5b7b03495c696fb0c7434351"
+  },
+  "istio17860": {
+   "files": 12,
+   "manifest_file_sha256": "12ac783d27464cf9311f0c2b46841dcfd8f99179bfc29d07752d6ab2cced0ce3",
+   "packet_sha256": "54612eff6d2f6f289b0398de4dcc3d8ced51f96b548f8a0b78a9d92ba087106b"
+  },
+  "k8s26980": {
+   "files": 8,
+   "manifest_file_sha256": "667c39f050cafaf227f1cbde83076059fa66db557ddbdebcf48ca0bdce18a2c1",
+   "packet_sha256": "e0fae482cccf26e9aa2cd94c43dc87014801e23952ca48fe53150ded53068e43"
+  },
+  "pool162": {
+   "files": 15,
+   "manifest_file_sha256": "7aed76265f11c400334c223074ab87957be9ecbe3d3eaddccf7d4b47913fd57d",
+   "packet_sha256": "437fe3b3afcc2c4597a4133ca7c89fe71c122f9f6088c805a77bdeb7de118513"
+  }
+ },
+ "w1_design_v1_2_manifest_sha256": "fbfa5afccb6cc6471e12053009f434886bfd02e7888d2a87bd75a5f0eb52eeae",
+ "w1_executable_freeze_manifest_sha256": "2a18c91c65463f9b126ee7cc3798d681f0d3f9e48869379594b6804fa6bd66a4",
+ "w1_raw_seal_manifest_sha256": "90cf74cb89b089136fd3c44b70ff2891aba12251b1aa2dce2b7d68a8c812fce9"
+}

@@ -1,0 +1,499 @@
+# SYSTEM
+You are strengthening a supplied regression-test package for a known historical production repair. You have the defective-to-repaired production diff, allowed source and tests, and a paired build/run interface. Aim for a small, source-supported test that can reveal the changed behavioral obligation. Leaving the tests unchanged is allowed when appropriate. The supplied tests may already come from the repair. Do not assume an unknown-bug discovery task.
+
+Use only the allowed packet and tools. Preserve existing assertions and timeouts. Do not modify production code, branch on version identity, access the network, read held-out files or fabricate outputs. Ordinary pass/fail feedback is fallible. Explain source evidence separately from hypotheses; a timeout alone does not prove the target defect. All calls, tool work and retries count against the supplied budgets.
+
+Session mechanics. Every harness turn ends with a harness state block listing your proposals, their legality, build and run status, and the remaining budget. Act through tool calls; a response without a tool call uses a model call without progress. A proposal must be built on both variants with build_pair before run_pair can execute it. Each response is limited to 4,000 output tokens including thinking; a response cut off at that limit is discarded and none of its tool calls run. At most four tool calls per response are executed. One final model call is reserved: when the other calls or budgets are used up, the harness asks you to seal the session with submit_final, and only submit_final is executed in that call. A session without a sealed submission has no result; nothing is submitted on your behalf.
+
+# FIRST USER MESSAGE
+# Task
+Identify the changed behavioral obligation and the prerequisites for the supplied tests to witness its violation. Return at most eight atomic claims about whether a supplied test establishes a specific input/action, ordering condition, resource/state condition or observable consequence. Give evidence as source spans `file_id:start-end` using packet file ids, distinguish observed source from inference, and list unresolved premises explicitly. Also propose a minimal legal test intervention or unchanged result. Return structured `obligation`, `claims` (id, category, proposition, source_spans), `intervention`, and `uncertainties` with submit_plan. Do not invent runtime evidence. The harness checks the plan locally: one to eight claims with unique short ids, a listed category, a proposition and one to six valid source spans each; an invalid plan is returned with the errors.
+
+# Final submission format
+The runner, not the model, computes hashes and elapsed time. submit_final supplies a proposal id (or "latest" or "unchanged"), a rationale with source spans, the stated obligation, and uncertainties. Only a legal proposal or the unchanged submission can be sealed; an illegal or malformed proposal is refused with its violations. Do not rely on ad hoc parsing of text outside tool calls.
+
+# Stage limits
+This stage allows at most 2 model calls, including any corrected resubmission. Submit with submit_plan no later than the last of them; a stage without an accepted output ends the session.
+
+# Shared case packet
+
+# Build and run interface (istio17860)
+
+Language: Go (go version go1.13.15 linux/amd64), package `envoy` in `pkg/envoy` (repository-relative). Build and run
+happen in the case's fixed container images without network access. Both production variants use
+identical test sources, instrumentation, arguments and timeouts; you cannot see or choose which
+variant is which beyond the paired result labels `defective` and `repaired`.
+
+Build: the harness copies your overlay into the package, adds its own file `zz_w1_harness_instrument_test.go`
+(which defines `TestMain`), and runs `go test -c -vet=off ./pkg/envoy` on each variant.
+
+Run: `<binary> -test.v -test.count 1 -test.run '^(<selected tests>)$' -test.timeout 30s`
+with GOMAXPROCS=16 and GOTRACEBACK=all, working directory `pkg/envoy`. Selected tests are the supplied
+entry point(s) `TestExitDuringWaitForLive` plus any new `func TestXxx(t *testing.T)` your overlay adds (at most 4).
+Outer limit 60s per run (the process is killed and the run is unresolved), cleanup 30s.
+
+Harness instrumentation (identical everywhere): if any selected test fails, `TestMain` prints a full
+goroutine dump after the tests return; on the 30s test timeout the Go runtime dumps all
+goroutines. You may add bounded test-side observation (for example printing `runtime.Stack(buf, true)`).
+
+Editing rules: edit only `pkg/envoy/agent_test.go` (insertion-only: every original line must remain, in order) and/or
+add at most 2 new files named like `pkg/envoy/w1_<name>_test.go` in package `envoy`. Do not modify
+production code, remove or weaken assertions, change timeouts or arguments, define `TestMain`, read
+files/environment/process information, exec processes, skip tests, access the network (loopback
+test servers are fine), branch on revision identity, or print text imitating runtime dumps.
+New imports must be standard library (not os, os/exec, io/ioutil, path/filepath, syscall, unsafe,
+net/http, plugin) or packages already imported by the supplied test files. At most 400 inserted lines.
+
+## Production change (defective -> repaired)
+```diff
+--- a/pkg/envoy/agent.go
++++ b/pkg/envoy/agent.go
+@@ -73,7 +73,6 @@
+ func NewAgent(proxy Proxy, terminationDrainDuration time.Duration) Agent {
+ 	return &agent{
+ 		proxy:                    proxy,
+-		mu:                       &sync.Mutex{},
+ 		statusCh:                 make(chan exitStatus),
+ 		activeEpochs:             map[int]chan error{},
+ 		terminationDrainDuration: terminationDrainDuration,
+@@ -100,7 +99,8 @@
+ 	// proxy commands
+ 	proxy Proxy
+ 
+-	mu           *sync.Mutex
++	restartMutex sync.Mutex
++	mutex        sync.Mutex
+ 	activeEpochs map[int]chan error
+ 
+ 	// currentEpoch represents the epoch of the most recent proxy. When a new proxy is created this should be incremented
+@@ -122,67 +122,89 @@
+ }
+ 
+ func (a *agent) Restart(config interface{}) {
+-	a.mu.Lock()
+-	defer a.mu.Unlock()
++	// Only allow one restart to execute at a time.
++	a.restartMutex.Lock()
++	defer a.restartMutex.Unlock()
++
++	// Protect access to internal state.
++	a.mutex.Lock()
+ 
+ 	if reflect.DeepEqual(a.currentConfig, config) {
+ 		// Same configuration - nothing to do.
++		a.mutex.Unlock()
+ 		return
+ 	}
+ 
+-	log.Infof("Received new config")
+-
+-	// Make sure the current epoch (if there is one) is live before performing a hot restart.
+-	a.waitUntilLive()
++	hasActiveEpoch := len(a.activeEpochs) > 0
++	activeEpoch := a.currentEpoch
+ 
+ 	// Increment the latest running epoch
+-	a.currentEpoch++
++	epoch := a.currentEpoch + 1
++	log.Infof("Received new config, creating new Envoy epoch %d", epoch)
++
++	a.currentEpoch = epoch
+ 	a.currentConfig = config
+ 
+ 	// Add the new epoch to the map.
+ 	abortCh := make(chan error, 1)
+ 	a.activeEpochs[a.currentEpoch] = abortCh
+ 
+-	go a.runWait(a.currentConfig, a.currentEpoch, abortCh)
++	// Unlock before the wait to avoid delaying envoy exit logic.
++	a.mutex.Unlock()
++
++	// Wait for previous epoch to go live (if one exists) before performing a hot restart.
++	if hasActiveEpoch {
++		a.waitUntilLive(activeEpoch)
++	}
++
++	go a.runWait(config, epoch, abortCh)
+ }
+ 
+ // waitUntilLive waits for the current epoch (if there is one) to go live.
+-func (a *agent) waitUntilLive() {
+-	// Make sure there is a currently active epoch. If not, just return.
+-	if len(a.activeEpochs) == 0 {
+-		log.Info("no previous epoch exists, starting now")
+-		return
+-	}
+-
+-	log.Infof("waiting for epoch %d to go live before performing a hot restart", a.currentEpoch)
++func (a *agent) waitUntilLive(epoch int) {
++	log.Infof("waiting for epoch %d to go live before performing a hot restart", epoch)
+ 
+ 	// Timeout after 20 seconds. Envoy internally uses a 15s timer, so we set ours a bit above that.
+ 	interval := time.NewTicker(500 * time.Millisecond)
+ 	timer := time.NewTimer(20 * time.Second)
++
++	isDone := func() bool {
++		if !a.isActive(epoch) {
++			log.Warnf("epoch %d exited while waiting for it to go live.", epoch)
++			return true
++		}
++
++		return a.proxy.IsLive()
++	}
+ 
+ 	defer func() {
+ 		interval.Stop()
+ 		timer.Stop()
+ 	}()
+ 
+-	// Do an initial check on the live state to avoid any waits if possible.
+-	if a.proxy.IsLive() {
+-		// It's live!
++	// Do an initial check to avoid an initial wait.
++	if isDone() {
+ 		return
+ 	}
+ 
+ 	for {
+ 		select {
+ 		case <-timer.C:
+-			log.Warnf("timed out waiting for epoch %d to go live.", a.currentEpoch)
++			log.Warnf("timed out waiting for epoch %d to go live.", epoch)
+ 			return
+ 		case <-interval.C:
+-			if a.proxy.IsLive() {
+-				// It's live!
++			if isDone() {
+ 				return
+ 			}
+ 		}
+ 	}
++}
++
++func (a *agent) isActive(epoch int) bool {
++	a.mutex.Lock()
++	defer a.mutex.Unlock()
++	_, ok := a.activeEpochs[epoch]
++	return ok
+ }
+ 
+ func (a *agent) Run(ctx context.Context) error {
+@@ -190,7 +212,7 @@
+ 	for {
+ 		select {
+ 		case status := <-a.statusCh:
+-			a.mu.Lock()
++			a.mutex.Lock()
+ 			if status.err != nil {
+ 				if status.err.Error() == errOutOfMemory {
+ 					log.Warnf("Envoy may have been out of memory killed. Check memory usage and limits.")
+@@ -203,7 +225,7 @@
+ 			delete(a.activeEpochs, status.epoch)
+ 
+ 			active := len(a.activeEpochs)
+-			a.mu.Unlock()
++			a.mutex.Unlock()
+ 
+ 			if active == 0 {
+ 				log.Infof("No more active epochs, terminating")
+@@ -239,8 +261,8 @@
+ 
+ // abortAll sends abort error to all proxies
+ func (a *agent) abortAll() {
+-	a.mu.Lock()
+-	defer a.mu.Unlock()
++	a.mutex.Lock()
++	defer a.mutex.Unlock()
+ 	for epoch, abortCh := range a.activeEpochs {
+ 		log.Warnf("Aborting epoch %d...", epoch)
+ 		abortCh <- errAbort
+```
+
+## Allowed packet files (read more with read_source)
+- `defective/pkg/envoy/agent.go` (249 lines, defective)
+- `repaired/pkg/envoy/agent.go` (271 lines, repaired)
+- `shared/pkg/envoy/admin.go` (119 lines, shared)
+- `shared/pkg/envoy/agent_test.go` (325 lines, shared)
+- `shared/pkg/envoy/instance.go` (474 lines, shared)
+- `shared/pkg/envoy/instance_test.go` (558 lines, shared)
+- `shared/pkg/envoy/options.go` (747 lines, shared)
+- `shared/pkg/envoy/options_test.go` (264 lines, shared)
+- `shared/pkg/envoy/proxy.go` (239 lines, shared)
+- `shared/pkg/envoy/proxy_test.go` (75 lines, shared)
+- `shared/pkg/envoy/watcher.go` (158 lines, shared)
+- `shared/pkg/envoy/watcher_test.go` (224 lines, shared)
+
+## T0 static extraction
+```text
+tool: w1-T0/1 (lexical extraction; not a sound whole-program call graph; no obligation answers)
+
+Changed functions:
+- defective NewAgent pkg/envoy/agent.go:73-82 (changed lines 76-76)
+- defective (agent).Restart pkg/envoy/agent.go:124-147 (changed lines 125-146)
+- defective (agent).waitUntilLive pkg/envoy/agent.go:150-186 (changed lines 150-185)
+- defective (agent).Run pkg/envoy/agent.go:188-221 (changed lines 193-206)
+- defective (agent).abortAll pkg/envoy/agent.go:241-249 (changed lines 242-243)
+- repaired NewAgent pkg/envoy/agent.go:73-81 (changed lines 75-75)
+- repaired (agent).Restart pkg/envoy/agent.go:124-161 (changed lines 125-160)
+- repaired (agent).waitUntilLive pkg/envoy/agent.go:164-201 (changed lines 164-201)
+- repaired (agent).isActive pkg/envoy/agent.go:203-208 (changed lines 203-207)
+- repaired (agent).Run pkg/envoy/agent.go:210-243 (changed lines 215-228)
+- repaired (agent).abortAll pkg/envoy/agent.go:263-271 (changed lines 264-265)
+
+Supplied tests ranked by changed-token overlap (top 15 of 7; ties lexical):
+  1. TestExitDuringWaitForLive pkg/envoy/agent_test.go:169-221 score=22
+  2. TestWaitForLive pkg/envoy/agent_test.go:114-167 score=18
+  3. TestApplyTwice pkg/envoy/agent_test.go:224-242 score=11
+  4. TestRecovery pkg/envoy/agent_test.go:303-325 score=11
+  5. TestStartDrain pkg/envoy/agent_test.go:73-111 score=11
+  6. TestStartTwiceStop pkg/envoy/agent_test.go:245-300 score=11
+  7. TestStartExit pkg/envoy/agent_test.go:56-66 score=7
+
+Entry points:
+- TestExitDuringWaitForLive rank=1 score=22 pkg/envoy/agent_test.go:169-221
+
+Direct syntactic calls (unique callees in source order, first 25; definitions found in packet files):
+- TestExitDuringWaitForLive pkg/envoy/agent_test.go:169-221: NewGomegaWithT@L170, context.WithCancel@L172, context.Background@L172, cancel@L173, close@L184 [def pkg/envoy/instance.go:374-385], ctx.Done@L186, NewAgent@L193 [def pkg/envoy/agent.go:73-82], a.Run@L194 [def pkg/envoy/agent.go:188-221], a.Restart@L197 [def pkg/envoy/agent.go:124-147], time.Now@L204, errors.New@L205 [def pkg/envoy/instance.go:140-184], time.After@L212, t.Fatalf@L213, g.Expect@L220, BeTemporally@L220
+- NewAgent pkg/envoy/agent.go:73-82: 
+- (agent).Restart pkg/envoy/agent.go:124-147: reflect.DeepEqual@L128, log.Infof@L133, a.waitUntilLive@L136 [def pkg/envoy/agent.go:150-186], a.runWait@L146 [def pkg/envoy/agent.go:233-238]
+- (agent).waitUntilLive pkg/envoy/agent.go:150-186: log.Info@L153, log.Infof@L157, time.NewTicker@L160, time.NewTimer@L161, interval.Stop@L164, timer.Stop@L165, log.Warnf@L177
+- (agent).Run pkg/envoy/agent.go:188-221: log.Info@L189, log.Warnf@L196, log.Errorf@L198, log.Infof@L200, ctx.Done@L215, a.terminate@L216 [def pkg/envoy/agent.go:223-230]
+- (agent).abortAll pkg/envoy/agent.go:241-249: log.Warnf@L245
+```
+
+## Shared template bindings (deterministic metadata)
+```json
+{
+ "T3": {
+  "applicable": false,
+  "reason": "the diff changes lock scope and liveness waiting in Restart/waitUntilLive; it changes no error or interruption handler, so the lifecycle template has no error/interruption action binding"
+ }
+}
+```
+
+## Initial excerpts
+### `shared/pkg/envoy/agent_test.go` lines 169-221
+```
+  169  func TestExitDuringWaitForLive(t *testing.T) {
+  170  	g := NewGomegaWithT(t)
+  171  
+  172  	ctx, cancel := context.WithCancel(context.Background())
+  173  	defer cancel()
+  174  
+  175  	epoch0Exit := make(chan error)
+  176  	epoch1Started := make(chan struct{}, 1)
+  177  	start := func(config interface{}, epoch int, _ <-chan error) error {
+  178  		switch epoch {
+  179  		case 0:
+  180  			// The first epoch just waits for the exit error.
+  181  			return <-epoch0Exit
+  182  		case 1:
+  183  			// Indicate that the second epoch was started.
+  184  			close(epoch1Started)
+  185  		}
+  186  		<-ctx.Done()
+  187  		return nil
+  188  	}
+  189  	neverLive := func() bool {
+  190  		// Never go live.
+  191  		return false
+  192  	}
+  193  	a := NewAgent(TestProxy{run: start, live: neverLive}, -10*time.Second)
+  194  	go func() { _ = a.Run(ctx) }()
+  195  
+  196  	// Start the first epoch.
+  197  	a.Restart("config1")
+  198  
+  199  	// Immediately start the second epoch. This will block until the first one exits, since it will never go live.
+  200  	go a.Restart("config2")
+  201  
+  202  	// Trigger the first epoch to exit
+  203  	var epoch1StartTime time.Time
+  204  	expectedEpoch1StartTime := time.Now()
+  205  	epoch0Exit <- errors.New("fake")
+  206  
+  207  	select {
+  208  	case <-epoch1Started:
+  209  		// Started
+  210  		epoch1StartTime = time.Now()
+  211  		break
+  212  	case <-time.After(5 * time.Second):
+  213  		t.Fatalf("timed out waiting for epoch 1 to start")
+  214  	}
+  215  
+  216  	// An error threshold used for the time comparison. Should (hopefully) be enough to avoid flakes.
+  217  	errThreshold := 1 * time.Second
+  218  
+  219  	// Verify that the second epoch is delayed until epoch 0 was live.
+  220  	g.Expect(epoch1StartTime).Should(BeTemporally("~", expectedEpoch1StartTime, errThreshold))
+  221  }
+```
+
+### `defective/pkg/envoy/agent.go` lines 73-82
+```
+   73  func NewAgent(proxy Proxy, terminationDrainDuration time.Duration) Agent {
+   74  	return &agent{
+   75  		proxy:                    proxy,
+   76  		mu:                       &sync.Mutex{},
+   77  		statusCh:                 make(chan exitStatus),
+   78  		activeEpochs:             map[int]chan error{},
+   79  		terminationDrainDuration: terminationDrainDuration,
+   80  		currentEpoch:             -1,
+   81  	}
+   82  }
+```
+
+### `defective/pkg/envoy/agent.go` lines 124-147
+```
+  124  func (a *agent) Restart(config interface{}) {
+  125  	a.mu.Lock()
+  126  	defer a.mu.Unlock()
+  127  
+  128  	if reflect.DeepEqual(a.currentConfig, config) {
+  129  		// Same configuration - nothing to do.
+  130  		return
+  131  	}
+  132  
+  133  	log.Infof("Received new config")
+  134  
+  135  	// Make sure the current epoch (if there is one) is live before performing a hot restart.
+  136  	a.waitUntilLive()
+  137  
+  138  	// Increment the latest running epoch
+  139  	a.currentEpoch++
+  140  	a.currentConfig = config
+  141  
+  142  	// Add the new epoch to the map.
+  143  	abortCh := make(chan error, 1)
+  144  	a.activeEpochs[a.currentEpoch] = abortCh
+  145  
+  146  	go a.runWait(a.currentConfig, a.currentEpoch, abortCh)
+  147  }
+```
+
+### `defective/pkg/envoy/agent.go` lines 150-186
+```
+  150  func (a *agent) waitUntilLive() {
+  151  	// Make sure there is a currently active epoch. If not, just return.
+  152  	if len(a.activeEpochs) == 0 {
+  153  		log.Info("no previous epoch exists, starting now")
+  154  		return
+  155  	}
+  156  
+  157  	log.Infof("waiting for epoch %d to go live before performing a hot restart", a.currentEpoch)
+  158  
+  159  	// Timeout after 20 seconds. Envoy internally uses a 15s timer, so we set ours a bit above that.
+  160  	interval := time.NewTicker(500 * time.Millisecond)
+  161  	timer := time.NewTimer(20 * time.Second)
+  162  
+  163  	defer func() {
+  164  		interval.Stop()
+  165  		timer.Stop()
+  166  	}()
+  167  
+  168  	// Do an initial check on the live state to avoid any waits if possible.
+  169  	if a.proxy.IsLive() {
+  170  		// It's live!
+  171  		return
+  172  	}
+  173  
+  174  	for {
+  175  		select {
+  176  		case <-timer.C:
+  177  			log.Warnf("timed out waiting for epoch %d to go live.", a.currentEpoch)
+  178  			return
+  179  		case <-interval.C:
+  180  			if a.proxy.IsLive() {
+  181  				// It's live!
+  182  				return
+  183  			}
+  184  		}
+  185  	}
+  186  }
+```
+
+### `defective/pkg/envoy/agent.go` lines 188-221
+```
+  188  func (a *agent) Run(ctx context.Context) error {
+  189  	log.Info("Starting proxy agent")
+  190  	for {
+  191  		select {
+  192  		case status := <-a.statusCh:
+  193  			a.mu.Lock()
+  194  			if status.err != nil {
+  195  				if status.err.Error() == errOutOfMemory {
+  196  					log.Warnf("Envoy may have been out of memory killed. Check memory usage and limits.")
+  197  				}
+  198  				log.Errorf("Epoch %d exited with error: %v", status.epoch, status.err)
+  199  			} else {
+  200  				log.Infof("Epoch %d exited normally", status.epoch)
+  201  			}
+  202  
+  203  			delete(a.activeEpochs, status.epoch)
+  204  
+  205  			active := len(a.activeEpochs)
+  206  			a.mu.Unlock()
+  207  
+  208  			if active == 0 {
+  209  				log.Infof("No more active epochs, terminating")
+  210  				return nil
+  211  			}
+  212  
+  213  			log.Infof("%d active epochs running", active)
+  214  
+  215  		case <-ctx.Done():
+  216  			a.terminate()
+  217  			log.Info("Agent has successfully terminated")
+  218  			return nil
+  219  		}
+  220  	}
+  221  }
+```
+
+### `defective/pkg/envoy/agent.go` lines 241-249
+```
+  241  func (a *agent) abortAll() {
+  242  	a.mu.Lock()
+  243  	defer a.mu.Unlock()
+  244  	for epoch, abortCh := range a.activeEpochs {
+  245  		log.Warnf("Aborting epoch %d...", epoch)
+  246  		abortCh <- errAbort
+  247  	}
+  248  	log.Warnf("Aborted all epochs")
+  249  }
+```
+
+## Entry-point helper definitions (fixed rule: direct test-side callees and JUnit 3 fixtures)
+
+### `shared/pkg/envoy/agent_test.go` lines 35-40 (H1: a.Run for TestExitDuringWaitForLive)
+```
+   35  func (tp TestProxy) Run(config interface{}, epoch int, stop <-chan error) error {
+   36  	if tp.run == nil {
+   37  		return nil
+   38  	}
+   39  	return tp.run(config, epoch, stop)
+   40  }
+```
+
+### `shared/pkg/envoy/watcher_test.go` lines 39-41 (H1: a.Run for TestExitDuringWaitForLive)
+```
+   39  func (ta *TestAgent) Run(ctx context.Context) {
+   40  	<-ctx.Done()
+   41  }
+```
+
+### `shared/pkg/envoy/watcher_test.go` lines 35-37 (H1: a.Restart for TestExitDuringWaitForLive)
+```
+   35  func (ta *TestAgent) Restart(c interface{}) {
+   36  	ta.configCh <- c
+   37  }
+```
+
+## Harness state (F3 planner stage)
+- model calls: 2 discretionary left in this stage; the final call is reserved separately
+- session budget left: input_tokens=640000, output_tokens=24000, usd=1.0, seconds=600.0
+- patch proposals left: 4; paired runs left: 6
+- proposals: none yet ("unchanged" is always available)
+
+# Output
+Return the plan by calling submit_plan (one to eight claims).

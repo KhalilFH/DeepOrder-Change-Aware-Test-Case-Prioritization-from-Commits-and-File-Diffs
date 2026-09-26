@@ -1,0 +1,588 @@
+# SYSTEM
+You are strengthening a supplied regression-test package for a known historical production repair. You have the defective-to-repaired production diff, allowed source and tests, and a paired build/run interface. Aim for a small, source-supported test that can reveal the changed behavioral obligation. Leaving the tests unchanged is allowed when appropriate. The supplied tests may already come from the repair. Do not assume an unknown-bug discovery task.
+
+Use only the allowed packet and tools. Preserve existing assertions and timeouts. Do not modify production code, branch on version identity, access the network, read held-out files or fabricate outputs. Ordinary pass/fail feedback is fallible. Explain source evidence separately from hypotheses; a timeout alone does not prove the target defect. All calls, tool work and retries count against the supplied budgets.
+
+Session mechanics. Every harness turn ends with a harness state block listing your proposals, their legality, build and run status, and the remaining budget. Act through tool calls; a response without a tool call uses a model call without progress. A proposal must be built on both variants with build_pair before run_pair can execute it. Each response is limited to 4,000 output tokens including thinking; a response cut off at that limit is discarded and none of its tool calls run. At most four tool calls per response are executed. One final model call is reserved: when the other calls or budgets are used up, the harness asks you to seal the session with submit_final, and only submit_final is executed in that call. A session without a sealed submission has no result; nothing is submitted on your behalf.
+
+# FIRST USER MESSAGE
+# Task
+Inspect the supplied change, implementation and tests using the shared static context and file tools. Select, construct or retain a test that best demonstrates the changed behavior within the allowed budget. Use build and paired execution feedback to revise if helpful. You may reason in whatever way you find most effective. Seal a legal test overlay or the unchanged submission with submit_final and a concise source-linked rationale; do not report a validated defect witness based only on search feedback.
+
+# Final submission format
+The runner, not the model, computes hashes and elapsed time. submit_final supplies a proposal id (or "latest" or "unchanged"), a rationale with source spans, the stated obligation, and uncertainties. Only a legal proposal or the unchanged submission can be sealed; an illegal or malformed proposal is refused with its violations. Do not rely on ad hoc parsing of text outside tool calls.
+
+# Stage limits
+The harness state lists the discretionary calls left; one final call is reserved for sealing.
+
+# Shared case packet
+
+# Build and run interface (pool162)
+
+Language: Java, compiled by Temurin JDK 17 at `--release 8` against JUnit 3.8.2 and the production classes
+of each variant, in fixed container images without network access. Both production variants use
+identical test sources, instrumentation, arguments and timeouts; you cannot see or choose which variant is
+which beyond the paired result labels `defective` and `repaired`.
+
+Build: the harness copies your overlay into `src/test` and compiles all of `src/test`.
+
+Run: `java -Xlog:exceptions=info w1harness.W1Runner 30 <selected tests>` with 16 visible CPUs. Selected
+tests are the supplied entry points `org.apache.commons.pool.impl.TestGenericObjectPool#testWhenExhaustedBlock`, `org.apache.commons.pool.impl.TestGenericKeyedObjectPool#testWhenExhaustedGrow`, `org.apache.commons.pool.impl.TestStackObjectPool#testBorrowFromEmptyPoolWithNullFactory` plus any new `public void testXxx()` methods your overlay adds
+to the editable classes (at most 4). Each selected test runs once, in order, via JUnit 3
+(`setUp`/`tearDown` apply). Outer limit 60s per run (killed and unresolved), cleanup 30s.
+
+Harness instrumentation (identical everywhere): the VM logs thrown exceptions (`-Xlog:exceptions=info`),
+the runner prints each failure's stack trace and a full thread dump after any non-passing test, and at
+30s it dumps all threads and exits (inner timeout).
+
+Editing rules: edit only `src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java`, `src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java`, `src/test/org/apache/commons/pool/impl/TestStackObjectPool.java` (insertion-only: every original line must remain, in order). Do not
+modify production code, remove or weaken assertions, change timeouts, read files/environment/system
+properties, exit or halt the VM, use reflection or class loading, access the network, branch on revision
+identity, or print text imitating VM exception logs. At most 400 inserted lines.
+
+## Production change (defective -> repaired)
+```diff
+--- a/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java
++++ b/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java
+@@ -1149,9 +1149,18 @@
+                                     }
+                                 }
+                             } catch(InterruptedException e) {
++                                synchronized (this) {
++                                    // Make sure allocate hasn't already assigned an object
++                                    // in a different thread or permitted a new object to be created
++                                    if (latch.getPair() == null && !latch.mayCreate()) {
++                                        _allocationQueue.remove(latch);
++                                    } else {
++                                        break;
++                                    }
++                                }
+                                 Thread.currentThread().interrupt();
+                                 throw e;
+-                                }
++                            }
+                             if (maxWait > 0 && ((System.currentTimeMillis() - starttime) >= maxWait)) {
+                                 synchronized (this) {
+                                     // Make sure allocate hasn't already assigned an object
+--- a/src/java/org/apache/commons/pool/impl/GenericObjectPool.java
++++ b/src/java/org/apache/commons/pool/impl/GenericObjectPool.java
+@@ -1117,6 +1117,16 @@
+                                     }
+                                 }
+                             } catch(InterruptedException e) {
++                                synchronized(this) {
++                                    // Make sure allocate hasn't already assigned an object
++                                    // in a different thread or permitted a new object to be created
++                                    if (latch.getPair() == null && !latch.mayCreate()) {
++                                        // Remove latch from the allocation queue
++                                        _allocationQueue.remove(latch);
++                                    } else {
++                                        break;
++                                    }
++                                }
+                                 Thread.currentThread().interrupt();
+                                 throw e;
+                             }
+```
+
+## Allowed packet files (read more with read_source)
+- `defective/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java` (2633 lines, defective)
+- `defective/src/java/org/apache/commons/pool/impl/GenericObjectPool.java` (2018 lines, defective)
+- `repaired/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java` (2642 lines, repaired)
+- `repaired/src/java/org/apache/commons/pool/impl/GenericObjectPool.java` (2028 lines, repaired)
+- `shared/src/java/org/apache/commons/pool/BaseObjectPool.java` (144 lines, shared)
+- `shared/src/java/org/apache/commons/pool/ObjectPool.java` (190 lines, shared)
+- `shared/src/java/org/apache/commons/pool/PoolableObjectFactory.java` (138 lines, shared)
+- `shared/src/java/org/apache/commons/pool/impl/StackObjectPool.java` (359 lines, shared)
+- `shared/src/test/org/apache/commons/pool/TestBaseKeyedObjectPool.java` (358 lines, shared)
+- `shared/src/test/org/apache/commons/pool/TestBaseObjectPool.java` (276 lines, shared)
+- `shared/src/test/org/apache/commons/pool/TestKeyedObjectPool.java` (520 lines, shared)
+- `shared/src/test/org/apache/commons/pool/TestObjectPool.java` (438 lines, shared)
+- `shared/src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java` (1664 lines, shared)
+- `shared/src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java` (1602 lines, shared)
+- `shared/src/test/org/apache/commons/pool/impl/TestStackObjectPool.java` (352 lines, shared)
+
+## T0 static extraction
+```text
+tool: w1-T0/1 (lexical extraction; not a sound whole-program call graph; no obligation answers)
+
+Changed functions:
+- defective borrowObject src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230 (changed lines 1151-1154)
+- repaired borrowObject src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1239 (changed lines 1152-1163)
+- defective borrowObject src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1198 (changed lines 1119-1119)
+- repaired borrowObject src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1208 (changed lines 1120-1129)
+
+Supplied tests ranked by changed-token overlap (top 15 of 81; ties lexical):
+  1. testMaxTotalLRU src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:274-321 score=12
+  2. testMaxWaitMultiThreaded src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1350-1399 score=11
+  3. testEvictionSoftMinIdle src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:948-993 score=11
+  4. testMaxActiveUnderLoad src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:534-610 score=10
+  5. testBlockedKeyDoesNotBlockPool src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1310-1334 score=9
+  6. testConstructors src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:967-1229 score=9
+  7. testMaxWaitMultiThreaded src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1555-1601 score=9
+  8. testExceptionOnActivateDuringBorrow src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1277-1308 score=8
+  9. testMaxTotal src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:221-260 score=8
+ 10. testMinIdleNoPreparePool src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:636-657 score=8
+ 11. testEvictAddObjects src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:123-141 score=8
+ 12. testEvictionWithNegativeNumTests src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:872-896 score=8
+ 13. testStartAndStopEvictor src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:836-870 score=8
+ 14. testEviction src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:380-427 score=7
+ 15. testEviction2 src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:429-469 score=7
+
+Entry points:
+- org.apache.commons.pool.impl.TestGenericObjectPool#testWhenExhaustedBlock rank=42 score=6 src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:97-111
+- org.apache.commons.pool.impl.TestGenericKeyedObjectPool#testWhenExhaustedGrow rank=53 score=5 src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:212-219
+- org.apache.commons.pool.impl.TestStackObjectPool#testBorrowFromEmptyPoolWithNullFactory rank=44 score=6 src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:90-98
+
+Direct syntactic calls (unique callees in source order, first 25; definitions found in packet files):
+- testWhenExhaustedGrow src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:212-219: pool.setMaxActive@L213 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:659-662], pool.setMaxTotal@L214 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:686-689], pool.setWhenExhaustedAction@L215 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:714-725], pool.borrowObject@L217 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230]
+- testWhenExhaustedBlock src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:97-111: pool.setMaxActive@L98 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:659-662], pool.setWhenExhaustedAction@L99 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:714-725], pool.setMaxWait@L100 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:762-764], pool.borrowObject@L101 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230], assertNotNull@L102, fail@L105, pool.returnObject@L109 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1524-1546], pool.close@L110 [def src/java/org/apache/commons/pool/BaseObjectPool.java:106-108]
+- testBorrowFromEmptyPoolWithNullFactory src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:90-98: StackObjectPool@L91 [def src/java/org/apache/commons/pool/impl/StackObjectPool.java:58-60], pool.borrowObject@L93 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230], fail@L94
+- borrowObject src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230: System.currentTimeMillis@L1077, Latch@L1078 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2376-2378], _allocationQueue.add@L1089, allocate@L1093 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1237-1310], assertOpen@L1098 [def src/java/org/apache/commons/pool/BaseObjectPool.java:136-140], latch.getPair@L1101 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411], latch.mayCreate@L1103 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427], _allocationQueue.remove@L1114, latch.getPool@L1115 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2392-2394], NoSuchElementException@L1128, latch.wait@L1136, Thread.currentThread@L1152, IllegalArgumentException@L1170, _factory.makeObject@L1179 [def src/test/org/apache/commons/pool/TestKeyedObjectPool.java:53-55], latch.setPair@L1180 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2417-2419], ObjectTimestampPair@L1180 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2207-2209], _factory.activateObject@L1196 [def src/test/org/apache/commons/pool/TestKeyedObjectPool.java:488-493], _factory.validateObject@L1197 [def src/test/org/apache/commons/pool/TestKeyedObjectPool.java:495-504], Exception@L1198, _factory.destroyObject@L1208 [def src/test/org/apache/commons/pool/TestKeyedObjectPool.java:513-518], latch.reset@L1215 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2442-2445], e.getMessage@L1223
+- borrowObject src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1198: System.currentTimeMillis@L1044, Latch@L1045 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2376-2378], _allocationQueue.add@L1056, allocate@L1060 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1237-1310], assertOpen@L1065 [def src/java/org/apache/commons/pool/BaseObjectPool.java:136-140], latch.getPair@L1069 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411], latch.mayCreate@L1071 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427], _allocationQueue.remove@L1082, NoSuchElementException@L1096, latch.wait@L1104, Thread.currentThread@L1120, IllegalArgumentException@L1139, _factory.makeObject@L1148 [def src/test/org/apache/commons/pool/TestKeyedObjectPool.java:53-55], latch.setPair@L1149 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2417-2419], ObjectTimestampPair@L1149 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2207-2209], _factory.activateObject@L1164 [def src/test/org/apache/commons/pool/TestKeyedObjectPool.java:488-493], _factory.validateObject@L1166 [def src/test/org/apache/commons/pool/TestKeyedObjectPool.java:495-504], Exception@L1167, _factory.destroyObject@L1178 [def src/test/org/apache/commons/pool/TestKeyedObjectPool.java:513-518], latch.reset@L1185 [def src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2442-2445], e.getMessage@L1191
+```
+
+## Shared template bindings (deterministic metadata)
+```json
+{
+ "T3": {
+  "acquire": "GenericObjectPool.borrowObject()",
+  "applicable": true,
+  "assertion": "second borrow obtains an object within the bounded wait (capacity restored)",
+  "derivation": "diff modifies the catch(InterruptedException) handler inside borrowObject of GenericObjectPool and GenericKeyedObjectPool",
+  "error_action": "Thread.interrupt() of a second borrower waiting inside borrowObject()",
+  "release": "GenericObjectPool.returnObject(Object)",
+  "resource": "pool capacity (setMaxActive(1), WHEN_EXHAUSTED_BLOCK)",
+  "second_operation": "GenericObjectPool.borrowObject() with setMaxWait(bounded)",
+  "source_spans": [
+   "defective/src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1198",
+   "shared/src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java (WaitingTestThread, setUp)"
+  ]
+ }
+}
+```
+
+## Initial excerpts
+### `shared/src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java` lines 97-111
+```
+   97      public void testWhenExhaustedBlock() throws Exception {
+   98          pool.setMaxActive(1);
+   99          pool.setWhenExhaustedAction(GenericObjectPool.WHEN_EXHAUSTED_BLOCK);
+  100          pool.setMaxWait(10L);
+  101          Object obj1 = pool.borrowObject();
+  102          assertNotNull(obj1);
+  103          try {
+  104              pool.borrowObject();
+  105              fail("Expected NoSuchElementException");
+  106          } catch(NoSuchElementException e) {
+  107              // expected
+  108          }
+  109          pool.returnObject(obj1);
+  110          pool.close();
+  111      }
+```
+
+### `shared/src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java` lines 212-219
+```
+  212      public void testWhenExhaustedGrow() throws Exception {
+  213          pool.setMaxActive(1);
+  214          pool.setMaxTotal(1);
+  215          pool.setWhenExhaustedAction(GenericObjectPool.WHEN_EXHAUSTED_GROW);
+  216          for (int i = 0; i < 10; i++) {
+  217              pool.borrowObject("a");
+  218          }
+  219      }
+```
+
+### `shared/src/test/org/apache/commons/pool/impl/TestStackObjectPool.java` lines 90-98
+```
+   90      public void testBorrowFromEmptyPoolWithNullFactory() throws Exception {
+   91          ObjectPool pool = new StackObjectPool();
+   92          try {
+   93              pool.borrowObject();
+   94              fail("Expected NoSuchElementException");
+   95          } catch(NoSuchElementException e) {
+   96              // expected
+   97          }
+   98      }
+```
+
+### `defective/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java` lines 1076-1230
+```
+ 1076       public Object borrowObject(Object key) throws Exception {
+ 1077          long starttime = System.currentTimeMillis();
+ 1078          Latch latch = new Latch(key);
+ 1079          byte whenExhaustedAction;
+ 1080          long maxWait;
+ 1081          synchronized (this) {
+ 1082              // Get local copy of current config. Can't sync when used later as
+ 1083              // it can result in a deadlock. Has the added advantage that config
+ 1084              // is consistent for entire method execution
+ 1085              whenExhaustedAction = _whenExhaustedAction;
+ 1086              maxWait = _maxWait;
+ 1087  
+ 1088              // Add this request to the queue
+ 1089              _allocationQueue.add(latch);
+ 1090  
+ 1091              // Work the allocation queue, allocating idle instances and
+ 1092              // instance creation permits in request arrival order
+ 1093              allocate();
+ 1094          }
+ 1095  
+ 1096          for(;;) {
+ 1097              synchronized (this) {
+ 1098                  assertOpen();
+ 1099              }
+ 1100              // If no object was allocated
+ 1101              if (null == latch.getPair()) {
+ 1102                  // Check to see if we were allowed to create one
+ 1103                  if (latch.mayCreate()) {
+ 1104                      // allow new object to be created
+ 1105                  } else {
+ 1106                      // the pool is exhausted
+ 1107                      switch(whenExhaustedAction) {
+ 1108                          case WHEN_EXHAUSTED_GROW:
+ 1109                              // allow new object to be created
+ 1110                              synchronized (this) {
+ 1111                                  // Make sure another thread didn't allocate us an object
+ 1112                                  // or permit a new object to be created
+ 1113                                  if (latch.getPair() == null && !latch.mayCreate()) {
+ 1114                                      _allocationQueue.remove(latch);
+ 1115                                      latch.getPool().incrementInternalProcessingCount();
+ 1116                                  }
+ 1117                              }
+ 1118                          break;
+ 1119                          case WHEN_EXHAUSTED_FAIL:
+ 1120                              synchronized (this) {
+ 1121                                  // Make sure allocate hasn't already assigned an object
+ 1122                                  // in a different thread or permitted a new object to be created
+ 1123                                  if (latch.getPair() != null || latch.mayCreate()) {
+ 1124                                      break;
+ 1125                                  }
+ 1126                                  _allocationQueue.remove(latch);
+ 1127                              }
+ 1128                              throw new NoSuchElementException("Pool exhausted");
+ 1129                          case WHEN_EXHAUSTED_BLOCK:
+ 1130                              try {
+ 1131                                  synchronized (latch) {
+ 1132                                      // Before we wait, make sure another thread didn't allocate us an object
+ 1133                                      // or permit a new object to be created
+ 1134                                      if (latch.getPair() == null && !latch.mayCreate()) {
+ 1135                                          if (maxWait <= 0) {
+ 1136                                              latch.wait();
+ 1137                                          } else {
+ 1138                                              // this code may be executed again after a notify then continue cycle
+ 1139                                              // so, need to calculate the amount of time to wait
+ 1140                                              final long elapsed = (System.currentTimeMillis() - starttime);
+ 1141                                              final long waitTime = maxWait - elapsed;
+ 1142                                              if (waitTime > 0)
+ 1143                                              {
+ 1144                                                  latch.wait(waitTime);
+ 1145                                              }
+ 1146                                          }
+ 1147                                      } else {
+ 1148                                          break;
+ 1149                                      }
+ 1150                                  }
+ 1151                              } catch(InterruptedException e) {
+ 1152                                  Thread.currentThread().interrupt();
+ 1153                                  throw e;
+ 1154                                  }
+ 1155                              if (maxWait > 0 && ((System.currentTimeMillis() - starttime) >= maxWait)) {
+ 1156                                  synchronized (this) {
+ 1157                                      // Make sure allocate hasn't already assigned an object
+ 1158                                      // in a different thread or permitted a new object to be created
+ 1159                                      if (latch.getPair() == null && !latch.mayCreate()) {
+ 1160                                          _allocationQueue.remove(latch);
+ 1161                                      } else {
+ 1162                                          break;
+ 1163                                      }
+ 1164                                  }
+ 1165                                  throw new NoSuchElementException("Timeout waiting for idle object");
+ 1166                              } else {
+ 1167                                  continue; // keep looping
+ 1168                              }
+ 1169                          default:
+ 1170                              throw new IllegalArgumentException("whenExhaustedAction " + whenExhaustedAction +
+ 1171                                      " not recognized.");
+ 1172                      }
+ 1173                  }
+ 1174              }
+ 1175  
+ 1176              boolean newlyCreated = false;
+ 1177              if (null == latch.getPair()) {
+ 1178                  try {
+ 1179                      Object obj = _factory.makeObject(key);
+ 1180                      latch.setPair(new ObjectTimestampPair(obj));
+ 1181                      newlyCreated = true;
+ 1182                  } finally {
+ 1183                      if (!newlyCreated) {
+ 1184                          // object cannot be created
+ 1185                          synchronized (this) {
+ 1186                              latch.getPool().decrementInternalProcessingCount();
+ 1187                              // No need to reset latch - about to throw exception
+ 1188                              allocate();
+ 1189                          }
+ 1190                      }
+ 1191                  }
+ 1192              }
+ 1193  
+ 1194              // activate & validate the object
+ 1195              try {
+ 1196                  _factory.activateObject(key, latch.getPair().value);
+ 1197                  if (_testOnBorrow && !_factory.validateObject(key, latch.getPair().value)) {
+ 1198                      throw new Exception("ValidateObject failed");
+ 1199                  }
+ 1200                  synchronized (this) {
+ 1201                      latch.getPool().decrementInternalProcessingCount();
+ 1202                      latch.getPool().incrementActiveCount();
+ 1203                  }
+ 1204                  return latch.getPair().value;
+ 1205              } catch (Throwable e) {
+ 1206                  // object cannot be activated or is invalid
+ 1207                  try {
+ 1208                      _factory.destroyObject(key, latch.getPair().value);
+ 1209                  } catch (Throwable e2) {
+ 1210                      // cannot destroy broken object
+ 1211                  }
+ 1212                  synchronized (this) {
+ 1213                      latch.getPool().decrementInternalProcessingCount();
+ 1214                      if (!newlyCreated) {
+ 1215                          latch.reset();
+ 1216                          _allocationQueue.add(0, latch);
+ 1217                      }
+ 1218                      allocate();
+ 1219                  }
+ 1220                  if (newlyCreated) {
+ 1221                      throw new NoSuchElementException(
+ 1222                         "Could not create a validated object, cause: " +
+ 1223                              e.getMessage());
+ 1224                  }
+ 1225                  else {
+ 1226                      continue; // keep looping
+ 1227                  }
+ 1228              }
+ 1229          }
+ 1230      }
+```
+
+### `defective/src/java/org/apache/commons/pool/impl/GenericObjectPool.java` lines 1043-1198
+```
+ 1043      public Object borrowObject() throws Exception {
+ 1044          long starttime = System.currentTimeMillis();
+ 1045          Latch latch = new Latch();
+ 1046          byte whenExhaustedAction;
+ 1047          long maxWait;
+ 1048          synchronized (this) {
+ 1049              // Get local copy of current config. Can't sync when used later as
+ 1050              // it can result in a deadlock. Has the added advantage that config
+ 1051              // is consistent for entire method execution
+ 1052              whenExhaustedAction = _whenExhaustedAction;
+ 1053              maxWait = _maxWait;
+ 1054  
+ 1055              // Add this request to the queue
+ 1056              _allocationQueue.add(latch);
+ 1057  
+ 1058              // Work the allocation queue, allocating idle instances and
+ 1059              // instance creation permits in request arrival order
+ 1060              allocate();
+ 1061          }
+ 1062  
+ 1063          for(;;) {
+ 1064              synchronized (this) {
+ 1065                  assertOpen();
+ 1066              }
+ 1067  
+ 1068              // If no object was allocated from the pool above
+ 1069              if(latch.getPair() == null) {
+ 1070                  // check if we were allowed to create one
+ 1071                  if(latch.mayCreate()) {
+ 1072                      // allow new object to be created
+ 1073                  } else {
+ 1074                      // the pool is exhausted
+ 1075                      switch(whenExhaustedAction) {
+ 1076                          case WHEN_EXHAUSTED_GROW:
+ 1077                              // allow new object to be created
+ 1078                              synchronized (this) {
+ 1079                                  // Make sure another thread didn't allocate us an object
+ 1080                                  // or permit a new object to be created
+ 1081                                  if (latch.getPair() == null && !latch.mayCreate()) {
+ 1082                                      _allocationQueue.remove(latch);
+ 1083                                      _numInternalProcessing++;
+ 1084                                  }
+ 1085                              }
+ 1086                              break;
+ 1087                          case WHEN_EXHAUSTED_FAIL:
+ 1088                              synchronized (this) {
+ 1089                                  // Make sure allocate hasn't already assigned an object
+ 1090                                  // in a different thread or permitted a new object to be created
+ 1091                                  if (latch.getPair() != null || latch.mayCreate()) {
+ 1092                                      break;
+ 1093                                  }
+ 1094                                  _allocationQueue.remove(latch);
+ 1095                              }
+ 1096                              throw new NoSuchElementException("Pool exhausted");
+ 1097                          case WHEN_EXHAUSTED_BLOCK:
+ 1098                              try {
+ 1099                                  synchronized (latch) {
+ 1100                                      // Before we wait, make sure another thread didn't allocate us an object
+ 1101                                      // or permit a new object to be created
+ 1102                                      if (latch.getPair() == null && !latch.mayCreate()) {
+ 1103                                          if(maxWait <= 0) {
+ 1104                                              latch.wait();
+ 1105                                          } else {
+ 1106                                              // this code may be executed again after a notify then continue cycle
+ 1107                                              // so, need to calculate the amount of time to wait
+ 1108                                              final long elapsed = (System.currentTimeMillis() - starttime);
+ 1109                                              final long waitTime = maxWait - elapsed;
+ 1110                                              if (waitTime > 0)
+ 1111                                              {
+ 1112                                                  latch.wait(waitTime);
+ 1113                                              }
+ 1114                                          }
+ 1115                                      } else {
+ 1116                                          break;
+ 1117                                      }
+ 1118                                  }
+ 1119                              } catch(InterruptedException e) {
+ 1120                                  Thread.currentThread().interrupt();
+ 1121                                  throw e;
+ 1122                              }
+ 1123                              if(maxWait > 0 && ((System.currentTimeMillis() - starttime) >= maxWait)) {
+ 1124                                  synchronized(this) {
+ 1125                                      // Make sure allocate hasn't already assigned an object
+ 1126                                      // in a different thread or permitted a new object to be created
+ 1127                                      if (latch.getPair() == null && !latch.mayCreate()) {
+ 1128                                          // Remove latch from the allocation queue
+ 1129                                          _allocationQueue.remove(latch);
+ 1130                                      } else {
+ 1131                                          break;
+ 1132                                      }
+ 1133                                  }
+ 1134                                  throw new NoSuchElementException("Timeout waiting for idle object");
+ 1135                              } else {
+ 1136                                  continue; // keep looping
+ 1137                              }
+ 1138                          default:
+ 1139                              throw new IllegalArgumentException("WhenExhaustedAction property " + whenExhaustedAction +
+ 1140                                      " not recognized.");
+ 1141                      }
+ 1142                  }
+ 1143              }
+ 1144  
+ 1145              boolean newlyCreated = false;
+ 1146              if(null == latch.getPair()) {
+ 1147                  try {
+ 1148                      Object obj = _factory.makeObject();
+ 1149                      latch.setPair(new ObjectTimestampPair(obj));
+ 1150                      newlyCreated = true;
+ 1151                  } finally {
+ 1152                      if (!newlyCreated) {
+ 1153                          // object cannot be created
+ 1154                          synchronized (this) {
+ 1155                              _numInternalProcessing--;
+ 1156                              // No need to reset latch - about to throw exception
+ 1157                              allocate();
+ 1158                          }
+ 1159                      }
+ 1160                  }
+ 1161              }
+ 1162              // activate & validate the object
+ 1163              try {
+ 1164                  _factory.activateObject(latch.getPair().value);
+ 1165                  if(_testOnBorrow &&
+ 1166                          !_factory.validateObject(latch.getPair().value)) {
+ 1167                      throw new Exception("ValidateObject failed");
+ 1168                  }
+ 1169                  synchronized(this) {
+ 1170                      _numInternalProcessing--;
+ 1171                      _numActive++;
+ 1172                  }
+ 1173                  return latch.getPair().value;
+ 1174              }
+ 1175              catch (Throwable e) {
+ 1176                  // object cannot be activated or is invalid
+ 1177                  try {
+ 1178                      _factory.destroyObject(latch.getPair().value);
+ 1179                  } catch (Throwable e2) {
+ 1180                      // cannot destroy broken object
+ 1181                  }
+ 1182                  synchronized (this) {
+ 1183                      _numInternalProcessing--;
+ 1184                      if (!newlyCreated) {
+ 1185                          latch.reset();
+ 1186                          _allocationQueue.add(0, latch);
+ 1187                      }
+ 1188                      allocate();
+ 1189                  }
+ 1190                  if(newlyCreated) {
+ 1191                      throw new NoSuchElementException("Could not create a validated object, cause: " + e.getMessage());
+ 1192                  }
+ 1193                  else {
+ 1194                      continue; // keep looping
+ 1195                  }
+ 1196              }
+ 1197          }
+ 1198      }
+```
+
+## Entry-point helper definitions (fixed rule: direct test-side callees and JUnit 3 fixtures)
+
+### `shared/src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java` lines 1308-1310 (H1: pool.setMaxActive for testWhenExhaustedBlock)
+```
+ 1308          public void setMaxActive(int maxActive) {
+ 1309              this.maxActive = maxActive;
+ 1310          }
+```
+
+### `shared/src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java` lines 57-60 (H2: setUp for testWhenExhaustedBlock)
+```
+   57      public void setUp() throws Exception {
+   58          super.setUp();
+   59          pool = new GenericObjectPool(new SimpleFactory());
+   60      }
+```
+
+### `shared/src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java` lines 62-67 (H2: tearDown for testWhenExhaustedBlock)
+```
+   62      public void tearDown() throws Exception {
+   63          super.tearDown();
+   64          pool.clear();
+   65          pool.close();
+   66          pool = null;
+   67      }
+```
+
+### `shared/src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java` lines 1580-1582 (H1: pool.setMaxActive for testWhenExhaustedGrow)
+```
+ 1580          public void setMaxActive(int maxActive) {
+ 1581              this.maxActive = maxActive;
+ 1582          }
+```
+
+### `shared/src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java` lines 82-85 (H2: setUp for testWhenExhaustedGrow)
+```
+   82      public void setUp() throws Exception {
+   83          super.setUp();
+   84          pool = new GenericKeyedObjectPool(new SimpleFactory());
+   85      }
+```
+
+### `shared/src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java` lines 87-92 (H2: tearDown for testWhenExhaustedGrow)
+```
+   87      public void tearDown() throws Exception {
+   88          super.tearDown();
+   89          pool.clear();
+   90          pool.close();
+   91          pool = null;
+   92      }
+```
+
+## Harness state (F2 agent stage)
+- model calls: 11 discretionary left in this stage; the final call is reserved separately
+- session budget left: input_tokens=640000, output_tokens=24000, usd=1.0, seconds=600.0
+- patch proposals left: 4; paired runs left: 6
+- proposals: none yet ("unchanged" is always available)
+
+# Output
+Use the tools. Seal the session with submit_final (a legal proposal id, "latest" or "unchanged").

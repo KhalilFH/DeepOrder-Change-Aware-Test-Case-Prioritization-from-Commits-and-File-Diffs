@@ -2,6 +2,83 @@
 
 This document is the authoritative description of the project's current research direction.
 
+## Current routing — W2A v1.0 prepared offline; not launched, 2026-09-26
+
+The researcher asked to start W2A and carry it to a launch-ready package without live inference. [W2A v1.0](../../research_runs/ai_witness_followup_2026_09/w2a/README.md) is now a separate study with its own design, harness, schedule, ledgers and identifiers under `research_runs/ai_witness_followup_2026_09/w2a/`. W1 stays closed under D005; W2A only reads W1 artifacts.
+
+- **Design:** four exposed W1 development cases × F2 (plain agent) and F3 (planner → judge → generator), one session each, eight sessions in total. The generator is Claude Sonnet 5 via OpenCode Zen; there is no Jev. W1's validation and focal-oracle code is copied byte-identically.
+- **Observed (offline only):**
+  - the W1 audit reproduces byte-identically;
+  - all 13 offline gates pass;
+  - 24/24 tests pass;
+  - nine W1 failure cases (R1–R9) are replayed against W2A code and pass;
+  - a fake-provider run of all eight sessions passes on terminal accounting, sealing before validation, and ledger-equals-session accounting;
+  - both the design freeze and the executable package freeze verify.
+- **Material change ([DESIGN_CHANGES.md](../../research_runs/ai_witness_followup_2026_09/w2a/design/DESIGN_CHANGES.md), [D006](DECISIONS.md)):** the session input cap rises from the proposed 240k to 640k.
+  - Checked against the actual rendered requests and W1 calibration, 240k cannot deliver the proposal's own call allocation once the final call is reserved.
+  - 640k is the output of a declared rule. The USD caps (1.00 per session, 8.10 for the study including the smoke) are unchanged.
+- **Not executed:** provider requests, the smoke, and subject runs. There are no W2A results.
+- **Launch blockers:** the `W2A_GENERATOR_API_KEY` credential, the authorized smoke (identity and request shape), and re-confirmed pricing. See [readiness.md](../../research_runs/ai_witness_followup_2026_09/w2a/readiness.md).
+- **Next action:** the researcher issues [MEASURED_RUN_PROMPT.md](../../research_runs/ai_witness_followup_2026_09/w2a/design/MEASURED_RUN_PROMPT.md).
+
+This entry supersedes the "W2A proposed" routing below. W1 observations and D005 are unchanged.
+
+## Current follow-up — W1 audited; W2A feasibility proposed, 2026-09-26
+
+The researcher asked to inspect the AI witness results and push forward, confirming Claude Sonnet 5 as the generator. The new [offline trace audit](../../research_runs/ai_witness_2026_09/postrun_audit/REVIEW.md) confirms `claude-sonnet-5` in all 119 measured responses, all 1,962 raw hashes, 181 executable hashes, both chains, all 60 labels and 28 complete policy summaries. W1's table and D005 remain unchanged.
+
+The audit refines the earlier failure explanation: six input-admission denials and one output-admission denial, four truncated responses, two empty planner submissions accepted as stage completion, one empty judgment submission, and an invalid placeholder as the sole AI patch. Most structured generation stages received only one or two model calls. Initial gRPC excerpts omit the test helper body; repeated cross-stage source reads are partly explained by context not being transferred. No AI session used more than 84 of its 600 seconds.
+
+**Proposed next work:** [W2A v0.1](../../research_runs/ai_witness_followup_2026_09/v0_1/PROPOSAL.md), an eight-session plain/structured execution-feasibility pilot after offline harness repairs and an independent freeze. Keep Sonnet 5, carry source evidence across stages, validate stage outputs, and reserve generation/finalization budget. Jev's effectiveness comparison follows only after the workflow can produce and submit usable candidates. W2A is proposed, not frozen or executed; W1 cases remain exposed development cases. No new provider or subject runs occurred during this audit.
+
+This clarification supersedes the failure-mechanism wording below, not W1's measured counts or historical decisions.
+
+## Latest result — W1 measured run: COMPLETE, no method advances, 2026-09-26
+
+The frozen [W1](../../research_runs/ai_witness_2026_09/results_report.md) v1.2 study ran to completion on the researcher's launch instruction: 12/12 blocks, 60/60 sessions and 60/60 validations. There were no pauses, resumes, reruns or amendments. The generator was Claude Sonnet 5 via OpenCode Zen. This supersedes the preparation and routing entries below.
+
+- **Observed:**
+  - Validated witnesses out of three replicates:
+
+    | Case | B0 | B1 | B2 | B3 | B4 |
+    |---|---|---|---|---|---|
+    | pool162 | 0 | 3 | 0 | 0 | 0 |
+    | grpc1859 | 2 | 0 | 0 | 0 | 0 |
+    | k8s26980 | 0 | 0 | 0 | 0 | 0 |
+    | istio17860 (control) | 3 | 3 | 3 | 0 | 0 |
+
+  - No AI arm sealed a synthesized test. All four B2 finals were the explicit unchanged overlay, including its three istio witnesses. 32 of 36 AI sessions ended with NO_SUBMISSION: generator call caps were exhausted by repeated `read_source`, or the cache-inclusive 60k input-token ceiling was reached. One AI patch was proposed in 36 sessions.
+  - The only synthesized validated witness is B1's T3 resource-lifecycle template on pool162: 3/3 replicates, 15/15 focal failures each.
+  - grpc1859's unchanged test is a rare-signal witness. Accept-on-pass (P3) blocked 0/5 triplets; retaining any focal failure flagged 3–4/5.
+  - No invalid candidates, exclusions or missing outcomes. Every acceptable-variant attempt in every witness passed.
+  - Integrity: both freezes were verified before launch and again after; the raw seal was written before analysis; both ledger chains are intact. Labels, the table, policy counts and all witness trace hashes were independently recomputed and match.
+  - Cost: about USD 3.34 (computed from provider-reported usage; the account debit was not checked), 119 generator requests, 1.33M input tokens, 71 Jev evaluations and 20.0 allocated vCPU-h. Wall time was 1 h 17 min.
+- **Interpretation:**
+  - Under the frozen call and token ceilings, the AI arms could not execute with this generator configuration.
+  - W1 therefore measures the execution feasibility of the frozen AI harness. It is not evidence about whether structured analysis (B3 vs B2: 0 on every noncontrol case) or Jev (B4 vs B3: identical zero vectors) helps.
+  - The binding constraints were the call caps and the cache-inclusive input ceiling, not the 8k output ceiling the launch record flagged.
+  - Deterministic templates matched or exceeded every AI arm at no provider cost.
+- **Decision ([D005](DECISIONS.md)):** none of the four engineering gates in analysis_plan.md is met, so no method advances. Any follow-up, for example different call or token ceilings or stage-conversation design, needs a new versioned protocol. W1 data cannot serve as its holdout.
+- **Not claimed:** population superiority, prospective bug discovery, diagnostic calibration or TCP benefit.
+
+See the [results report](../../research_runs/ai_witness_2026_09/results_report.md), [frozen analysis](../../research_runs/ai_witness_2026_09/analysis/report.md) and `raw_seal.sha256`. Nothing is committed.
+
+## Latest result — W1 preparation: NOT_READY on provider gates, 2026-09-26
+
+The v1.1 handoff was executed through bounded preparation. [W1](../../research_runs/ai_witness_2026_09/readiness.md) now has a tested runner (`w1.py`, 39 offline tests, and a fake dry run over all 60 sessions). All four cases were restored and qualified; no exclusions. Oracles, packets, templates and the schedule were frozen before calibration. The fixed 16-attempt unchanged-test calibration found the istio control visible and no repaired-variant non-pass. Preparation used 1.2 allocated vCPU-h, USD 0 and no provider requests.
+
+Launch is blocked only by provider gates. No W1 Claude Opus 5.5 API credential is available, so the returned model identity is unresolved. No smoke authorization is recorded, Jev's version is unrecorded and its price is unconfirmed. No measured session ran and no effectiveness claim exists. Next: the researcher supplies access and authorization per readiness.md, then the gates are re-run.
+
+Same day, [amendment A2](../../research_runs/ai_witness_2026_09/v1_2/AMENDMENT_A2_2026-09-26.md) made design v1.2 governing. The generator is now Claude Sonnet 5 via OpenCode Zen with prompt caching, chosen by the researcher for cost; the provider timeout bound is USD 8.28. The Jev price was accepted. Later the same day the authorized smokes confirmed `claude-sonnet-5` via Zen, after two failed attempts handled as a recorded deviation, and `jev-1.13.0`. The launch record and executable freeze were written, and preflight reports **READY_FOR_MEASURED_LAUNCH**. No measured session has run; the next step is the researcher's explicit launch instruction via `v1_2/MEASURED_RUN_PROMPT.md`.
+
+## Current routing — W1 preparation, 2026-09-25 (after C1 review)
+
+The researcher requested a complete proposal, experiment package and coding-agent handoff for AI-assisted behavioral witness strengthening. [W1](../../research_runs/ai_witness_2026_09/v1_1/README.md) is now frozen for implementation (design v1.1 since 2026-09-26: the generator family is Claude Opus 5.5 instead of GPT-5.6 Sol, per [amendment A1](../../research_runs/ai_witness_2026_09/v1_1/AMENDMENT_2026-09-26.md); nothing else changed): four fixed historical cases, five arms (unchanged, deterministic templates, plain capable model, structured capable model, structured model plus Jev), three search replicates and independent final-candidate validation. This is a retrospective development study; the Go supplied tests are repair-backported, while POOL uses selected pre-fix tests. It is not a prospective test-discovery or demonstrated TCP-benefit claim.
+
+Next action: execute the [W1 v1.1 coding handoff](../../research_runs/ai_witness_2026_09/v1_1/HANDOFF_PROMPT.md), complete bounded preparation and establish a separate executable launch freeze. No W1 subject runs, provider inference or measured sessions occurred during design preparation. Actual provider/model access, source restoration and runtime readiness remain unverified. The researcher reported exhausted usage; the handoff completes offline work without buying credits or silently substituting models.
+
+This entry supersedes earlier next-work routing only. C1 observations, Q0/E1 closed gates and F1 findings remain unchanged. The earlier Jev-as-TCP-feature shortlist is not reopened by W1; Jev's incremental utility is explicitly an ablation to be tested.
+
 ## Latest result — C1 signal-validity audit: STOP, 2026-09-25
 
 An exploratory, post hoc audit asked whether the etcd5509 C3 signal justifies a fresh confirmation study. It was offline only: no executions, no label or frozen-file changes. **Its recommendation is STOP: C4 confirmation of this signal is not pursued.** It supersedes the post-collection review's view below that the signal "supports considering fresh confirmation". The collected observations and frozen analysis are unchanged.

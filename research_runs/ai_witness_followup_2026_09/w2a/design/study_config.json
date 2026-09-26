@@ -1,0 +1,104 @@
+{
+  "study_id": "W2A",
+  "design_version": "1.0",
+  "design_date": "2026-09-26",
+  "status": "DESIGN_FROZEN_NOT_LAUNCH_READY",
+  "purpose": "execution-feasibility pilot on exposed development cases; not an effectiveness or holdout study",
+  "basis": {
+    "proposal": "../../v0_1/PROPOSAL.md",
+    "w1_audit": "../../../ai_witness_2026_09/postrun_audit/REVIEW.md",
+    "design_changes": "DESIGN_CHANGES.md"
+  },
+  "cases": ["pool162", "grpc1859", "k8s26980", "istio17860"],
+  "noncontrol_cases": ["pool162", "grpc1859", "k8s26980"],
+  "control_cases": ["istio17860"],
+  "arms": ["F2", "F3"],
+  "sessions_per_case_arm": 1,
+  "schedule_seed": 2026092602,
+  "generator": {
+    "requested_family": "Claude Sonnet 5",
+    "requested_model": "claude-sonnet-5",
+    "expected_returned_model": "claude-sonnet-5",
+    "transport": "OpenCode Zen Anthropic-Messages-compatible endpoint, raw HTTPS (Python urllib), no SDK retries",
+    "endpoint": "https://opencode.ai/zen/v1/messages",
+    "auth": "both",
+    "credential_env": "W2A_GENERATOR_API_KEY",
+    "thinking": {"type": "adaptive"},
+    "effort": "medium",
+    "tool_choice": {"type": "auto"},
+    "tools_strict": true,
+    "max_output_tokens_per_request": 4000,
+    "request_timeout_s": 240,
+    "prompt_caching": "two explicit ephemeral breakpoints: last block of the stage's first user message and last block of the final message of each request",
+    "input_admission": "local estimate ceil(UTF-8 bytes of canonical JSON request / 2) + 512 tokens; provider-reported usage is charged",
+    "temperature": "not sent (unsupported on claude-sonnet-5)",
+    "fallbacks": "not requested"
+  },
+  "pricing_snapshot": {
+    "model": "claude-sonnet-5",
+    "input_per_mtok_usd": 2.0,
+    "output_per_mtok_usd": 10.0,
+    "cache_write_per_mtok_usd": 2.5,
+    "cache_read_per_mtok_usd": 0.2,
+    "source": "W1 launch snapshot (OpenCode Zen price list and Anthropic list prices fetched 2026-09-26); must be re-confirmed at launch"
+  },
+  "search": {
+    "wall_seconds": 600,
+    "max_patch_proposals": 4,
+    "max_paired_runs": 6,
+    "max_generator_calls": 12,
+    "max_input_tokens": 640000,
+    "max_output_tokens": 24000,
+    "max_usd": 1.0,
+    "max_jev_evaluations": 0,
+    "f3_stage_max_calls": {"planner": 2, "judge": 2},
+    "final_reserve": {"calls": 1, "output_tokens": 4000, "seconds": 120, "input_growth_bound_tokens": 42000},
+    "min_request_output_tokens": 1024,
+    "min_request_timeout_s": 30,
+    "max_tool_uses_executed_per_response": 4,
+    "read_source_max_lines": 300,
+    "tool_result_char_caps": {"read_source": 16000, "feedback_per_variant": 4000, "submit_patch": 2000, "per_response_total": 32000, "state_block": 3000},
+    "evidence_carry": {"max_lines": 600, "max_chars": 36000, "claim_span_max_lines": 80},
+    "plan_limits": {"claims_min": 1, "claims_max": 8, "proposition_chars": 800, "spans_per_claim_min": 1, "spans_per_claim_max": 6, "span_chars": 200, "obligation_chars": 2000, "intervention_chars": 2000, "uncertainties_max": 8, "uncertainty_chars": 500, "claim_id_pattern": "^[A-Za-z0-9_-]{1,12}$"},
+    "judgment_limits": {"reason_chars": 800, "spans_max": 6},
+    "helper_rule": {"max_lines_per_definition": 80, "max_lines_per_case": 240, "max_definitions_per_case": 8}
+  },
+  "validation": {
+    "triplets_per_variant": 5,
+    "attempts_per_triplet": 3,
+    "variants": ["V_bad", "V_ok"],
+    "minimum_bad_focal_attempts": 2,
+    "minimum_bad_focal_triplets": 2,
+    "required_ok_passes": 15,
+    "max_missing_or_unresolved_for_success": 0
+  },
+  "timeouts_seconds": {
+    "pool162": {"inner": 30, "outer": 60, "cleanup": 30},
+    "grpc1859": {"inner": 110, "outer": 120, "cleanup": 30},
+    "k8s26980": {"inner": 60, "outer": 90, "cleanup": 30},
+    "istio17860": {"inner": 30, "outer": 60, "cleanup": 30}
+  },
+  "build_timeout_seconds": 60,
+  "build_cleanup_seconds": 30,
+  "environment": {
+    "visible_logical_cpus": 16,
+    "go_gomaxprocs": 16,
+    "cpu_bandwidth_limit": null,
+    "concurrent_subject_processes": 1,
+    "scheduler_backend": null
+  },
+  "study_caps": {
+    "allocated_vcpu_hours": 164,
+    "preparation_allocated_vcpu_hours": 4,
+    "human_hours": 20,
+    "generator_requests": 98,
+    "jev_atomic_evaluations": 0,
+    "input_tokens": 5124000,
+    "output_tokens": 194048,
+    "provider_usd": 8.1,
+    "note": "measured: 8 sessions x (12 requests, 640k input, 24k output, USD 1.00); smoke allowance: at most 2 synthetic requests (one plus one recorded deviation) of <= 2,000 input and 1,024 output tokens and USD 0.10; allocated CPU: 160 measured + 4 preparation"
+  },
+  "gates": {
+    "live_feasibility": {"sealed_cases_per_arm_min": 3, "modified_workflow_noncontrol_cases_per_arm_min": 2, "all_sessions_terminal_accounting": true}
+  }
+}
