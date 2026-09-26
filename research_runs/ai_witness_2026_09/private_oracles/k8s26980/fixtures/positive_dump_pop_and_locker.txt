@@ -1,0 +1,22 @@
+=== RUN   TestPopReleaseLock
+--- FAIL: TestPopReleaseLock (30.00s)
+    processor_listener_test.go:45: Timeout after 30s
+FAIL
+
+W1-GOROUTINE-DUMP-BEGIN after-nonzero-exit
+goroutine 21 [select]:
+k8s.io/kubernetes/pkg/controller/framework.(*processorListener).pop(0xc0000a2000, 0xc000060180)
+	/go/src/k8s.io/kubernetes/pkg/controller/framework/shared_informer.go:298 +0x1b5
+created by k8s.io/kubernetes/pkg/controller/framework.TestPopReleaseLock
+	/go/src/k8s.io/kubernetes/pkg/controller/framework/processor_listener_test.go:34 +0xb5
+
+goroutine 22 [semacquire]:
+sync.runtime_SemacquireMutex(0xc0000a2014, 0x0)
+	/usr/local/go/src/runtime/sema.go:71 +0x3d
+sync.(*Mutex).Lock(0xc0000a2010)
+	/usr/local/go/src/sync/mutex.go:134 +0x109
+k8s.io/kubernetes/pkg/controller/framework.TestPopReleaseLock.func1(0xc0000a2000, 0xc000060240)
+	/go/src/k8s.io/kubernetes/pkg/controller/framework/processor_listener_test.go:38 +0x3b
+created by k8s.io/kubernetes/pkg/controller/framework.TestPopReleaseLock
+	/go/src/k8s.io/kubernetes/pkg/controller/framework/processor_listener_test.go:36 +0x9e
+W1-GOROUTINE-DUMP-END

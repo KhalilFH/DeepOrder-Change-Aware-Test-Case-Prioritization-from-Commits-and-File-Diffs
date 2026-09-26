@@ -1,0 +1,62 @@
+{
+ "fixtures": [
+  {
+   "exit": 1,
+   "expect": "FOCAL_FAILURE",
+   "name": "supplied_test_deadline_signature",
+   "outer": false,
+   "rule": "grpc1859.R1",
+   "variant": "V_bad"
+  },
+  {
+   "exit": 2,
+   "expect": "FOCAL_FAILURE",
+   "name": "new_test_blocked_writer_dump_with_status_premise",
+   "outer": false,
+   "rule": "grpc1859.R2",
+   "selection_extra": [
+    "TestNewProbe"
+   ],
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "new_test_dump_without_premise",
+   "outer": false,
+   "rule": null,
+   "selection_extra": [
+    "TestNewProbe"
+   ],
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "new_test_deadline_text_only",
+   "outer": false,
+   "rule": null,
+   "selection_extra": [
+    "TestNewProbe"
+   ],
+   "variant": "V_bad"
+  },
+  {
+   "exit": 2,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "expired_cert_style_hang_unrelated",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "blocked_writer_at_stream_quota_site_not_transport",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  }
+ ],
+ "note": "synthetic classifier-logic fixtures; not real observations"
+}

@@ -1,0 +1,113 @@
+{
+ "artifact": "w1_packet_manifest_v1",
+ "build_run_sha256": "ab368a035ca552590bbb2b64e10c36acec41b6b7a1d80ec016dd0df68f010b8f",
+ "case": "istio17860",
+ "diff_sha256": "62f8575823c5d32e951482ea36d31fd177d5e6d5a8e48b41f99d8724d9c9e212",
+ "editable_files": [
+  "pkg/envoy/agent_test.go"
+ ],
+ "entry_points": [
+  "TestExitDuringWaitForLive"
+ ],
+ "files": {
+  "defective/pkg/envoy/agent.go": {
+   "bytes": 7823,
+   "lines": 249,
+   "path": "pkg/envoy/agent.go",
+   "sha256": "503d9cdc7f00afd432a0b7539676e4762314f5653a71593fe3575b30f0a302fc",
+   "version": "defective"
+  },
+  "repaired/pkg/envoy/agent.go": {
+   "bytes": 8254,
+   "lines": 271,
+   "path": "pkg/envoy/agent.go",
+   "sha256": "bf3b66d84bb6aa9dc4a9fc06ce61bcfc776b8300ef4c811ecc1ff63daadccb5d",
+   "version": "repaired"
+  },
+  "shared/pkg/envoy/admin.go": {
+   "bytes": 3193,
+   "lines": 119,
+   "path": "pkg/envoy/admin.go",
+   "sha256": "5157d750f2ffdd0d53892ffba920120d824950c4659d63ef181c82b1a4bc2c5b",
+   "version": "shared"
+  },
+  "shared/pkg/envoy/agent_test.go": {
+   "bytes": 8789,
+   "lines": 325,
+   "path": "pkg/envoy/agent_test.go",
+   "sha256": "f14cc240840be09c86e7060206c69746bdba1e60c5830707ff700960125f31b2",
+   "version": "shared"
+  },
+  "shared/pkg/envoy/instance.go": {
+   "bytes": 12188,
+   "lines": 474,
+   "path": "pkg/envoy/instance.go",
+   "sha256": "270f3458f86698943d7dfb32ed0cab6340cf77dab4aedcb9ba10da957017b463",
+   "version": "shared"
+  },
+  "shared/pkg/envoy/instance_test.go": {
+   "bytes": 13642,
+   "lines": 558,
+   "path": "pkg/envoy/instance_test.go",
+   "sha256": "949312d658e17da941783d31e09483eaeed2167b1f7ccbda934e612bb7423148",
+   "version": "shared"
+  },
+  "shared/pkg/envoy/options.go": {
+   "bytes": 20591,
+   "lines": 747,
+   "path": "pkg/envoy/options.go",
+   "sha256": "730f09c77bd0916371e239b2b60e448c9df1b90e0bb6bc568bc5812a5f45d94e",
+   "version": "shared"
+  },
+  "shared/pkg/envoy/options_test.go": {
+   "bytes": 8416,
+   "lines": 264,
+   "path": "pkg/envoy/options_test.go",
+   "sha256": "87489a3d9fec72ae764419e10b0b398f4196fbe1ed45bb14b07018a63ff06c33",
+   "version": "shared"
+  },
+  "shared/pkg/envoy/proxy.go": {
+   "bytes": 7046,
+   "lines": 239,
+   "path": "pkg/envoy/proxy.go",
+   "sha256": "ae7d06b96105b70e0f18c6d8d3446f17fc2755aa4ae080eb12eecb5f46418a5f",
+   "version": "shared"
+  },
+  "shared/pkg/envoy/proxy_test.go": {
+   "bytes": 2208,
+   "lines": 75,
+   "path": "pkg/envoy/proxy_test.go",
+   "sha256": "0eb973e9ef2b55d07cece59a93eab7ba09114157744a72a0368728ac6e3beb6f",
+   "version": "shared"
+  },
+  "shared/pkg/envoy/watcher.go": {
+   "bytes": 4499,
+   "lines": 158,
+   "path": "pkg/envoy/watcher.go",
+   "sha256": "ca1ec0d6f81de7934e146b3b80a845a953f1b18226da47c386041183e895955c",
+   "version": "shared"
+  },
+  "shared/pkg/envoy/watcher_test.go": {
+   "bytes": 5591,
+   "lines": 224,
+   "path": "pkg/envoy/watcher_test.go",
+   "sha256": "e0301ce62489825717d2d3db49ae63676a4da6e6308053f6292bdd8c04816702",
+   "version": "shared"
+  }
+ },
+ "line_endings": {
+  "normalized_to": "LF",
+  "source_files_with_crlf": []
+ },
+ "packet_sha256": "54612eff6d2f6f289b0398de4dcc3d8ced51f96b548f8a0b78a9d92ba087106b",
+ "t0_sha256": "2b4c4d421af3246fa7a19a19b06a54fa8dd55b7c52d32a22feda5832ab695254",
+ "withheld": [
+  "repair-added regression test (pool162)",
+  "issue discussions",
+  "human diagnoses",
+  "C1/Q0 results",
+  "subject_register.md",
+  "private_oracles/",
+  "validation results"
+ ]
+}

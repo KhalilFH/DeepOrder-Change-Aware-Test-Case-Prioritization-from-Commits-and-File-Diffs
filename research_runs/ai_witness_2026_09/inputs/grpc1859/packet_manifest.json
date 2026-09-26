@@ -1,0 +1,99 @@
+{
+ "artifact": "w1_packet_manifest_v1",
+ "build_run_sha256": "4b48f75da6e3048f56b0239b87444f95f67337b18a52d2a955ca3a8dc078b689",
+ "case": "grpc1859",
+ "diff_sha256": "215239a35dc4eaf1963f8671909ef430f863bf4f131005661b54c82ff6c92f1d",
+ "editable_files": [
+  "test/end2end_test.go"
+ ],
+ "entry_points": [
+  "TestClientDoesntDeadlockWhileWritingErrornousLargeMessages"
+ ],
+ "files": {
+  "defective/transport/http2_client.go": {
+   "bytes": 40142,
+   "lines": 1399,
+   "path": "transport/http2_client.go",
+   "sha256": "0643a195a3e3dba2f6d5f4ef7e4da719de5fcad4f78c9fdf5a2ffd50983228a9",
+   "version": "defective"
+  },
+  "defective/transport/http2_server.go": {
+   "bytes": 34791,
+   "lines": 1212,
+   "path": "transport/http2_server.go",
+   "sha256": "0f0b90db29ea8a9ccb559914573fea6b3e6a488568cc86a1cc2a588ae5629952",
+   "version": "defective"
+  },
+  "repaired/transport/http2_client.go": {
+   "bytes": 40219,
+   "lines": 1401,
+   "path": "transport/http2_client.go",
+   "sha256": "2fa786b79288c54ff42184e71d15f9f883cbf89e7ede754befd5aa1f4d54e96a",
+   "version": "repaired"
+  },
+  "repaired/transport/http2_server.go": {
+   "bytes": 34868,
+   "lines": 1214,
+   "path": "transport/http2_server.go",
+   "sha256": "b863a2af754eb7ee48049990c882aed95f11ddecaeb606f055dfe499e9f88d25",
+   "version": "repaired"
+  },
+  "shared/test/end2end_test.go": {
+   "bytes": 186247,
+   "lines": 6042,
+   "path": "test/end2end_test.go",
+   "sha256": "0a30a2b3fcbac6cbe82733d40bc96148499c69b5620cde370bc17eb89c153452",
+   "version": "shared"
+  },
+  "shared/test/gracefulstop_test.go": {
+   "bytes": 5746,
+   "lines": 215,
+   "path": "test/gracefulstop_test.go",
+   "sha256": "2de8b110cac3fc91bf8019e9a68bbf248b091a1d5a3f10c48224c6c19b9a2167",
+   "version": "shared"
+  },
+  "shared/test/race.go": {
+   "bytes": 664,
+   "lines": 24,
+   "path": "test/race.go",
+   "sha256": "01b72aa5583f2cf54b930fd4e51fb96e6e7ab653ed0256051318023568825fa3",
+   "version": "shared"
+  },
+  "shared/test/servertester.go": {
+   "bytes": 7295,
+   "lines": 280,
+   "path": "test/servertester.go",
+   "sha256": "e36d0491701710b91ca41e8020b58b7a8e87f2f7a30b093ea2ee5513e6baf178",
+   "version": "shared"
+  },
+  "shared/transport/control.go": {
+   "bytes": 8070,
+   "lines": 334,
+   "path": "transport/control.go",
+   "sha256": "6cf83c6e2f639d5dd044c1f1771b110789d70da544448b9d74c0fff8accfafff",
+   "version": "shared"
+  },
+  "shared/transport/transport.go": {
+   "bytes": 23542,
+   "lines": 778,
+   "path": "transport/transport.go",
+   "sha256": "18f231d46c33a5f712eea4f941cd7c671ffc0a5a65a6af8fa9595a8c05b8117d",
+   "version": "shared"
+  }
+ },
+ "line_endings": {
+  "normalized_to": "LF",
+  "source_files_with_crlf": []
+ },
+ "packet_sha256": "79823d6436d99df5503ce8742f37d04bfe3b1fed5b7b03495c696fb0c7434351",
+ "t0_sha256": "2d9bee5adefb53f06a88e7e27469fa4b144c782d47f05e313fa2755b22ea9ffe",
+ "withheld": [
+  "repair-added regression test (pool162)",
+  "issue discussions",
+  "human diagnoses",
+  "C1/Q0 results",
+  "subject_register.md",
+  "private_oracles/",
+  "validation results"
+ ]
+}

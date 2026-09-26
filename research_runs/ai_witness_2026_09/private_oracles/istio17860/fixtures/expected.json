@@ -1,0 +1,45 @@
+{
+ "fixtures": [
+  {
+   "exit": 1,
+   "expect": "FOCAL_FAILURE",
+   "name": "positive_wait_and_blocked_run",
+   "outer": false,
+   "rule": "istio17860.R1",
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "assertion_text_only",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "missing_premise_run_blocked_only",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "unrelated_gomega_failure",
+   "outer": false,
+   "rule": null,
+   "variant": "V_ok"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "dumps_in_separate_dumps_do_not_combine",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  }
+ ],
+ "note": "synthetic classifier-logic fixtures; not real observations"
+}

@@ -1,0 +1,4 @@
+=== RUN   TestPopReleaseLock
+--- FAIL: TestPopReleaseLock (30.00s)
+    processor_listener_test.go:45: Timeout after 30s
+FAIL

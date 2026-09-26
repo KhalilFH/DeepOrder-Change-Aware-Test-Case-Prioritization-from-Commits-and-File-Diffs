@@ -1,0 +1,6 @@
+=== RUN   TestPopReleaseLock
+panic: test timed out after 1m0s
+
+goroutine 5 [running]:
+testing.(*M).startAlarm.func1()
+	/usr/local/go/src/testing/testing.go:1377 +0xdf

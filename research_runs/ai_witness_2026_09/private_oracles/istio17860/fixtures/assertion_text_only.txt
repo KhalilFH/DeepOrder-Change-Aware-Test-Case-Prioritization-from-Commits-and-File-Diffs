@@ -1,0 +1,4 @@
+=== RUN   TestExitDuringWaitForLive
+--- FAIL: TestExitDuringWaitForLive (5.00s)
+    agent_test.go:213: timed out waiting for epoch 1 to start
+FAIL

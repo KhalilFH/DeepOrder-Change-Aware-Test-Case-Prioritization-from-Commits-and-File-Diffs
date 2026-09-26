@@ -1,0 +1,6 @@
+=== RUN   TestClientDoesntDeadlockWhileWritingErrornousLargeMessages
+--- PASS: TestClientDoesntDeadlockWhileWritingErrornousLargeMessages (0.80s)
+=== RUN   TestNewProbe
+--- FAIL: TestNewProbe (1.00s)
+    end2end_test.go:6035: TestService/UnaryCall(_,_) = _. rpc error: code = DeadlineExceeded desc = context deadline exceeded, want code: ResourceExhausted
+FAIL

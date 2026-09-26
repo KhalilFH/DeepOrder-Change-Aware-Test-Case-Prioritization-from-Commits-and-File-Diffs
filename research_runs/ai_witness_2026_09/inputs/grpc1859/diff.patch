@@ -1,0 +1,22 @@
+--- a/transport/http2_client.go
++++ b/transport/http2_client.go
+@@ -716,6 +716,8 @@
+ 			}
+ 			ltq, _, err := t.localSendQuota.get(size, s.waiters)
+ 			if err != nil {
++				// Add the acquired quota back to transport.
++				t.sendQuotaPool.add(tq)
+ 				return err
+ 			}
+ 			// even if ltq is smaller than size we don't adjust size since
+--- a/transport/http2_server.go
++++ b/transport/http2_server.go
+@@ -888,6 +888,8 @@
+ 			}
+ 			ltq, _, err := t.localSendQuota.get(size, s.waiters)
+ 			if err != nil {
++				// Add the acquired quota back to transport.
++				t.sendQuotaPool.add(tq)
+ 				return err
+ 			}
+ 			// even if ltq is smaller than size we don't adjust size since,

@@ -1,0 +1,695 @@
+{
+ "changed_functions": [
+  {
+   "changed_lines": [
+    76
+   ],
+   "function": "NewAgent",
+   "span": "pkg/envoy/agent.go:73-82",
+   "version": "defective"
+  },
+  {
+   "changed_lines": [
+    125,
+    126,
+    129,
+    133,
+    134,
+    135,
+    136,
+    139,
+    146
+   ],
+   "function": "(agent).Restart",
+   "span": "pkg/envoy/agent.go:124-147",
+   "version": "defective"
+  },
+  {
+   "changed_lines": [
+    150,
+    151,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    161,
+    168,
+    169,
+    170,
+    177,
+    180,
+    181,
+    185
+   ],
+   "function": "(agent).waitUntilLive",
+   "span": "pkg/envoy/agent.go:150-186",
+   "version": "defective"
+  },
+  {
+   "changed_lines": [
+    193,
+    206
+   ],
+   "function": "(agent).Run",
+   "span": "pkg/envoy/agent.go:188-221",
+   "version": "defective"
+  },
+  {
+   "changed_lines": [
+    242,
+    243
+   ],
+   "function": "(agent).abortAll",
+   "span": "pkg/envoy/agent.go:241-249",
+   "version": "defective"
+  },
+  {
+   "changed_lines": [
+    75
+   ],
+   "function": "NewAgent",
+   "span": "pkg/envoy/agent.go:73-81",
+   "version": "repaired"
+  },
+  {
+   "changed_lines": [
+    125,
+    126,
+    127,
+    128,
+    129,
+    130,
+    134,
+    138,
+    139,
+    142,
+    143,
+    144,
+    145,
+    152,
+    153,
+    154,
+    155,
+    156,
+    157,
+    158,
+    159,
+    160
+   ],
+   "function": "(agent).Restart",
+   "span": "pkg/envoy/agent.go:124-161",
+   "version": "repaired"
+  },
+  {
+   "changed_lines": [
+    164,
+    165,
+    170,
+    171,
+    172,
+    173,
+    174,
+    175,
+    176,
+    177,
+    178,
+    185,
+    186,
+    193,
+    196,
+    201
+   ],
+   "function": "(agent).waitUntilLive",
+   "span": "pkg/envoy/agent.go:164-201",
+   "version": "repaired"
+  },
+  {
+   "changed_lines": [
+    203,
+    204,
+    205,
+    206,
+    207
+   ],
+   "function": "(agent).isActive",
+   "span": "pkg/envoy/agent.go:203-208",
+   "version": "repaired"
+  },
+  {
+   "changed_lines": [
+    215,
+    228
+   ],
+   "function": "(agent).Run",
+   "span": "pkg/envoy/agent.go:210-243",
+   "version": "repaired"
+  },
+  {
+   "changed_lines": [
+    264,
+    265
+   ],
+   "function": "(agent).abortAll",
+   "span": "pkg/envoy/agent.go:263-271",
+   "version": "repaired"
+  }
+ ],
+ "changed_tokens": [
+  "abort",
+  "access",
+  "active",
+  "agent",
+  "all",
+  "allow",
+  "any",
+  "avoid",
+  "before",
+  "check",
+  "config",
+  "configuration",
+  "creating",
+  "current",
+  "currently",
+  "delaying",
+  "done",
+  "envoy",
+  "epoch",
+  "epochs",
+  "execute",
+  "exists",
+  "exit",
+  "exited",
+  "has",
+  "hot",
+  "info",
+  "infof",
+  "initial",
+  "internal",
+  "just",
+  "live",
+  "lock",
+  "log",
+  "logic",
+  "mutex",
+  "not",
+  "nothing",
+  "now",
+  "one",
+  "only",
+  "out",
+  "performing",
+  "possible",
+  "previous",
+  "protect",
+  "proxy",
+  "received",
+  "restart",
+  "run",
+  "same",
+  "second",
+  "starting",
+  "state",
+  "sure",
+  "sync",
+  "the",
+  "there",
+  "time",
+  "timed",
+  "timer",
+  "true",
+  "unlock",
+  "until",
+  "wait",
+  "waiting",
+  "waits",
+  "warnf"
+ ],
+ "direct_calls": [
+  {
+   "caller": "TestExitDuringWaitForLive",
+   "calls": [
+    {
+     "callee": "NewGomegaWithT",
+     "definitions": [],
+     "name": "NewGomegaWithT",
+     "span": "pkg/envoy/agent_test.go:170"
+    },
+    {
+     "callee": "context.WithCancel",
+     "definitions": [],
+     "name": "WithCancel",
+     "span": "pkg/envoy/agent_test.go:172"
+    },
+    {
+     "callee": "context.Background",
+     "definitions": [],
+     "name": "Background",
+     "span": "pkg/envoy/agent_test.go:172"
+    },
+    {
+     "callee": "cancel",
+     "definitions": [],
+     "name": "cancel",
+     "span": "pkg/envoy/agent_test.go:173"
+    },
+    {
+     "callee": "close",
+     "definitions": [
+      "pkg/envoy/instance.go:374-385"
+     ],
+     "name": "close",
+     "span": "pkg/envoy/agent_test.go:184"
+    },
+    {
+     "callee": "ctx.Done",
+     "definitions": [],
+     "name": "Done",
+     "span": "pkg/envoy/agent_test.go:186"
+    },
+    {
+     "callee": "NewAgent",
+     "definitions": [
+      "pkg/envoy/agent.go:73-82"
+     ],
+     "name": "NewAgent",
+     "span": "pkg/envoy/agent_test.go:193"
+    },
+    {
+     "callee": "a.Run",
+     "definitions": [
+      "pkg/envoy/agent.go:188-221",
+      "pkg/envoy/agent_test.go:35-40",
+      "pkg/envoy/proxy.go:137-199",
+      "pkg/envoy/watcher.go:55-64",
+      "pkg/envoy/watcher_test.go:39-41"
+     ],
+     "name": "Run",
+     "span": "pkg/envoy/agent_test.go:194"
+    },
+    {
+     "callee": "a.Restart",
+     "definitions": [
+      "pkg/envoy/agent.go:124-147",
+      "pkg/envoy/watcher_test.go:35-37"
+     ],
+     "name": "Restart",
+     "span": "pkg/envoy/agent_test.go:197"
+    },
+    {
+     "callee": "a.Restart",
+     "definitions": [
+      "pkg/envoy/agent.go:124-147",
+      "pkg/envoy/watcher_test.go:35-37"
+     ],
+     "name": "Restart",
+     "span": "pkg/envoy/agent_test.go:200"
+    },
+    {
+     "callee": "time.Now",
+     "definitions": [],
+     "name": "Now",
+     "span": "pkg/envoy/agent_test.go:204"
+    },
+    {
+     "callee": "errors.New",
+     "definitions": [
+      "pkg/envoy/instance.go:140-184",
+      "pkg/envoy/instance_test.go:466-469"
+     ],
+     "name": "New",
+     "span": "pkg/envoy/agent_test.go:205"
+    },
+    {
+     "callee": "time.Now",
+     "definitions": [],
+     "name": "Now",
+     "span": "pkg/envoy/agent_test.go:210"
+    },
+    {
+     "callee": "time.After",
+     "definitions": [],
+     "name": "After",
+     "span": "pkg/envoy/agent_test.go:212"
+    },
+    {
+     "callee": "t.Fatalf",
+     "definitions": [],
+     "name": "Fatalf",
+     "span": "pkg/envoy/agent_test.go:213"
+    },
+    {
+     "callee": "g.Expect",
+     "definitions": [],
+     "name": "Expect",
+     "span": "pkg/envoy/agent_test.go:220"
+    },
+    {
+     "callee": "BeTemporally",
+     "definitions": [],
+     "name": "BeTemporally",
+     "span": "pkg/envoy/agent_test.go:220"
+    }
+   ],
+   "span": "pkg/envoy/agent_test.go:169-221"
+  },
+  {
+   "caller": "NewAgent",
+   "calls": [],
+   "span": "pkg/envoy/agent.go:73-82"
+  },
+  {
+   "caller": "(agent).Restart",
+   "calls": [
+    {
+     "callee": "reflect.DeepEqual",
+     "definitions": [],
+     "name": "DeepEqual",
+     "span": "pkg/envoy/agent.go:128"
+    },
+    {
+     "callee": "log.Infof",
+     "definitions": [],
+     "name": "Infof",
+     "span": "pkg/envoy/agent.go:133"
+    },
+    {
+     "callee": "a.waitUntilLive",
+     "definitions": [
+      "pkg/envoy/agent.go:150-186"
+     ],
+     "name": "waitUntilLive",
+     "span": "pkg/envoy/agent.go:136"
+    },
+    {
+     "callee": "a.runWait",
+     "definitions": [
+      "pkg/envoy/agent.go:233-238"
+     ],
+     "name": "runWait",
+     "span": "pkg/envoy/agent.go:146"
+    }
+   ],
+   "span": "pkg/envoy/agent.go:124-147"
+  },
+  {
+   "caller": "(agent).waitUntilLive",
+   "calls": [
+    {
+     "callee": "log.Info",
+     "definitions": [],
+     "name": "Info",
+     "span": "pkg/envoy/agent.go:153"
+    },
+    {
+     "callee": "log.Infof",
+     "definitions": [],
+     "name": "Infof",
+     "span": "pkg/envoy/agent.go:157"
+    },
+    {
+     "callee": "time.NewTicker",
+     "definitions": [],
+     "name": "NewTicker",
+     "span": "pkg/envoy/agent.go:160"
+    },
+    {
+     "callee": "time.NewTimer",
+     "definitions": [],
+     "name": "NewTimer",
+     "span": "pkg/envoy/agent.go:161"
+    },
+    {
+     "callee": "interval.Stop",
+     "definitions": [],
+     "name": "Stop",
+     "span": "pkg/envoy/agent.go:164"
+    },
+    {
+     "callee": "timer.Stop",
+     "definitions": [],
+     "name": "Stop",
+     "span": "pkg/envoy/agent.go:165"
+    },
+    {
+     "callee": "log.Warnf",
+     "definitions": [],
+     "name": "Warnf",
+     "span": "pkg/envoy/agent.go:177"
+    }
+   ],
+   "span": "pkg/envoy/agent.go:150-186"
+  },
+  {
+   "caller": "(agent).Run",
+   "calls": [
+    {
+     "callee": "log.Info",
+     "definitions": [],
+     "name": "Info",
+     "span": "pkg/envoy/agent.go:189"
+    },
+    {
+     "callee": "log.Warnf",
+     "definitions": [],
+     "name": "Warnf",
+     "span": "pkg/envoy/agent.go:196"
+    },
+    {
+     "callee": "log.Errorf",
+     "definitions": [],
+     "name": "Errorf",
+     "span": "pkg/envoy/agent.go:198"
+    },
+    {
+     "callee": "log.Infof",
+     "definitions": [],
+     "name": "Infof",
+     "span": "pkg/envoy/agent.go:200"
+    },
+    {
+     "callee": "log.Infof",
+     "definitions": [],
+     "name": "Infof",
+     "span": "pkg/envoy/agent.go:209"
+    },
+    {
+     "callee": "log.Infof",
+     "definitions": [],
+     "name": "Infof",
+     "span": "pkg/envoy/agent.go:213"
+    },
+    {
+     "callee": "ctx.Done",
+     "definitions": [],
+     "name": "Done",
+     "span": "pkg/envoy/agent.go:215"
+    },
+    {
+     "callee": "a.terminate",
+     "definitions": [
+      "pkg/envoy/agent.go:223-230"
+     ],
+     "name": "terminate",
+     "span": "pkg/envoy/agent.go:216"
+    },
+    {
+     "callee": "log.Info",
+     "definitions": [],
+     "name": "Info",
+     "span": "pkg/envoy/agent.go:217"
+    }
+   ],
+   "span": "pkg/envoy/agent.go:188-221"
+  },
+  {
+   "caller": "(agent).abortAll",
+   "calls": [
+    {
+     "callee": "log.Warnf",
+     "definitions": [],
+     "name": "Warnf",
+     "span": "pkg/envoy/agent.go:245"
+    },
+    {
+     "callee": "log.Warnf",
+     "definitions": [],
+     "name": "Warnf",
+     "span": "pkg/envoy/agent.go:248"
+    }
+   ],
+   "span": "pkg/envoy/agent.go:241-249"
+  }
+ ],
+ "entry_point_ranks": [
+  {
+   "entry_point": "TestExitDuringWaitForLive",
+   "rank": 1,
+   "score": 22,
+   "span": "pkg/envoy/agent_test.go:169-221"
+  }
+ ],
+ "entry_points": [
+  "TestExitDuringWaitForLive"
+ ],
+ "limits": "lexical extraction; not a sound whole-program call graph; no obligation answers",
+ "test_ranking": [
+  {
+   "overlap_tokens": [
+    "agent",
+    "avoid",
+    "config",
+    "done",
+    "epoch",
+    "exit",
+    "just",
+    "live",
+    "now",
+    "one",
+    "out",
+    "proxy",
+    "restart",
+    "run",
+    "second",
+    "the",
+    "time",
+    "timed",
+    "until",
+    "wait",
+    "waiting",
+    "waits"
+   ],
+   "path": "pkg/envoy/agent_test.go",
+   "rank": 1,
+   "score": 22,
+   "span": "pkg/envoy/agent_test.go:169-221",
+   "test": "TestExitDuringWaitForLive"
+  },
+  {
+   "overlap_tokens": [
+    "agent",
+    "avoid",
+    "before",
+    "config",
+    "done",
+    "epoch",
+    "has",
+    "live",
+    "now",
+    "proxy",
+    "restart",
+    "run",
+    "second",
+    "sync",
+    "the",
+    "time",
+    "until",
+    "wait"
+   ],
+   "path": "pkg/envoy/agent_test.go",
+   "rank": 2,
+   "score": 18,
+   "span": "pkg/envoy/agent_test.go:114-167",
+   "test": "TestWaitForLive"
+  },
+  {
+   "overlap_tokens": [
+    "agent",
+    "config",
+    "done",
+    "epoch",
+    "only",
+    "proxy",
+    "restart",
+    "run",
+    "same",
+    "second",
+    "time"
+   ],
+   "path": "pkg/envoy/agent_test.go",
+   "rank": 3,
+   "score": 11,
+   "span": "pkg/envoy/agent_test.go:224-242",
+   "test": "TestApplyTwice"
+  },
+  {
+   "overlap_tokens": [
+    "agent",
+    "config",
+    "done",
+    "epoch",
+    "not",
+    "proxy",
+    "restart",
+    "run",
+    "sure",
+    "time",
+    "true"
+   ],
+   "path": "pkg/envoy/agent_test.go",
+   "rank": 4,
+   "score": 11,
+   "span": "pkg/envoy/agent_test.go:303-325",
+   "test": "TestRecovery"
+  },
+  {
+   "overlap_tokens": [
+    "agent",
+    "config",
+    "current",
+    "done",
+    "epoch",
+    "initial",
+    "proxy",
+    "restart",
+    "run",
+    "second",
+    "time"
+   ],
+   "path": "pkg/envoy/agent_test.go",
+   "rank": 5,
+   "score": 11,
+   "span": "pkg/envoy/agent_test.go:73-111",
+   "test": "TestStartDrain"
+  },
+  {
+   "overlap_tokens": [
+    "agent",
+    "before",
+    "config",
+    "done",
+    "epoch",
+    "proxy",
+    "restart",
+    "run",
+    "second",
+    "the",
+    "true"
+   ],
+   "path": "pkg/envoy/agent_test.go",
+   "rank": 6,
+   "score": 11,
+   "span": "pkg/envoy/agent_test.go:245-300",
+   "test": "TestStartTwiceStop"
+  },
+  {
+   "overlap_tokens": [
+    "agent",
+    "config",
+    "done",
+    "exit",
+    "proxy",
+    "restart",
+    "run"
+   ],
+   "path": "pkg/envoy/agent_test.go",
+   "rank": 7,
+   "score": 7,
+   "span": "pkg/envoy/agent_test.go:56-66",
+   "test": "TestStartExit"
+  }
+ ],
+ "tests_ranked_total": 7,
+ "tool": "w1-T0/1"
+}

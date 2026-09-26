@@ -1,0 +1,85 @@
+{
+ "artifact": "w1_packet_manifest_v1",
+ "build_run_sha256": "39062757244c5f7246294000d7bdbe7972b719f1ed76eccc3ee716da6f310315",
+ "case": "k8s26980",
+ "diff_sha256": "8d0a0392de1b697949988f8c0bee328d25d612d5c6419a90af29d5974fa558fb",
+ "editable_files": [
+  "pkg/controller/framework/processor_listener_test.go"
+ ],
+ "entry_points": [
+  "TestPopReleaseLock"
+ ],
+ "files": {
+  "defective/pkg/controller/framework/shared_informer.go": {
+   "bytes": 9288,
+   "lines": 333,
+   "path": "pkg/controller/framework/shared_informer.go",
+   "sha256": "ce405f1bf0b24c05c0d1198d43d1aea0ca377bd12a56f7762d46ae7578e6500b",
+   "version": "defective"
+  },
+  "repaired/pkg/controller/framework/shared_informer.go": {
+   "bytes": 9445,
+   "lines": 342,
+   "path": "pkg/controller/framework/shared_informer.go",
+   "sha256": "c08b8964ad58b049b8fa230a0197631ed6702fda596dd1106da9a86c885a92ec",
+   "version": "repaired"
+  },
+  "shared/pkg/controller/framework/controller.go": {
+   "bytes": 10537,
+   "lines": 327,
+   "path": "pkg/controller/framework/controller.go",
+   "sha256": "85e3163470c392d088c5226b87f85ee46d02899d2d5437e2ac6d860b9855c8e6",
+   "version": "shared"
+  },
+  "shared/pkg/controller/framework/controller_test.go": {
+   "bytes": 11469,
+   "lines": 414,
+   "path": "pkg/controller/framework/controller_test.go",
+   "sha256": "8e80edb33e5279e95467652b95ac313bf3b5b7cb6dd5afdf42cb97acc89e07c6",
+   "version": "shared"
+  },
+  "shared/pkg/controller/framework/doc.go": {
+   "bytes": 701,
+   "lines": 18,
+   "path": "pkg/controller/framework/doc.go",
+   "sha256": "7fe806b70980cd23aafd6216dd60ee5cfb5d377a695d5b1bc2f0cda8a518007c",
+   "version": "shared"
+  },
+  "shared/pkg/controller/framework/fake_controller_source.go": {
+   "bytes": 6031,
+   "lines": 188,
+   "path": "pkg/controller/framework/fake_controller_source.go",
+   "sha256": "e0d350bfbe72f229af1731015532cd5c06d9634b6de132cd54fd5dc1fc56e903",
+   "version": "shared"
+  },
+  "shared/pkg/controller/framework/fake_controller_source_test.go": {
+   "bytes": 2378,
+   "lines": 94,
+   "path": "pkg/controller/framework/fake_controller_source_test.go",
+   "sha256": "424096a6b2b5441bae41a6c2d2511aaac9057a33dc3c6e262cabe3c46280f067",
+   "version": "shared"
+  },
+  "shared/pkg/controller/framework/processor_listener_test.go": {
+   "bytes": 1273,
+   "lines": 48,
+   "path": "pkg/controller/framework/processor_listener_test.go",
+   "sha256": "f2fd1a729fde02667fe6b4ca8607a4f403eb1271681eb56383d78f5f623f27fa",
+   "version": "shared"
+  }
+ },
+ "line_endings": {
+  "normalized_to": "LF",
+  "source_files_with_crlf": []
+ },
+ "packet_sha256": "e0fae482cccf26e9aa2cd94c43dc87014801e23952ca48fe53150ded53068e43",
+ "t0_sha256": "294c94c71429c12a380fb2f7fb39c38fc4057f0f0d1dcd6ae8e422e2d09bfdb1",
+ "withheld": [
+  "repair-added regression test (pool162)",
+  "issue discussions",
+  "human diagnoses",
+  "C1/Q0 results",
+  "subject_register.md",
+  "private_oracles/",
+  "validation results"
+ ]
+}

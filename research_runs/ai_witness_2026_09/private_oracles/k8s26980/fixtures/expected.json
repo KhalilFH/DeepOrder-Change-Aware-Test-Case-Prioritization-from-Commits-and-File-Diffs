@@ -1,0 +1,86 @@
+{
+ "fixtures": [
+  {
+   "exit": 1,
+   "expect": "FOCAL_FAILURE",
+   "name": "positive_dump_pop_and_locker",
+   "outer": false,
+   "rule": "k8s26980.R1",
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "timeout_message_only",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "missing_premise_locker_only",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "pop_at_wrong_line",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "FOCAL_FAILURE",
+   "name": "repaired_variant_positive_shape",
+   "note": "attempt-level focal; validation treats any V_ok non-pass as counterpart failure",
+   "outer": false,
+   "rule": "k8s26980.R1",
+   "variant": "V_ok"
+  },
+  {
+   "exit": 2,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "generic_test_timeout_panic",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  },
+  {
+   "exit": 0,
+   "expect": "PASS",
+   "name": "pass",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  },
+  {
+   "exit": null,
+   "expect": "UNRESOLVED",
+   "name": "outer_timeout",
+   "outer": true,
+   "rule": null,
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "UNRESOLVED",
+   "name": "malformed_nonzero_no_results",
+   "outer": false,
+   "rule": null,
+   "variant": "V_bad"
+  },
+  {
+   "exit": 0,
+   "expect": "HARNESS_INVALID",
+   "name": "exit0_with_fail_line",
+   "outer": false,
+   "rule": null,
+   "variant": "V_ok"
+  }
+ ],
+ "note": "synthetic classifier-logic fixtures; not real observations"
+}

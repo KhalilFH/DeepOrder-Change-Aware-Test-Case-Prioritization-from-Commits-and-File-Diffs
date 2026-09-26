@@ -1,0 +1,82 @@
+{
+ "fixtures": [
+  {
+   "exit": 1,
+   "expect": "FOCAL_FAILURE",
+   "name": "interrupt_then_timeout_nsee",
+   "outer": false,
+   "rule": "pool162.R1",
+   "selection_extra": [
+    "org.apache.commons.pool.impl.TestGenericObjectPool#testNew"
+   ],
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "nsee_without_interrupt",
+   "outer": false,
+   "rule": null,
+   "selection_extra": [
+    "org.apache.commons.pool.impl.TestGenericObjectPool#testNew"
+   ],
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "interrupt_then_pool_exhausted_message",
+   "outer": false,
+   "rule": null,
+   "selection_extra": [
+    "org.apache.commons.pool.impl.TestGenericObjectPool#testNew"
+   ],
+   "variant": "V_bad"
+  },
+  {
+   "exit": 1,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "nsee_before_interrupt_order",
+   "outer": false,
+   "rule": null,
+   "selection_extra": [
+    "org.apache.commons.pool.impl.TestGenericObjectPool#testNew"
+   ],
+   "variant": "V_bad"
+  },
+  {
+   "exit": 3,
+   "expect": "FOCAL_FAILURE",
+   "name": "inner_timeout_blocked_borrower_after_interrupt",
+   "outer": false,
+   "rule": "pool162.R2",
+   "selection_extra": [
+    "org.apache.commons.pool.impl.TestGenericObjectPool#testNew"
+   ],
+   "variant": "V_bad"
+  },
+  {
+   "exit": 3,
+   "expect": "NONFOCAL_FAILURE",
+   "name": "generic_inner_timeout_no_premise",
+   "outer": false,
+   "rule": null,
+   "selection_extra": [
+    "org.apache.commons.pool.impl.TestGenericObjectPool#testNew"
+   ],
+   "variant": "V_bad"
+  },
+  {
+   "exit": 0,
+   "expect": "PASS",
+   "name": "focal_sequence_in_passing_test_is_pass",
+   "outer": false,
+   "rule": null,
+   "selection_extra": [
+    "org.apache.commons.pool.impl.TestGenericObjectPool#testNew"
+   ],
+   "variant": "V_ok"
+  }
+ ],
+ "note": "synthetic classifier-logic fixtures; not real observations"
+}

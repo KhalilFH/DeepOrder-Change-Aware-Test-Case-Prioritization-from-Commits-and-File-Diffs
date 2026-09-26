@@ -1,0 +1,18 @@
+W1-TEST-BEGIN org.apache.commons.pool.impl.TestGenericObjectPool#testWhenExhaustedBlock
+[1.650s][info][exceptions] Exception <a 'java/util/NoSuchElementException'{0x000000071c42b9c8}: Timeout waiting for idle object>
+ thrown in compiled method <{method} {0x000076b5684005f8} 'borrowObject' '()Ljava/lang/Object;' in 'org/apache/commons/pool/impl/GenericObjectPool'>
+ at bci 250 for thread 0x000076b5a00297f0 (main)
+W1-TEST-END org.apache.commons.pool.impl.TestGenericObjectPool#testWhenExhaustedBlock PASS
+W1-TEST-BEGIN org.apache.commons.pool.impl.TestGenericObjectPool#testNew
+[1.230s][info][exceptions] Exception <a 'java/lang/InterruptedException'{0x000000071c4e1528}>
+ thrown in interpreter method <{method} {0x000076b5684005f8} 'borrowObject' '()Ljava/lang/Object;' in 'org/apache/commons/pool/impl/GenericObjectPool'>
+ at bci 180 for thread 0x000076b5a01bfc50 (Thread-3)
+W1-INNER-TIMEOUT after 30s
+W1-THREAD-DUMP-BEGIN inner-timeout
+"main" id=1 WAITING on org.apache.commons.pool.impl.GenericObjectPool$Latch@1b6d3586
+	at java.lang.Object.wait(Native Method)
+	at java.lang.Object.wait(Object.java:338)
+	at org.apache.commons.pool.impl.GenericObjectPool.borrowObject(GenericObjectPool.java:1110)
+	at org.apache.commons.pool.impl.TestGenericObjectPool.testNew(TestGenericObjectPool.java:135)
+
+W1-THREAD-DUMP-END inner-timeout

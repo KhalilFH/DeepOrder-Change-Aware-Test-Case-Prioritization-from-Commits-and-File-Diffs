@@ -1,0 +1,1717 @@
+{
+ "changed_functions": [
+  {
+   "changed_lines": [
+    1151,
+    1154
+   ],
+   "function": "borrowObject",
+   "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230",
+   "version": "defective"
+  },
+  {
+   "changed_lines": [
+    1152,
+    1153,
+    1154,
+    1155,
+    1156,
+    1157,
+    1158,
+    1159,
+    1160,
+    1163
+   ],
+   "function": "borrowObject",
+   "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1239",
+   "version": "repaired"
+  },
+  {
+   "changed_lines": [
+    1119
+   ],
+   "function": "borrowObject",
+   "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1198",
+   "version": "defective"
+  },
+  {
+   "changed_lines": [
+    1120,
+    1121,
+    1122,
+    1123,
+    1124,
+    1125,
+    1126,
+    1127,
+    1128,
+    1129
+   ],
+   "function": "borrowObject",
+   "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1208",
+   "version": "repaired"
+  }
+ ],
+ "changed_tokens": [
+  "allocate",
+  "allocation",
+  "already",
+  "assigned",
+  "borrow",
+  "break",
+  "create",
+  "created",
+  "different",
+  "exception",
+  "from",
+  "generic",
+  "get",
+  "hasn",
+  "interrupted",
+  "keyed",
+  "latch",
+  "may",
+  "null",
+  "object",
+  "pair",
+  "permitted",
+  "pool",
+  "queue",
+  "remove",
+  "sure",
+  "the",
+  "thread"
+ ],
+ "direct_calls": [
+  {
+   "caller": "testWhenExhaustedGrow",
+   "calls": [
+    {
+     "callee": "pool.setMaxActive",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:659-662",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:627-630",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1580-1582",
+      "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1308-1310"
+     ],
+     "name": "setMaxActive",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:213"
+    },
+    {
+     "callee": "pool.setMaxTotal",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:686-689"
+     ],
+     "name": "setMaxTotal",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:214"
+    },
+    {
+     "callee": "pool.setWhenExhaustedAction",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:714-725",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:654-665"
+     ],
+     "name": "setWhenExhaustedAction",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:215"
+    },
+    {
+     "callee": "pool.borrowObject",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1198",
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:138-180",
+      "src/test/org/apache/commons/pool/TestBaseKeyedObjectPool.java:86-88",
+      "src/test/org/apache/commons/pool/TestBaseObjectPool.java:73-75"
+     ],
+     "name": "borrowObject",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:217"
+    }
+   ],
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:212-219"
+  },
+  {
+   "caller": "testWhenExhaustedBlock",
+   "calls": [
+    {
+     "callee": "pool.setMaxActive",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:659-662",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:627-630",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1580-1582",
+      "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1308-1310"
+     ],
+     "name": "setMaxActive",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:98"
+    },
+    {
+     "callee": "pool.setWhenExhaustedAction",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:714-725",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:654-665"
+     ],
+     "name": "setWhenExhaustedAction",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:99"
+    },
+    {
+     "callee": "pool.setMaxWait",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:762-764",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:702-705"
+     ],
+     "name": "setMaxWait",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:100"
+    },
+    {
+     "callee": "pool.borrowObject",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1198",
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:138-180",
+      "src/test/org/apache/commons/pool/TestBaseKeyedObjectPool.java:86-88",
+      "src/test/org/apache/commons/pool/TestBaseObjectPool.java:73-75"
+     ],
+     "name": "borrowObject",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:101"
+    },
+    {
+     "callee": "assertNotNull",
+     "definitions": [],
+     "name": "assertNotNull",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:102"
+    },
+    {
+     "callee": "pool.borrowObject",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1198",
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:138-180",
+      "src/test/org/apache/commons/pool/TestBaseKeyedObjectPool.java:86-88",
+      "src/test/org/apache/commons/pool/TestBaseObjectPool.java:73-75"
+     ],
+     "name": "borrowObject",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:104"
+    },
+    {
+     "callee": "fail",
+     "definitions": [],
+     "name": "fail",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:105"
+    },
+    {
+     "callee": "pool.returnObject",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1524-1546",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1340-1359",
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:182-217",
+      "src/test/org/apache/commons/pool/TestBaseKeyedObjectPool.java:89-90",
+      "src/test/org/apache/commons/pool/TestBaseObjectPool.java:76-77"
+     ],
+     "name": "returnObject",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:109"
+    },
+    {
+     "callee": "pool.close",
+     "definitions": [
+      "src/java/org/apache/commons/pool/BaseObjectPool.java:106-108",
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1723-1737",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1436-1442",
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:273-276"
+     ],
+     "name": "close",
+     "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:110"
+    }
+   ],
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:97-111"
+  },
+  {
+   "caller": "testBorrowFromEmptyPoolWithNullFactory",
+   "calls": [
+    {
+     "callee": "StackObjectPool",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:58-60",
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:74-76",
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:92-94",
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:102-104",
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:114-116"
+     ],
+     "name": "StackObjectPool",
+     "span": "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:91"
+    },
+    {
+     "callee": "pool.borrowObject",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1198",
+      "src/java/org/apache/commons/pool/impl/StackObjectPool.java:138-180",
+      "src/test/org/apache/commons/pool/TestBaseKeyedObjectPool.java:86-88",
+      "src/test/org/apache/commons/pool/TestBaseObjectPool.java:73-75"
+     ],
+     "name": "borrowObject",
+     "span": "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:93"
+    },
+    {
+     "callee": "fail",
+     "definitions": [],
+     "name": "fail",
+     "span": "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:94"
+    }
+   ],
+   "span": "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:90-98"
+  },
+  {
+   "caller": "borrowObject",
+   "calls": [
+    {
+     "callee": "System.currentTimeMillis",
+     "definitions": [],
+     "name": "currentTimeMillis",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1077"
+    },
+    {
+     "callee": "Latch",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2376-2378"
+     ],
+     "name": "Latch",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1078"
+    },
+    {
+     "callee": "_allocationQueue.add",
+     "definitions": [],
+     "name": "add",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1089"
+    },
+    {
+     "callee": "allocate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1237-1310",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1205-1235"
+     ],
+     "name": "allocate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1093"
+    },
+    {
+     "callee": "assertOpen",
+     "definitions": [
+      "src/java/org/apache/commons/pool/BaseObjectPool.java:136-140"
+     ],
+     "name": "assertOpen",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1098"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1101"
+    },
+    {
+     "callee": "latch.mayCreate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1813-1815"
+     ],
+     "name": "mayCreate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1103"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1113"
+    },
+    {
+     "callee": "latch.mayCreate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1813-1815"
+     ],
+     "name": "mayCreate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1113"
+    },
+    {
+     "callee": "_allocationQueue.remove",
+     "definitions": [],
+     "name": "remove",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1114"
+    },
+    {
+     "callee": "latch.getPool",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2392-2394"
+     ],
+     "name": "getPool",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1115"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1123"
+    },
+    {
+     "callee": "latch.mayCreate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1813-1815"
+     ],
+     "name": "mayCreate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1123"
+    },
+    {
+     "callee": "_allocationQueue.remove",
+     "definitions": [],
+     "name": "remove",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1126"
+    },
+    {
+     "callee": "NoSuchElementException",
+     "definitions": [],
+     "name": "NoSuchElementException",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1128"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1134"
+    },
+    {
+     "callee": "latch.mayCreate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1813-1815"
+     ],
+     "name": "mayCreate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1134"
+    },
+    {
+     "callee": "latch.wait",
+     "definitions": [],
+     "name": "wait",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1136"
+    },
+    {
+     "callee": "System.currentTimeMillis",
+     "definitions": [],
+     "name": "currentTimeMillis",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1140"
+    },
+    {
+     "callee": "latch.wait",
+     "definitions": [],
+     "name": "wait",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1144"
+    },
+    {
+     "callee": "Thread.currentThread",
+     "definitions": [],
+     "name": "currentThread",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1152"
+    },
+    {
+     "callee": "System.currentTimeMillis",
+     "definitions": [],
+     "name": "currentTimeMillis",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1155"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1159"
+    },
+    {
+     "callee": "latch.mayCreate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1813-1815"
+     ],
+     "name": "mayCreate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1159"
+    },
+    {
+     "callee": "_allocationQueue.remove",
+     "definitions": [],
+     "name": "remove",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1160"
+    },
+    {
+     "callee": "NoSuchElementException",
+     "definitions": [],
+     "name": "NoSuchElementException",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1165"
+    },
+    {
+     "callee": "IllegalArgumentException",
+     "definitions": [],
+     "name": "IllegalArgumentException",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1170"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1177"
+    },
+    {
+     "callee": "_factory.makeObject",
+     "definitions": [
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:53-55",
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:476-486",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:45-53",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1541-1550",
+      "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:956-958"
+     ],
+     "name": "makeObject",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1179"
+    },
+    {
+     "callee": "latch.setPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2417-2419",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1805-1807"
+     ],
+     "name": "setPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1180"
+    },
+    {
+     "callee": "ObjectTimestampPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2207-2209",
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2216-2219"
+     ],
+     "name": "ObjectTimestampPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1180"
+    },
+    {
+     "callee": "latch.getPool",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2392-2394"
+     ],
+     "name": "getPool",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1186"
+    },
+    {
+     "callee": "allocate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1237-1310",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1205-1235"
+     ],
+     "name": "allocate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1188"
+    },
+    {
+     "callee": "_factory.activateObject",
+     "definitions": [
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:488-493",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:56-56",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1567-1573",
+      "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1349-1355",
+      "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:161-161"
+     ],
+     "name": "activateObject",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1196"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1196"
+    },
+    {
+     "callee": "_factory.validateObject",
+     "definitions": [
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:495-504",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:55-55",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1560-1566",
+      "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1341-1348",
+      "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:153-160"
+     ],
+     "name": "validateObject",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1197"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1197"
+    },
+    {
+     "callee": "Exception",
+     "definitions": [],
+     "name": "Exception",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1198"
+    },
+    {
+     "callee": "latch.getPool",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2392-2394"
+     ],
+     "name": "getPool",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1201"
+    },
+    {
+     "callee": "latch.getPool",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2392-2394"
+     ],
+     "name": "getPool",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1202"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1204"
+    },
+    {
+     "callee": "_factory.destroyObject",
+     "definitions": [
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:513-518",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:54-54",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1551-1559",
+      "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1330-1340",
+      "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:152-152"
+     ],
+     "name": "destroyObject",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1208"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1208"
+    },
+    {
+     "callee": "latch.getPool",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2392-2394"
+     ],
+     "name": "getPool",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1213"
+    },
+    {
+     "callee": "latch.reset",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2442-2445",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1829-1832",
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:391-395",
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:414-422",
+      "src/test/org/apache/commons/pool/TestObjectPool.java:428-432"
+     ],
+     "name": "reset",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1215"
+    },
+    {
+     "callee": "_allocationQueue.add",
+     "definitions": [],
+     "name": "add",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1216"
+    },
+    {
+     "callee": "allocate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1237-1310",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1205-1235"
+     ],
+     "name": "allocate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1218"
+    },
+    {
+     "callee": "NoSuchElementException",
+     "definitions": [],
+     "name": "NoSuchElementException",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1221"
+    },
+    {
+     "callee": "e.getMessage",
+     "definitions": [],
+     "name": "getMessage",
+     "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1223"
+    }
+   ],
+   "span": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1076-1230"
+  },
+  {
+   "caller": "borrowObject",
+   "calls": [
+    {
+     "callee": "System.currentTimeMillis",
+     "definitions": [],
+     "name": "currentTimeMillis",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1044"
+    },
+    {
+     "callee": "Latch",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2376-2378"
+     ],
+     "name": "Latch",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1045"
+    },
+    {
+     "callee": "_allocationQueue.add",
+     "definitions": [],
+     "name": "add",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1056"
+    },
+    {
+     "callee": "allocate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1237-1310",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1205-1235"
+     ],
+     "name": "allocate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1060"
+    },
+    {
+     "callee": "assertOpen",
+     "definitions": [
+      "src/java/org/apache/commons/pool/BaseObjectPool.java:136-140"
+     ],
+     "name": "assertOpen",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1065"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1069"
+    },
+    {
+     "callee": "latch.mayCreate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1813-1815"
+     ],
+     "name": "mayCreate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1071"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1081"
+    },
+    {
+     "callee": "latch.mayCreate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1813-1815"
+     ],
+     "name": "mayCreate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1081"
+    },
+    {
+     "callee": "_allocationQueue.remove",
+     "definitions": [],
+     "name": "remove",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1082"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1091"
+    },
+    {
+     "callee": "latch.mayCreate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1813-1815"
+     ],
+     "name": "mayCreate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1091"
+    },
+    {
+     "callee": "_allocationQueue.remove",
+     "definitions": [],
+     "name": "remove",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1094"
+    },
+    {
+     "callee": "NoSuchElementException",
+     "definitions": [],
+     "name": "NoSuchElementException",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1096"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1102"
+    },
+    {
+     "callee": "latch.mayCreate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1813-1815"
+     ],
+     "name": "mayCreate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1102"
+    },
+    {
+     "callee": "latch.wait",
+     "definitions": [],
+     "name": "wait",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1104"
+    },
+    {
+     "callee": "System.currentTimeMillis",
+     "definitions": [],
+     "name": "currentTimeMillis",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1108"
+    },
+    {
+     "callee": "latch.wait",
+     "definitions": [],
+     "name": "wait",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1112"
+    },
+    {
+     "callee": "Thread.currentThread",
+     "definitions": [],
+     "name": "currentThread",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1120"
+    },
+    {
+     "callee": "System.currentTimeMillis",
+     "definitions": [],
+     "name": "currentTimeMillis",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1123"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1127"
+    },
+    {
+     "callee": "latch.mayCreate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2425-2427",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1813-1815"
+     ],
+     "name": "mayCreate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1127"
+    },
+    {
+     "callee": "_allocationQueue.remove",
+     "definitions": [],
+     "name": "remove",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1129"
+    },
+    {
+     "callee": "NoSuchElementException",
+     "definitions": [],
+     "name": "NoSuchElementException",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1134"
+    },
+    {
+     "callee": "IllegalArgumentException",
+     "definitions": [],
+     "name": "IllegalArgumentException",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1139"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1146"
+    },
+    {
+     "callee": "_factory.makeObject",
+     "definitions": [
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:53-55",
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:476-486",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:45-53",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1541-1550",
+      "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:956-958"
+     ],
+     "name": "makeObject",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1148"
+    },
+    {
+     "callee": "latch.setPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2417-2419",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1805-1807"
+     ],
+     "name": "setPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1149"
+    },
+    {
+     "callee": "ObjectTimestampPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2207-2209",
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2216-2219"
+     ],
+     "name": "ObjectTimestampPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1149"
+    },
+    {
+     "callee": "allocate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1237-1310",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1205-1235"
+     ],
+     "name": "allocate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1157"
+    },
+    {
+     "callee": "_factory.activateObject",
+     "definitions": [
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:488-493",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:56-56",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1567-1573",
+      "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1349-1355",
+      "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:161-161"
+     ],
+     "name": "activateObject",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1164"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1164"
+    },
+    {
+     "callee": "_factory.validateObject",
+     "definitions": [
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:495-504",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:55-55",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1560-1566",
+      "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1341-1348",
+      "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:153-160"
+     ],
+     "name": "validateObject",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1166"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1166"
+    },
+    {
+     "callee": "Exception",
+     "definitions": [],
+     "name": "Exception",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1167"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1173"
+    },
+    {
+     "callee": "_factory.destroyObject",
+     "definitions": [
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:513-518",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:54-54",
+      "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1551-1559",
+      "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1330-1340",
+      "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:152-152"
+     ],
+     "name": "destroyObject",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1178"
+    },
+    {
+     "callee": "latch.getPair",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2409-2411",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1797-1799"
+     ],
+     "name": "getPair",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1178"
+    },
+    {
+     "callee": "latch.reset",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:2442-2445",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1829-1832",
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:391-395",
+      "src/test/org/apache/commons/pool/TestKeyedObjectPool.java:414-422",
+      "src/test/org/apache/commons/pool/TestObjectPool.java:428-432"
+     ],
+     "name": "reset",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1185"
+    },
+    {
+     "callee": "_allocationQueue.add",
+     "definitions": [],
+     "name": "add",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1186"
+    },
+    {
+     "callee": "allocate",
+     "definitions": [
+      "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java:1237-1310",
+      "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1205-1235"
+     ],
+     "name": "allocate",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1188"
+    },
+    {
+     "callee": "NoSuchElementException",
+     "definitions": [],
+     "name": "NoSuchElementException",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1191"
+    },
+    {
+     "callee": "e.getMessage",
+     "definitions": [],
+     "name": "getMessage",
+     "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1191"
+    }
+   ],
+   "span": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java:1043-1198"
+  }
+ ],
+ "entry_point_ranks": [
+  {
+   "entry_point": "org.apache.commons.pool.impl.TestGenericObjectPool#testWhenExhaustedBlock",
+   "rank": 42,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:97-111"
+  },
+  {
+   "entry_point": "org.apache.commons.pool.impl.TestGenericKeyedObjectPool#testWhenExhaustedGrow",
+   "rank": 53,
+   "score": 5,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:212-219"
+  },
+  {
+   "entry_point": "org.apache.commons.pool.impl.TestStackObjectPool#testBorrowFromEmptyPoolWithNullFactory",
+   "rank": 44,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java:90-98"
+  }
+ ],
+ "entry_points": [
+  "org.apache.commons.pool.impl.TestGenericObjectPool#testWhenExhaustedBlock",
+  "org.apache.commons.pool.impl.TestGenericKeyedObjectPool#testWhenExhaustedGrow",
+  "org.apache.commons.pool.impl.TestStackObjectPool#testBorrowFromEmptyPoolWithNullFactory"
+ ],
+ "limits": "lexical extraction; not a sound whole-program call graph; no obligation answers",
+ "test_ranking": [
+  {
+   "overlap_tokens": [
+    "borrow",
+    "different",
+    "exception",
+    "from",
+    "generic",
+    "get",
+    "keyed",
+    "null",
+    "object",
+    "pool",
+    "the",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 1,
+   "score": 12,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:274-321",
+   "test": "testMaxTotalLRU"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "create",
+    "different",
+    "exception",
+    "generic",
+    "keyed",
+    "null",
+    "object",
+    "pool",
+    "the",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 2,
+   "score": 11,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1350-1399",
+   "test": "testMaxWaitMultiThreaded"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "create",
+    "different",
+    "exception",
+    "generic",
+    "get",
+    "null",
+    "object",
+    "pool",
+    "the",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 3,
+   "score": 11,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:948-993",
+   "test": "testEvictionSoftMinIdle"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "interrupted",
+    "null",
+    "object",
+    "pool",
+    "the",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 4,
+   "score": 10,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:534-610",
+   "test": "testMaxActiveUnderLoad"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "created",
+    "exception",
+    "generic",
+    "keyed",
+    "object",
+    "pool",
+    "the",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 5,
+   "score": 9,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1310-1334",
+   "test": "testBlockedKeyDoesNotBlockPool"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "different",
+    "from",
+    "generic",
+    "get",
+    "keyed",
+    "null",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 6,
+   "score": 9,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:967-1229",
+   "test": "testConstructors"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "create",
+    "exception",
+    "generic",
+    "null",
+    "object",
+    "pool",
+    "the",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 7,
+   "score": 9,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1555-1601",
+   "test": "testMaxWaitMultiThreaded"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "create",
+    "exception",
+    "generic",
+    "get",
+    "keyed",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 8,
+   "score": 8,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1277-1308",
+   "test": "testExceptionOnActivateDuringBorrow"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "keyed",
+    "null",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 9,
+   "score": 8,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:221-260",
+   "test": "testMaxTotal"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "interrupted",
+    "null",
+    "object",
+    "pool",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 10,
+   "score": 8,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:636-657",
+   "test": "testMinIdleNoPreparePool"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "create",
+    "exception",
+    "generic",
+    "object",
+    "pool",
+    "the",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 11,
+   "score": 8,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:123-141",
+   "test": "testEvictAddObjects"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "interrupted",
+    "object",
+    "pool",
+    "the",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 12,
+   "score": 8,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:872-896",
+   "test": "testEvictionWithNegativeNumTests"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "interrupted",
+    "object",
+    "pool",
+    "the",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 13,
+   "score": 8,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:836-870",
+   "test": "testStartAndStopEvictor"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "interrupted",
+    "object",
+    "pool",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 14,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:380-427",
+   "test": "testEviction"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "interrupted",
+    "object",
+    "pool",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 15,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:429-469",
+   "test": "testEviction2"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "keyed",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 16,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1241-1259",
+   "test": "testExceptionOnDestroyDuringBorrow"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "keyed",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 17,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1261-1275",
+   "test": "testExceptionOnDestroyDuringReturn"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "keyed",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 18,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:1231-1239",
+   "test": "testExceptionOnPassivateDuringReturn"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "interrupted",
+    "object",
+    "pool",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 19,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:524-561",
+   "test": "testMinIdle"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "interrupted",
+    "object",
+    "pool",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 20,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:563-613",
+   "test": "testMinIdleMaxActive"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "keyed",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 21,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:323-378",
+   "test": "testSettersAndGetters"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "interrupted",
+    "object",
+    "pool",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 22,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1415-1454",
+   "test": "testBorrowObjectFairness"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "create",
+    "exception",
+    "generic",
+    "null",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 23,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1460-1501",
+   "test": "testBrokenFactoryShouldNotBlockPool"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "interrupted",
+    "object",
+    "pool",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 24,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:898-946",
+   "test": "testEviction"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "create",
+    "exception",
+    "generic",
+    "get",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 25,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:388-415",
+   "test": "testExceptionOnActivateDuringBorrow"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "interrupted",
+    "object",
+    "pool",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 26,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:995-1026",
+   "test": "testMinIdle"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "interrupted",
+    "object",
+    "pool",
+    "thread"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 27,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1028-1072",
+   "test": "testMinIdleMaxActive"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "null",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 28,
+   "score": 7,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:81-95",
+   "test": "testWhenExhaustedFail"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "keyed",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 29,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:185-198",
+   "test": "testMaxActive"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "get",
+    "object",
+    "pool",
+    "the"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 30,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:151-183",
+   "test": "testMaxIdle"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "keyed",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "rank": 31,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java:94-100",
+   "test": "testNegativeMaxActive"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 32,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:1247-1267",
+   "test": "testAddObject"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "null",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 33,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:707-806",
+   "test": "testConstructors"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "null",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 34,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:826-834",
+   "test": "testDebugInfo"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 35,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:358-373",
+   "test": "testExceptionOnDestroyDuringBorrow"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 36,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:375-386",
+   "test": "testExceptionOnDestroyDuringReturn"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 37,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:348-356",
+   "test": "testExceptionOnPassivateDuringReturn"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 38,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:448-454",
+   "test": "testNegativeMaxActive"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "null",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 39,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:417-435",
+   "test": "testSetFactoryWithActiveObjects"
+  },
+  {
+   "overlap_tokens": [
+    "borrow",
+    "exception",
+    "generic",
+    "get",
+    "object",
+    "pool"
+   ],
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "rank": 40,
+   "score": 6,
+   "span": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java:437-446",
+   "test": "testSetFactoryWithNoActiveObjects"
+  }
+ ],
+ "tests_ranked_total": 81,
+ "tool": "w1-T0/1"
+}

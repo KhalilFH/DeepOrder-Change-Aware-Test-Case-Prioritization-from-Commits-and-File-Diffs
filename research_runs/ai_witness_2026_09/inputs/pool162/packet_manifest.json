@@ -1,0 +1,152 @@
+{
+ "artifact": "w1_packet_manifest_v1",
+ "build_run_sha256": "a199e697bcef20f25d3cb94de6690718d5e609e91252a5751cab4fa5e03a736a",
+ "case": "pool162",
+ "diff_sha256": "4dbe15f287787533b39154a411a0f5fbef2ee0cdde8e3e0a275a4b432a910df8",
+ "editable_files": [
+  "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+  "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+  "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java"
+ ],
+ "entry_points": [
+  "org.apache.commons.pool.impl.TestGenericObjectPool#testWhenExhaustedBlock",
+  "org.apache.commons.pool.impl.TestGenericKeyedObjectPool#testWhenExhaustedGrow",
+  "org.apache.commons.pool.impl.TestStackObjectPool#testBorrowFromEmptyPoolWithNullFactory"
+ ],
+ "files": {
+  "defective/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java": {
+   "bytes": 112422,
+   "lines": 2633,
+   "path": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java",
+   "sha256": "efbb31ddef6a61d5acd0c8768d70f5bd720a62a7e71bdd31d75481c68a90a28a",
+   "version": "defective"
+  },
+  "defective/src/java/org/apache/commons/pool/impl/GenericObjectPool.java": {
+   "bytes": 88399,
+   "lines": 2018,
+   "path": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java",
+   "sha256": "8cf48365e9335dae7d77848d4bb61775736f37d914d43026e6dc68b3769ba6a2",
+   "version": "defective"
+  },
+  "repaired/src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java": {
+   "bytes": 112990,
+   "lines": 2642,
+   "path": "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java",
+   "sha256": "0870904ef92bb2287a79acff81d8e6123c8f54959a2fcc2b3182b00622d1bed6",
+   "version": "repaired"
+  },
+  "repaired/src/java/org/apache/commons/pool/impl/GenericObjectPool.java": {
+   "bytes": 89052,
+   "lines": 2028,
+   "path": "src/java/org/apache/commons/pool/impl/GenericObjectPool.java",
+   "sha256": "e8ee8156ab574043dee17d6f6818d36f58d08be3e10751cf6e5cfefc834ef40e",
+   "version": "repaired"
+  },
+  "shared/src/java/org/apache/commons/pool/BaseObjectPool.java": {
+   "bytes": 4734,
+   "lines": 144,
+   "path": "src/java/org/apache/commons/pool/BaseObjectPool.java",
+   "sha256": "11d5f7bdf105718f449e1f8b332e93d15b1981359abe476445c02413f596aeb4",
+   "version": "shared"
+  },
+  "shared/src/java/org/apache/commons/pool/ObjectPool.java": {
+   "bytes": 8525,
+   "lines": 190,
+   "path": "src/java/org/apache/commons/pool/ObjectPool.java",
+   "sha256": "1d5f72695a5409a0743f9ff6f0efb2f5eaee7defb0fcc53b902062ef1bfef84e",
+   "version": "shared"
+  },
+  "shared/src/java/org/apache/commons/pool/PoolableObjectFactory.java": {
+   "bytes": 5118,
+   "lines": 138,
+   "path": "src/java/org/apache/commons/pool/PoolableObjectFactory.java",
+   "sha256": "76b388917cd072ff2d638326720bcc1ea72dc3ecbbc3ef38c3c9ddf817d5308d",
+   "version": "shared"
+  },
+  "shared/src/java/org/apache/commons/pool/impl/StackObjectPool.java": {
+   "bytes": 13173,
+   "lines": 359,
+   "path": "src/java/org/apache/commons/pool/impl/StackObjectPool.java",
+   "sha256": "14388d166c6b19e43bee1982a95161312fe31a948b8fff0fef3dfd20cb06dba1",
+   "version": "shared"
+  },
+  "shared/src/test/org/apache/commons/pool/TestBaseKeyedObjectPool.java": {
+   "bytes": 13508,
+   "lines": 358,
+   "path": "src/test/org/apache/commons/pool/TestBaseKeyedObjectPool.java",
+   "sha256": "c171ca424d8075ba6fe675dfc0d1fcfa178e3fedf93f02772ba257296891b4bd",
+   "version": "shared"
+  },
+  "shared/src/test/org/apache/commons/pool/TestBaseObjectPool.java": {
+   "bytes": 9605,
+   "lines": 276,
+   "path": "src/test/org/apache/commons/pool/TestBaseObjectPool.java",
+   "sha256": "8e07a3a61661182be877d4b8d24b214fe2fda6c0ac8314f9465930aa80301c22",
+   "version": "shared"
+  },
+  "shared/src/test/org/apache/commons/pool/TestKeyedObjectPool.java": {
+   "bytes": 20150,
+   "lines": 520,
+   "path": "src/test/org/apache/commons/pool/TestKeyedObjectPool.java",
+   "sha256": "5d4cad034cd905c83b94aa2beca07ccaa7b40944dfbbcec6c1f2ba3595fe3dd3",
+   "version": "shared"
+  },
+  "shared/src/test/org/apache/commons/pool/TestObjectPool.java": {
+   "bytes": 17663,
+   "lines": 438,
+   "path": "src/test/org/apache/commons/pool/TestObjectPool.java",
+   "sha256": "cf9881ee1c2ef09ead224da0f914f0c132f35b2b8641bed6840de242c1a26838",
+   "version": "shared"
+  },
+  "shared/src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java": {
+   "bytes": 69451,
+   "lines": 1664,
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "sha256": "cbf6b7451199023e98d735b38aa88c10e2aebc46484c1fba59c57d4fc4c61e58",
+   "version": "shared"
+  },
+  "shared/src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java": {
+   "bytes": 60892,
+   "lines": 1602,
+   "path": "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "sha256": "4f3770ec6f38da669c9a1f02a5c21ad4e9ca62be4026550a456ba23702ca1373",
+   "version": "shared"
+  },
+  "shared/src/test/org/apache/commons/pool/impl/TestStackObjectPool.java": {
+   "bytes": 12435,
+   "lines": 352,
+   "path": "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java",
+   "sha256": "9dd5e7ae7f8034a3ad477f6c8f0e8d649cc665cf5d626f265af542d11517dcd1",
+   "version": "shared"
+  }
+ },
+ "line_endings": {
+  "normalized_to": "LF",
+  "source_files_with_crlf": [
+   "src/java/org/apache/commons/pool/BaseObjectPool.java",
+   "src/java/org/apache/commons/pool/ObjectPool.java",
+   "src/java/org/apache/commons/pool/PoolableObjectFactory.java",
+   "src/java/org/apache/commons/pool/impl/GenericKeyedObjectPool.java",
+   "src/java/org/apache/commons/pool/impl/GenericObjectPool.java",
+   "src/java/org/apache/commons/pool/impl/StackObjectPool.java",
+   "src/test/org/apache/commons/pool/TestBaseKeyedObjectPool.java",
+   "src/test/org/apache/commons/pool/TestBaseObjectPool.java",
+   "src/test/org/apache/commons/pool/TestKeyedObjectPool.java",
+   "src/test/org/apache/commons/pool/TestObjectPool.java",
+   "src/test/org/apache/commons/pool/impl/TestGenericKeyedObjectPool.java",
+   "src/test/org/apache/commons/pool/impl/TestGenericObjectPool.java",
+   "src/test/org/apache/commons/pool/impl/TestStackObjectPool.java"
+  ]
+ },
+ "packet_sha256": "437fe3b3afcc2c4597a4133ca7c89fe71c122f9f6088c805a77bdeb7de118513",
+ "t0_sha256": "74195d8273bf2b5227ea713e66a498f72f28eab5b6dd571f700b1fbd9addc9f0",
+ "withheld": [
+  "repair-added regression test (pool162)",
+  "issue discussions",
+  "human diagnoses",
+  "C1/Q0 results",
+  "subject_register.md",
+  "private_oracles/",
+  "validation results"
+ ]
+}

@@ -1,0 +1,6 @@
+=== RUN   TestClientDoesntDeadlockWhileWritingErrornousLargeMessages
+panic: test timed out after 1m50s
+
+goroutine 9 [select]:
+google.golang.org/grpc.DialContext(0xc0000c0000)
+	/go/src/google.golang.org/grpc/clientconn.go:300 +0x1

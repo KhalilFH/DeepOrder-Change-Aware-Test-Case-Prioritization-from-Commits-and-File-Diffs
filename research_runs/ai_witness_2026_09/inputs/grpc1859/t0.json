@@ -1,0 +1,629 @@
+{
+ "changed_functions": [
+  {
+   "changed_lines": [
+    718
+   ],
+   "function": "(http2Client).Write",
+   "span": "transport/http2_client.go:664-767",
+   "version": "defective"
+  },
+  {
+   "changed_lines": [
+    719,
+    720
+   ],
+   "function": "(http2Client).Write",
+   "span": "transport/http2_client.go:664-769",
+   "version": "repaired"
+  },
+  {
+   "changed_lines": [
+    890
+   ],
+   "function": "(http2Server).Write",
+   "span": "transport/http2_server.go:835-924",
+   "version": "defective"
+  },
+  {
+   "changed_lines": [
+    891,
+    892
+   ],
+   "function": "(http2Server).Write",
+   "span": "transport/http2_server.go:835-926",
+   "version": "repaired"
+  }
+ ],
+ "changed_tokens": [
+  "acquired",
+  "add",
+  "back",
+  "client",
+  "err",
+  "http",
+  "nil",
+  "pool",
+  "quota",
+  "send",
+  "server",
+  "the",
+  "transport",
+  "write"
+ ],
+ "direct_calls": [
+  {
+   "caller": "TestClientDoesntDeadlockWhileWritingErrornousLargeMessages",
+   "calls": [
+    {
+     "callee": "leakcheck.Check",
+     "definitions": [],
+     "name": "Check",
+     "span": "test/end2end_test.go:6001"
+    },
+    {
+     "callee": "listTestEnv",
+     "definitions": [
+      "test/end2end_test.go:409-427"
+     ],
+     "name": "listTestEnv",
+     "span": "test/end2end_test.go:6002"
+    },
+    {
+     "callee": "testClientDoesntDeadlockWhileWritingErrornousLargeMessages",
+     "definitions": [
+      "test/end2end_test.go:6010-6042"
+     ],
+     "name": "testClientDoesntDeadlockWhileWritingErrornousLargeMessages",
+     "span": "test/end2end_test.go:6006"
+    }
+   ],
+   "span": "test/end2end_test.go:6000-6008"
+  },
+  {
+   "caller": "(http2Client).Write",
+   "calls": [
+    {
+     "callee": "ContextErr",
+     "definitions": [],
+     "name": "ContextErr",
+     "span": "transport/http2_client.go:667"
+    },
+    {
+     "callee": "var",
+     "definitions": [],
+     "name": "var",
+     "span": "transport/http2_client.go:687"
+    }
+   ],
+   "span": "transport/http2_client.go:664-767"
+  },
+  {
+   "caller": "(http2Server).Write",
+   "calls": [
+    {
+     "callee": "ContextErr",
+     "definitions": [],
+     "name": "ContextErr",
+     "span": "transport/http2_server.go:838"
+    },
+    {
+     "callee": "t.WriteHeader",
+     "definitions": [
+      "transport/http2_server.go:706-759"
+     ],
+     "name": "WriteHeader",
+     "span": "transport/http2_server.go:851"
+    },
+    {
+     "callee": "var",
+     "definitions": [],
+     "name": "var",
+     "span": "transport/http2_server.go:860"
+    },
+    {
+     "callee": "atomic.StoreUint32",
+     "definitions": [],
+     "name": "StoreUint32",
+     "span": "transport/http2_server.go:899"
+    }
+   ],
+   "span": "transport/http2_server.go:835-924"
+  }
+ ],
+ "entry_point_ranks": [
+  {
+   "entry_point": "TestClientDoesntDeadlockWhileWritingErrornousLargeMessages",
+   "rank": 21,
+   "score": 2,
+   "span": "test/end2end_test.go:6000-6008"
+  }
+ ],
+ "entry_points": [
+  "TestClientDoesntDeadlockWhileWritingErrornousLargeMessages"
+ ],
+ "limits": "lexical extraction; not a sound whole-program call graph; no obligation answers",
+ "test_ranking": [
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "send",
+    "server",
+    "write"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 1,
+   "score": 6,
+   "span": "test/end2end_test.go:5077-5104",
+   "test": "TestClientWriteFailsAfterServerClosesStream"
+  },
+  {
+   "overlap_tokens": [
+    "err",
+    "nil",
+    "server",
+    "the",
+    "transport",
+    "write"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 2,
+   "score": 6,
+   "span": "test/end2end_test.go:4458-4482",
+   "test": "TestServerCredsDispatch"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "send",
+    "server",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 3,
+   "score": 6,
+   "span": "test/end2end_test.go:1828-1897",
+   "test": "TestStreamingRPCWithTimeoutInServiceConfigRecv"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "server",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 4,
+   "score": 5,
+   "span": "test/end2end_test.go:760-792",
+   "test": "TestContextDeadlineNotIgnored"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "server",
+    "transport"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 5,
+   "score": 5,
+   "span": "test/end2end_test.go:4507-4545",
+   "test": "TestCredsHandshakeAuthority"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "server",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 6,
+   "score": 5,
+   "span": "test/end2end_test.go:4591-4672",
+   "test": "TestFlowControlLogicalRace"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "server",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 7,
+   "score": 5,
+   "span": "test/end2end_test.go:4412-4424",
+   "test": "TestNonFailFastRPCSucceedOnTimeoutCreds"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "send",
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 8,
+   "score": 5,
+   "span": "test/end2end_test.go:5952-5998",
+   "test": "TestServeExitsWhenListenerClosed"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "send",
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 9,
+   "score": 5,
+   "span": "test/end2end_test.go:1564-1823",
+   "test": "TestServiceConfigMaxMsgSize"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "server",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 10,
+   "score": 5,
+   "span": "test/end2end_test.go:4986-5039",
+   "test": "TestStatsTagsAndTrace"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "server",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 11,
+   "score": 5,
+   "span": "test/end2end_test.go:4922-4984",
+   "test": "TestStreamingProxyDoesNotForwardMetadata"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "server",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 12,
+   "score": 5,
+   "span": "test/end2end_test.go:5041-5075",
+   "test": "TestTapTimeout"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "server",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 13,
+   "score": 5,
+   "span": "test/end2end_test.go:4874-4920",
+   "test": "TestUnaryProxyDoesNotForwardMetadata"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "transport"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 14,
+   "score": 4,
+   "span": "test/end2end_test.go:4569-4589",
+   "test": "TestFailfastRPCFailOnFatalHandshakeError"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 15,
+   "score": 4,
+   "span": "test/end2end_test.go:1300-1382",
+   "test": "TestGetMethodConfig"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "http",
+    "server",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 16,
+   "score": 4,
+   "span": "test/end2end_test.go:3067-3077",
+   "test": "TestMalformedHTTP2Metadata"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 17,
+   "score": 4,
+   "span": "test/end2end_test.go:1469-1562",
+   "test": "TestServiceConfigTimeout"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "err",
+    "nil",
+    "the"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 18,
+   "score": 4,
+   "span": "test/end2end_test.go:1384-1467",
+   "test": "TestServiceConfigWaitForReady"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "http",
+    "write"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 19,
+   "score": 3,
+   "span": "test/end2end_test.go:4318-4327",
+   "test": "TestClientResourceExhaustedCancelFullDuplex"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "nil",
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 20,
+   "score": 3,
+   "span": "test/end2end_test.go:5870-5888",
+   "test": "TestMethodFromServerStream"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "http"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 21,
+   "score": 2,
+   "span": "test/end2end_test.go:6000-6008",
+   "test": "TestClientDoesntDeadlockWhileWritingErrornousLargeMessages"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 22,
+   "score": 2,
+   "span": "test/end2end_test.go:1068-1076",
+   "test": "TestConcurrentClientConnCloseAndServerGoAway"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 23,
+   "score": 2,
+   "span": "test/end2end_test.go:5120-5131",
+   "test": "TestConfigurableWindowSizeWithLargeWindow"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 24,
+   "score": 2,
+   "span": "test/end2end_test.go:5133-5144",
+   "test": "TestConfigurableWindowSizeWithSmallWindow"
+  },
+  {
+   "overlap_tokens": [
+    "client",
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 25,
+   "score": 2,
+   "span": "test/end2end_test.go:2279-2293",
+   "test": "TestUnknownHandler"
+  },
+  {
+   "overlap_tokens": [
+    "client"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 26,
+   "score": 1,
+   "span": "test/end2end_test.go:1188-1196",
+   "test": "TestClientConnCloseAfterGoAwayWithActiveStream"
+  },
+  {
+   "overlap_tokens": [
+    "client"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 27,
+   "score": 1,
+   "span": "test/end2end_test.go:4246-4251",
+   "test": "TestClientRequestBodyErrorCancel"
+  },
+  {
+   "overlap_tokens": [
+    "client"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 28,
+   "score": 1,
+   "span": "test/end2end_test.go:4283-4288",
+   "test": "TestClientRequestBodyErrorCancelStreamingInput"
+  },
+  {
+   "overlap_tokens": [
+    "client"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 29,
+   "score": 1,
+   "span": "test/end2end_test.go:4221-4226",
+   "test": "TestClientRequestBodyErrorCloseAfterLength"
+  },
+  {
+   "overlap_tokens": [
+    "client"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 30,
+   "score": 1,
+   "span": "test/end2end_test.go:4197-4202",
+   "test": "TestClientRequestBodyErrorUnexpectedEOF"
+  },
+  {
+   "overlap_tokens": [
+    "client"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 31,
+   "score": 1,
+   "span": "test/end2end_test.go:3660-3667",
+   "test": "TestClientStreaming"
+  },
+  {
+   "overlap_tokens": [
+    "client"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 32,
+   "score": 1,
+   "span": "test/end2end_test.go:3706-3714",
+   "test": "TestClientStreamingError"
+  },
+  {
+   "overlap_tokens": [
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 33,
+   "score": 1,
+   "span": "test/end2end_test.go:3864-3869",
+   "test": "TestCompressServerHasNoSupport"
+  },
+  {
+   "overlap_tokens": [
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 34,
+   "score": 1,
+   "span": "test/end2end_test.go:1106-1114",
+   "test": "TestConcurrentServerStopAndGoAway"
+  },
+  {
+   "overlap_tokens": [
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 35,
+   "score": 1,
+   "span": "test/end2end_test.go:2378-2388",
+   "test": "TestFailedEmptyUnary"
+  },
+  {
+   "overlap_tokens": [
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 36,
+   "score": 1,
+   "span": "test/end2end_test.go:3523-3528",
+   "test": "TestFailedServerStreaming"
+  },
+  {
+   "overlap_tokens": [
+    "client"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 37,
+   "score": 1,
+   "span": "test/end2end_test.go:1960-1965",
+   "test": "TestMaxMsgSizeClientAPI"
+  },
+  {
+   "overlap_tokens": [
+    "client"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 38,
+   "score": 1,
+   "span": "test/end2end_test.go:1899-1904",
+   "test": "TestMaxMsgSizeClientDefault"
+  },
+  {
+   "overlap_tokens": [
+    "server"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 39,
+   "score": 1,
+   "span": "test/end2end_test.go:2048-2053",
+   "test": "TestMaxMsgSizeServerAPI"
+  },
+  {
+   "overlap_tokens": [
+    "client"
+   ],
+   "path": "test/end2end_test.go",
+   "rank": 40,
+   "score": 1,
+   "span": "test/end2end_test.go:2528-2533",
+   "test": "TestPeerClientSide"
+  }
+ ],
+ "tests_ranked_total": 93,
+ "tool": "w1-T0/1"
+}

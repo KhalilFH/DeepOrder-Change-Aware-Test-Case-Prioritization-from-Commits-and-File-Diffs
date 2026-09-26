@@ -1,0 +1,4 @@
+=== RUN   TestExitDuringWaitForLive
+--- FAIL: TestExitDuringWaitForLive (1.20s)
+    agent_test.go:220: Expected <time.Time> to be ~ ...
+FAIL
